@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hKJ-IU-gqf">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--通讯录-->
+        <scene sceneID="KP7-Qg-poa">
+            <objects>
+                <viewController id="zQY-9h-48g" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UxM-R0-4sf"/>
+                        <viewControllerLayoutGuide type="bottom" id="72R-sW-VZB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="za9-bY-jPJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="通讯录" image="contract" id="cSO-CL-ln0"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pDL-YS-cEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="841" y="769"/>
+        </scene>
+        <!--个人-->
+        <scene sceneID="8rR-fN-1ZH">
+            <objects>
+                <viewController id="Ezj-gC-l7N" customClass="MeController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y6c-BM-HA6"/>
+                        <viewControllerLayoutGuide type="bottom" id="9d8-pL-ajd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qFt-nS-hOJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="profile_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="npy-vP-w69">
+                                <rect key="frame" x="0.0" y="0.0" width="325" height="157"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="157" id="QjZ-Kr-rpD"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P5P-V0-eCH">
+                                <rect key="frame" x="20" y="39" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="PN5-wb-OAi"/>
+                                    <constraint firstAttribute="height" constant="80" id="tOZ-Wz-x6m"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7rY-6B-jpg">
+                                <rect key="frame" x="0.0" y="165" width="320" height="318"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="npy-vP-w69" secondAttribute="trailing" id="43C-hU-Tl7"/>
+                            <constraint firstItem="7rY-6B-jpg" firstAttribute="leading" secondItem="qFt-nS-hOJ" secondAttribute="leading" id="Dd6-Vm-HFf"/>
+                            <constraint firstItem="9d8-pL-ajd" firstAttribute="top" secondItem="7rY-6B-jpg" secondAttribute="bottom" constant="36" id="FT9-rC-Ui2"/>
+                            <constraint firstItem="P5P-V0-eCH" firstAttribute="top" secondItem="Y6c-BM-HA6" secondAttribute="bottom" constant="19" id="JSG-d6-Ok7"/>
+                            <constraint firstItem="P5P-V0-eCH" firstAttribute="leading" secondItem="qFt-nS-hOJ" secondAttribute="leading" constant="20" id="Q5T-6Y-Ndt"/>
+                            <constraint firstItem="npy-vP-w69" firstAttribute="leading" secondItem="qFt-nS-hOJ" secondAttribute="leading" id="avE-CD-Pvh"/>
+                            <constraint firstAttribute="trailing" secondItem="7rY-6B-jpg" secondAttribute="trailing" id="hl0-IG-qiq"/>
+                            <constraint firstItem="7rY-6B-jpg" firstAttribute="top" secondItem="npy-vP-w69" secondAttribute="bottom" constant="8" id="qKg-Lw-uZN"/>
+                            <constraint firstItem="npy-vP-w69" firstAttribute="top" secondItem="qFt-nS-hOJ" secondAttribute="top" id="t7F-LE-Fsl"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="个人" image="me" id="DUW-eL-rX2"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="nickimg" destination="P5P-V0-eCH" id="1vE-pA-gfI"/>
+                        <outlet property="table" destination="7rY-6B-jpg" id="fK5-Ec-PWo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="30P-gh-YGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21" y="1319"/>
+        </scene>
+        <!--调度信息-->
+        <scene sceneID="fuz-Qw-G0U">
+            <objects>
+                <viewController id="alG-cC-Az0" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jIb-zH-Mym"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ifq-sK-dxM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fL8-Bn-rqA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="调度信息" image="msg" id="JnX-pI-gtU"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CUs-yh-SLE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="841" y="108"/>
+        </scene>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="HSR-30-FSm">
+            <objects>
+                <tabBarController id="hKJ-IU-gqf" customClass="MainTabBarController" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="ezO-SZ-EHa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="alG-cC-Az0" kind="relationship" relationship="viewControllers" id="TeO-Yc-DuV"/>
+                        <segue destination="zQY-9h-48g" kind="relationship" relationship="viewControllers" id="snt-WO-gOJ"/>
+                        <segue destination="Ezj-gC-l7N" kind="relationship" relationship="viewControllers" id="hUK-cl-lKs"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1y1-Qn-d8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21" y="439"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="contract" width="44" height="44"/>
+        <image name="me" width="44" height="44"/>
+        <image name="msg" width="44" height="44"/>
+        <image name="profile_bg.png" width="1440" height="500"/>
+    </resources>
+</document>
