@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B44D0A011D2F420800F76DFF /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B44D0A001D2F420800F76DFF /* Common.framework */; };
+		B44D0A031D2F421700F76DFF /* Common.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B44D0A001D2F420800F76DFF /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B44D0A071D2F4AA900F76DFF /* setting1.png in Resources */ = {isa = PBXBuildFile; fileRef = B44D0A061D2F4AA900F76DFF /* setting1.png */; };
+		B44D0A091D2F4B4F00F76DFF /* setting2.png in Resources */ = {isa = PBXBuildFile; fileRef = B44D0A081D2F4B4F00F76DFF /* setting2.png */; };
+		B44D0A0B1D2F4B7200F76DFF /* setting3.png in Resources */ = {isa = PBXBuildFile; fileRef = B44D0A0A1D2F4B7200F76DFF /* setting3.png */; };
+		B44D0A0D1D2F4B9C00F76DFF /* setting4.png in Resources */ = {isa = PBXBuildFile; fileRef = B44D0A0C1D2F4B9C00F76DFF /* setting4.png */; };
+		B44D0A0F1D2F4BBE00F76DFF /* setting5.png in Resources */ = {isa = PBXBuildFile; fileRef = B44D0A0E1D2F4BBE00F76DFF /* setting5.png */; };
+		B44D0A131D2F4FD400F76DFF /* ModiPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = B44D0A121D2F4FD400F76DFF /* ModiPwdController.m */; };
+		B44D0A161D2F54AD00F76DFF /* UserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = B44D0A151D2F54AD00F76DFF /* UserInfoController.m */; };
 		B48B0F131D2E498100646A20 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B48B0F121D2E498100646A20 /* main.m */; };
 		B48B0F161D2E498100646A20 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B48B0F151D2E498100646A20 /* AppDelegate.m */; };
 		B48B0F1C1D2E498100646A20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48B0F1A1D2E498100646A20 /* Main.storyboard */; };
@@ -19,7 +28,30 @@
 		B48B0F3B1D2E542E00646A20 /* ServerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B48B0F3A1D2E542E00646A20 /* ServerInfo.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B44D0A021D2F420F00F76DFF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B44D0A031D2F421700F76DFF /* Common.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		B44D0A001D2F420800F76DFF /* Common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Common.framework; sourceTree = "<group>"; };
+		B44D0A061D2F4AA900F76DFF /* setting1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting1.png; sourceTree = "<group>"; };
+		B44D0A081D2F4B4F00F76DFF /* setting2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting2.png; sourceTree = "<group>"; };
+		B44D0A0A1D2F4B7200F76DFF /* setting3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting3.png; sourceTree = "<group>"; };
+		B44D0A0C1D2F4B9C00F76DFF /* setting4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting4.png; sourceTree = "<group>"; };
+		B44D0A0E1D2F4BBE00F76DFF /* setting5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting5.png; sourceTree = "<group>"; };
+		B44D0A111D2F4FD400F76DFF /* ModiPwdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModiPwdController.h; sourceTree = "<group>"; };
+		B44D0A121D2F4FD400F76DFF /* ModiPwdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModiPwdController.m; sourceTree = "<group>"; };
+		B44D0A141D2F54AD00F76DFF /* UserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoController.h; sourceTree = "<group>"; };
+		B44D0A151D2F54AD00F76DFF /* UserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoController.m; sourceTree = "<group>"; };
 		B48B0F0E1D2E498000646A20 /* NTYJIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTYJIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B48B0F121D2E498100646A20 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B48B0F141D2E498100646A20 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -45,12 +77,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B44D0A011D2F420800F76DFF /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B44D0A101D2F4FBB00F76DFF /* me */ = {
+			isa = PBXGroup;
+			children = (
+				B44D0A111D2F4FD400F76DFF /* ModiPwdController.h */,
+				B44D0A121D2F4FD400F76DFF /* ModiPwdController.m */,
+				B44D0A141D2F54AD00F76DFF /* UserInfoController.h */,
+				B44D0A151D2F54AD00F76DFF /* UserInfoController.m */,
+			);
+			name = me;
+			sourceTree = "<group>";
+		};
 		B48B0F051D2E498000646A20 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +148,7 @@
 		B48B0F291D2E4ABB00646A20 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				B44D0A101D2F4FBB00F76DFF /* me */,
 				B48B0F2A1D2E4ADF00646A20 /* MainTabBarController.h */,
 				B48B0F2B1D2E4ADF00646A20 /* MainTabBarController.m */,
 				B48B0F321D2E51B300646A20 /* MeController.h */,
@@ -127,6 +172,11 @@
 		B48B0F2F1D2E4E8900646A20 /* png */ = {
 			isa = PBXGroup;
 			children = (
+				B44D0A0E1D2F4BBE00F76DFF /* setting5.png */,
+				B44D0A0C1D2F4B9C00F76DFF /* setting4.png */,
+				B44D0A0A1D2F4B7200F76DFF /* setting3.png */,
+				B44D0A081D2F4B4F00F76DFF /* setting2.png */,
+				B44D0A061D2F4AA900F76DFF /* setting1.png */,
 				B48B0F301D2E4E8F00646A20 /* profile_bg.png */,
 			);
 			name = png;
@@ -135,6 +185,7 @@
 		B48B0F351D2E526D00646A20 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				B44D0A001D2F420800F76DFF /* Common.framework */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -149,6 +200,7 @@
 				B48B0F0A1D2E498000646A20 /* Sources */,
 				B48B0F0B1D2E498000646A20 /* Frameworks */,
 				B48B0F0C1D2E498000646A20 /* Resources */,
+				B44D0A021D2F420F00F76DFF /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -196,9 +248,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B44D0A071D2F4AA900F76DFF /* setting1.png in Resources */,
+				B44D0A0D1D2F4B9C00F76DFF /* setting4.png in Resources */,
 				B48B0F211D2E498100646A20 /* LaunchScreen.storyboard in Resources */,
 				B48B0F1E1D2E498100646A20 /* Assets.xcassets in Resources */,
+				B44D0A091D2F4B4F00F76DFF /* setting2.png in Resources */,
 				B48B0F311D2E4E8F00646A20 /* profile_bg.png in Resources */,
+				B44D0A0F1D2F4BBE00F76DFF /* setting5.png in Resources */,
+				B44D0A0B1D2F4B7200F76DFF /* setting3.png in Resources */,
 				B48B0F1C1D2E498100646A20 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +272,8 @@
 				B48B0F2C1D2E4ADF00646A20 /* MainTabBarController.m in Sources */,
 				B48B0F381D2E53D000646A20 /* UserInfo.m in Sources */,
 				B48B0F3B1D2E542E00646A20 /* ServerInfo.m in Sources */,
+				B44D0A131D2F4FD400F76DFF /* ModiPwdController.m in Sources */,
+				B44D0A161D2F54AD00F76DFF /* UserInfoController.m in Sources */,
 				B48B0F341D2E51B300646A20 /* MeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +386,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NTYJIOS",
+				);
 				INFOPLIST_FILE = NTYJIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -339,6 +402,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NTYJIOS",
+				);
 				INFOPLIST_FILE = NTYJIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -366,6 +433,7 @@
 				B48B0F271D2E498100646A20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

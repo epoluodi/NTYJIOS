@@ -15,7 +15,7 @@
 @synthesize positionId,positionName;
 @synthesize tel;
 @synthesize sysUserName;
-@synthesize picture;
+@synthesize picture,nickimg;
 
 static UserInfo *_userinfo;
 

@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Common/FileCommon.h>
 #define Section1 4
 #define Section2 1
 
-@interface MeController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface MeController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate>
 {
     UILabel *name,*postname;
     BOOL isShow;
+    UIImagePickerController *pickerview;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *table;

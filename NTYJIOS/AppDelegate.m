@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <Common/PublicCommon.h>
+#import "Common.h"
 
 
 @interface AppDelegate ()
@@ -18,9 +20,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    UIImage *backbar = [PublicCommon createImageWithColor:APPCOLOR Rect:CGRectMake(0, 0, 100, 100)];
+    
+    [[UINavigationBar appearance] setBackgroundImage:backbar forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     [UserInfo getInstance];
     [UserInfo getInstance].userName=@"夏侯惇";
+    [UserInfo getInstance].positionName=@"武将";
     [ServerInfo getInstance];
     
     

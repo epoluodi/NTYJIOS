@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface UserInfo : NSObject
 
@@ -21,7 +22,7 @@
 @property (copy,nonatomic)NSString *sysUserName;
 @property (copy,nonatomic)NSString *picture;
 @property (copy,nonatomic)NSArray *auth;
-
+@property (copy,nonatomic)UIImage *nickimg;
 
 //获得静态方法
 +(instancetype)getInstance;
