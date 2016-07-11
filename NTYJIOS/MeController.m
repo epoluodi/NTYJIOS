@@ -8,7 +8,8 @@
 
 #import "MeController.h"
 #import "UserInfo.h"
-#import "UserInfoController.h"
+#import "UserInfoViewController.h"
+#import "LoginViewController.h"
 
 @implementation MeController
 @synthesize table,nickimg;
@@ -174,7 +175,7 @@
 {
     UIView *v=[[UIView alloc] init];
     v.frame=cell.contentView.frame;
-    v.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:0.08];
+    v.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:0.03];
     cell.selectedBackgroundView =v;
     
 }
@@ -182,7 +183,7 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *v = [[UIView alloc] init];
-    v.frame=CGRectMake(0, 0, table.frame.size.width, 15);
+    v.frame=CGRectMake(0, 0, table.frame.size.width, 10);
     return v;
 }
 
@@ -197,7 +198,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 20;
+    return 10;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -237,6 +238,7 @@
     {
         cell.imageView.image = [UIImage imageNamed:@"setting5"];
         cell.textLabel.text=@"退出登录";
+        
     }
     
 
@@ -259,6 +261,14 @@
 
         }
     }
+    if (indexPath.section==1)
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LoginViewController *loginVC = (LoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        
+        [self presentViewController:loginVC animated:YES completion:nil];
+        return;
+    }
 }
 
 #pragma mark -
@@ -268,7 +278,7 @@
 {
         if ([segue.identifier isEqualToString:@"showuserinfo"])
         {
-            UserInfoController *userinfvc = (UserInfoController*)[segue destinationViewController];
+            UserInfoViewController *userinfvc = (UserInfoViewController*)[segue destinationViewController];
             userinfvc.IsSelf=YES;
             userinfvc.userid = [UserInfo getInstance].userId;
             return;

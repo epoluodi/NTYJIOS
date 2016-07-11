@@ -11,3 +11,4 @@
 
 
 #define APPCOLOR [UIColor colorWithRed:0.255 green:0.718 blue:0.616 alpha:1.00]
+#define APPCOLORDOWN [UIColor colorWithRed:0.255 green:0.718 blue:0.616 alpha:0.60]
