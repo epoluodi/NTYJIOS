@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import <Common/PublicCommon.h>
 #import "Common.h"
+#import "HttpServer.h"
 
 @interface LoginViewController ()
 
@@ -97,6 +98,7 @@
     UIImage *image2 = [PublicCommon createImageWithColor:APPCOLORDOWN Rect:CGRectMake(0, 0, 100, 100)];
     btnlogin.layer.cornerRadius=6;
     btnlogin.layer.masksToBounds=YES;
+    [btnlogin addTarget:self action:@selector(ClickLogin:) forControlEvents:UIControlEventTouchUpInside];
     [btnlogin  setBackgroundImage:image1 forState:UIControlStateNormal];
     [btnlogin  setBackgroundImage:image2 forState:UIControlStateHighlighted];
     [btnlogin setTitle:@"登录" forState:UIControlStateNormal];
@@ -120,5 +122,13 @@
 */
 
 - (IBAction)ClickLogin:(id)sender {
+    
+    
+    
+    
+    HttpServer *http = [[HttpServer alloc] init:LoginUrl];
+   NSDictionary * r =  [http Login:useredit.text userpwd:pwdedit.text];
+    NSLog(@"%@",r);
+    
 }
 @end

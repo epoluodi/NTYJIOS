@@ -28,6 +28,7 @@
     [UserInfo getInstance];
     [UserInfo getInstance].userName=@"夏侯惇";
     [UserInfo getInstance].positionName=@"武将";
+    [UserInfo getInstance].deviceid=[[UIDevice currentDevice].identifierForVendor UUIDString];
     [ServerInfo getInstance];
     
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4058171D3E70AA002A5068 /* MBProgressHUD.m */; };
 		B40C1AD51D33443700AFE71A /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B40C1AD41D33443700AFE71A /* UserInfoViewController.m */; };
 		B40C1AD71D33469400AFE71A /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B40C1AD61D33469400AFE71A /* UserInfoCell.xib */; };
 		B40C1AD91D33471B00AFE71A /* userinfo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = B40C1AD81D33471B00AFE71A /* userinfo_1.png */; };
@@ -58,6 +59,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B4058171D3E70AA002A5068 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		7B4058181D3E70AA002A5068 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		B40C1AD31D33443700AFE71A /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		B40C1AD41D33443700AFE71A /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		B40C1AD61D33469400AFE71A /* UserInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoCell.xib; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 		B48B0F2D1D2E4B7F00646A20 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7B4058171D3E70AA002A5068 /* MBProgressHUD.m */,
+				7B4058181D3E70AA002A5068 /* MBProgressHUD.h */,
 				B48B0F2E1D2E4B8E00646A20 /* Common.h */,
 				B48B0F361D2E53D000646A20 /* UserInfo.h */,
 				B48B0F371D2E53D000646A20 /* UserInfo.m */,
@@ -366,6 +371,7 @@
 				B40C1AD51D33443700AFE71A /* UserInfoViewController.m in Sources */,
 				B44D0A131D2F4FD400F76DFF /* ModiPwdController.m in Sources */,
 				B48B0F341D2E51B300646A20 /* MeController.m in Sources */,
+				7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */,
 				B40C1AF41D33837600AFE71A /* LoginViewController.m in Sources */,
 				B40C1B021D3392BA00AFE71A /* HttpServer.m in Sources */,
 				B40C1AE11D33715500AFE71A /* UserInfoCell2.m in Sources */,

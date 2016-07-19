@@ -7,16 +7,48 @@
 //
 
 #import "MainTabBarController.h"
+#import "MBProgressHUD.h"
+#import "LoginViewController.h"
 
 @interface MainTabBarController ()
-
+{
+    MBProgressHUD *hub;
+}
 @end
 
 @implementation MainTabBarController
+@synthesize IsLogin;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tabBar.tintColor=APPCOLOR;
+    IsLogin = NO;
+    
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    
+    
+
+    
+    hub = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hub];
+    [hub show:YES];
+    dispatch_async(globalQ, ^{
+       
+        sleep(2);
+        dispatch_async(mainQ, ^{
+            [hub hide:YES];
+            hub=nil;
+            
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            LoginViewController *loginVC = (LoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            
+            [self presentViewController:loginVC animated:YES completion:nil];
+            
+            
+        });
+    });
+    
     // Do any additional setup after loading the view.
 }
 

@@ -11,4 +11,7 @@
 
 @interface MainTabBarController : UITabBarController
 
+@property (assign)BOOL IsLogin;
+
+
 @end

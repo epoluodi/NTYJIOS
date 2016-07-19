@@ -11,5 +11,13 @@
 #import "ReturnData.h"
 
 @interface HttpServer : NSObject
+{
+    NSString *url;
+}
+-(instancetype)init:(NSString *)Url;
+
+//登录
+-(NSDictionary *)Login:(NSString *)username userpwd:(NSString *)pwd;
+
 
 @end

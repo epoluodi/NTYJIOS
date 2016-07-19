@@ -7,6 +7,7 @@
 //
 
 #import "ServerInfo.h"
+#import "HttpServer.h"
 
 @implementation ServerInfo
 @synthesize MQTTADDRESS,username,password;
@@ -22,4 +23,7 @@ static ServerInfo *_serverinfo;
     }
     return _serverinfo;
 }
+
+
+
 @end

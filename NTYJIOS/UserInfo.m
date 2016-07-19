@@ -16,6 +16,7 @@
 @synthesize tel;
 @synthesize sysUserName;
 @synthesize picture,nickimg;
+@synthesize deviceid;
 
 static UserInfo *_userinfo;
 
