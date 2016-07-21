@@ -10,6 +10,7 @@
 #import "UserInfo.h"
 #import "UserInfoViewController.h"
 #import "LoginViewController.h"
+#import "MBProgressHUD.h"
 
 @implementation MeController
 @synthesize table,nickimg;
@@ -59,6 +60,7 @@
                             nickimg.frame.origin.y +30, strsize.width, strsize.height);
     name.text=[UserInfo getInstance].userName;
     [self.view addSubview:name];
+ 
     
     strsize = [[UserInfo getInstance].positionName sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18]}];
     postname=[[UILabel alloc] init];
@@ -68,6 +70,7 @@
                             name.frame.origin.y +name.frame.size.height+10, strsize.width, strsize.height);
     postname.text=[UserInfo getInstance].positionName;
     [self.view addSubview:postname];
+
     
 }
 
@@ -258,6 +261,9 @@
             case 1:
                 [self performSegueWithIdentifier:@"showmodipwd" sender:nil];
                 break;
+            case 2:
+                [self ClearCacheFile];
+                break;
 
         }
     }
@@ -270,6 +276,48 @@
         return;
     }
 }
+
+
+//清除缓存
+-(void)ClearCacheFile
+{
+    //显示loadview
+    __block MBProgressHUD *hub = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hub];
+    [hub show:YES];
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    
+    
+    NSString *path = [FileCommon getCacheDirectory];
+    dispatch_async(globalQ, ^{
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        NSArray *files = [[NSFileManager defaultManager] subpathsAtPath:path];
+        
+        //清除文件缓存
+        for (NSString *p in files) {
+            NSError *error;
+            NSString *filepath = [path stringByAppendingPathComponent:p];
+            if ([[NSFileManager defaultManager] fileExistsAtPath:filepath]) {
+                [[NSFileManager defaultManager] removeItemAtPath:filepath error:&error];
+            }
+        }
+        
+        
+        dispatch_async(mainQ, ^{
+            [hub hide:YES];
+            hub=nil;
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"清除完成" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+        });
+        
+        
+    });
+    
+    
+    
+}
+
 
 #pragma mark -
 

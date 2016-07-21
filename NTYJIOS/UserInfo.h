@@ -14,6 +14,7 @@
 
 @property (copy,nonatomic)NSString *Token;
 @property (copy,nonatomic)NSString *userName;
+@property (copy,nonatomic)NSString *userPwd;
 @property (copy,nonatomic)NSString *userId;
 @property (copy,nonatomic)NSString *sex;
 @property (copy,nonatomic)NSString *positionId;
@@ -24,6 +25,7 @@
 @property (copy,nonatomic)NSArray *auth;
 @property (copy,nonatomic)UIImage *nickimg;
 @property (copy,nonatomic)NSString *deviceid;
+
 //获得静态方法
 +(instancetype)getInstance;
 

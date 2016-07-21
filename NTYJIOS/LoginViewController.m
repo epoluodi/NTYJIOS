@@ -10,6 +10,7 @@
 #import <Common/PublicCommon.h>
 #import "Common.h"
 #import "HttpServer.h"
+#import "MBProgressHUD.h"
 
 @interface LoginViewController ()
 
@@ -103,6 +104,17 @@
     [btnlogin  setBackgroundImage:image2 forState:UIControlStateHighlighted];
     [btnlogin setTitle:@"登录" forState:UIControlStateNormal];
     [self.view addSubview:btnlogin];
+        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    useredit.text=[userinfo objectForKey:@"username"];
+    pwdedit.text=[userinfo objectForKey:@"userpwd"];
+ 
+    if (![[UserInfo getInstance].sysUserName isEqualToString:@""] && ![[UserInfo getInstance].userPwd isEqualToString:@""]
+        )
+    {
+        [self ClickLogin:nil];
+    }
+    
+    
 }
 
 -(void)closeinput
@@ -112,23 +124,86 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)ClickLogin:(id)sender {
     
+    if ([useredit.text isEqualToString:@""] ||
+        [pwdedit.text isEqualToString:@""])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入用户名和密码" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
     
     
+    [self closeinput];
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
     
-    HttpServer *http = [[HttpServer alloc] init:LoginUrl];
-   NSDictionary * r =  [http Login:useredit.text userpwd:pwdedit.text];
-    NSLog(@"%@",r);
+    MBProgressHUD *hub=[[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hub];
+    [hub show:YES];
+    
+    dispatch_async(globalQ, ^{
+        HttpServer *http = [[HttpServer alloc] init:LoginUrl];
+        NSDictionary * r =  [http Login:useredit.text userpwd:pwdedit.text];
+        NSLog(@"%@",r);
+        dispatch_async(mainQ, ^{
+            [hub hide:YES];
+            if (!r)
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"登录失败，请重新尝试！！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                return;
+            }
+            
+            
+            NSNumber *ret =  [r objectForKey:@"status"];
+            if (ret.intValue != 0)
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"登录失败，请重新尝试！！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                return;
+            }
+            
+            NSUserDefaults *userinfo = [NSUserDefaults standardUserDefaults];
+            [userinfo setObject:useredit.text forKey:@"username"];
+            [userinfo setObject:pwdedit.text forKey:@"userpwd"];
+            NSDictionary *data = [r objectForKey:@"data"];
+            NSDictionary*mqtt = [data objectForKey:@"MQTT"];
+            [ServerInfo getInstance].MQTTADDRESS = [mqtt objectForKey:@"mqttserver"];
+            [ServerInfo getInstance].username =[mqtt objectForKey:@"username"];
+            [ServerInfo getInstance].password =[mqtt objectForKey:@"password"];
+            
+            [UserInfo getInstance].Token = [data objectForKey:@"token"];
+            NSDictionary *user = [data objectForKey:@"user"];
+            NSLog(@"user %@",user);
+            [UserInfo getInstance].userName =[user objectForKey:@"userName"];
+            [UserInfo getInstance].sysUserName =[user objectForKey:@"sysUserName"];
+            [UserInfo getInstance].userId =[user objectForKey:@"accountId"];
+            [UserInfo getInstance].picture =[user objectForKey:@"picture"];
+            [UserInfo getInstance].sex =[user objectForKey:@"sex"];
+            [UserInfo getInstance].tel =[user objectForKey:@"tel"];
+            [UserInfo getInstance].positionId =[user objectForKey:@"positionId"];
+            [UserInfo getInstance].positionName =[user objectForKey:@"positionName"];
+            [UserInfo getInstance].auth =[user objectForKey:@"auths"];
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        });
+        
+        
+    });
+    
+    
     
 }
 @end

@@ -26,15 +26,34 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     [UserInfo getInstance];
-    [UserInfo getInstance].userName=@"夏侯惇";
-    [UserInfo getInstance].positionName=@"武将";
+
     [UserInfo getInstance].deviceid=[[UIDevice currentDevice].identifierForVendor UUIDString];
     [ServerInfo getInstance];
+    [self initLoginInfo];
     
     
     
     // Override point for customization after application launch.
     return YES;
+}
+
+
+-(void)initLoginInfo
+{
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    
+    BOOL isfirstrunn =[userinfo boolForKey:@"isFirstRun"];
+    if (!isfirstrunn)
+    {
+        [userinfo setObject:@"" forKey:@"username"];
+        [userinfo setObject:@"" forKey:@"userpwd"];
+        [userinfo setBool:YES forKey:@"isFirstRun"];
+    }
+    else
+    {
+        [UserInfo getInstance].sysUserName =[userinfo objectForKey:@"username"];
+        [UserInfo getInstance].userPwd =[userinfo objectForKey:@"userpwd"];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

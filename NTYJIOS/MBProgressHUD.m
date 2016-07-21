@@ -6,6 +6,7 @@
 
 #import "MBProgressHUD.h"
 #import <tgmath.h>
+#import "Common.h"
 
 
 #if __has_feature(objc_arc)
@@ -183,6 +184,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		self.detailsLabelText = nil;
 		self.opacity = 0.8f;
         self.color = nil;
+       
 		self.labelFont = [UIFont boldSystemFontOfSize:kLabelFontSize];
         self.labelColor = [UIColor whiteColor];
 		self.detailsLabelFont = [UIFont boldSystemFontOfSize:kDetailsLabelFontSize];
@@ -204,7 +206,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 
 		// Transparent background
 		self.opaque = NO;
-		self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
 		// Make it invisible for now
 		self.alpha = 0.0f;
 		
@@ -212,8 +214,8 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		rotationTransform = CGAffineTransformIdentity;
         
         self.layer.shadowOffset = CGSizeMake(0, 0);
-        self.layer.shadowColor = [[UIColor blackColor] CGColor];
-        self.layer.shadowOpacity = 0.75f;
+        self.layer.shadowColor = [APPCOLOR CGColor];
+        self.layer.shadowOpacity = 1;
         self.layer.shadowRadius = 1.0;
 		
 		[self setupLabels];
@@ -476,6 +478,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
     label.layer.shadowColor = [[UIColor blackColor] CGColor];
     label.layer.shadowRadius = 1.0;
     label.layer.shadowOpacity = 0.75;
+    
 	[self addSubview:label];
 	
 	detailsLabel = [[UILabel alloc] initWithFrame:self.bounds];
@@ -506,6 +509,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		self.indicator = MB_AUTORELEASE([[UIActivityIndicatorView alloc]
 										 initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge]);
 		[(UIActivityIndicatorView *)indicator startAnimating];
+        
 		[self addSubview:indicator];
 	}
 	else if (mode == MBProgressHUDModeDeterminateHorizontalBar) {

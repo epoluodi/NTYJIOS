@@ -9,6 +9,7 @@
 #import "UserInfoViewController.h"
 #import "UserInfoCell1.h"
 #import "UserInfoCell2.h"
+#import "Common.h"
 
 
 @implementation UserInfoViewController
@@ -107,12 +108,14 @@
             case 0:
                  cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
                 cell.celltitile.text=@"姓名";
+                cell.cellcontent.text=[UserInfo getInstance].userName;
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_2"];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
                 break;
             case 1:
                 cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
                 cell.celltitile.text=@"性别";
+                cell.cellcontent.text=[UserInfo getInstance].sex;
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_3"];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
                 break;
@@ -125,12 +128,14 @@
             case 3:
                 cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
                 cell.celltitile.text=@"职位";
+                cell.cellcontent.text=[UserInfo getInstance].positionName;
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_5"];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
                 break;
             case 4:
                 cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
                 cell.celltitile.text=@"手机号";
+                cell.cellcontent.text=[UserInfo getInstance].tel;
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_6"];
                 cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
                 break;

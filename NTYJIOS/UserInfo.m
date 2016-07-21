@@ -10,13 +10,14 @@
 
 @implementation UserInfo
 @synthesize Token;
-@synthesize userName,userId;
+@synthesize userName,userId,userPwd;
 @synthesize sex;
 @synthesize positionId,positionName;
 @synthesize tel;
 @synthesize sysUserName;
 @synthesize picture,nickimg;
 @synthesize deviceid;
+@synthesize auth;
 
 static UserInfo *_userinfo;
 

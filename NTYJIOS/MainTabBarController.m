@@ -34,8 +34,6 @@
     [self.view addSubview:hub];
     [hub show:YES];
     dispatch_async(globalQ, ^{
-       
-        sleep(2);
         dispatch_async(mainQ, ^{
             [hub hide:YES];
             hub=nil;
