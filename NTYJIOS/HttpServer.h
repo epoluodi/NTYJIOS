@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "HttpClass.h"
 #import "ReturnData.h"
+#import "ServerInfo.h"
 
 @interface HttpServer : NSObject
 {
@@ -18,6 +19,9 @@
 
 //登录
 -(NSDictionary *)Login:(NSString *)username userpwd:(NSString *)pwd;
+-(BOOL)FileDownload:(NSString *)mediaid suffix:(NSString *)suffix mediatype:(NSString *)mediatype;
+-(ReturnData *)uploadfile:(NSData *)filedata mediaid:(NSString *)mediaid mediatype:(NSString *)mediatype;
+-(ReturnData *)UpdateUserImg:(NSString *)mediaid;
 
 
 @end

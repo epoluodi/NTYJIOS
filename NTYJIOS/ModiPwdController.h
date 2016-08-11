@@ -11,6 +11,7 @@
 @interface ModiPwdController : UIViewController
 {
     UIBarButtonItem *btnreturn;
+    UIBarButtonItem *btnconfim;
 }
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navbar;

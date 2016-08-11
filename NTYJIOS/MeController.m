@@ -11,6 +11,10 @@
 #import "UserInfoViewController.h"
 #import "LoginViewController.h"
 #import "MBProgressHUD.h"
+#import "HttpServer.h"
+
+
+
 
 @implementation MeController
 @synthesize table,nickimg;
@@ -25,6 +29,25 @@
     nickimg.layer.cornerRadius=6;
     nickimg.layer.masksToBounds=YES;
     nickimg.userInteractionEnabled=YES;
+    
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    
+    
+    dispatch_async(globalQ, ^{
+        
+        
+        HttpServer *http = [[HttpServer alloc] init:DownloadUrl];
+        
+        BOOL r = [http FileDownload:[UserInfo getInstance].picture suffix:@"40" mediatype:@".jpg"];
+        
+        dispatch_async(mainQ, ^{
+            if (r)
+                nickimg.image = [UserInfo getInstance].nickimg;
+        });
+        
+        
+    });
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
     [tap addTarget:self action:@selector(ClickNickImage)];
@@ -122,11 +145,6 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    [UserInfo getInstance].nickimg =image;
-    nickimg.image =     [UserInfo getInstance].nickimg;
-
-    
-    
     NSLog(@"SMILE!");
     //    [self.capturedImages addObject:image];
     
@@ -149,7 +167,44 @@
     
     [picker dismissViewControllerAnimated:YES completion:nil];
     
-    //    [self finishAndUpdate];
+    
+    MBProgressHUD *hub=[[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hub];
+    [hub show:YES];
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    dispatch_async(globalQ, ^{
+        
+        HttpServer *http = [[HttpServer alloc] init:UploadUrl];
+        ReturnData *rd =  [http uploadfile:jpgdata mediaid:filename mediatype:@"01"];
+        if (rd && rd.returnCode==0)
+        {
+           http = [[HttpServer alloc] init:UpdateUserNickImg];
+           rd=   [http UpdateUserImg:filename];
+        }
+        
+        
+        dispatch_async(mainQ, ^{
+            [hub hide:YES];
+            if (rd && rd.returnCode==0)
+            {
+                [UserInfo getInstance].nickimg =image;
+                nickimg.image =     [UserInfo getInstance].nickimg;
+
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"更新成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+            }
+            else
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"更新失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+            }
+        });
+        
+    });
+    
+    
+    
 }
 
 

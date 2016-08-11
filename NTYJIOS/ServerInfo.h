@@ -23,6 +23,10 @@
 #define UPDATEAPPURL [NSString stringWithFormat:@"%@%@",ServerUrl,UPDATEAPP]
 
 #define LoginUrl [NSString stringWithFormat:@"%@%@",AUTHURL,@"getToken"]
+#define DownloadUrl [NSString stringWithFormat:@"%@%@",APIURL,@"download"]
+#define UploadUrl [NSString stringWithFormat:@"%@%@",APIURL,@"upload"]
+#define UpdateUserNickImg [NSString stringWithFormat:@"%@%@",APPURL,@"user/savePicture"]
+
 
 
 

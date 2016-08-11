@@ -151,15 +151,17 @@
     MBProgressHUD *hub=[[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:hub];
     [hub show:YES];
+
     
     dispatch_async(globalQ, ^{
         HttpServer *http = [[HttpServer alloc] init:LoginUrl];
         NSDictionary * r =  [http Login:useredit.text userpwd:pwdedit.text];
         NSLog(@"%@",r);
         dispatch_async(mainQ, ^{
-            [hub hide:YES];
+            
             if (!r)
             {
+                [hub hide:YES];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"登录失败，请重新尝试！！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
                 return;
@@ -169,10 +171,12 @@
             NSNumber *ret =  [r objectForKey:@"status"];
             if (ret.intValue != 0)
             {
+                [hub hide:YES];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"登录失败，请重新尝试！！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
                 return;
             }
+            
             
             NSUserDefaults *userinfo = [NSUserDefaults standardUserDefaults];
             [userinfo setObject:useredit.text forKey:@"username"];
@@ -195,7 +199,6 @@
             [UserInfo getInstance].positionId =[user objectForKey:@"positionId"];
             [UserInfo getInstance].positionName =[user objectForKey:@"positionName"];
             [UserInfo getInstance].auth =[user objectForKey:@"auths"];
-            
             [self dismissViewControllerAnimated:YES completion:nil];
             
         });
