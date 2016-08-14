@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4058171D3E70AA002A5068 /* MBProgressHUD.m */; };
+		7BB56DEE1D5F2E3B002C80A3 /* default_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BB56DED1D5F2E3A002C80A3 /* default_avatar.png */; };
+		7BB56DF21D5F3A5B002C80A3 /* db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56DF01D5F3A5B002C80A3 /* db.xcdatamodeld */; };
+		7BB56DF51D5F3A90002C80A3 /* DBmanger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56DF41D5F3A90002C80A3 /* DBmanger.m */; };
+		7BB56E071D5F3D6A002C80A3 /* Department.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56E051D5F3D6A002C80A3 /* Department.m */; };
+		7BB56E0D1D5F45F4002C80A3 /* Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56E0B1D5F45F4002C80A3 /* Contacts.m */; };
+		7BB56E101D5F5986002C80A3 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56E0F1D5F5986002C80A3 /* ContactsController.m */; };
+		7BB56E131D5F5A1C002C80A3 /* PhoneBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56E121D5F5A1C002C80A3 /* PhoneBookController.m */; };
 		7BF398141D5CC1DE004CDFE8 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BF398131D5CC1DE004CDFE8 /* splash.jpg */; };
 		B40C1AD51D33443700AFE71A /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B40C1AD41D33443700AFE71A /* UserInfoViewController.m */; };
 		B40C1AD71D33469400AFE71A /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B40C1AD61D33469400AFE71A /* UserInfoCell.xib */; };
@@ -62,6 +69,18 @@
 /* Begin PBXFileReference section */
 		7B4058171D3E70AA002A5068 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7B4058181D3E70AA002A5068 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		7BB56DED1D5F2E3A002C80A3 /* default_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_avatar.png; sourceTree = "<group>"; };
+		7BB56DF11D5F3A5B002C80A3 /* db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = db.xcdatamodel; sourceTree = "<group>"; };
+		7BB56DF31D5F3A90002C80A3 /* DBmanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBmanger.h; sourceTree = "<group>"; };
+		7BB56DF41D5F3A90002C80A3 /* DBmanger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBmanger.m; sourceTree = "<group>"; };
+		7BB56E041D5F3D6A002C80A3 /* Department.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Department.h; sourceTree = "<group>"; };
+		7BB56E051D5F3D6A002C80A3 /* Department.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Department.m; sourceTree = "<group>"; };
+		7BB56E0A1D5F45F4002C80A3 /* Contacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contacts.h; sourceTree = "<group>"; };
+		7BB56E0B1D5F45F4002C80A3 /* Contacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contacts.m; sourceTree = "<group>"; };
+		7BB56E0E1D5F5986002C80A3 /* ContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsController.h; sourceTree = "<group>"; };
+		7BB56E0F1D5F5986002C80A3 /* ContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsController.m; sourceTree = "<group>"; };
+		7BB56E111D5F5A1C002C80A3 /* PhoneBookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneBookController.h; sourceTree = "<group>"; };
+		7BB56E121D5F5A1C002C80A3 /* PhoneBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneBookController.m; sourceTree = "<group>"; };
 		7BF398131D5CC1DE004CDFE8 /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash.jpg; sourceTree = "<group>"; };
 		B40C1AD31D33443700AFE71A /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		B40C1AD41D33443700AFE71A /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
@@ -129,6 +148,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7BB56DEF1D5F3A47002C80A3 /* db */ = {
+			isa = PBXGroup;
+			children = (
+				7BB56DF31D5F3A90002C80A3 /* DBmanger.h */,
+				7BB56DF41D5F3A90002C80A3 /* DBmanger.m */,
+				7BB56DF01D5F3A5B002C80A3 /* db.xcdatamodeld */,
+				7BB56E0A1D5F45F4002C80A3 /* Contacts.h */,
+				7BB56E0B1D5F45F4002C80A3 /* Contacts.m */,
+				7BB56E041D5F3D6A002C80A3 /* Department.h */,
+				7BB56E051D5F3D6A002C80A3 /* Department.m */,
+			);
+			name = db;
+			sourceTree = "<group>";
+		};
 		B40C1AF71D338F3500AFE71A /* libHttpHead */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +217,7 @@
 		B48B0F101D2E498100646A20 /* NTYJIOS */ = {
 			isa = PBXGroup;
 			children = (
+				7BB56DEF1D5F3A47002C80A3 /* db */,
 				B40C1AFF1D33929B00AFE71A /* Httpserver */,
 				B48B0F351D2E526D00646A20 /* lib */,
 				B48B0F2F1D2E4E8900646A20 /* png */,
@@ -226,6 +260,10 @@
 				B48B0F331D2E51B300646A20 /* MeController.m */,
 				B40C1AF21D33837600AFE71A /* LoginViewController.h */,
 				B40C1AF31D33837600AFE71A /* LoginViewController.m */,
+				7BB56E0E1D5F5986002C80A3 /* ContactsController.h */,
+				7BB56E0F1D5F5986002C80A3 /* ContactsController.m */,
+				7BB56E111D5F5A1C002C80A3 /* PhoneBookController.h */,
+				7BB56E121D5F5A1C002C80A3 /* PhoneBookController.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -247,6 +285,7 @@
 		B48B0F2F1D2E4E8900646A20 /* png */ = {
 			isa = PBXGroup;
 			children = (
+				7BB56DED1D5F2E3A002C80A3 /* default_avatar.png */,
 				7BF398131D5CC1DE004CDFE8 /* splash.jpg */,
 				B40C1AEE1D33807000AFE71A /* pwd_icon.png */,
 				B40C1AEF1D33807000AFE71A /* user_icon.png */,
@@ -355,6 +394,7 @@
 				B40C1AD71D33469400AFE71A /* UserInfoCell.xib in Resources */,
 				B40C1AD91D33471B00AFE71A /* userinfo_1.png in Resources */,
 				B48B0F1C1D2E498100646A20 /* Main.storyboard in Resources */,
+				7BB56DEE1D5F2E3B002C80A3 /* default_avatar.png in Resources */,
 				B40C1AF11D33807000AFE71A /* user_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,9 +406,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BB56E131D5F5A1C002C80A3 /* PhoneBookController.m in Sources */,
 				B48B0F161D2E498100646A20 /* AppDelegate.m in Sources */,
 				B40C1ADC1D33478200AFE71A /* UserInfoCell1.m in Sources */,
+				7BB56E101D5F5986002C80A3 /* ContactsController.m in Sources */,
 				B48B0F131D2E498100646A20 /* main.m in Sources */,
+				7BB56DF21D5F3A5B002C80A3 /* db.xcdatamodeld in Sources */,
+				7BB56E071D5F3D6A002C80A3 /* Department.m in Sources */,
 				B48B0F2C1D2E4ADF00646A20 /* MainTabBarController.m in Sources */,
 				B48B0F381D2E53D000646A20 /* UserInfo.m in Sources */,
 				B48B0F3B1D2E542E00646A20 /* ServerInfo.m in Sources */,
@@ -377,8 +421,10 @@
 				B48B0F341D2E51B300646A20 /* MeController.m in Sources */,
 				7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */,
 				B40C1AF41D33837600AFE71A /* LoginViewController.m in Sources */,
+				7BB56E0D1D5F45F4002C80A3 /* Contacts.m in Sources */,
 				B40C1B021D3392BA00AFE71A /* HttpServer.m in Sources */,
 				B40C1AE11D33715500AFE71A /* UserInfoCell2.m in Sources */,
+				7BB56DF51D5F3A90002C80A3 /* DBmanger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,6 +594,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7BB56DF01D5F3A5B002C80A3 /* db.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7BB56DF11D5F3A5B002C80A3 /* db.xcdatamodel */,
+			);
+			currentVersion = 7BB56DF11D5F3A5B002C80A3 /* db.xcdatamodel */;
+			path = db.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B48B0F061D2E498000646A20 /* Project object */;
 }

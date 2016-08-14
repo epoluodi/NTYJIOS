@@ -22,4 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *nickimg;
 
 
+//加载用户信息
+-(void)reLoadUserInfo;
 @end

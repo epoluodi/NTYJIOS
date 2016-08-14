@@ -9,6 +9,7 @@
 #import "HttpServer.h"
 #import "UserInfo.h"
 #import <Common/FileCommon.h>
+#import "DBmanger.h"
 
 @implementation HttpServer
 
@@ -53,7 +54,9 @@
     [http addParamsString:@"mediaId" values:mediaid];
     [http addParamsString:@"suffix" values:suffix];
     NSData *data = [http httprequest:[http getDataForArrary]];
-    if (!data)
+    if (!data )
+        return NO;
+    if (data.length==0)
         return NO;
     
     [UserInfo getInstance].nickimg = [UIImage imageWithData:data];
@@ -108,12 +111,76 @@
         return nil;
     ReturnData *rd = [ReturnData getReturnDatawithData:d dataMode:YES];
     return rd;
+}
+
+//修改密码
+-(ReturnData *)ModiPwd:(NSString *)oldpwd newpwd:(NSString *)newpwd
+{
+    HttpClass *http = [[HttpClass alloc] init:url];
+    [http setIsHead:YES];
+    [http addHeadString:@"deviceID" value:[UserInfo getInstance].deviceid];
+    [http addHeadString:@"deviceType" value:@"01"];
+    [http addHeadString:@"token" value:[UserInfo getInstance].Token];
+    
+    [http addParamsString:@"oldPwd" values:oldpwd];
+    [http addParamsString:@"pwd" values:newpwd];
+    
+    
+    NSData *d = [http httprequest:[http getDataForArrary]];
+    if (!d)
+        return nil;
+    ReturnData *rd = [ReturnData getReturnDatawithData:d dataMode:YES];
+    return rd;
+}
+
+-(BOOL)getdepartmentinfo
+{
+    HttpClass *http = [[HttpClass alloc] init:url];
+    [http setIsHead:YES];
+    [http addHeadString:@"deviceID" value:[UserInfo getInstance].deviceid];
+    [http addHeadString:@"deviceType" value:@"01"];
+    [http addHeadString:@"token" value:[UserInfo getInstance].Token];
+    
+    NSData *d = [http httprequest:[http getDataForArrary]];
+    if (!d)
+        return NO;
+    ReturnData *rd = [ReturnData getReturnDatawithData:d dataMode:NO];
+    if (rd.returnCode!=0)
+        return NO;
+    NSArray *arr = rd.returnDatas;
+    NSLog(@"部门信息 %@",arr);
+    
+    for (NSDictionary *dict in arr) {
+        [[DBmanger getIntance] addDepartment:[dict objectForKey:@"GROUP_NAME"] departmentid:[dict objectForKey:@"GROUP_ID"]];
+    }
+    
+    
+    return YES;
+}
 
 
-
-
-
-
-
+-(BOOL)getdepartmentUserinfo
+{
+    HttpClass *http = [[HttpClass alloc] init:url];
+    [http setIsHead:YES];
+    [http addHeadString:@"deviceID" value:[UserInfo getInstance].deviceid];
+    [http addHeadString:@"deviceType" value:@"01"];
+    [http addHeadString:@"token" value:[UserInfo getInstance].Token];
+    
+    NSData *d = [http httprequest:[http getDataForArrary]];
+    if (!d)
+        return NO;
+    ReturnData *rd = [ReturnData getReturnDatawithData:d dataMode:NO];
+    if (rd.returnCode!=0)
+        return NO;
+    NSArray *arr = rd.returnDatas;
+    NSLog(@"用户信息 %@",arr);
+    
+    [[DBmanger getIntance] deletUserInfo];
+    for (NSDictionary *dict in arr) {
+        [[DBmanger getIntance] addDepartmentUserInfo:dict];
+    }
+    
+    return YES;
 }
 @end

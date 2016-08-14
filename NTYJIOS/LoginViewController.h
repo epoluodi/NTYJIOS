@@ -17,6 +17,8 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIView *loginview;
+@property (assign)BOOL IsAutoLogin;
+
 
 
 

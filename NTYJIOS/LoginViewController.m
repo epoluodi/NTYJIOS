@@ -11,13 +11,25 @@
 #import "Common.h"
 #import "HttpServer.h"
 #import "MBProgressHUD.h"
+#import "DBmanger.h"
 
 @interface LoginViewController ()
+{
+    MBProgressHUD *hub;
+}
+
 
 @end
 
 @implementation LoginViewController
 @synthesize loginview;
+
+
+-(void)awakeFromNib
+{
+    _IsAutoLogin=YES;
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     loginview.backgroundColor=[UIColor clearColor];
@@ -27,7 +39,8 @@
     loginview.layer.borderWidth=1;
     loginview.layer.cornerRadius=6;
     loginview.layer.masksToBounds=YES;
-    // Do any additional setup after loading the view.
+   
+        // Do any additional setup after loading the view.
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -111,9 +124,10 @@
     if (![[UserInfo getInstance].sysUserName isEqualToString:@""] && ![[UserInfo getInstance].userPwd isEqualToString:@""]
         )
     {
-        [self ClickLogin:nil];
+        if (_IsAutoLogin)
+            [self ClickLogin:nil];
     }
-    
+
     
 }
 
@@ -148,7 +162,7 @@
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t mainQ = dispatch_get_main_queue();
     
-    MBProgressHUD *hub=[[MBProgressHUD alloc] initWithView:self.view];
+    hub=[[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:hub];
     [hub show:YES];
 
@@ -157,56 +171,83 @@
         HttpServer *http = [[HttpServer alloc] init:LoginUrl];
         NSDictionary * r =  [http Login:useredit.text userpwd:pwdedit.text];
         NSLog(@"%@",r);
-        dispatch_async(mainQ, ^{
-            
-            if (!r)
-            {
-                [hub hide:YES];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"登录失败，请重新尝试！！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                [alert show];
-                return;
-            }
-            
-            
-            NSNumber *ret =  [r objectForKey:@"status"];
-            if (ret.intValue != 0)
-            {
-                [hub hide:YES];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"登录失败，请重新尝试！！" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                [alert show];
-                return;
-            }
-            
-            
-            NSUserDefaults *userinfo = [NSUserDefaults standardUserDefaults];
-            [userinfo setObject:useredit.text forKey:@"username"];
-            [userinfo setObject:pwdedit.text forKey:@"userpwd"];
-            NSDictionary *data = [r objectForKey:@"data"];
-            NSDictionary*mqtt = [data objectForKey:@"MQTT"];
-            [ServerInfo getInstance].MQTTADDRESS = [mqtt objectForKey:@"mqttserver"];
-            [ServerInfo getInstance].username =[mqtt objectForKey:@"username"];
-            [ServerInfo getInstance].password =[mqtt objectForKey:@"password"];
-            
-            [UserInfo getInstance].Token = [data objectForKey:@"token"];
-            NSDictionary *user = [data objectForKey:@"user"];
-            NSLog(@"user %@",user);
-            [UserInfo getInstance].userName =[user objectForKey:@"userName"];
-            [UserInfo getInstance].sysUserName =[user objectForKey:@"sysUserName"];
-            [UserInfo getInstance].userId =[user objectForKey:@"accountId"];
-            [UserInfo getInstance].picture =[user objectForKey:@"picture"];
-            [UserInfo getInstance].sex =[user objectForKey:@"sex"];
-            [UserInfo getInstance].tel =[user objectForKey:@"tel"];
-            [UserInfo getInstance].positionId =[user objectForKey:@"positionId"];
-            [UserInfo getInstance].positionName =[user objectForKey:@"positionName"];
-            [UserInfo getInstance].auth =[user objectForKey:@"auths"];
-            [self dismissViewControllerAnimated:YES completion:nil];
-            
-        });
+        if (!r)
+        {
+            [self Loginresult:NO msg:@"登录失败,请重新尝试登录"];
+            return;
+        }
+        NSNumber *ret =  [r objectForKey:@"status"];
         
+        if (ret.intValue != 0)
+        {
+            [self Loginresult:NO msg:@"登录失败,请重新尝试登录"];
+            return;
+        }
+        
+        NSUserDefaults *userinfo = [NSUserDefaults standardUserDefaults];
+        [userinfo setObject:useredit.text forKey:@"username"];
+        [userinfo setObject:pwdedit.text forKey:@"userpwd"];
+        NSDictionary *data = [r objectForKey:@"data"];
+        NSDictionary*mqtt = [data objectForKey:@"MQTT"];
+        [ServerInfo getInstance].MQTTADDRESS = [mqtt objectForKey:@"mqttserver"];
+        [ServerInfo getInstance].username =[mqtt objectForKey:@"username"];
+        [ServerInfo getInstance].password =[mqtt objectForKey:@"password"];
+        
+        [UserInfo getInstance].Token = [data objectForKey:@"token"];
+        NSDictionary *user = [data objectForKey:@"user"];
+        NSLog(@"user %@",user);
+        [UserInfo getInstance].userName =[user objectForKey:@"userName"];
+        [UserInfo getInstance].sysUserName =[user objectForKey:@"sysUserName"];
+        [UserInfo getInstance].userId =[user objectForKey:@"accountId"];
+        [UserInfo getInstance].picture =[user objectForKey:@"picture"];
+        [UserInfo getInstance].sex =[user objectForKey:@"sex"];
+        [UserInfo getInstance].tel =[user objectForKey:@"tel"];
+        [UserInfo getInstance].positionId =[user objectForKey:@"positionId"];
+        [UserInfo getInstance].positionName =[user objectForKey:@"positionName"];
+        [UserInfo getInstance].auth =[user objectForKey:@"auths"];
+        [UserInfo getInstance].nickimg=[UIImage imageNamed:@"default_avatar"];
+    
+        http =[[HttpServer alloc] init:queryGroups];
+        BOOL result = [http getdepartmentinfo];
+        if (!result)
+        {
+            [self Loginresult:NO msg:@"获得部门信息失败"];
+            return;
+        }
+        http =[[HttpServer alloc] init:queryUsers];
+        result = [http getdepartmentUserinfo];
+        if (!result)
+        {
+            [self Loginresult:NO msg:@"获得部门成员信息失败"];
+            return;
+        }
+        
+        [self Loginresult:YES msg:nil];
         
     });
     
     
     
 }
+
+
+-(void)Loginresult:(BOOL)result msg:(NSString *)msg
+{
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    dispatch_async(mainQ, ^{
+        [hub hide:YES];
+        if (!result)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+            return;
+        }
+        else{
+        
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        
+    });
+}
+
 @end

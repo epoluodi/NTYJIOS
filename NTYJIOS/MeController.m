@@ -29,25 +29,8 @@
     nickimg.layer.cornerRadius=6;
     nickimg.layer.masksToBounds=YES;
     nickimg.userInteractionEnabled=YES;
+    nickimg.image= [UserInfo getInstance].nickimg;
     
-    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t mainQ = dispatch_get_main_queue();
-    
-    
-    dispatch_async(globalQ, ^{
-        
-        
-        HttpServer *http = [[HttpServer alloc] init:DownloadUrl];
-        
-        BOOL r = [http FileDownload:[UserInfo getInstance].picture suffix:@"40" mediatype:@".jpg"];
-        
-        dispatch_async(mainQ, ^{
-            if (r)
-                nickimg.image = [UserInfo getInstance].nickimg;
-        });
-        
-        
-    });
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
     [tap addTarget:self action:@selector(ClickNickImage)];
@@ -70,6 +53,7 @@
         isShow=YES;
         [self initview];
     }
+    [self reLoadUserInfo];
 }
 -(void)initview
 {
@@ -81,7 +65,7 @@
     name.textColor= [UIColor whiteColor];
     name.frame = CGRectMake(nickimg.frame.origin.x +nickimg.frame.size.width + 15,
                             nickimg.frame.origin.y +30, strsize.width, strsize.height);
-    name.text=[UserInfo getInstance].userName;
+
     [self.view addSubview:name];
  
     
@@ -91,12 +75,34 @@
     postname.textColor= [UIColor whiteColor];
     postname.frame = CGRectMake(nickimg.frame.origin.x +nickimg.frame.size.width + 15,
                             name.frame.origin.y +name.frame.size.height+10, strsize.width, strsize.height);
-    postname.text=[UserInfo getInstance].positionName;
+ 
     [self.view addSubview:postname];
 
     
 }
 
+-(void)reLoadUserInfo
+{
+        name.text=[UserInfo getInstance].userName;
+       postname.text=[UserInfo getInstance].positionName;
+   
+        
+        dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_queue_t mainQ = dispatch_get_main_queue();
+        
+        
+        dispatch_async(globalQ, ^{
+            
+            if ([UserInfo getInstance].picture != [NSNull null] ){
+                HttpServer *http = [[HttpServer alloc] init:DownloadUrl];
+                BOOL r = [http FileDownload:[UserInfo getInstance].picture suffix:@"40" mediatype:@".jpg"];
+            }
+            dispatch_async(mainQ, ^{
+                
+                nickimg.image = [UserInfo getInstance].nickimg;
+            });
+        });
+    }
 
 //点击头像
 -(void)ClickNickImage
@@ -326,8 +332,9 @@
     {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         LoginViewController *loginVC = (LoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        
+        loginVC.IsAutoLogin=NO;
         [self presentViewController:loginVC animated:YES completion:nil];
+        
         return;
     }
 }

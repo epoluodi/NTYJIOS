@@ -23,5 +23,10 @@
 -(ReturnData *)uploadfile:(NSData *)filedata mediaid:(NSString *)mediaid mediatype:(NSString *)mediatype;
 -(ReturnData *)UpdateUserImg:(NSString *)mediaid;
 
+-(ReturnData *)ModiPwd:(NSString *)oldpwd newpwd:(NSString *)newpwd;
 
+//得到部门信息
+-(BOOL)getdepartmentinfo;
+//得到部门用户信息
+-(BOOL)getdepartmentUserinfo;
 @end

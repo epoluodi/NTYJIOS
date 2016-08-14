@@ -26,7 +26,10 @@
 #define DownloadUrl [NSString stringWithFormat:@"%@%@",APIURL,@"download"]
 #define UploadUrl [NSString stringWithFormat:@"%@%@",APIURL,@"upload"]
 #define UpdateUserNickImg [NSString stringWithFormat:@"%@%@",APPURL,@"user/savePicture"]
+#define SavePwd [NSString stringWithFormat:@"%@%@",APPURL,@"user/savePwd"]
 
+#define queryGroups [NSString stringWithFormat:@"%@%@",IMURL,@"group/queryGroups"]
+#define queryUsers [NSString stringWithFormat:@"%@%@",APPURL,@"user/queryUsers"]
 
 
 

@@ -147,7 +147,9 @@
     {
         UserInfoCell1 *cell = [table dequeueReusableCellWithIdentifier:@"cell1"];
         cell.celltitle.text = @"头像";
-        cell.cellimg.image = [UIImage imageNamed:@"userinfo_1"];
+        cell.cellimg.image = [UIImage imageNamed:@"default_avatar"];
+        
+        cell.nickimg.image = [UserInfo getInstance].nickimg;
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         
         return cell;

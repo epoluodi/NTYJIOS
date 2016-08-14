@@ -12,7 +12,7 @@
 @synthesize nickimg;
 - (void)awakeFromNib {
     [super awakeFromNib];
-    nickimg.layer.borderColor = [[UIColor whiteColor] CGColor];
+    nickimg.layer.borderColor = [[UIColor grayColor] CGColor];
     nickimg.layer.borderWidth=1;
     nickimg.layer.cornerRadius=6;
     nickimg.layer.masksToBounds=YES;

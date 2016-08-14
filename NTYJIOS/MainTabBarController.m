@@ -11,9 +11,7 @@
 #import "LoginViewController.h"
 
 @interface MainTabBarController ()
-{
-    MBProgressHUD *hub;
-}
+
 @end
 
 @implementation MainTabBarController
@@ -30,13 +28,10 @@
     
 
     
-    hub = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:hub];
-    [hub show:YES];
+
     dispatch_async(globalQ, ^{
         dispatch_async(mainQ, ^{
-            [hub hide:YES];
-            hub=nil;
+  
             
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             LoginViewController *loginVC = (LoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];

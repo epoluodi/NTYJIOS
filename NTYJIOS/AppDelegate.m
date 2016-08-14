@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <Common/PublicCommon.h>
 #import "Common.h"
+#import "DBmanger.h"
 
 
 @interface AppDelegate ()
@@ -19,7 +20,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+    [DBmanger getIntance];
     UIImage *backbar = [PublicCommon createImageWithColor:APPCOLOR Rect:CGRectMake(0, 0, 100, 100)];
     
     [[UINavigationBar appearance] setBackgroundImage:backbar forBarMetrics:UIBarMetricsDefault];
@@ -71,6 +72,7 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    sleep(1);
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
