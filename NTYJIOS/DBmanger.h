@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
+#import "Department.h"
+#import "Contacts.h"
 
 
 @interface DBmanger : NSObject
@@ -30,8 +31,8 @@
 //添加用户信息
 -(void)addDepartmentUserInfo:(NSDictionary *)userinfo;
 -(void)deletUserInfo;
-
-
+-(void)deletDepartment;
+-(NSArray *)getDeparment;
 
 
 @end

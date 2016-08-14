@@ -150,6 +150,7 @@
     NSArray *arr = rd.returnDatas;
     NSLog(@"部门信息 %@",arr);
     
+    [[DBmanger getIntance] deletDepartment];
     for (NSDictionary *dict in arr) {
         [[DBmanger getIntance] addDepartment:[dict objectForKey:@"GROUP_NAME"] departmentid:[dict objectForKey:@"GROUP_ID"]];
     }

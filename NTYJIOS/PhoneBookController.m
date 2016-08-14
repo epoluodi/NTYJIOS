@@ -8,6 +8,7 @@
 
 #import "PhoneBookController.h"
 #import <Common/PublicCommon.h>
+#import "HttpServer.h"
 
 @interface PhoneBookController ()
 
@@ -34,6 +35,8 @@
     [table addSubview:refresh];
     
     mode=DEPARTMENTSORT;
+    datadict = [[NSMutableDictionary alloc] init];
+    [self loadData];
     
     // Do any additional setup after loading the view.
 }
@@ -50,8 +53,8 @@
     }];
     UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:action1];
-       [alert addAction:action2];
-       [alert addAction:action3];
+    [alert addAction:action2];
+    [alert addAction:action3];
     
     [self presentViewController:alert animated:YES completion:nil];
     
@@ -60,7 +63,40 @@
 //刷新
 -(void)Onrefresh
 {
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
+    if (refresh.isRefreshing)
+    {
+        dispatch_async(globalQ, ^{
+            
+            HttpServer *http =[[HttpServer alloc] init:queryGroups];
+            BOOL result = [http getdepartmentinfo];
+            if (!result)
+            {
+                [self finshRefresh:NO];
+                return;
+            }
+            http =[[HttpServer alloc] init:queryUsers];
+            result = [http getdepartmentUserinfo];
+            if (!result)
+            {
+                [self finshRefresh:NO];
+                return;
+            }
+            
+            [self finshRefresh:YES];
+        });
+        
+    }
+}
+
+
+-(void)finshRefresh:(BOOL)r
+{
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    dispatch_async(mainQ, ^{
+        [refresh endRefreshing];
+    });
 }
 -(void)CloseInput
 {
@@ -69,19 +105,49 @@
 }
 
 
+
+// 加载用户信息
+-(void)loadData
+{
+    group = [[DBmanger getIntance] getDeparment];
+    NSLog(@"部门信息: %@",group);
+    
+    
+}
+
+
+
+
+#pragma mark table
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    if (mode == DEPARTMENTSORT)
+    {
+        return group.count;
+    }
+    return 0;
+}
+
+
+
+
+
+#pragma mark -
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

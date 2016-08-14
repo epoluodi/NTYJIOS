@@ -8,8 +8,7 @@
 
 #import "DBmanger.h"
 #import <Common/FileCommon.h>
-#import "Department.h"
-#import "Contacts.h"
+
 
 @implementation DBmanger
 
@@ -67,6 +66,31 @@ static DBmanger *_db;
     [mangedcontext save:nil];
 
 }
+
+
+//删除部门
+-(void)deletDepartment
+{
+    
+    NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"Department"];
+    
+    //排序
+    //    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"stockcode" ascending:NO];
+    //    fetch.sortDescriptors=@[sort];
+    //加入查询条件 age>20
+    //    fetch.predicate=[NSPredicate predicateWithFormat:@"stockcode=%@",stockcode];
+    
+    //    fetch.predicate=[NSPredicate predicateWithFormat:@"name like %@",@"*cb1*"];
+    NSArray *arr=[mangedcontext executeFetchRequest:fetch error:nil];
+    for (Department *obj in arr)
+    {
+        [mangedcontext deleteObject:obj];
+    }
+    [mangedcontext save:nil];
+    return ;
+}
+
+
 
 
 //添加用户信息
@@ -139,21 +163,25 @@ static DBmanger *_db;
 
 
 
-//
-//-(NSArray *)getdata{
-//    NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"Stock"];
-//
-//    //排序
-//    //    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"stockcode" ascending:NO];
-//    //    fetch.sortDescriptors=@[sort];
-//    //加入查询条件 age>20
-////    fetch.predicate=[NSPredicate predicateWithFormat:@"stockcode=%@",stockcode];
-//
-//    //    fetch.predicate=[NSPredicate predicateWithFormat:@"name like %@",@"*cb1*"];
-//    NSArray *arr=[mangedcontext executeFetchRequest:fetch error:nil];
-//
-//    return arr;
-//}
+//获得部门信息
+-(NSArray *)getDeparment
+{
+    NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"Department"];
+
+    //排序
+        NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:NO];
+        fetch.sortDescriptors=@[sort];
+    //加入查询条件 age>20
+//    fetch.predicate=[NSPredicate predicateWithFormat:@"stockcode=%@",stockcode];
+
+    //    fetch.predicate=[NSPredicate predicateWithFormat:@"name like %@",@"*cb1*"];
+    NSArray *arr=[mangedcontext executeFetchRequest:fetch error:nil];
+
+    return arr;
+}
+
+
+
 //
 //
 //-(int)finddata:(NSString *)stockcode{

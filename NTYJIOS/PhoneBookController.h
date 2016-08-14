@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DBmanger.h"
 typedef   enum  {
     DEPARTMENTSORT,PYSORT
 } PhoneSortEnum;
@@ -18,6 +19,10 @@ typedef   enum  {
     UIRefreshControl *refresh;
     UIBarButtonItem *btnright;
     __block PhoneSortEnum mode;
+    
+    //数据
+    NSArray<Department *> * group;
+    NSMutableDictionary *datadict;
 }
 
 
