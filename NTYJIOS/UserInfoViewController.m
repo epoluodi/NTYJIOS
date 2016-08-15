@@ -111,6 +111,7 @@
                 cell.cellcontent.text=[UserInfo getInstance].userName;
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_2"];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                cell.cellcontent.text = [UserInfo getInstance].userName;
                 break;
             case 1:
                 cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
@@ -118,12 +119,15 @@
                 cell.cellcontent.text=[UserInfo getInstance].sex;
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_3"];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                    cell.cellcontent.text = [UserInfo getInstance].sex;
                 break;
             case 2:
                 cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
                 cell.celltitile.text=@"调度组";
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_4"];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                cell.cellcontent.text = [UserInfo getInstance].deparmentname;
+
                 break;
             case 3:
                 cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
@@ -131,6 +135,7 @@
                 cell.cellcontent.text=[UserInfo getInstance].positionName;
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_5"];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                    cell.cellcontent.text = [UserInfo getInstance].positionName;
                 break;
             case 4:
                 cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
@@ -138,6 +143,7 @@
                 cell.cellcontent.text=[UserInfo getInstance].tel;
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_6"];
                 cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+                    cell.cellcontent.text = [UserInfo getInstance].tel;
                 break;
                 
         }

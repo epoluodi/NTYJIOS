@@ -33,6 +33,7 @@
 -(void)deletUserInfo;
 -(void)deletDepartment;
 -(NSArray *)getDeparment;
+-(NSArray *)getContactswithDepartment:(NSString *)dpid;
 
-
+-(NSArray *)getfirstlatter;
 @end

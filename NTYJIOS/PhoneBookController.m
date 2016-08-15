@@ -35,8 +35,12 @@
     [table addSubview:refresh];
     
     mode=DEPARTMENTSORT;
-    datadict = [[NSMutableDictionary alloc] init];
+    
+    groupdata = [[NSMutableArray alloc] init];
+    table.delegate=self;
+    table.dataSource=self;
     [self loadData];
+    
     
     // Do any additional setup after loading the view.
 }
@@ -46,10 +50,11 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"选择显示类型" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"部门排序" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         mode=DEPARTMENTSORT;
-        
+        [self loadData];
     }];
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"拼音排序" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         mode=DEPARTMENTSORT;
+        [self loadData];
     }];
     UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:action1];
@@ -83,7 +88,7 @@
                 [self finshRefresh:NO];
                 return;
             }
-            
+            [self loadData];
             [self finshRefresh:YES];
         });
         
@@ -95,7 +100,9 @@
 {
     dispatch_queue_t mainQ = dispatch_get_main_queue();
     dispatch_async(mainQ, ^{
+        
         [refresh endRefreshing];
+        
     });
 }
 -(void)CloseInput
@@ -109,10 +116,25 @@
 // 加载用户信息
 -(void)loadData
 {
-    group = [[DBmanger getIntance] getDeparment];
-    NSLog(@"部门信息: %@",group);
+    if (mode ==DEPARTMENTSORT){
+        
+        group = [[DBmanger getIntance] getDeparment];
+        NSLog(@"部门信息: %@",group);
+        [groupdata removeAllObjects];
+        for (Department *depart in group) {
+            NSLog(@"调度组名称: %@",depart.name);
+            NSArray *contacts = [[DBmanger getIntance] getContactswithDepartment:depart.departmentid];
+            
+            [groupdata addObject:contacts];
+        }
+    }else if (mode == PYSORT){
     
+        
     
+    }
+    [table beginUpdates];
+    [table reloadData];
+    [table endUpdates];
 }
 
 
@@ -122,16 +144,57 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (mode == DEPARTMENTSORT)
-    {
-        return group.count;
-    }
-    return 0;
+    
+    if (!group)
+        return 0;
+    return group.count;
+    
 }
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return ((NSArray *)groupdata[section]).count;
+}
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return group[section].name;
+}
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
+}
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIView *selectview = [[UIView alloc] init];
+    selectview.frame = cell.contentView.frame;
+    selectview.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:0.03];
+    cell.selectedBackgroundView =selectview;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *v = [[UIView alloc] init];
+    return v;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 1;
+}
 
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Contacts*contacts =  ((NSArray *)groupdata[indexPath.section])[indexPath.row];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    cell.imageView.contentMode=UIViewContentModeScaleAspectFit;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    cell.imageView.image = [UIImage imageNamed:@"default_avatar"];
+    cell.textLabel.text = contacts.name;
+    cell.imageView.hidden=NO;
+    
+    return cell;
+}
 
 #pragma mark -
 

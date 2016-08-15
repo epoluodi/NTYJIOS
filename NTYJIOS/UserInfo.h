@@ -25,7 +25,7 @@
 @property (copy,nonatomic)NSArray *auth;
 @property (copy,nonatomic)UIImage *nickimg;
 @property (copy,nonatomic)NSString *deviceid;
-
+@property (copy,nonatomic)NSString *deparmentname;
 //获得静态方法
 +(instancetype)getInstance;
 

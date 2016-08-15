@@ -18,6 +18,7 @@
 @synthesize picture,nickimg;
 @synthesize deviceid;
 @synthesize auth;
+@synthesize deparmentname;
 
 static UserInfo *_userinfo;
 

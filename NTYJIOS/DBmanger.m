@@ -8,6 +8,7 @@
 
 #import "DBmanger.h"
 #import <Common/FileCommon.h>
+#import "UserInfo.h"
 
 
 @implementation DBmanger
@@ -134,7 +135,9 @@ static DBmanger *_db;
             [contacts setValue: @"" forKey:@"groupname"];
     else
         [contacts setValue: [_groupnames substringToIndex:_groupnames.length-1] forKey:@"groupname"];
-    
+    if ([[UserInfo getInstance].userId isEqualToString:contacts.userid])
+        [UserInfo getInstance].deparmentname = contacts.groupname;
+        
     [mangedcontext save:nil];
 }
 
@@ -169,7 +172,7 @@ static DBmanger *_db;
     NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"Department"];
 
     //排序
-        NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:NO];
+        NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
         fetch.sortDescriptors=@[sort];
     //加入查询条件 age>20
 //    fetch.predicate=[NSPredicate predicateWithFormat:@"stockcode=%@",stockcode];
@@ -180,6 +183,32 @@ static DBmanger *_db;
     return arr;
 }
 
+-(NSArray *)getContactswithDepartment:(NSString *)dpid
+{
+    NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"Contacts"];
+    
+   
+    //加入查询条件 age>20
+    fetch.predicate=[NSPredicate predicateWithFormat:@"groupid CONTAINS %@",dpid];
+    
+//        fetch.predicate=[NSPredicate predicateWithFormat:@"name like %@",@"*cb1*"];
+    NSArray *arr=[mangedcontext executeFetchRequest:fetch error:nil];
+    
+    return arr;
+}
+
+
+//得到所有联系人拼音
+-(NSArray *)getfirstlatter
+{
+    NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"Contacts"];
+    fetch.propertiesToGroupBy = @[@"firstLetter"];
+    fetch.propertiesToFetch = @[@"firstLetter"];
+    NSArray *arr=[mangedcontext executeFetchRequest:fetch error:nil];
+
+    return arr;
+    
+}
 
 
 //

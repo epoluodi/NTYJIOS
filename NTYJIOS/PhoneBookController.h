@@ -22,7 +22,8 @@ typedef   enum  {
     
     //数据
     NSArray<Department *> * group;
-    NSMutableDictionary *datadict;
+
+    NSMutableArray *groupdata;
 }
 
 
