@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DBmanger.h"
 
 @interface UserInfoViewController : UIViewController
 {
@@ -17,6 +18,6 @@
 @property (assign) BOOL IsSelf;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navbar;
 @property (weak, nonatomic) IBOutlet UITableView *table;
-
+@property (weak,nonatomic)Contacts *contacts;
 
 @end

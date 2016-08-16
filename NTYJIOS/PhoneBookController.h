@@ -21,8 +21,9 @@ typedef   enum  {
     __block PhoneSortEnum mode;
     
     //数据
-    NSArray<Department *> * group;
+    NSArray * group;
 
+    NSMutableArray<NSString *>* pylist;
     NSMutableArray *groupdata;
 }
 

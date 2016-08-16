@@ -183,6 +183,8 @@ static DBmanger *_db;
     return arr;
 }
 
+
+
 -(NSArray *)getContactswithDepartment:(NSString *)dpid
 {
     NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"Contacts"];
@@ -198,12 +200,29 @@ static DBmanger *_db;
 }
 
 
+
+-(NSArray *)getContactswithPY:(NSString *)PY
+{
+    NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"Contacts"];
+    
+    
+    //加入查询条件 age>20
+    fetch.predicate=[NSPredicate predicateWithFormat:@"firstLetter = %@",PY];
+    
+    //        fetch.predicate=[NSPredicate predicateWithFormat:@"name like %@",@"*cb1*"];
+    NSArray *arr=[mangedcontext executeFetchRequest:fetch error:nil];
+    
+    return arr;
+}
+
+
 //得到所有联系人拼音
 -(NSArray *)getfirstlatter
 {
     NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"Contacts"];
     fetch.propertiesToGroupBy = @[@"firstLetter"];
     fetch.propertiesToFetch = @[@"firstLetter"];
+    fetch.resultType=NSDictionaryResultType ;
     NSArray *arr=[mangedcontext executeFetchRequest:fetch error:nil];
 
     return arr;

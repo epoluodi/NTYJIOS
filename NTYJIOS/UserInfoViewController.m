@@ -10,11 +10,13 @@
 #import "UserInfoCell1.h"
 #import "UserInfoCell2.h"
 #import "Common.h"
-
+#import <Common/FileCommon.h>
 
 @implementation UserInfoViewController
 @synthesize navbar,table;
 @synthesize userid,IsSelf;
+@synthesize contacts;
+
 -(void)viewDidLoad
 {
     btnreturn = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(ClickReturn)];
@@ -100,18 +102,21 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
     if (indexPath.section==1)
     {
         UserInfoCell2 *cell ;
         switch (indexPath.row) {
             case 0:
-                 cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
+                cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
                 cell.celltitile.text=@"姓名";
                 cell.cellcontent.text=[UserInfo getInstance].userName;
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_2"];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
-                cell.cellcontent.text = [UserInfo getInstance].userName;
+                if (IsSelf)
+                    cell.cellcontent.text = [UserInfo getInstance].userName;
+                else
+                    cell.cellcontent.text =contacts.name;
                 break;
             case 1:
                 cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
@@ -119,15 +124,20 @@
                 cell.cellcontent.text=[UserInfo getInstance].sex;
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_3"];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                if (IsSelf)
                     cell.cellcontent.text = [UserInfo getInstance].sex;
+                else
+                    cell.cellcontent.text =contacts.sex;
                 break;
             case 2:
                 cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
                 cell.celltitile.text=@"调度组";
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_4"];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
-                cell.cellcontent.text = [UserInfo getInstance].deparmentname;
-
+                if (IsSelf)
+                    cell.cellcontent.text = [UserInfo getInstance].deparmentname;
+                else
+                    cell.cellcontent.text =contacts.groupname;
                 break;
             case 3:
                 cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
@@ -135,7 +145,10 @@
                 cell.cellcontent.text=[UserInfo getInstance].positionName;
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_5"];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
+                if (IsSelf)
                     cell.cellcontent.text = [UserInfo getInstance].positionName;
+                else
+                    cell.cellcontent.text =contacts.positionname;
                 break;
             case 4:
                 cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
@@ -143,7 +156,10 @@
                 cell.cellcontent.text=[UserInfo getInstance].tel;
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_6"];
                 cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+                if (IsSelf)
                     cell.cellcontent.text = [UserInfo getInstance].tel;
+                else
+                    cell.cellcontent.text =contacts.tel;
                 break;
                 
         }
@@ -154,8 +170,19 @@
         UserInfoCell1 *cell = [table dequeueReusableCellWithIdentifier:@"cell1"];
         cell.celltitle.text = @"头像";
         cell.cellimg.image = [UIImage imageNamed:@"default_avatar"];
-        
-        cell.nickimg.image = [UserInfo getInstance].nickimg;
+        if (IsSelf)
+            cell.nickimg.image = [UserInfo getInstance].nickimg;
+        else{
+            
+            NSString *filePath = [FileCommon getCacheDirectory];
+            
+            
+            //    [fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
+            //
+            NSString *filename = [NSString stringWithFormat:@"/%@.jpg",contacts.img];
+            NSData *data = [NSData dataWithContentsOfFile:[filePath stringByAppendingString:filename]];
+            cell.nickimg.image =[UIImage imageWithData:data];
+        }
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         
         return cell;
@@ -173,10 +200,10 @@
     {
         switch (indexPath.row) {
             case 0:
-      
+                
                 break;
             case 1:
-          
+                
                 break;
                 
         }

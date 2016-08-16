@@ -9,6 +9,8 @@
 #import "PhoneBookController.h"
 #import <Common/PublicCommon.h>
 #import "HttpServer.h"
+#import "PhoneBookCell.h"
+#import "UserInfoViewController.h"
 
 @interface PhoneBookController ()
 
@@ -34,9 +36,13 @@
     [refresh addTarget:self action:@selector(Onrefresh) forControlEvents:UIControlEventValueChanged];
     [table addSubview:refresh];
     
-    mode=DEPARTMENTSORT;
+    pylist = [[NSMutableArray alloc] init];
+    mode=PYSORT;
     
     groupdata = [[NSMutableArray alloc] init];
+    UINib *nib = [UINib nibWithNibName:@"phonebookcell" bundle:nil];
+    [table registerNib:nib forCellReuseIdentifier:@"cell"];
+    
     table.delegate=self;
     table.dataSource=self;
     [self loadData];
@@ -53,7 +59,8 @@
         [self loadData];
     }];
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"拼音排序" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        mode=DEPARTMENTSORT;
+        mode=PYSORT;
+        pylist = [[NSMutableArray alloc] init];
         [self loadData];
     }];
     UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
@@ -128,13 +135,20 @@
             [groupdata addObject:contacts];
         }
     }else if (mode == PYSORT){
-    
+        group = [[DBmanger getIntance] getfirstlatter];
         
-    
+        [groupdata removeAllObjects];
+        for (NSDictionary *py in group) {
+            NSLog(@"%@",py);
+            NSArray *contacts = [[DBmanger getIntance] getContactswithPY:[py objectForKey:@"firstLetter"]];
+            [pylist addObject:[py objectForKey:@"firstLetter"]];
+            [groupdata addObject:contacts];
+        }
+        
     }
-    [table beginUpdates];
+  
     [table reloadData];
-    [table endUpdates];
+
 }
 
 
@@ -142,28 +156,55 @@
 
 #pragma mark table
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+-(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    if (mode == PYSORT)
+        return pylist;
+    
+    return nil;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
     
-    if (!group)
-        return 0;
-    return group.count;
+    return index;
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    if (mode == DEPARTMENTSORT)
+    {
+        if (!group)
+            return 0;
+        
+        return group.count;
+    }else if (mode == PYSORT)
+    {
+        if (!pylist)
+            return 0;
+        return pylist.count;
+    }
     
+    return 0;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
     return ((NSArray *)groupdata[section]).count;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return group[section].name;
+    if (mode == DEPARTMENTSORT)
+        return ((Department *)group[section]).name;
+    else if (mode == PYSORT)
+        return pylist[section];
+    return nil;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 55;
+    return 60;
 }
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -185,18 +226,34 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Contacts*contacts =  ((NSArray *)groupdata[indexPath.section])[indexPath.row];
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    cell.imageView.contentMode=UIViewContentModeScaleAspectFit;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    PhoneBookCell *cell = [table dequeueReusableCellWithIdentifier:@"cell"];
+    cell.nickimg.contentMode=UIViewContentModeScaleAspectFit;
+    cell.nickimg.image = [UIImage imageNamed:@"default_avatar"];
+    cell.nickname.text = contacts.name;
     
-    cell.imageView.image = [UIImage imageNamed:@"default_avatar"];
-    cell.textLabel.text = contacts.name;
-    cell.imageView.hidden=NO;
     
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Contacts*contacts =  ((NSArray *)groupdata[indexPath.section])[indexPath.row];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UserInfoViewController *userinfovc  = (UserInfoViewController *)[storyboard instantiateViewControllerWithIdentifier:@"userinfo"];
+    userinfovc.IsSelf=NO;
+    userinfovc.contacts =contacts;
+    [self presentViewController:userinfovc animated:YES completion:nil];
+}
+
 #pragma mark -
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

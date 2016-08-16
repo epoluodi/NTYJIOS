@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B318E1E1D63573A002A9B59 /* phonebookcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B318E1D1D63573A002A9B59 /* phonebookcell.xib */; };
+		7B318E211D6357D0002A9B59 /* PhoneBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B318E201D6357D0002A9B59 /* PhoneBookCell.m */; };
 		7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4058171D3E70AA002A5068 /* MBProgressHUD.m */; };
 		7BB56DEE1D5F2E3B002C80A3 /* default_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BB56DED1D5F2E3A002C80A3 /* default_avatar.png */; };
 		7BB56DF21D5F3A5B002C80A3 /* db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56DF01D5F3A5B002C80A3 /* db.xcdatamodeld */; };
@@ -67,6 +69,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B318E1D1D63573A002A9B59 /* phonebookcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = phonebookcell.xib; sourceTree = "<group>"; };
+		7B318E1F1D6357D0002A9B59 /* PhoneBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneBookCell.h; sourceTree = "<group>"; };
+		7B318E201D6357D0002A9B59 /* PhoneBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneBookCell.m; sourceTree = "<group>"; };
 		7B4058171D3E70AA002A5068 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7B4058181D3E70AA002A5068 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7BB56DED1D5F2E3A002C80A3 /* default_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_avatar.png; sourceTree = "<group>"; };
@@ -148,6 +153,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B318E1C1D63571B002A9B59 /* phonebook */ = {
+			isa = PBXGroup;
+			children = (
+				7B318E1D1D63573A002A9B59 /* phonebookcell.xib */,
+				7B318E1F1D6357D0002A9B59 /* PhoneBookCell.h */,
+				7B318E201D6357D0002A9B59 /* PhoneBookCell.m */,
+			);
+			name = phonebook;
+			sourceTree = "<group>";
+		};
 		7BB56DEF1D5F3A47002C80A3 /* db */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +268,7 @@
 		B48B0F291D2E4ABB00646A20 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				7B318E1C1D63571B002A9B59 /* phonebook */,
 				B44D0A101D2F4FBB00F76DFF /* me */,
 				B48B0F2A1D2E4ADF00646A20 /* MainTabBarController.h */,
 				B48B0F2B1D2E4ADF00646A20 /* MainTabBarController.m */,
@@ -391,6 +407,7 @@
 				B44D0A0F1D2F4BBE00F76DFF /* setting5.png in Resources */,
 				7BF398141D5CC1DE004CDFE8 /* splash.jpg in Resources */,
 				B44D0A0B1D2F4B7200F76DFF /* setting3.png in Resources */,
+				7B318E1E1D63573A002A9B59 /* phonebookcell.xib in Resources */,
 				B40C1AD71D33469400AFE71A /* UserInfoCell.xib in Resources */,
 				B40C1AD91D33471B00AFE71A /* userinfo_1.png in Resources */,
 				B48B0F1C1D2E498100646A20 /* Main.storyboard in Resources */,
@@ -421,6 +438,7 @@
 				B48B0F341D2E51B300646A20 /* MeController.m in Sources */,
 				7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */,
 				B40C1AF41D33837600AFE71A /* LoginViewController.m in Sources */,
+				7B318E211D6357D0002A9B59 /* PhoneBookCell.m in Sources */,
 				7BB56E0D1D5F45F4002C80A3 /* Contacts.m in Sources */,
 				B40C1B021D3392BA00AFE71A /* HttpServer.m in Sources */,
 				B40C1AE11D33715500AFE71A /* UserInfoCell2.m in Sources */,

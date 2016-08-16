@@ -34,6 +34,7 @@
 -(void)deletDepartment;
 -(NSArray *)getDeparment;
 -(NSArray *)getContactswithDepartment:(NSString *)dpid;
+-(NSArray *)getContactswithPY:(NSString *)PY;
 
 -(NSArray *)getfirstlatter;
 @end
