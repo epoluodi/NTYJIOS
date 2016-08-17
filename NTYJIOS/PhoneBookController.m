@@ -37,7 +37,7 @@
     [table addSubview:refresh];
     
     pylist = [[NSMutableArray alloc] init];
-    mode=PYSORT;
+ 
     
     groupdata = [[NSMutableArray alloc] init];
     UINib *nib = [UINib nibWithNibName:@"phonebookcell" bundle:nil];
@@ -95,7 +95,7 @@
                 [self finshRefresh:NO];
                 return;
             }
-            [self loadData];
+            mode=DEPARTMENTSORT;
             [self finshRefresh:YES];
         });
         
@@ -109,7 +109,7 @@
     dispatch_async(mainQ, ^{
         
         [refresh endRefreshing];
-        
+                [self loadData];
     });
 }
 -(void)CloseInput
