@@ -13,7 +13,7 @@ typedef   enum  {
 } PhoneSortEnum;
 
 
-@interface PhoneBookController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface PhoneBookController : UIViewController<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 {
     UINavigationItem *title;
     UIRefreshControl *refresh;
@@ -22,9 +22,13 @@ typedef   enum  {
     
     //数据
     NSArray * group;
-
+    NSArray * searchlist;
+    
     NSMutableArray<NSString *>* pylist;
     NSMutableArray *groupdata;
+    
+    
+    BOOL isSearch;
 }
 
 

@@ -46,9 +46,33 @@
     table.delegate=self;
     table.dataSource=self;
     [self loadData];
-    
+    isSearch = NO;
+    search.delegate = self;
     
     // Do any additional setup after loading the view.
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    if ([search.text isEqualToString:@""])
+        return;
+    searchlist = [[DBmanger getIntance] getContactForSearch:search.text];
+    if (searchlist.count != 0)
+    {
+        isSearch=YES;
+        [table reloadData];
+    }
+    
+    
+    
+}
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if ([search.text isEqualToString:@""]){
+        isSearch=NO;
+        [table reloadData];
+    }
+
 }
 
 -(void)Onright
@@ -171,30 +195,37 @@
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (mode == DEPARTMENTSORT)
-    {
-        if (!group)
-            return 0;
-        
-        return group.count;
-    }else if (mode == PYSORT)
-    {
-        if (!pylist)
-            return 0;
-        return pylist.count;
-    }
-    
+    if (!isSearch){
+        if (mode == DEPARTMENTSORT)
+        {
+            if (!group)
+                return 0;
+            
+            return group.count;
+        }else if (mode == PYSORT)
+        {
+            if (!pylist)
+                return 0;
+            return pylist.count;
+        }
+    }else
+        return 1;
     return 0;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    return ((NSArray *)groupdata[section]).count;
+    if (!isSearch)
+        return ((NSArray *)groupdata[section]).count;
+    else
+        return searchlist.count;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    if (isSearch)
+        return @"搜索结果";
+    
     if (mode == DEPARTMENTSORT)
         return ((Department *)group[section]).name;
     else if (mode == PYSORT)
@@ -225,7 +256,16 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Contacts*contacts =  ((NSArray *)groupdata[indexPath.section])[indexPath.row];
+    Contacts*contacts;
+    
+    
+    if (!isSearch)
+        contacts =  ((NSArray *)groupdata[indexPath.section])[indexPath.row];
+    else
+        contacts = searchlist[indexPath.row];
+    
+    
+    
     PhoneBookCell *cell = [table dequeueReusableCellWithIdentifier:@"cell"];
     cell.nickimg.contentMode=UIViewContentModeScaleAspectFit;
     cell.nickimg.image = [UIImage imageNamed:@"default_avatar"];
@@ -237,7 +277,12 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Contacts*contacts =  ((NSArray *)groupdata[indexPath.section])[indexPath.row];
+    Contacts*contacts;
+    
+    if (!isSearch)
+        contacts=  ((NSArray *)groupdata[indexPath.section])[indexPath.row];
+    else
+        contacts = searchlist[indexPath.row];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UserInfoViewController *userinfovc  = (UserInfoViewController *)[storyboard instantiateViewControllerWithIdentifier:@"userinfo"];

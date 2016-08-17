@@ -35,6 +35,6 @@
 -(NSArray *)getDeparment;
 -(NSArray *)getContactswithDepartment:(NSString *)dpid;
 -(NSArray *)getContactswithPY:(NSString *)PY;
-
+-(NSArray *)getContactForSearch:(NSString *)key;
 -(NSArray *)getfirstlatter;
 @end

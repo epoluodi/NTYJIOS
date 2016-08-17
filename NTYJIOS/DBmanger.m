@@ -108,6 +108,7 @@ static DBmanger *_db;
     [contacts setValue:[userinfo objectForKey:@"sysUserName"] forKey:@"loginname"];
     [contacts setValue:[userinfo objectForKey:@"sex"] forKey:@"sex"];
     [contacts setValue:[userinfo objectForKey:@"firstLetter"] forKey:@"firstLetter"];
+    [contacts setValue:[userinfo objectForKey:@"pinyin"] forKey:@"py"];
     if ([userinfo objectForKey:@"picture"]  == [NSNull null])
         [contacts setValue:@"" forKey:@"img"];
     else
@@ -199,7 +200,19 @@ static DBmanger *_db;
     return arr;
 }
 
-
+-(NSArray *)getContactForSearch:(NSString *)key
+{
+    NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"Contacts"];
+    
+    
+    //加入查询条件 age>20
+    fetch.predicate=[NSPredicate predicateWithFormat:@"name CONTAINS %@ or py  CONTAINS %@",key,key];
+  
+    //        fetch.predicate=[NSPredicate predicateWithFormat:@"name like %@",@"*cb1*"];
+    NSArray *arr=[mangedcontext executeFetchRequest:fetch error:nil];
+    
+    return arr;
+}
 
 -(NSArray *)getContactswithPY:(NSString *)PY
 {
