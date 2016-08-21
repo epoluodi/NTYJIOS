@@ -189,7 +189,8 @@
         [userinfo setObject:pwdedit.text forKey:@"userpwd"];
         NSDictionary *data = [r objectForKey:@"data"];
         NSDictionary*mqtt = [data objectForKey:@"MQTT"];
-        [ServerInfo getInstance].MQTTADDRESS = [mqtt objectForKey:@"mqttserver"];
+        [ServerInfo getInstance].MQTTADDRESS = [mqtt objectForKey:@"mqttaddress"];
+        [ServerInfo getInstance].MQTTPORT =(INT_PORT)((NSString*) [mqtt objectForKey:@"mqttport"]).intValue;
         [ServerInfo getInstance].username =[mqtt objectForKey:@"username"];
         [ServerInfo getInstance].password =[mqtt objectForKey:@"password"];
         
@@ -244,6 +245,7 @@
         }
         else{
         
+            [_mainview ConnectMqtt];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
         

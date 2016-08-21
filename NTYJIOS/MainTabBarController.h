@@ -8,10 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Common.h"
+#import "MQTTServer.h"
 
-@interface MainTabBarController : UITabBarController
 
+
+@interface MainTabBarController : UITabBarController<MQTTDelegate>
+{
+    MQTTServer *mqtt;
+}
 @property (assign)BOOL IsLogin;
 
 
+-(void)ConnectMqtt;
 @end

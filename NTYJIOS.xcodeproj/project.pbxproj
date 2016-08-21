@@ -9,7 +9,14 @@
 /* Begin PBXBuildFile section */
 		7B318E1E1D63573A002A9B59 /* phonebookcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B318E1D1D63573A002A9B59 /* phonebookcell.xib */; };
 		7B318E211D6357D0002A9B59 /* PhoneBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B318E201D6357D0002A9B59 /* PhoneBookCell.m */; };
+		7B35E6961D66064000E81267 /* libMQTTKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B35E6941D66064000E81267 /* libMQTTKit.a */; };
 		7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4058171D3E70AA002A5068 /* MBProgressHUD.m */; };
+		7B89D93B1D676FB5000D712D /* MQTTServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B89D93A1D676FB5000D712D /* MQTTServer.m */; };
+		7B89D93E1D688B20000D712D /* MessageViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B89D93D1D688B20000D712D /* MessageViewContoller.m */; };
+		7B89D9441D68951C000D712D /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B89D9431D68951C000D712D /* FTPopOverMenu.m */; };
+		7B89D9461D68960D000D712D /* publishjd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B89D9451D68960D000D712D /* publishjd.png */; };
+		7B89D9481D68961D000D712D /* historyjd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B89D9471D68961D000D712D /* historyjd.png */; };
+		7B89D94B1D69E3EB000D712D /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B89D94A1D69E3EB000D712D /* PublishViewController.m */; };
 		7BB56DEE1D5F2E3B002C80A3 /* default_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BB56DED1D5F2E3A002C80A3 /* default_avatar.png */; };
 		7BB56DF21D5F3A5B002C80A3 /* db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56DF01D5F3A5B002C80A3 /* db.xcdatamodeld */; };
 		7BB56DF51D5F3A90002C80A3 /* DBmanger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56DF41D5F3A90002C80A3 /* DBmanger.m */; };
@@ -72,8 +79,20 @@
 		7B318E1D1D63573A002A9B59 /* phonebookcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = phonebookcell.xib; sourceTree = "<group>"; };
 		7B318E1F1D6357D0002A9B59 /* PhoneBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneBookCell.h; sourceTree = "<group>"; };
 		7B318E201D6357D0002A9B59 /* PhoneBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneBookCell.m; sourceTree = "<group>"; };
+		7B35E6941D66064000E81267 /* libMQTTKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMQTTKit.a; sourceTree = "<group>"; };
+		7B35E6951D66064000E81267 /* MQTTKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTTKit.h; sourceTree = "<group>"; };
 		7B4058171D3E70AA002A5068 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7B4058181D3E70AA002A5068 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		7B89D9391D676FB5000D712D /* MQTTServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTTServer.h; sourceTree = "<group>"; };
+		7B89D93A1D676FB5000D712D /* MQTTServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTTServer.m; sourceTree = "<group>"; };
+		7B89D93C1D688B20000D712D /* MessageViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewContoller.h; sourceTree = "<group>"; };
+		7B89D93D1D688B20000D712D /* MessageViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewContoller.m; sourceTree = "<group>"; };
+		7B89D9421D68951C000D712D /* FTPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPopOverMenu.h; sourceTree = "<group>"; };
+		7B89D9431D68951C000D712D /* FTPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPopOverMenu.m; sourceTree = "<group>"; };
+		7B89D9451D68960D000D712D /* publishjd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = publishjd.png; sourceTree = "<group>"; };
+		7B89D9471D68961D000D712D /* historyjd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = historyjd.png; sourceTree = "<group>"; };
+		7B89D9491D69E3EB000D712D /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishViewController.h; sourceTree = "<group>"; };
+		7B89D94A1D69E3EB000D712D /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
 		7BB56DED1D5F2E3A002C80A3 /* default_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_avatar.png; sourceTree = "<group>"; };
 		7BB56DF11D5F3A5B002C80A3 /* db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = db.xcdatamodel; sourceTree = "<group>"; };
 		7BB56DF31D5F3A90002C80A3 /* DBmanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBmanger.h; sourceTree = "<group>"; };
@@ -145,6 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B35E6961D66064000E81267 /* libMQTTKit.a in Frameworks */,
 				B44D0A011D2F420800F76DFF /* Common.framework in Frameworks */,
 				B40C1AF61D338F2A00AFE71A /* libHttpLib.a in Frameworks */,
 			);
@@ -161,6 +181,26 @@
 				7B318E201D6357D0002A9B59 /* PhoneBookCell.m */,
 			);
 			name = phonebook;
+			sourceTree = "<group>";
+		};
+		7B35E6931D66063600E81267 /* MQTT */ = {
+			isa = PBXGroup;
+			children = (
+				7B35E6941D66064000E81267 /* libMQTTKit.a */,
+				7B35E6951D66064000E81267 /* MQTTKit.h */,
+				7B89D9391D676FB5000D712D /* MQTTServer.h */,
+				7B89D93A1D676FB5000D712D /* MQTTServer.m */,
+			);
+			name = MQTT;
+			sourceTree = "<group>";
+		};
+		7B89D9411D689514000D712D /* PopMenu */ = {
+			isa = PBXGroup;
+			children = (
+				7B89D9421D68951C000D712D /* FTPopOverMenu.h */,
+				7B89D9431D68951C000D712D /* FTPopOverMenu.m */,
+			);
+			name = PopMenu;
 			sourceTree = "<group>";
 		};
 		7BB56DEF1D5F3A47002C80A3 /* db */ = {
@@ -280,6 +320,10 @@
 				7BB56E0F1D5F5986002C80A3 /* ContactsController.m */,
 				7BB56E111D5F5A1C002C80A3 /* PhoneBookController.h */,
 				7BB56E121D5F5A1C002C80A3 /* PhoneBookController.m */,
+				7B89D93C1D688B20000D712D /* MessageViewContoller.h */,
+				7B89D93D1D688B20000D712D /* MessageViewContoller.m */,
+				7B89D9491D69E3EB000D712D /* PublishViewController.h */,
+				7B89D94A1D69E3EB000D712D /* PublishViewController.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -301,6 +345,8 @@
 		B48B0F2F1D2E4E8900646A20 /* png */ = {
 			isa = PBXGroup;
 			children = (
+				7B89D9471D68961D000D712D /* historyjd.png */,
+				7B89D9451D68960D000D712D /* publishjd.png */,
 				7BB56DED1D5F2E3A002C80A3 /* default_avatar.png */,
 				7BF398131D5CC1DE004CDFE8 /* splash.jpg */,
 				B40C1AEE1D33807000AFE71A /* pwd_icon.png */,
@@ -325,6 +371,8 @@
 		B48B0F351D2E526D00646A20 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				7B89D9411D689514000D712D /* PopMenu */,
+				7B35E6931D66063600E81267 /* MQTT */,
 				B40C1AF71D338F3500AFE71A /* libHttpHead */,
 				B40C1AF51D338F2A00AFE71A /* libHttpLib.a */,
 				B44D0A001D2F420800F76DFF /* Common.framework */,
@@ -396,6 +444,7 @@
 				B44D0A0D1D2F4B9C00F76DFF /* setting4.png in Resources */,
 				B48B0F211D2E498100646A20 /* LaunchScreen.storyboard in Resources */,
 				B40C1AF01D33807000AFE71A /* pwd_icon.png in Resources */,
+				7B89D9481D68961D000D712D /* historyjd.png in Resources */,
 				B40C1AE91D337A3700AFE71A /* userinfo_5.png in Resources */,
 				B40C1ADE1D3348BF00AFE71A /* UserInfoCell2.xib in Resources */,
 				B40C1AE71D337A1B00AFE71A /* userinfo_4.png in Resources */,
@@ -403,6 +452,7 @@
 				B48B0F1E1D2E498100646A20 /* Assets.xcassets in Resources */,
 				B44D0A091D2F4B4F00F76DFF /* setting2.png in Resources */,
 				B48B0F311D2E4E8F00646A20 /* profile_bg.png in Resources */,
+				7B89D9461D68960D000D712D /* publishjd.png in Resources */,
 				B40C1AE51D3379ED00AFE71A /* userinfo_3.png in Resources */,
 				B44D0A0F1D2F4BBE00F76DFF /* setting5.png in Resources */,
 				7BF398141D5CC1DE004CDFE8 /* splash.jpg in Resources */,
@@ -431,6 +481,7 @@
 				7BB56DF21D5F3A5B002C80A3 /* db.xcdatamodeld in Sources */,
 				7BB56E071D5F3D6A002C80A3 /* Department.m in Sources */,
 				B48B0F2C1D2E4ADF00646A20 /* MainTabBarController.m in Sources */,
+				7B89D94B1D69E3EB000D712D /* PublishViewController.m in Sources */,
 				B48B0F381D2E53D000646A20 /* UserInfo.m in Sources */,
 				B48B0F3B1D2E542E00646A20 /* ServerInfo.m in Sources */,
 				B40C1AD51D33443700AFE71A /* UserInfoViewController.m in Sources */,
@@ -438,11 +489,14 @@
 				B48B0F341D2E51B300646A20 /* MeController.m in Sources */,
 				7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */,
 				B40C1AF41D33837600AFE71A /* LoginViewController.m in Sources */,
+				7B89D93B1D676FB5000D712D /* MQTTServer.m in Sources */,
 				7B318E211D6357D0002A9B59 /* PhoneBookCell.m in Sources */,
 				7BB56E0D1D5F45F4002C80A3 /* Contacts.m in Sources */,
+				7B89D9441D68951C000D712D /* FTPopOverMenu.m in Sources */,
 				B40C1B021D3392BA00AFE71A /* HttpServer.m in Sources */,
 				B40C1AE11D33715500AFE71A /* UserInfoCell2.m in Sources */,
 				7BB56DF51D5F3A90002C80A3 /* DBmanger.m in Sources */,
+				7B89D93E1D688B20000D712D /* MessageViewContoller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +619,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/NTYJIOS",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Supower.NTYJIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -585,6 +640,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/NTYJIOS",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Supower.NTYJIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

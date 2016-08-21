@@ -10,6 +10,8 @@
 #import "MBProgressHUD.h"
 #import "LoginViewController.h"
 
+
+
 @interface MainTabBarController ()
 
 @end
@@ -26,16 +28,16 @@
     dispatch_queue_t mainQ = dispatch_get_main_queue();
     
     
-
     
-
+    
+    
     dispatch_async(globalQ, ^{
         dispatch_async(mainQ, ^{
-  
+            
             
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             LoginViewController *loginVC = (LoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-            
+            loginVC.mainview=self;
             [self presentViewController:loginVC animated:YES completion:nil];
             
             
@@ -45,19 +47,51 @@
     // Do any additional setup after loading the view.
 }
 
+
+-(void)ConnectMqtt
+{
+    
+    mqtt = [[MQTTServer alloc] init:[ServerInfo getInstance].MQTTADDRESS port:[ServerInfo getInstance].MQTTPORT];
+    mqtt.delegate = self;
+    [mqtt  ConnectMqtt:[ServerInfo getInstance].username password:[ServerInfo getInstance].password];
+}
+
+
+-(void)OnConnectMqtt
+{
+    NSLog(@"连接成功");
+}
+
+-(void)OnConnectError
+{
+    NSLog(@"连接错误");
+}
+
+-(void)OnDisConnect
+{
+    NSLog(@"连接断开");
+}
+
+-(void)OnMessage:(NSString *)msg
+{
+    NSLog(@"接收到MQTT信息:%@",msg);
+    
+    
+
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

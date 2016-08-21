@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainTabBarController.h"
 
 @interface LoginViewController : UIViewController
 {
@@ -18,7 +19,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *loginview;
 @property (assign)BOOL IsAutoLogin;
-
+@property (weak,nonatomic) MainTabBarController *mainview;
 
 
 

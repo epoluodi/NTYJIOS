@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "MQTTServer.h"
 //#define ServerUrl @"http://192.168.0.122:8080/ntyj"
 #define ServerUrl @"http://15b2060o22.iask.in:18080/ntyj" //test
 #define APP @"/app/"
@@ -37,6 +37,7 @@
 
 
 @property (copy,nonatomic)NSString *MQTTADDRESS;
+@property (assign)INT_PORT MQTTPORT;
 @property (copy,nonatomic)NSString *username;
 @property (copy,nonatomic)NSString *password;
 
