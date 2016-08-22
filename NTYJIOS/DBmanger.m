@@ -144,6 +144,23 @@ static DBmanger *_db;
 
 
 
+
+//添加调度信息
+-(void)addJDinfo:(NSDictionary *)jdinfo
+{
+    DDInfo *ddinfo = [NSEntityDescription insertNewObjectForEntityForName:@"DDInfo" inManagedObjectContext:mangedcontext];
+    [ddinfo setValue:[jdinfo objectForKey:@"GROUP_ID"] forKey:@"ddid"];
+        [ddinfo setValue:[jdinfo objectForKey:@"GROUP_ID"] forKey:@"ddid"];
+        [ddinfo setValue:[jdinfo objectForKey:@"GROUP_ID"] forKey:@"ddid"];
+        [ddinfo setValue:[jdinfo objectForKey:@"GROUP_ID"] forKey:@"ddid"];
+        [ddinfo setValue:[jdinfo objectForKey:@"GROUP_ID"] forKey:@"ddid"];
+        
+    [mangedcontext save:nil];
+}
+
+
+
+
 -(void)deletUserInfo
 {
 
@@ -155,6 +172,29 @@ static DBmanger *_db;
     //加入查询条件 age>20
 //    fetch.predicate=[NSPredicate predicateWithFormat:@"stockcode=%@",stockcode];
 
+    //    fetch.predicate=[NSPredicate predicateWithFormat:@"name like %@",@"*cb1*"];
+    NSArray *arr=[mangedcontext executeFetchRequest:fetch error:nil];
+    for (Contacts *obj in arr)
+    {
+        [mangedcontext deleteObject:obj];
+    }
+    [mangedcontext save:nil];
+    return ;
+}
+
+
+
+-(void)deletejdinfo
+{
+    
+    NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"DDInfo"];
+    
+    //排序
+    //    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"stockcode" ascending:NO];
+    //    fetch.sortDescriptors=@[sort];
+    //加入查询条件 age>20
+    //    fetch.predicate=[NSPredicate predicateWithFormat:@"stockcode=%@",stockcode];
+    
     //    fetch.predicate=[NSPredicate predicateWithFormat:@"name like %@",@"*cb1*"];
     NSArray *arr=[mangedcontext executeFetchRequest:fetch error:nil];
     for (Contacts *obj in arr)

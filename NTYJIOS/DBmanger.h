@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Department.h"
 #import "Contacts.h"
+#import "DDInfo.h"
 
 
 @interface DBmanger : NSObject
@@ -37,4 +38,6 @@
 -(NSArray *)getContactswithPY:(NSString *)PY;
 -(NSArray *)getContactForSearch:(NSString *)key;
 -(NSArray *)getfirstlatter;
+-(void)deletejdinfo;
+-(void)addJDinfo:(NSDictionary *)jdinfo;
 @end

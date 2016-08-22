@@ -64,6 +64,15 @@
     
 }
 
+
+
+//加载数据
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"显示");
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

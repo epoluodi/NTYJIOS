@@ -31,6 +31,7 @@
 #define queryGroups [NSString stringWithFormat:@"%@%@",IMURL,@"group/queryGroups"]
 #define queryUsers [NSString stringWithFormat:@"%@%@",APPURL,@"user/queryUsers"]
 
+#define queryGroupsAndDispatchs [NSString stringWithFormat:@"%@%@",IMURL,@"group/queryGroupsAndDispatchs"]
 
 
 @interface ServerInfo : NSObject

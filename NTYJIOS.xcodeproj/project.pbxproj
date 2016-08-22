@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B19691D1D6B406400108B4A /* DDInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B19691B1D6B406400108B4A /* DDInfo.m */; };
 		7B318E1E1D63573A002A9B59 /* phonebookcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B318E1D1D63573A002A9B59 /* phonebookcell.xib */; };
 		7B318E211D6357D0002A9B59 /* PhoneBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B318E201D6357D0002A9B59 /* PhoneBookCell.m */; };
 		7B35E6961D66064000E81267 /* libMQTTKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B35E6941D66064000E81267 /* libMQTTKit.a */; };
@@ -76,6 +77,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B19691A1D6B406400108B4A /* DDInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDInfo.h; sourceTree = "<group>"; };
+		7B19691B1D6B406400108B4A /* DDInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInfo.m; sourceTree = "<group>"; };
 		7B318E1D1D63573A002A9B59 /* phonebookcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = phonebookcell.xib; sourceTree = "<group>"; };
 		7B318E1F1D6357D0002A9B59 /* PhoneBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneBookCell.h; sourceTree = "<group>"; };
 		7B318E201D6357D0002A9B59 /* PhoneBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneBookCell.m; sourceTree = "<group>"; };
@@ -213,6 +216,8 @@
 				7BB56E0B1D5F45F4002C80A3 /* Contacts.m */,
 				7BB56E041D5F3D6A002C80A3 /* Department.h */,
 				7BB56E051D5F3D6A002C80A3 /* Department.m */,
+				7B19691A1D6B406400108B4A /* DDInfo.h */,
+				7B19691B1D6B406400108B4A /* DDInfo.m */,
 			);
 			name = db;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 				B48B0F341D2E51B300646A20 /* MeController.m in Sources */,
 				7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */,
 				B40C1AF41D33837600AFE71A /* LoginViewController.m in Sources */,
+				7B19691D1D6B406400108B4A /* DDInfo.m in Sources */,
 				7B89D93B1D676FB5000D712D /* MQTTServer.m in Sources */,
 				7B318E211D6357D0002A9B59 /* PhoneBookCell.m in Sources */,
 				7BB56E0D1D5F45F4002C80A3 /* Contacts.m in Sources */,

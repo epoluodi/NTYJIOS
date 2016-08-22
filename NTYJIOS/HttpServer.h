@@ -29,4 +29,8 @@
 -(BOOL)getdepartmentinfo;
 //得到部门用户信息
 -(BOOL)getdepartmentUserinfo;
+
+
+//查询调度信息列表
+-(BOOL)getGroupsList;
 @end

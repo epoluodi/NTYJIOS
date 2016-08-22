@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MessageViewContoller : UIViewController
+@interface MessageViewContoller : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
     UINavigationItem *title;
     UIBarButtonItem *btnleft;
