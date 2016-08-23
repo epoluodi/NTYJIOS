@@ -149,12 +149,16 @@ static DBmanger *_db;
 -(void)addJDinfo:(NSDictionary *)jdinfo
 {
     DDInfo *ddinfo = [NSEntityDescription insertNewObjectForEntityForName:@"DDInfo" inManagedObjectContext:mangedcontext];
-    [ddinfo setValue:[jdinfo objectForKey:@"GROUP_ID"] forKey:@"ddid"];
-        [ddinfo setValue:[jdinfo objectForKey:@"GROUP_ID"] forKey:@"ddid"];
-        [ddinfo setValue:[jdinfo objectForKey:@"GROUP_ID"] forKey:@"ddid"];
-        [ddinfo setValue:[jdinfo objectForKey:@"GROUP_ID"] forKey:@"ddid"];
-        [ddinfo setValue:[jdinfo objectForKey:@"GROUP_ID"] forKey:@"ddid"];
-        
+    [ddinfo setValue:[jdinfo objectForKey:@"DISPATCH_ID"] forKey:@"ddid"];
+    [ddinfo setValue:jdinfo.description forKey:@"json"];
+    [ddinfo setValue:[jdinfo objectForKey:@"DISPATCH_TITLE"] forKey:@"title"];
+    
+    NSNumber *_istop = [[NSNumber alloc] initWithInt:((NSString *)[jdinfo objectForKey:@""]).intValue];
+    [ddinfo setValue:_istop forKey:@"istop"];
+    NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+    NSDate *date = [formater dateFromString:[jdinfo objectForKey:@"SEND_TIME"]];
+    [ddinfo setValue:date forKey:@"sendtime"];
+    
     [mangedcontext save:nil];
 }
 

@@ -9,6 +9,7 @@
 #import "MainTabBarController.h"
 #import "MBProgressHUD.h"
 #import "LoginViewController.h"
+#import "MessageViewContoller.h"
 
 
 
@@ -54,12 +55,19 @@
     mqtt = [[MQTTServer alloc] init:[ServerInfo getInstance].MQTTADDRESS port:[ServerInfo getInstance].MQTTPORT];
     mqtt.delegate = self;
     [mqtt  ConnectMqtt:[ServerInfo getInstance].username password:[ServerInfo getInstance].password];
+    AppDelegate *app=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+    app.mqtt=mqtt;
 }
+
 
 
 -(void)OnConnectMqtt
 {
     NSLog(@"连接成功");
+    MessageViewContoller *mvc = (MessageViewContoller *)((UINavigationController *)self.viewControllers[0]).topViewController;
+    
+    [mvc loadDDinfo];
+    
 }
 
 -(void)OnConnectError

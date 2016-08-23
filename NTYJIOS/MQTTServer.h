@@ -32,9 +32,10 @@ typedef unsigned short INT_PORT;
 }
 
 @property (nonatomic,weak) NSObject<MQTTDelegate> *delegate;
-
+@property (assign)BOOL IsMQTTConnect;
 
 -(instancetype)init:(NSString *)host port:(INT_PORT)port;
+
 
 
 //连接mqtt
@@ -42,4 +43,7 @@ typedef unsigned short INT_PORT;
 
 //断开MQTT连接
 -(void)DisConncectMqtt;
+
+//订阅
+-(void)PublishGroupTopic:(NSString *)topic;
 @end

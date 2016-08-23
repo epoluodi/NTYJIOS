@@ -20,4 +20,5 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
+-(void)loadDDinfo;
 @end

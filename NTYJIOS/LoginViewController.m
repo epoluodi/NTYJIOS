@@ -222,12 +222,7 @@
             [self Loginresult:NO msg:@"获得部门成员信息失败"];
             return;
         }
-        result = [http getGroupsList];
-        if (!result)
-        {
-            [self Loginresult:NO msg:@"获得调度信息失败"];
-            return;
-        }
+ 
         [self Loginresult:YES msg:nil];
         
     });

@@ -17,7 +17,7 @@
 @end
 
 @implementation AppDelegate
-
+@synthesize mqtt;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [DBmanger getIntance];

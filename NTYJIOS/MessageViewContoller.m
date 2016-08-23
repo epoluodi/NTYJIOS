@@ -8,9 +8,14 @@
 
 #import "MessageViewContoller.h"
 #import "FTPopOverMenu.h"
+#import "HttpServer.h"
+#import "UserInfo.h"
+#import "AppDelegate.h"
 
 @interface MessageViewContoller ()
-
+{
+    AppDelegate *app;
+}
 @end
 
 @implementation MessageViewContoller
@@ -19,7 +24,8 @@
     [super viewDidLoad];
     
     
-   
+    app = [[UIApplication sharedApplication] delegate];
+    
     
     btnright = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(Onright:)];
     btnright.tintColor = [UIColor whiteColor];
@@ -64,11 +70,21 @@
     
 }
 
-
+-(void)loadDDinfo
+{
+    HttpServer *http =[[HttpServer alloc] init:queryGroupsAndDispatchs];
+    BOOL result = [http getGroupsList];
+    if (!result)
+    {
+        
+        return;
+    }
+}
 
 //加载数据
 -(void)viewWillAppear:(BOOL)animated
 {
+ 
     NSLog(@"显示");
 }
 
