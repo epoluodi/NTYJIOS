@@ -40,4 +40,5 @@
 -(NSArray *)getfirstlatter;
 -(void)deletejdinfo;
 -(void)addJDinfo:(NSDictionary *)jdinfo;
+-(NSArray *)getDDinfo;
 @end

@@ -13,7 +13,7 @@
     UINavigationItem *title;
     UIBarButtonItem *btnleft;
     UIBarButtonItem *btnright;
-    
+    NSArray* ddinfolist;
     
 }
 

@@ -152,10 +152,11 @@ static DBmanger *_db;
     [ddinfo setValue:[jdinfo objectForKey:@"DISPATCH_ID"] forKey:@"ddid"];
     [ddinfo setValue:jdinfo.description forKey:@"json"];
     [ddinfo setValue:[jdinfo objectForKey:@"DISPATCH_TITLE"] forKey:@"title"];
-    
+
     NSNumber *_istop = [[NSNumber alloc] initWithInt:((NSString *)[jdinfo objectForKey:@""]).intValue];
     [ddinfo setValue:_istop forKey:@"istop"];
     NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+    [formater setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *date = [formater dateFromString:[jdinfo objectForKey:@"SEND_TIME"]];
     [ddinfo setValue:date forKey:@"sendtime"];
     
@@ -285,6 +286,25 @@ static DBmanger *_db;
     return arr;
     
 }
+
+
+//得到调度信息数据
+-(NSArray *)getDDinfo
+{
+    NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"DDInfo"];
+    
+    //排序
+    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"sendtime" ascending:NO];
+    fetch.sortDescriptors=@[sort];
+    //加入查询条件 age>20
+    //    fetch.predicate=[NSPredicate predicateWithFormat:@"stockcode=%@",stockcode];
+    
+    //    fetch.predicate=[NSPredicate predicateWithFormat:@"name like %@",@"*cb1*"];
+    NSArray *arr=[mangedcontext executeFetchRequest:fetch error:nil];
+    
+    return arr;
+}
+
 
 
 //

@@ -11,6 +11,9 @@
 #import "HttpServer.h"
 #import "UserInfo.h"
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "DBmanger.h"
+#import "MessageCell.h"
 
 @interface MessageViewContoller ()
 {
@@ -19,7 +22,7 @@
 @end
 
 @implementation MessageViewContoller
-
+@synthesize table;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -43,9 +46,15 @@
     
     [self.navigationController.navigationBar pushNavigationItem:title animated:YES];
     
+    self.automaticallyAdjustsScrollViewInsets=NO;
+    table.dataSource=self;
+    table.delegate=self;
+
     
+    UINib *nib=[UINib nibWithNibName:@"MessageCell" bundle:nil];
+    [table registerNib:nib forCellReuseIdentifier:@"cell"];
     
-    
+
     // Do any additional setup after loading the view.
 }
 
@@ -76,16 +85,101 @@
     BOOL result = [http getGroupsList];
     if (!result)
     {
+        dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_queue_t mainQ = dispatch_get_main_queue();
         
+        
+        
+        
+        
+        dispatch_async(globalQ, ^{
+            dispatch_async(mainQ, ^{
+                
+                
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取调度信息失败，请重新登录!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                
+                
+                
+                
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                LoginViewController *loginVC = (LoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+                loginVC.mainview=(MainTabBarController *)self.tabBarController;
+                [self presentViewController:loginVC animated:YES completion:nil];
+                
+                
+            });
+        });
+
         return;
     }
+    
+    [self loadDDinfoFromDB];
+    
 }
 
+
+-(void)loadDDinfoFromDB
+{
+    ddinfolist = [[DBmanger getIntance] getDDinfo];
+    if (ddinfolist && ddinfolist.count >0)
+        [table reloadData];
+}
 //加载数据
 -(void)viewWillAppear:(BOOL)animated
 {
  
     NSLog(@"显示");
+}
+
+
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (!ddinfolist)
+        return 0;
+    return [ddinfolist count];
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 62;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MessageCell* cell =[table dequeueReusableCellWithIdentifier:@"cell"];
+    DDInfo *_ddinfo = ddinfolist[indexPath.row];
+    cell.txttitle.text=_ddinfo.title;
+    
+//    NSDateFormatter *dtformat = [[NSDateFormatter alloc] init];
+//    [dtformat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSLog(@"%@",_ddinfo.sendtime);
+    cell.txtdt.text=[self dateTran:_ddinfo.sendtime];
+    
+    return cell;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *v = [[UIView alloc] init];
+    return v;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 1;
+}
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIView *selectview = [[UIView alloc] init];
+    selectview.frame = cell.contentView.frame;
+    selectview.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:0.03];
+    cell.selectedBackgroundView =selectview;
 }
 
 
@@ -104,4 +198,33 @@
 }
 */
 
+
+-(NSString *)dateTran:(NSDate *)date
+{
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+
+   
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *now = [NSDate date];
+    NSDateComponents *compsnow = [[NSDateComponents alloc] init];
+        NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags =NSYearCalendarUnit |NSMonthCalendarUnit |NSDayCalendarUnit | NSWeekdayCalendarUnit |
+    NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+
+    compsnow = [calendar components:unitFlags fromDate:now];
+    comps = [calendar components:unitFlags fromDate:date];
+
+    if (comps.month==compsnow.month &&
+        comps.day == compsnow.day)
+    {
+        df.dateFormat  = @"今天 HH:mm:ss";
+        return [df stringFromDate:date];
+    }
+    else
+    {
+         df.dateFormat  = @"MM-dd HH:mm:ss";
+         return [df stringFromDate:date];
+    }
+
+}
 @end

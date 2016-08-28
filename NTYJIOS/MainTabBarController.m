@@ -65,8 +65,12 @@
 {
     NSLog(@"连接成功");
     MessageViewContoller *mvc = (MessageViewContoller *)((UINavigationController *)self.viewControllers[0]).topViewController;
-    
-    [mvc loadDDinfo];
+  
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    dispatch_async(mainQ, ^{
+          [mvc loadDDinfo];  
+    });
+
     
 }
 

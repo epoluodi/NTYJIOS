@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7B19691D1D6B406400108B4A /* DDInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B19691B1D6B406400108B4A /* DDInfo.m */; };
+		7B1969201D6DEC0000108B4A /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B19691F1D6DEC0000108B4A /* MessageCell.xib */; };
+		7B1969231D6DEC1700108B4A /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1969221D6DEC1700108B4A /* MessageCell.m */; };
+		7B1969251D6DECA500108B4A /* notice.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1969241D6DECA500108B4A /* notice.png */; };
 		7B318E1E1D63573A002A9B59 /* phonebookcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B318E1D1D63573A002A9B59 /* phonebookcell.xib */; };
 		7B318E211D6357D0002A9B59 /* PhoneBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B318E201D6357D0002A9B59 /* PhoneBookCell.m */; };
 		7B35E6961D66064000E81267 /* libMQTTKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B35E6941D66064000E81267 /* libMQTTKit.a */; };
@@ -79,6 +82,10 @@
 /* Begin PBXFileReference section */
 		7B19691A1D6B406400108B4A /* DDInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDInfo.h; sourceTree = "<group>"; };
 		7B19691B1D6B406400108B4A /* DDInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInfo.m; sourceTree = "<group>"; };
+		7B19691F1D6DEC0000108B4A /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		7B1969211D6DEC1700108B4A /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		7B1969221D6DEC1700108B4A /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		7B1969241D6DECA500108B4A /* notice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notice.png; sourceTree = "<group>"; };
 		7B318E1D1D63573A002A9B59 /* phonebookcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = phonebookcell.xib; sourceTree = "<group>"; };
 		7B318E1F1D6357D0002A9B59 /* PhoneBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneBookCell.h; sourceTree = "<group>"; };
 		7B318E201D6357D0002A9B59 /* PhoneBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneBookCell.m; sourceTree = "<group>"; };
@@ -176,6 +183,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B19691E1D6DEBED00108B4A /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				7B19691F1D6DEC0000108B4A /* MessageCell.xib */,
+				7B1969211D6DEC1700108B4A /* MessageCell.h */,
+				7B1969221D6DEC1700108B4A /* MessageCell.m */,
+			);
+			name = Message;
+			sourceTree = "<group>";
+		};
 		7B318E1C1D63571B002A9B59 /* phonebook */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +330,7 @@
 		B48B0F291D2E4ABB00646A20 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				7B19691E1D6DEBED00108B4A /* Message */,
 				7B318E1C1D63571B002A9B59 /* phonebook */,
 				B44D0A101D2F4FBB00F76DFF /* me */,
 				B48B0F2A1D2E4ADF00646A20 /* MainTabBarController.h */,
@@ -350,6 +368,7 @@
 		B48B0F2F1D2E4E8900646A20 /* png */ = {
 			isa = PBXGroup;
 			children = (
+				7B1969241D6DECA500108B4A /* notice.png */,
 				7B89D9471D68961D000D712D /* historyjd.png */,
 				7B89D9451D68960D000D712D /* publishjd.png */,
 				7BB56DED1D5F2E3A002C80A3 /* default_avatar.png */,
@@ -445,7 +464,9 @@
 			files = (
 				B40C1AE31D3379C600AFE71A /* userinfo_2.png in Resources */,
 				B44D0A071D2F4AA900F76DFF /* setting1.png in Resources */,
+				7B1969251D6DECA500108B4A /* notice.png in Resources */,
 				B40C1AED1D337DF900AFE71A /* logo.png in Resources */,
+				7B1969201D6DEC0000108B4A /* MessageCell.xib in Resources */,
 				B44D0A0D1D2F4B9C00F76DFF /* setting4.png in Resources */,
 				B48B0F211D2E498100646A20 /* LaunchScreen.storyboard in Resources */,
 				B40C1AF01D33807000AFE71A /* pwd_icon.png in Resources */,
@@ -493,6 +514,7 @@
 				B44D0A131D2F4FD400F76DFF /* ModiPwdController.m in Sources */,
 				B48B0F341D2E51B300646A20 /* MeController.m in Sources */,
 				7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */,
+				7B1969231D6DEC1700108B4A /* MessageCell.m in Sources */,
 				B40C1AF41D33837600AFE71A /* LoginViewController.m in Sources */,
 				7B19691D1D6B406400108B4A /* DDInfo.m in Sources */,
 				7B89D93B1D676FB5000D712D /* MQTTServer.m in Sources */,
