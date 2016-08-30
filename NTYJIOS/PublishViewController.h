@@ -8,6 +8,29 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PublishViewController : UIViewController
+@interface PublishViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate,UIImagePickerControllerDelegate>
+{
+    UIBarButtonItem *btnreturn;
+    UIBarButtonItem *btnsend;
+    UILabel *wordcount;
+    NSMutableArray<UIImageView *> * addedimage;
+    NSMutableArray<NSString *> * mediaids;
+    int words;
+    UIButton *btnaddimage;
+    UIImagePickerController *pickerview;
+    
+    int rows;
+}
+
+@property (weak, nonatomic) IBOutlet UINavigationBar *navbar;
+@property (weak, nonatomic) IBOutlet UITextField *edittitle;
+@property (weak, nonatomic) IBOutlet UITextView *content;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *picturls;
+@property (weak, nonatomic) IBOutlet UITableView *tablemenu;
+
+
+
+
 
 @end

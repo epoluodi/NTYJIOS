@@ -106,10 +106,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="W4D-Ag-Y9t"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="table" destination="2gi-oM-Rrx" id="hMQ-BC-YzX"/>
                         <segue destination="28V-5j-iyE" kind="push" id="lHW-u1-aKS"/>
-                        <segue destination="HBX-lM-NJO" kind="modal" id="b8f-KV-T23"/>
+                        <segue destination="HBX-lM-NJO" kind="modal" identifier="publish" id="b8f-KV-T23"/>
                         <segue destination="BDi-xf-Nff" kind="modal" id="CXk-Rw-A2Y"/>
                     </connections>
                 </viewController>
@@ -166,26 +167,99 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asdasd" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Egu-Z5-uHp">
-                                <rect key="frame" x="0.0" y="64" width="320" height="30"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LTO-dP-ay3">
-                                <rect key="frame" x="0.0" y="95" width="320" height="216"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LTO-dP-ay3">
+                                <rect key="frame" x="0.0" y="113" width="320" height="216"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="9w1-t8-goD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3kM-XJ-efk">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="Vmo-Ss-aKa"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="调度信息发布" id="Dbs-NE-lGL"/>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6vt-Fv-lAL">
+                                <rect key="frame" x="0.0" y="64" width="320" height="47"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNi-Rx-y0i">
+                                        <rect key="frame" x="8" y="13" width="33" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Cv5-Ne-dwy"/>
+                                            <constraint firstAttribute="width" constant="33" id="mPZ-j6-0CR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Egu-Z5-uHp">
+                                        <rect key="frame" x="49" y="9" width="263" height="30"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Egu-Z5-uHp" firstAttribute="leading" secondItem="QNi-Rx-y0i" secondAttribute="trailing" constant="8" id="3y3-VE-DVB"/>
+                                    <constraint firstItem="QNi-Rx-y0i" firstAttribute="top" secondItem="6vt-Fv-lAL" secondAttribute="top" constant="13" id="Bqt-ab-QHh"/>
+                                    <constraint firstItem="Egu-Z5-uHp" firstAttribute="top" secondItem="6vt-Fv-lAL" secondAttribute="top" constant="9" id="N5o-4t-wr5"/>
+                                    <constraint firstAttribute="bottom" secondItem="QNi-Rx-y0i" secondAttribute="bottom" constant="13" id="Xfk-rJ-GRl"/>
+                                    <constraint firstAttribute="bottom" secondItem="Egu-Z5-uHp" secondAttribute="bottom" constant="8" id="YRz-gL-R1j"/>
+                                    <constraint firstAttribute="trailing" secondItem="Egu-Z5-uHp" secondAttribute="trailing" constant="8" id="h7f-ay-6FI"/>
+                                    <constraint firstAttribute="height" constant="47" id="h89-ww-nTt"/>
+                                    <constraint firstItem="QNi-Rx-y0i" firstAttribute="leading" secondItem="6vt-Fv-lAL" secondAttribute="leading" constant="8" id="r4S-Bw-CQ7"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qMN-WJ-d3n">
+                                <rect key="frame" x="0.0" y="337" width="320" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77" id="QCE-PL-b1g"/>
+                                </constraints>
+                            </scrollView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uGi-lp-vmI">
+                                <rect key="frame" x="0.0" y="416" width="320" height="152"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.94801530935959588" green="0.94801530935959588" blue="0.94801530935959588" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="6vt-Fv-lAL" secondAttribute="trailing" id="6eI-LC-JdO"/>
+                            <constraint firstItem="GUE-if-UTy" firstAttribute="top" secondItem="uGi-lp-vmI" secondAttribute="bottom" id="9oF-eC-8Rz"/>
+                            <constraint firstItem="qMN-WJ-d3n" firstAttribute="leading" secondItem="bzU-Hs-frL" secondAttribute="leading" id="Fgn-25-syC"/>
+                            <constraint firstAttribute="trailing" secondItem="uGi-lp-vmI" secondAttribute="trailing" id="GNI-vd-OiK"/>
+                            <constraint firstItem="LTO-dP-ay3" firstAttribute="leading" secondItem="bzU-Hs-frL" secondAttribute="leading" id="Nye-VB-Z0h"/>
+                            <constraint firstItem="3kM-XJ-efk" firstAttribute="leading" secondItem="bzU-Hs-frL" secondAttribute="leading" id="SeH-OW-gJ6"/>
+                            <constraint firstAttribute="trailing" secondItem="qMN-WJ-d3n" secondAttribute="trailing" id="Sg8-mK-f48"/>
+                            <constraint firstAttribute="trailing" secondItem="3kM-XJ-efk" secondAttribute="trailing" id="UP1-ih-Gci"/>
+                            <constraint firstItem="uGi-lp-vmI" firstAttribute="leading" secondItem="bzU-Hs-frL" secondAttribute="leading" id="WGq-1D-2Lg"/>
+                            <constraint firstAttribute="trailing" secondItem="LTO-dP-ay3" secondAttribute="trailing" id="XCC-R0-QF3"/>
+                            <constraint firstItem="qMN-WJ-d3n" firstAttribute="top" secondItem="LTO-dP-ay3" secondAttribute="bottom" constant="8" id="Y01-Hf-r3R"/>
+                            <constraint firstItem="6vt-Fv-lAL" firstAttribute="top" secondItem="3kM-XJ-efk" secondAttribute="bottom" id="iOI-Uw-skk"/>
+                            <constraint firstItem="LTO-dP-ay3" firstAttribute="top" secondItem="6vt-Fv-lAL" secondAttribute="bottom" constant="2" id="qaC-PU-I8o"/>
+                            <constraint firstItem="3kM-XJ-efk" firstAttribute="top" secondItem="bzU-Hs-frL" secondAttribute="top" id="rNY-br-mKD"/>
+                            <constraint firstItem="uGi-lp-vmI" firstAttribute="top" secondItem="qMN-WJ-d3n" secondAttribute="bottom" constant="2" id="rdS-vU-ssl"/>
+                            <constraint firstItem="6vt-Fv-lAL" firstAttribute="leading" secondItem="bzU-Hs-frL" secondAttribute="leading" id="xHC-DX-r6A"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zoE-3t-LZs"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="content" destination="LTO-dP-ay3" id="K2Z-Fm-A4l"/>
+                        <outlet property="edittitle" destination="Egu-Z5-uHp" id="Ig9-OE-DFJ"/>
+                        <outlet property="navbar" destination="3kM-XJ-efk" id="mmn-tt-NPX"/>
+                        <outlet property="picturls" destination="qMN-WJ-d3n" id="ntS-Ki-QAb"/>
+                        <outlet property="tablemenu" destination="uGi-lp-vmI" id="gD4-Ex-emh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jPR-7c-1Ol" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1878" y="472"/>
+            <point key="canvasLocation" x="1878" y="474"/>
         </scene>
         <!--通讯录-->
         <scene sceneID="QxM-S1-ELi">

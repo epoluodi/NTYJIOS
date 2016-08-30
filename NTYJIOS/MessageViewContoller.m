@@ -66,7 +66,16 @@
                   imageNameArray:@[@"publishjd",@"historyjd"]
                        doneBlock:^(NSInteger selectedIndex) {
                            
-                           NSLog(@"done block. do something. selectedIndex : %ld", (long)selectedIndex);
+                           switch (selectedIndex) {
+                               case 0://发布
+                                   
+                                   [self performSegueWithIdentifier:@"publish" sender:self];
+                                   
+                                   break;
+                               case 1:
+                                   
+                                   break;
+                           }
                            
                        } dismissBlock:^{
                            

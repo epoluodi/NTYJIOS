@@ -29,6 +29,7 @@
 		7BB56E101D5F5986002C80A3 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56E0F1D5F5986002C80A3 /* ContactsController.m */; };
 		7BB56E131D5F5A1C002C80A3 /* PhoneBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56E121D5F5A1C002C80A3 /* PhoneBookController.m */; };
 		7BF398141D5CC1DE004CDFE8 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BF398131D5CC1DE004CDFE8 /* splash.jpg */; };
+		7BF75B741D75C73D00CB03A2 /* aay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF75B731D75C73D00CB03A2 /* aay.png */; };
 		B40C1AD51D33443700AFE71A /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B40C1AD41D33443700AFE71A /* UserInfoViewController.m */; };
 		B40C1AD71D33469400AFE71A /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B40C1AD61D33469400AFE71A /* UserInfoCell.xib */; };
 		B40C1AD91D33471B00AFE71A /* userinfo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = B40C1AD81D33471B00AFE71A /* userinfo_1.png */; };
@@ -116,6 +117,7 @@
 		7BB56E111D5F5A1C002C80A3 /* PhoneBookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneBookController.h; sourceTree = "<group>"; };
 		7BB56E121D5F5A1C002C80A3 /* PhoneBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneBookController.m; sourceTree = "<group>"; };
 		7BF398131D5CC1DE004CDFE8 /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash.jpg; sourceTree = "<group>"; };
+		7BF75B731D75C73D00CB03A2 /* aay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aay.png; sourceTree = "<group>"; };
 		B40C1AD31D33443700AFE71A /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		B40C1AD41D33443700AFE71A /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		B40C1AD61D33469400AFE71A /* UserInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoCell.xib; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 		B48B0F2F1D2E4E8900646A20 /* png */ = {
 			isa = PBXGroup;
 			children = (
+				7BF75B731D75C73D00CB03A2 /* aay.png */,
 				7B1969241D6DECA500108B4A /* notice.png */,
 				7B89D9471D68961D000D712D /* historyjd.png */,
 				7B89D9451D68960D000D712D /* publishjd.png */,
@@ -463,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B40C1AE31D3379C600AFE71A /* userinfo_2.png in Resources */,
+				7BF75B741D75C73D00CB03A2 /* aay.png in Resources */,
 				B44D0A071D2F4AA900F76DFF /* setting1.png in Resources */,
 				7B1969251D6DECA500108B4A /* notice.png in Resources */,
 				B40C1AED1D337DF900AFE71A /* logo.png in Resources */,
