@@ -30,6 +30,17 @@
 		7BB56E131D5F5A1C002C80A3 /* PhoneBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56E121D5F5A1C002C80A3 /* PhoneBookController.m */; };
 		7BF398141D5CC1DE004CDFE8 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BF398131D5CC1DE004CDFE8 /* splash.jpg */; };
 		7BF75B741D75C73D00CB03A2 /* aay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF75B731D75C73D00CB03A2 /* aay.png */; };
+		7BF75B761D77188800CB03A2 /* publishrecordcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BF75B751D77188800CB03A2 /* publishrecordcell.xib */; };
+		7BF75B781D7718C900CB03A2 /* record.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF75B771D7718C900CB03A2 /* record.png */; };
+		7BF75B7A1D771A4000CB03A2 /* record_start.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF75B791D771A4000CB03A2 /* record_start.png */; };
+		7BF75B7D1D771AA700CB03A2 /* PublishRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF75B7C1D771AA700CB03A2 /* PublishRecordCell.m */; };
+		7BF75B7F1D771B8700CB03A2 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF75B7E1D771B8700CB03A2 /* play.png */; };
+		7BF75B811D771BAC00CB03A2 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF75B801D771BAC00CB03A2 /* stop.png */; };
+		7BF75B831D771BE700CB03A2 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF75B821D771BE700CB03A2 /* pause.png */; };
+		7BF75B851D771C3700CB03A2 /* publishcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BF75B841D771C3700CB03A2 /* publishcell.xib */; };
+		7BF75B881D771D4B00CB03A2 /* PublishCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF75B871D771D4B00CB03A2 /* PublishCell.m */; };
+		7BF75B8A1D77238800CB03A2 /* sendmubiao.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF75B891D77238800CB03A2 /* sendmubiao.png */; };
+		7BF75B8C1D7723FD00CB03A2 /* shenpiren.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF75B8B1D7723FD00CB03A2 /* shenpiren.png */; };
 		B40C1AD51D33443700AFE71A /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B40C1AD41D33443700AFE71A /* UserInfoViewController.m */; };
 		B40C1AD71D33469400AFE71A /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B40C1AD61D33469400AFE71A /* UserInfoCell.xib */; };
 		B40C1AD91D33471B00AFE71A /* userinfo_1.png in Resources */ = {isa = PBXBuildFile; fileRef = B40C1AD81D33471B00AFE71A /* userinfo_1.png */; };
@@ -118,6 +129,19 @@
 		7BB56E121D5F5A1C002C80A3 /* PhoneBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneBookController.m; sourceTree = "<group>"; };
 		7BF398131D5CC1DE004CDFE8 /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash.jpg; sourceTree = "<group>"; };
 		7BF75B731D75C73D00CB03A2 /* aay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aay.png; sourceTree = "<group>"; };
+		7BF75B751D77188800CB03A2 /* publishrecordcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = publishrecordcell.xib; sourceTree = "<group>"; };
+		7BF75B771D7718C900CB03A2 /* record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record.png; sourceTree = "<group>"; };
+		7BF75B791D771A4000CB03A2 /* record_start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record_start.png; sourceTree = "<group>"; };
+		7BF75B7B1D771AA700CB03A2 /* PublishRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishRecordCell.h; sourceTree = "<group>"; };
+		7BF75B7C1D771AA700CB03A2 /* PublishRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishRecordCell.m; sourceTree = "<group>"; };
+		7BF75B7E1D771B8700CB03A2 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		7BF75B801D771BAC00CB03A2 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
+		7BF75B821D771BE700CB03A2 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		7BF75B841D771C3700CB03A2 /* publishcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = publishcell.xib; sourceTree = "<group>"; };
+		7BF75B861D771D4B00CB03A2 /* PublishCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishCell.h; sourceTree = "<group>"; };
+		7BF75B871D771D4B00CB03A2 /* PublishCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishCell.m; sourceTree = "<group>"; };
+		7BF75B891D77238800CB03A2 /* sendmubiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendmubiao.png; sourceTree = "<group>"; };
+		7BF75B8B1D7723FD00CB03A2 /* shenpiren.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shenpiren.png; sourceTree = "<group>"; };
 		B40C1AD31D33443700AFE71A /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		B40C1AD41D33443700AFE71A /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		B40C1AD61D33469400AFE71A /* UserInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoCell.xib; sourceTree = "<group>"; };
@@ -191,6 +215,12 @@
 				7B19691F1D6DEC0000108B4A /* MessageCell.xib */,
 				7B1969211D6DEC1700108B4A /* MessageCell.h */,
 				7B1969221D6DEC1700108B4A /* MessageCell.m */,
+				7BF75B751D77188800CB03A2 /* publishrecordcell.xib */,
+				7BF75B7B1D771AA700CB03A2 /* PublishRecordCell.h */,
+				7BF75B7C1D771AA700CB03A2 /* PublishRecordCell.m */,
+				7BF75B841D771C3700CB03A2 /* publishcell.xib */,
+				7BF75B861D771D4B00CB03A2 /* PublishCell.h */,
+				7BF75B871D771D4B00CB03A2 /* PublishCell.m */,
 			);
 			name = Message;
 			sourceTree = "<group>";
@@ -370,6 +400,13 @@
 		B48B0F2F1D2E4E8900646A20 /* png */ = {
 			isa = PBXGroup;
 			children = (
+				7BF75B8B1D7723FD00CB03A2 /* shenpiren.png */,
+				7BF75B891D77238800CB03A2 /* sendmubiao.png */,
+				7BF75B821D771BE700CB03A2 /* pause.png */,
+				7BF75B801D771BAC00CB03A2 /* stop.png */,
+				7BF75B7E1D771B8700CB03A2 /* play.png */,
+				7BF75B791D771A4000CB03A2 /* record_start.png */,
+				7BF75B771D7718C900CB03A2 /* record.png */,
 				7BF75B731D75C73D00CB03A2 /* aay.png */,
 				7B1969241D6DECA500108B4A /* notice.png */,
 				7B89D9471D68961D000D712D /* historyjd.png */,
@@ -467,31 +504,40 @@
 			files = (
 				B40C1AE31D3379C600AFE71A /* userinfo_2.png in Resources */,
 				7BF75B741D75C73D00CB03A2 /* aay.png in Resources */,
+				7BF75B811D771BAC00CB03A2 /* stop.png in Resources */,
 				B44D0A071D2F4AA900F76DFF /* setting1.png in Resources */,
+				7BF75B8A1D77238800CB03A2 /* sendmubiao.png in Resources */,
 				7B1969251D6DECA500108B4A /* notice.png in Resources */,
 				B40C1AED1D337DF900AFE71A /* logo.png in Resources */,
 				7B1969201D6DEC0000108B4A /* MessageCell.xib in Resources */,
 				B44D0A0D1D2F4B9C00F76DFF /* setting4.png in Resources */,
 				B48B0F211D2E498100646A20 /* LaunchScreen.storyboard in Resources */,
+				7BF75B851D771C3700CB03A2 /* publishcell.xib in Resources */,
 				B40C1AF01D33807000AFE71A /* pwd_icon.png in Resources */,
+				7BF75B8C1D7723FD00CB03A2 /* shenpiren.png in Resources */,
 				7B89D9481D68961D000D712D /* historyjd.png in Resources */,
+				7BF75B781D7718C900CB03A2 /* record.png in Resources */,
 				B40C1AE91D337A3700AFE71A /* userinfo_5.png in Resources */,
 				B40C1ADE1D3348BF00AFE71A /* UserInfoCell2.xib in Resources */,
+				7BF75B831D771BE700CB03A2 /* pause.png in Resources */,
 				B40C1AE71D337A1B00AFE71A /* userinfo_4.png in Resources */,
 				B40C1AEB1D337A4A00AFE71A /* userinfo_6.png in Resources */,
 				B48B0F1E1D2E498100646A20 /* Assets.xcassets in Resources */,
 				B44D0A091D2F4B4F00F76DFF /* setting2.png in Resources */,
+				7BF75B7F1D771B8700CB03A2 /* play.png in Resources */,
 				B48B0F311D2E4E8F00646A20 /* profile_bg.png in Resources */,
 				7B89D9461D68960D000D712D /* publishjd.png in Resources */,
 				B40C1AE51D3379ED00AFE71A /* userinfo_3.png in Resources */,
 				B44D0A0F1D2F4BBE00F76DFF /* setting5.png in Resources */,
 				7BF398141D5CC1DE004CDFE8 /* splash.jpg in Resources */,
+				7BF75B7A1D771A4000CB03A2 /* record_start.png in Resources */,
 				B44D0A0B1D2F4B7200F76DFF /* setting3.png in Resources */,
 				7B318E1E1D63573A002A9B59 /* phonebookcell.xib in Resources */,
 				B40C1AD71D33469400AFE71A /* UserInfoCell.xib in Resources */,
 				B40C1AD91D33471B00AFE71A /* userinfo_1.png in Resources */,
 				B48B0F1C1D2E498100646A20 /* Main.storyboard in Resources */,
 				7BB56DEE1D5F2E3B002C80A3 /* default_avatar.png in Resources */,
+				7BF75B761D77188800CB03A2 /* publishrecordcell.xib in Resources */,
 				B40C1AF11D33807000AFE71A /* user_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +557,7 @@
 				7BB56DF21D5F3A5B002C80A3 /* db.xcdatamodeld in Sources */,
 				7BB56E071D5F3D6A002C80A3 /* Department.m in Sources */,
 				B48B0F2C1D2E4ADF00646A20 /* MainTabBarController.m in Sources */,
+				7BF75B7D1D771AA700CB03A2 /* PublishRecordCell.m in Sources */,
 				7B89D94B1D69E3EB000D712D /* PublishViewController.m in Sources */,
 				B48B0F381D2E53D000646A20 /* UserInfo.m in Sources */,
 				B48B0F3B1D2E542E00646A20 /* ServerInfo.m in Sources */,
@@ -521,6 +568,7 @@
 				7B1969231D6DEC1700108B4A /* MessageCell.m in Sources */,
 				B40C1AF41D33837600AFE71A /* LoginViewController.m in Sources */,
 				7B19691D1D6B406400108B4A /* DDInfo.m in Sources */,
+				7BF75B881D771D4B00CB03A2 /* PublishCell.m in Sources */,
 				7B89D93B1D676FB5000D712D /* MQTTServer.m in Sources */,
 				7B318E211D6357D0002A9B59 /* PhoneBookCell.m in Sources */,
 				7BB56E0D1D5F45F4002C80A3 /* Contacts.m in Sources */,

@@ -10,6 +10,8 @@
 #import <Common/PublicCommon.h>
 #import <Common/FileCommon.h>
 #import "UserInfo.h"
+#import "PublishRecordCell.h"
+#import "PublishCell.h"
 
 @interface PublishViewController ()
 
@@ -59,7 +61,7 @@
     picturls.contentSize = CGSizeMake([ PublicCommon GetScreen].size.width,0);
     [picturls  addSubview:btnaddimage];
     [btnaddimage  addTarget:self action:@selector(ClickAddImage) forControlEvents:UIControlEventTouchUpInside];
-    
+    IsAPPROVE =NO;
     [self initTable];
     // Do any additional setup after loading the view.
 }
@@ -153,10 +155,108 @@
 
 -(void)initTable
 {
+    if ([[UserInfo getInstance].auth containsObject:@"DISPATCH_APPROVE"])
+        IsAPPROVE =YES;
+    else
+        IsAPPROVE = NO;
     
+    UINib *nib = [UINib nibWithNibName:@"publishrecordcell" bundle:nil];
+    [tablemenu registerNib:nib forCellReuseIdentifier:@"cell1"];
+    nib = [UINib nibWithNibName:@"publishcell" bundle:nil];
+    [tablemenu registerNib:nib forCellReuseIdentifier:@"cell2"];
+    tablemenu.backgroundColor=[UIColor clearColor];
+    tablemenu.delegate=self;
+    tablemenu.dataSource=self;
 }
 
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *v = [[UIView alloc] init];
+    return v;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 1;
+}
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIView *selectview = [[UIView alloc] init];
+    selectview.frame = cell.contentView.frame;
+
+    if (indexPath.section==0)
+    {
+        selectview.backgroundColor=[UIColor clearColor];
+    }
+    else
+        selectview.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:0.03];
+    cell.selectedBackgroundView =selectview;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+
+        case 1:
+            
+            return 10;
+    }
+    return 0;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section ==0)
+        return 1;
+    else if (section ==1)
+    {
+        if (IsAPPROVE)
+            return 1;
+        else
+            return 2;
+    }
+    return 0;
+}
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    PublishRecordCell *cell1;
+    PublishCell *cell2;
+    switch (indexPath.section) {
+        case 0:
+            cell1 = [tablemenu dequeueReusableCellWithIdentifier:@"cell1"];
+            
+            
+            return cell1;
+        case 1:
+           cell2 = [tablemenu dequeueReusableCellWithIdentifier:@"cell2"];
+            if (indexPath.row==0)
+            {
+                cell2.cellimg.image=[UIImage imageNamed:@"sendmubiao"];
+                cell2.celltitle.text=@"发送目标";
+                cell2.cellcontent.text=@"";
+            }else if (indexPath.row==1)
+            {
+                cell2.cellimg.image=[UIImage imageNamed:@"shenpiren"];
+                cell2.celltitle.text=@"审批领导";
+                cell2.cellcontent.text=@"";
+            }
+            
+            return cell2;
+    }
+    
+    
+    return nil;
+}
 
 -(void)closeinput
 {

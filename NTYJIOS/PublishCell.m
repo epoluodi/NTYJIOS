@@ -1,25 +1,17 @@
 //
-//  UserInfoCell1.m
+//  PublishCell.m
 //  NTYJIOS
 //
-//  Created by Stereo on 16/7/11.
+//  Created by 程嘉雯 on 16/8/31.
 //  Copyright © 2016年 Suypower. All rights reserved.
 //
 
-#import "UserInfoCell1.h"
+#import "PublishCell.h"
 
+@implementation PublishCell
 
-
-@implementation UserInfoCell1
-@synthesize nickimg;
 - (void)awakeFromNib {
     [super awakeFromNib];
-    nickimg.layer.borderColor = [[UIColor grayColor] CGColor];
-    nickimg.layer.borderWidth=1;
-    nickimg.layer.cornerRadius=6;
-    nickimg.layer.masksToBounds=YES;
-
-    
     // Initialization code
 }
 

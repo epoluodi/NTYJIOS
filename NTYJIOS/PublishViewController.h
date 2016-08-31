@@ -18,8 +18,12 @@
     int words;
     UIButton *btnaddimage;
     UIImagePickerController *pickerview;
+    BOOL IsAPPROVE;
     
-    int rows;
+    
+    
+    
+    
 }
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navbar;
