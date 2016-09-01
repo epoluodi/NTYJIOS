@@ -59,6 +59,7 @@
     picturls.showsHorizontalScrollIndicator=NO;
     picturls.alwaysBounceVertical=NO;
     picturls.contentSize = CGSizeMake([ PublicCommon GetScreen].size.width,0);
+    picturls.userInteractionEnabled=YES;
     [picturls  addSubview:btnaddimage];
     [btnaddimage  addTarget:self action:@selector(ClickAddImage) forControlEvents:UIControlEventTouchUpInside];
     IsAPPROVE =NO;
@@ -133,6 +134,7 @@
     
     
     UIImageView *imgview = [[UIImageView alloc] init];
+    imgview.userInteractionEnabled=YES;
     imgview.image = image;
     imgview.contentMode=UIViewContentModeScaleAspectFill;
     imgview.frame=CGRectMake(3 +
@@ -144,15 +146,41 @@
     imgview.layer.borderColor = [[[UIColor blackColor] colorWithAlphaComponent:0.3] CGColor];
     imgview.layer.borderWidth=1;
     imgview.layer.masksToBounds=YES;
+    
     [mediaids addObject:uuid];
     [addedimage addObject:imgview];
     btnaddimage.frame=CGRectMake(3 +
                                  ([mediaids count] * 98) +
                                  ([mediaids count] * 3), 3, 98, 71);
+    
+    UILongPressGestureRecognizer *longpress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTapAction:)];
+    [imgview addGestureRecognizer:longpress];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(TapAction:)];
+    tap.numberOfTapsRequired=1;
+    [imgview addGestureRecognizer:tap];
+
+
 }
 
+- (void) TapAction:(UILongPressGestureRecognizer *)longpressGetture
+{
+            NSLog(@"Tap pressTap state :begin");
+}
+- (void) longTapAction:(UILongPressGestureRecognizer *)longpressGetture {
 
 
+    
+    if (longpressGetture.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"long pressTap state :begin");
+    }else {
+        NSLog(@"long pressTap state :end");
+        UIImageView *imgview = (UIImageView *)longpressGetture.view;
+        [mediaids removeObjectAtIndex:[addedimage indexOfObject:imgview]];
+        [addedimage removeObject:imgview];
+        [imgview removeFromSuperview];
+    }
+    
+}
 -(void)initTable
 {
     if ([[UserInfo getInstance].auth containsObject:@"DISPATCH_APPROVE"])

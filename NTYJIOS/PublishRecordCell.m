@@ -8,14 +8,19 @@
 
 #import "PublishRecordCell.h"
 
-#import <Common/FileCommon.h>
-#define kRecordAudioFile @"myRecord.aac"
+
+
 
 
 @implementation PublishRecordCell
+@synthesize powerprocess,btnplay,btncontrol;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    powerprocess.hidden=YES;
+    btnplay.hidden=YES;
+    media = [[MediaRecord alloc] init];
+    media.delegate = self;
     // Initialization code
 }
 
@@ -27,72 +32,58 @@
 
 
 
--(void)initRecordSession
-{
-    AVAudioSession *audioSession=[AVAudioSession sharedInstance];
-    //设置为播放和录音状态，以便可以在录制完之后播放录音
-    [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-    [audioSession setActive:YES error:nil];
-    
-    dicM=[NSMutableDictionary dictionary];
-    //设置录音格式
-    [dicM setObject:@(kAudioFormatMPEG4AAC) forKey:AVFormatIDKey];
-    //设置录音采样率，8000是电话采样率，对于一般录音已经够了
-    [dicM setObject:@(8000) forKey:AVSampleRateKey];
-    //设置通道,这里采用单声道
-    [dicM setObject:@(1) forKey:AVNumberOfChannelsKey];
-    //每个采样点位数,分为8、16、24、32
-    [dicM setObject:@(16) forKey:AVLinearPCMBitDepthKey];
-    //是否使用浮点数采样
-    [dicM setObject:@(YES) forKey:AVLinearPCMIsFloatKey];
-    //....其他设置等
-    
 
-    NSString * urlStr=[[FileCommon getCacheDirectory] stringByAppendingPathComponent:kRecordAudioFile];
-    NSLog(@"file path:%@",urlStr);
-    pathurl=[NSURL fileURLWithPath:urlStr];
-    timer=[NSTimer scheduledTimerWithTimeInterval:0.3f target:self selector:@selector(audioPowerChange) userInfo:nil repeats:YES];
-}
-
-
--(void)audioPowerChange
-{
-    [audioRecorder updateMeters];//更新测量值
-    float power= [audioRecorder averagePowerForChannel:0];//取得第一个通道的音频，注意音频强度范围时-160到0
-    NSLog(@"声波:%f",power);
-//    CGFloat progress=(1.0/160.0)*(power+160.0);
-//    [self.audioPower setProgress:progress];
-}
-
-
-
-/**
- *  获得录音机对象
- *
- *  @return 录音机对象
- */
--(void)audioRecorder{
-    if (!audioRecorder) {
-  
-        //创建录音机
-        NSError *error=nil;
-        audioRecorder=[[AVAudioRecorder alloc]initWithURL:pathurl settings:dicM error:&error];
-        audioRecorder.delegate=self;
-        audioRecorder.meteringEnabled=YES;//如果要监控声波则必须设置为YES
-        if (error) {
-            NSLog(@"创建录音机对象时发生错误，错误信息：%@",error.localizedDescription);
-            return;
-        }
+- (IBAction)ClickRecord:(id)sender {
+    if ([media getRecordState]){
+        powerprocess.hidden=YES;
+        [media StopRecord];
+        [ btncontrol setBackgroundImage:[UIImage imageNamed:@"record_start"] forState:UIControlStateNormal];
     }
-    return;
+    else{
+        btnplay.hidden=NO;
+        powerprocess.hidden=NO;
+        [media StartRecord];
+          [ btncontrol setBackgroundImage:[UIImage imageNamed:@"stop"] forState:UIControlStateNormal];
+    }
 }
 
--(void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag{
-//    if (![audioPlayer isPlaying]) {
-//        [audioPlayer play];
-//    }
-    NSLog(@"录音完成!");
+- (IBAction)ClickPlayAndStop:(id)sender {
+    if ([media getPlayState]){
+        [media audioStop];
+           [ btnplay setBackgroundImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+    }
+    else{
+        [media audioPlayer];
+               [ btnplay setBackgroundImage:[UIImage imageNamed:@"stop"] forState:UIControlStateNormal];
+    }
+    
 }
 
+-(void)OnStartRecord
+{
+    NSLog(@"录音开始");
+}
 
+-(void)OnCancelRecord
+{
+        NSLog(@"录音结束");
+    powerprocess.hidden=YES;
+    btnplay.hidden=YES;
+    [ btncontrol setBackgroundImage:[UIImage imageNamed:@"record_start"] forState:UIControlStateNormal];
+}
+-(void)OnPowerChange:(float)power
+{
+    CGFloat progress=(1.0/160.0)*(power+160.0);
+    [powerprocess setProgress:progress animated:YES];
+}
+-(void)OnStopRecord:(NSString *)filename
+{
+    [ btncontrol setBackgroundImage:[UIImage imageNamed:@"record_start"] forState:UIControlStateNormal];
+    recordfilename = filename;
+    NSLog(@"录音文件 %@",filename);
+}
+-(void)OnPlayEnd
+{
+    [ btnplay setBackgroundImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+}
 @end

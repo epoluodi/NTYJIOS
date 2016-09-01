@@ -28,6 +28,9 @@
                             <constraint firstAttribute="height" constant="32" id="sya-nz-kMh"/>
                         </constraints>
                         <state key="normal" backgroundImage="record_start.png"/>
+                        <connections>
+                            <action selector="ClickRecord:" destination="PAa-gQ-6mZ" eventType="touchUpInside" id="5CB-sy-wD3"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="录音" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqN-Qt-vnh">
                         <rect key="frame" x="46" y="14" width="42" height="21"/>
@@ -39,9 +42,28 @@
                         <color key="textColor" red="0.43976878159999999" green="0.43976878159999999" blue="0.43976878159999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bfc-VL-t1v">
+                        <rect key="frame" x="103" y="24" width="123" height="2"/>
+                    </progressView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bro-yD-M0l">
+                        <rect key="frame" x="240" y="8" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="0kq-73-AlL"/>
+                            <constraint firstAttribute="width" constant="32" id="33L-0V-z4x"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="play.png"/>
+                        <connections>
+                            <action selector="ClickPlayAndStop:" destination="PAa-gQ-6mZ" eventType="touchUpInside" id="wuM-YZ-jzO"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="bfc-VL-t1v" firstAttribute="top" secondItem="mTS-jM-Z7j" secondAttribute="top" constant="24" id="LBo-5d-leO"/>
+                    <constraint firstAttribute="trailing" secondItem="bfc-VL-t1v" secondAttribute="trailing" constant="94" id="R44-dO-E6m"/>
                     <constraint firstItem="fdP-ct-cgN" firstAttribute="leading" secondItem="mTS-jM-Z7j" secondAttribute="leading" constant="8" id="RgL-zI-iib"/>
+                    <constraint firstItem="6cm-Nh-byv" firstAttribute="leading" secondItem="bro-yD-M0l" secondAttribute="trailing" constant="8" id="UiX-Q7-9kl"/>
+                    <constraint firstItem="bfc-VL-t1v" firstAttribute="leading" secondItem="mTS-jM-Z7j" secondAttribute="leading" constant="103" id="V4i-mL-r23"/>
+                    <constraint firstItem="bro-yD-M0l" firstAttribute="top" secondItem="mTS-jM-Z7j" secondAttribute="top" constant="8" id="c85-h7-DRS"/>
                     <constraint firstItem="kqN-Qt-vnh" firstAttribute="leading" secondItem="fdP-ct-cgN" secondAttribute="trailing" constant="8" id="fkz-Os-3eg"/>
                     <constraint firstItem="6cm-Nh-byv" firstAttribute="top" secondItem="mTS-jM-Z7j" secondAttribute="top" constant="8" id="gbH-2l-QW3"/>
                     <constraint firstItem="fdP-ct-cgN" firstAttribute="top" secondItem="mTS-jM-Z7j" secondAttribute="top" constant="10" id="jPe-47-nTM"/>
@@ -51,11 +73,14 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btncontrol" destination="6cm-Nh-byv" id="lB6-i9-csA"/>
+                <outlet property="btnplay" destination="bro-yD-M0l" id="f0U-h5-J3C"/>
+                <outlet property="powerprocess" destination="bfc-VL-t1v" id="kpb-Lb-CoZ"/>
             </connections>
             <point key="canvasLocation" x="483" y="179"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="play.png" width="32" height="32"/>
         <image name="record.png" width="32" height="32"/>
         <image name="record_start.png" width="32" height="32"/>
     </resources>

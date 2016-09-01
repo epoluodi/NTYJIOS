@@ -66,6 +66,7 @@
 		B44D0A0D1D2F4B9C00F76DFF /* setting4.png in Resources */ = {isa = PBXBuildFile; fileRef = B44D0A0C1D2F4B9C00F76DFF /* setting4.png */; };
 		B44D0A0F1D2F4BBE00F76DFF /* setting5.png in Resources */ = {isa = PBXBuildFile; fileRef = B44D0A0E1D2F4BBE00F76DFF /* setting5.png */; };
 		B44D0A131D2F4FD400F76DFF /* ModiPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = B44D0A121D2F4FD400F76DFF /* ModiPwdController.m */; };
+		B465FBCC1D780E0200AFE593 /* MediaRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B465FBCB1D780E0200AFE593 /* MediaRecord.m */; };
 		B48B0F131D2E498100646A20 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B48B0F121D2E498100646A20 /* main.m */; };
 		B48B0F161D2E498100646A20 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B48B0F151D2E498100646A20 /* AppDelegate.m */; };
 		B48B0F1C1D2E498100646A20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48B0F1A1D2E498100646A20 /* Main.storyboard */; };
@@ -175,6 +176,8 @@
 		B44D0A0E1D2F4BBE00F76DFF /* setting5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting5.png; sourceTree = "<group>"; };
 		B44D0A111D2F4FD400F76DFF /* ModiPwdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModiPwdController.h; sourceTree = "<group>"; };
 		B44D0A121D2F4FD400F76DFF /* ModiPwdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModiPwdController.m; sourceTree = "<group>"; };
+		B465FBCA1D780E0200AFE593 /* MediaRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaRecord.h; sourceTree = "<group>"; };
+		B465FBCB1D780E0200AFE593 /* MediaRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaRecord.m; sourceTree = "<group>"; };
 		B48B0F0E1D2E498000646A20 /* NTYJIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTYJIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B48B0F121D2E498100646A20 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B48B0F141D2E498100646A20 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -393,6 +396,8 @@
 				B48B0F371D2E53D000646A20 /* UserInfo.m */,
 				B48B0F391D2E542E00646A20 /* ServerInfo.h */,
 				B48B0F3A1D2E542E00646A20 /* ServerInfo.m */,
+				B465FBCA1D780E0200AFE593 /* MediaRecord.h */,
+				B465FBCB1D780E0200AFE593 /* MediaRecord.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -549,6 +554,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B465FBCC1D780E0200AFE593 /* MediaRecord.m in Sources */,
 				7BB56E131D5F5A1C002C80A3 /* PhoneBookController.m in Sources */,
 				B48B0F161D2E498100646A20 /* AppDelegate.m in Sources */,
 				B40C1ADC1D33478200AFE71A /* UserInfoCell1.m in Sources */,

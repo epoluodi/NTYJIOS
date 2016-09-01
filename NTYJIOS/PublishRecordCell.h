@@ -7,17 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-@interface PublishRecordCell : UITableViewCell<AVAudioRecorderDelegate>
+#import "MediaRecord.h"
+
+@interface PublishRecordCell : UITableViewCell<Recorddelegate>
 {
-    AVAudioRecorder *audioRecorder;//音频录音机
-    AVAudioPlayer *audioPlayer;//音频播放器，用于播放录音文件
-    NSURL *pathurl;
-    NSMutableDictionary *dicM;
-    NSTimer *timer;
+    MediaRecord *media;
+    NSString *recordfilename;
 }
 
 
 @property (weak, nonatomic) IBOutlet UIButton *btncontrol;
+@property (weak, nonatomic) IBOutlet UIButton *btnplay;
+
+@property (weak, nonatomic) IBOutlet UIProgressView *powerprocess;
+
+
+- (IBAction)ClickRecord:(id)sender;
+- (IBAction)ClickPlayAndStop:(id)sender;
+
+
 
 @end
