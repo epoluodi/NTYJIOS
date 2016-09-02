@@ -58,6 +58,11 @@
 		B40C1AF41D33837600AFE71A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B40C1AF31D33837600AFE71A /* LoginViewController.m */; };
 		B40C1AF61D338F2A00AFE71A /* libHttpLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B40C1AF51D338F2A00AFE71A /* libHttpLib.a */; };
 		B40C1B021D3392BA00AFE71A /* HttpServer.m in Sources */ = {isa = PBXBuildFile; fileRef = B40C1B011D3392BA00AFE71A /* HttpServer.m */; };
+		B42E582C1D7952B0005ADE1F /* SelectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B42E582B1D7952B0005ADE1F /* SelectListViewController.m */; };
+		B42E582F1D795934005ADE1F /* selectlistcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B42E582E1D795934005ADE1F /* selectlistcell.xib */; };
+		B42E58321D795AE1005ADE1F /* checkbox_select.png in Resources */ = {isa = PBXBuildFile; fileRef = B42E58301D795AE1005ADE1F /* checkbox_select.png */; };
+		B42E58331D795AE1005ADE1F /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = B42E58311D795AE1005ADE1F /* checkbox.png */; };
+		B42E58361D795BFC005ADE1F /* SelectListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B42E58351D795BFC005ADE1F /* SelectListCell.m */; };
 		B44D0A011D2F420800F76DFF /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B44D0A001D2F420800F76DFF /* Common.framework */; };
 		B44D0A031D2F421700F76DFF /* Common.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B44D0A001D2F420800F76DFF /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B44D0A071D2F4AA900F76DFF /* setting1.png in Resources */ = {isa = PBXBuildFile; fileRef = B44D0A061D2F4AA900F76DFF /* setting1.png */; };
@@ -168,6 +173,13 @@
 		B40C1AFE1D33913B00AFE71A /* ReturnData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReturnData.h; sourceTree = "<group>"; };
 		B40C1B001D3392BA00AFE71A /* HttpServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpServer.h; sourceTree = "<group>"; };
 		B40C1B011D3392BA00AFE71A /* HttpServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpServer.m; sourceTree = "<group>"; };
+		B42E582A1D7952B0005ADE1F /* SelectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectListViewController.h; sourceTree = "<group>"; };
+		B42E582B1D7952B0005ADE1F /* SelectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectListViewController.m; sourceTree = "<group>"; };
+		B42E582E1D795934005ADE1F /* selectlistcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = selectlistcell.xib; sourceTree = "<group>"; };
+		B42E58301D795AE1005ADE1F /* checkbox_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_select.png; sourceTree = "<group>"; };
+		B42E58311D795AE1005ADE1F /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
+		B42E58341D795BFC005ADE1F /* SelectListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectListCell.h; sourceTree = "<group>"; };
+		B42E58351D795BFC005ADE1F /* SelectListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectListCell.m; sourceTree = "<group>"; };
 		B44D0A001D2F420800F76DFF /* Common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Common.framework; sourceTree = "<group>"; };
 		B44D0A061D2F4AA900F76DFF /* setting1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting1.png; sourceTree = "<group>"; };
 		B44D0A081D2F4B4F00F76DFF /* setting2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting2.png; sourceTree = "<group>"; };
@@ -293,6 +305,16 @@
 			name = Httpserver;
 			sourceTree = "<group>";
 		};
+		B42E582D1D7958EA005ADE1F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B42E582E1D795934005ADE1F /* selectlistcell.xib */,
+				B42E58341D795BFC005ADE1F /* SelectListCell.h */,
+				B42E58351D795BFC005ADE1F /* SelectListCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		B44D0A101D2F4FBB00F76DFF /* me */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,6 +387,7 @@
 		B48B0F291D2E4ABB00646A20 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				B42E582D1D7958EA005ADE1F /* Cell */,
 				7B19691E1D6DEBED00108B4A /* Message */,
 				7B318E1C1D63571B002A9B59 /* phonebook */,
 				B44D0A101D2F4FBB00F76DFF /* me */,
@@ -382,6 +405,8 @@
 				7B89D93D1D688B20000D712D /* MessageViewContoller.m */,
 				7B89D9491D69E3EB000D712D /* PublishViewController.h */,
 				7B89D94A1D69E3EB000D712D /* PublishViewController.m */,
+				B42E582A1D7952B0005ADE1F /* SelectListViewController.h */,
+				B42E582B1D7952B0005ADE1F /* SelectListViewController.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -405,6 +430,8 @@
 		B48B0F2F1D2E4E8900646A20 /* png */ = {
 			isa = PBXGroup;
 			children = (
+				B42E58301D795AE1005ADE1F /* checkbox_select.png */,
+				B42E58311D795AE1005ADE1F /* checkbox.png */,
 				7BF75B8B1D7723FD00CB03A2 /* shenpiren.png */,
 				7BF75B891D77238800CB03A2 /* sendmubiao.png */,
 				7BF75B821D771BE700CB03A2 /* pause.png */,
@@ -517,6 +544,7 @@
 				7B1969201D6DEC0000108B4A /* MessageCell.xib in Resources */,
 				B44D0A0D1D2F4B9C00F76DFF /* setting4.png in Resources */,
 				B48B0F211D2E498100646A20 /* LaunchScreen.storyboard in Resources */,
+				B42E58321D795AE1005ADE1F /* checkbox_select.png in Resources */,
 				7BF75B851D771C3700CB03A2 /* publishcell.xib in Resources */,
 				B40C1AF01D33807000AFE71A /* pwd_icon.png in Resources */,
 				7BF75B8C1D7723FD00CB03A2 /* shenpiren.png in Resources */,
@@ -534,7 +562,9 @@
 				7B89D9461D68960D000D712D /* publishjd.png in Resources */,
 				B40C1AE51D3379ED00AFE71A /* userinfo_3.png in Resources */,
 				B44D0A0F1D2F4BBE00F76DFF /* setting5.png in Resources */,
+				B42E582F1D795934005ADE1F /* selectlistcell.xib in Resources */,
 				7BF398141D5CC1DE004CDFE8 /* splash.jpg in Resources */,
+				B42E58331D795AE1005ADE1F /* checkbox.png in Resources */,
 				7BF75B7A1D771A4000CB03A2 /* record_start.png in Resources */,
 				B44D0A0B1D2F4B7200F76DFF /* setting3.png in Resources */,
 				7B318E1E1D63573A002A9B59 /* phonebookcell.xib in Resources */,
@@ -576,7 +606,9 @@
 				7B19691D1D6B406400108B4A /* DDInfo.m in Sources */,
 				7BF75B881D771D4B00CB03A2 /* PublishCell.m in Sources */,
 				7B89D93B1D676FB5000D712D /* MQTTServer.m in Sources */,
+				B42E582C1D7952B0005ADE1F /* SelectListViewController.m in Sources */,
 				7B318E211D6357D0002A9B59 /* PhoneBookCell.m in Sources */,
+				B42E58361D795BFC005ADE1F /* SelectListCell.m in Sources */,
 				7BB56E0D1D5F45F4002C80A3 /* Contacts.m in Sources */,
 				7B89D9441D68951C000D712D /* FTPopOverMenu.m in Sources */,
 				B40C1B021D3392BA00AFE71A /* HttpServer.m in Sources */,

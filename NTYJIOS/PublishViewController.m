@@ -12,6 +12,7 @@
 #import "UserInfo.h"
 #import "PublishRecordCell.h"
 #import "PublishCell.h"
+#import "SelectListViewController.h"
 
 @interface PublishViewController ()
 
@@ -70,9 +71,7 @@
 -(void)textViewDidChange:(UITextView *)textView
 {
     words = (int)textView.text.length;
-    
     wordcount.text= [NSString stringWithFormat:@"%d/800 字",words];
-    
 }
 
 //添加图片
@@ -141,7 +140,7 @@
                              ([mediaids count] * 98) +
                              ([mediaids count] * 3),
                              3, 98, 71);
-
+    
     [picturls addSubview:imgview];
     imgview.layer.borderColor = [[[UIColor blackColor] colorWithAlphaComponent:0.3] CGColor];
     imgview.layer.borderWidth=1;
@@ -158,26 +157,50 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(TapAction:)];
     tap.numberOfTapsRequired=1;
     [imgview addGestureRecognizer:tap];
-
-
+    
+    
 }
 
 - (void) TapAction:(UILongPressGestureRecognizer *)longpressGetture
 {
-            NSLog(@"Tap pressTap state :begin");
+    NSLog(@"Tap pressTap state :begin");
 }
 - (void) longTapAction:(UILongPressGestureRecognizer *)longpressGetture {
-
-
+    
+    
     
     if (longpressGetture.state == UIGestureRecognizerStateBegan) {
         NSLog(@"long pressTap state :begin");
     }else {
         NSLog(@"long pressTap state :end");
         UIImageView *imgview = (UIImageView *)longpressGetture.view;
-        [mediaids removeObjectAtIndex:[addedimage indexOfObject:imgview]];
+        uint index = (uint)[addedimage indexOfObject:imgview];
+        if (![addedimage containsObject:imgview])
+            return;
+        [mediaids removeObjectAtIndex:index];
         [addedimage removeObject:imgview];
         [imgview removeFromSuperview];
+        __block int i = 0;
+        [UIView beginAnimations:nil context:nil];
+        [UIView animateWithDuration:0.4f animations:^{
+            for (UIImageView *_imgview in addedimage) {
+                
+                _imgview.frame=CGRectMake(3 +
+                                          (i * 98) +
+                                          (i* 3), 3, 98, 71);
+                i++;
+            }
+            btnaddimage.frame =CGRectMake(3+ (i * 98) +
+                                          (i* 3), 3, 98, 71);
+        }];
+        
+        [UIView commitAnimations];
+        
+   
+        
+        
+        
+        
     }
     
 }
@@ -219,7 +242,7 @@
 {
     UIView *selectview = [[UIView alloc] init];
     selectview.frame = cell.contentView.frame;
-
+    
     if (indexPath.section==0)
     {
         selectview.backgroundColor=[UIColor clearColor];
@@ -231,7 +254,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     switch (section) {
-
+            
         case 1:
             
             return 10;
@@ -266,7 +289,7 @@
             
             return cell1;
         case 1:
-           cell2 = [tablemenu dequeueReusableCellWithIdentifier:@"cell2"];
+            cell2 = [tablemenu dequeueReusableCellWithIdentifier:@"cell2"];
             if (indexPath.row==0)
             {
                 cell2.cellimg.image=[UIImage imageNamed:@"sendmubiao"];
@@ -286,6 +309,28 @@
     return nil;
 }
 
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SelectListViewController *selectvc;
+    if (indexPath.section ==1)
+    {
+        switch (indexPath.row) {
+            case 0:
+                selectvc = (SelectListViewController *)[storyboard instantiateViewControllerWithIdentifier:@"selectList"];
+                selectvc.titleCommon=@"选择发送目标";
+                selectvc.listtype = DEPARTMENT;
+                [self presentViewController:selectvc animated:YES completion:nil];
+                
+                break;
+            case 1:
+                
+                break;
+                
+        }
+    }
+}
 -(void)closeinput
 {
     [edittitle resignFirstResponder];
