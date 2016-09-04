@@ -44,7 +44,7 @@
 }
 
 //文件下载
--(BOOL)FileDownload:(NSString *)mediaid suffix:(NSString *)suffix mediatype:(NSString *)mediatype
+-(NSData *)FileDownload:(NSString *)mediaid suffix:(NSString *)suffix mediatype:(NSString *)mediatype
 {
     HttpClass *http = [[HttpClass alloc] init:url];
     [http setIsHead:YES];
@@ -56,16 +56,16 @@
     [http addParamsString:@"suffix" values:suffix];
     NSData *data = [http httprequest:[http getDataForArrary]];
     if (!data )
-        return NO;
+        return nil;
     if (data.length==0)
-        return NO;
+        return nil;
     
-    [UserInfo getInstance].nickimg = [UIImage imageWithData:data];
+  
     NSFileManager *filenamger = [NSFileManager defaultManager];
     NSString *path = [FileCommon getCacheDirectory];
     NSString* _filename = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@",mediaid,mediatype]];
     [filenamger createFileAtPath:_filename contents:data attributes:nil];
-    return YES;
+    return data;
     
     
     
@@ -73,6 +73,7 @@
 
 //上传
 -(ReturnData *)uploadfile:(NSData *)filedata mediaid:(NSString *)mediaid mediatype:(NSString *)mediatype
+                 filetype:(NSString *)filetype
 {
     HttpClass *http = [[HttpClass alloc] init:url];
     [http setIsHead:YES];
@@ -82,8 +83,13 @@
     [http addHeadString:@"mediaId" value:mediaid];
     [http addHeadString:@"mediaType" value:mediatype];
     
-
-    NSData *d = [http UploadFile:mediaid FileData:filedata];
+    NSString *contenttype;
+    if ([filetype isEqualToString:@".jpg"])
+        contenttype = @"image/jpg";
+    else if ([filetype isEqualToString:@".aac"])
+        contenttype = @"audio/vnd.dlna.adts";
+    
+    NSData *d = [http UploadFile:[NSString stringWithFormat:@"%@%@",mediaid,filetype] FileData:filedata contenttype:contenttype];
   
     if (!d)
         return nil;

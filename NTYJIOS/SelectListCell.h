@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface SelectListCell : UITableViewCell
+{
+    BOOL IsChk;
+    
+}
+
+@property (weak, nonatomic) IBOutlet UILabel *celltitle;
+@property (weak, nonatomic) IBOutlet UIButton *chk;
+
 
 @end

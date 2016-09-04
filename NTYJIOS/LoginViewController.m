@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import <Common/PublicCommon.h>
+#import <Common/FileCommon.h>
 #import "Common.h"
 #import "HttpServer.h"
 #import "MBProgressHUD.h"
@@ -201,12 +202,24 @@
         [UserInfo getInstance].sysUserName =[user objectForKey:@"sysUserName"];
         [UserInfo getInstance].userId =[user objectForKey:@"accountId"];
         [UserInfo getInstance].picture =[user objectForKey:@"picture"];
+        NSFileManager *filemanger = [NSFileManager defaultManager];
+        NSString *path = [FileCommon getCacheDirectory];
+        NSString* _filename = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",[UserInfo getInstance].picture]];
+        
+        if ([filemanger fileExistsAtPath:_filename])
+        {
+            NSData *jpgdata = [NSData dataWithContentsOfFile:_filename];
+            [UserInfo getInstance].nickimg = [UIImage imageWithData:jpgdata];
+        }
+        else
+            [UserInfo getInstance].nickimg=[UIImage imageNamed:@"default_avatar"];
+        
         [UserInfo getInstance].sex =[user objectForKey:@"sex"];
         [UserInfo getInstance].tel =[user objectForKey:@"tel"];
         [UserInfo getInstance].positionId =[user objectForKey:@"positionId"];
         [UserInfo getInstance].positionName =[user objectForKey:@"positionName"];
         [UserInfo getInstance].auth =[user objectForKey:@"auths"];
-        [UserInfo getInstance].nickimg=[UIImage imageNamed:@"default_avatar"];
+      
     
         http =[[HttpServer alloc] init:queryGroups];
         BOOL result = [http getdepartmentinfo];

@@ -40,7 +40,7 @@
 
 //获得参数data
 -(NSData *)getDataForArrary;
--(NSData*)UploadFile:(NSString *)filename FileData:(NSData *)data;
+-(NSData*)UploadFile:(NSString *)filename FileData:(NSData *)data contenttype:(NSString *)contenttype;
 
 -(NSData *)httprequest:(NSData *)body;
 -(BOOL)httprequest:(NSData *)body

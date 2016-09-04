@@ -8,6 +8,7 @@
 
 #import "PhoneBookController.h"
 #import <Common/PublicCommon.h>
+#import <Common/FileCommon.h>
 #import "HttpServer.h"
 #import "PhoneBookCell.h"
 #import "UserInfoViewController.h"
@@ -37,7 +38,7 @@
     [table addSubview:refresh];
     
     pylist = [[NSMutableArray alloc] init];
- 
+    
     
     groupdata = [[NSMutableArray alloc] init];
     UINib *nib = [UINib nibWithNibName:@"phonebookcell" bundle:nil];
@@ -72,7 +73,7 @@
         isSearch=NO;
         [table reloadData];
     }
-
+    
 }
 
 -(void)Onright
@@ -133,7 +134,7 @@
     dispatch_async(mainQ, ^{
         
         [refresh endRefreshing];
-                [self loadData];
+        [self loadData];
     });
 }
 -(void)CloseInput
@@ -170,9 +171,9 @@
         }
         
     }
-  
+    
     [table reloadData];
-
+    
 }
 
 
@@ -268,10 +269,36 @@
     
     PhoneBookCell *cell = [table dequeueReusableCellWithIdentifier:@"cell"];
     cell.nickimg.contentMode=UIViewContentModeScaleAspectFit;
-    cell.nickimg.image = [UIImage imageNamed:@"default_avatar"];
+    NSFileManager *filemanger = [NSFileManager defaultManager];
+    NSString *path = [FileCommon getCacheDirectory];
+    NSString* _filename = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",contacts.img]];
+    
+    
+    __block NSData *jpgdata;
+    if ([filemanger fileExistsAtPath:_filename])
+    {
+        NSData *jpgdata = [NSData dataWithContentsOfFile:_filename];
+        cell.nickimg.image = [UIImage imageWithData:jpgdata];
+    }
+    else
+    {
+        
+        dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_queue_t mainQ = dispatch_get_main_queue();
+        dispatch_async(globalQ, ^{
+            HttpServer *http = [[HttpServer alloc] init:DownloadUrl];
+            jpgdata = [http FileDownload:contacts.img suffix:@"40" mediatype:@".jpg"];
+            
+            dispatch_async(mainQ, ^{
+                if (jpgdata)
+                    cell.nickimg.image = [UIImage imageWithData:jpgdata];
+                else
+                    cell.nickimg.image = [UIImage imageNamed:@"default_avatar"];
+            });
+        });
+    }
+
     cell.nickname.text = contacts.name;
-    
-    
     return cell;
 }
 

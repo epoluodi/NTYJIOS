@@ -13,7 +13,7 @@
 
 @interface MeController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate>
 {
-    UILabel *name,*postname;
+    UILabel *name,*postname,*departmentname;
     BOOL isShow;
     UIImagePickerController *pickerview;
 }

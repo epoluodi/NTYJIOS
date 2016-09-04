@@ -12,6 +12,7 @@
 #import "LoginViewController.h"
 #import "MBProgressHUD.h"
 #import "HttpServer.h"
+#import <Common/PublicCommon.h>
 
 
 
@@ -29,6 +30,7 @@
     nickimg.layer.cornerRadius=6;
     nickimg.layer.masksToBounds=YES;
     nickimg.userInteractionEnabled=YES;
+    
     nickimg.image= [UserInfo getInstance].nickimg;
     
     
@@ -58,51 +60,80 @@
 -(void)initview
 {
     CGSize strsize = [[UserInfo getInstance].userName sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:22]}];
-
-
+    
+    
     name=[[UILabel alloc] init];
     name.font =[UIFont boldSystemFontOfSize:22];
     name.textColor= [UIColor whiteColor];
     name.frame = CGRectMake(nickimg.frame.origin.x +nickimg.frame.size.width + 15,
                             nickimg.frame.origin.y +30, strsize.width, strsize.height);
-
-    [self.view addSubview:name];
- 
     
-    strsize = [[UserInfo getInstance].positionName sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18]}];
+    [self.view addSubview:name];
+    
+    
+    strsize = [[UserInfo getInstance].positionName sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:16]}];
     postname=[[UILabel alloc] init];
-    postname.font =[UIFont boldSystemFontOfSize:18];
+    postname.font =[UIFont boldSystemFontOfSize:16];
     postname.textColor= [UIColor whiteColor];
-    postname.frame = CGRectMake(nickimg.frame.origin.x +nickimg.frame.size.width + 15,
-                            name.frame.origin.y +name.frame.size.height+10, strsize.width, strsize.height);
- 
+    
+    postname.frame = CGRectMake(nickimg.frame.origin.x +nickimg.frame.size.width + 15 + name.frame.size.width +15,  name.frame.origin.y +(name.frame.size.height -strsize.height), strsize.width, strsize.height);
+    
     [self.view addSubview:postname];
-
+    
+    strsize = [[UserInfo getInstance].deparmentname sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18]}];
+    departmentname=[[UILabel alloc] init];
+    departmentname.font =[UIFont boldSystemFontOfSize:18];
+    departmentname.textColor= [UIColor whiteColor];
+    departmentname.frame = CGRectMake(nickimg.frame.origin.x +nickimg.frame.size.width + 15,
+                                name.frame.origin.y +name.frame.size.height+10, strsize.width, strsize.height);
+    
+    [self.view addSubview:departmentname];
+    
+    
     
 }
 
 -(void)reLoadUserInfo
 {
-        name.text=[UserInfo getInstance].userName;
-       postname.text=[UserInfo getInstance].positionName;
-   
+    name.text=[UserInfo getInstance].userName;
+    postname.text=[UserInfo getInstance].positionName;
+    departmentname.text = [UserInfo getInstance].deparmentname;
+    
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    __block NSData* jpgdata;
+    
+    dispatch_async(globalQ, ^{
         
-        dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_queue_t mainQ = dispatch_get_main_queue();
+        
+        NSFileManager *filemanger = [NSFileManager defaultManager];
+        NSString *path = [FileCommon getCacheDirectory];
+        NSString* _filename = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",[UserInfo getInstance].picture]];
         
         
-        dispatch_async(globalQ, ^{
-            
-            if ([UserInfo getInstance].picture != [NSNull null] ){
-                HttpServer *http = [[HttpServer alloc] init:DownloadUrl];
-                BOOL r = [http FileDownload:[UserInfo getInstance].picture suffix:@"40" mediatype:@".jpg"];
-            }
+        __block NSData *jpgdata;
+        if (![filemanger fileExistsAtPath:_filename])
+        {
+            HttpServer *http = [[HttpServer alloc] init:DownloadUrl];
+            jpgdata = [http FileDownload:[UserInfo getInstance].picture suffix:@"40" mediatype:@".jpg"];
             dispatch_async(mainQ, ^{
                 
-                nickimg.image = [UserInfo getInstance].nickimg;
+                if (jpgdata){
+                    nickimg.image = [UIImage imageWithData:jpgdata];
+                }
             });
-        });
-    }
+        }
+        else
+        {
+            dispatch_async(mainQ, ^{
+            
+                jpgdata = [NSData dataWithContentsOfFile:_filename];
+                nickimg.image = [UIImage imageWithData:jpgdata];
+            });
+     
+        }
+    });
+}
 
 //点击头像
 -(void)ClickNickImage
@@ -143,7 +174,7 @@
     [self presentViewController:alert animated:YES completion:nil];
     
     
-
+    
 }
 
 
@@ -159,16 +190,17 @@
     //        return;
     //    }
     
+    image = [PublicCommon scaleToSize:image size:CGSizeMake(512, 512)];
     
     
-    NSData *jpgdata = UIImageJPEGRepresentation(image, 80);
+    NSData *jpgdata = UIImageJPEGRepresentation(image, 1);
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *filePath = [FileCommon getCacheDirectory];
     NSString *uuid = [[NSUUID UUID] UUIDString];
     
     //    [fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
     //
-    NSString *filename = [NSString stringWithFormat:@"/%@.jpg",uuid];
+    NSString *filename = [NSString stringWithFormat:@"%@.jpg",uuid];
     [fileManager createFileAtPath:[filePath stringByAppendingString:filename] contents:jpgdata attributes:nil];
     
     [picker dismissViewControllerAnimated:YES completion:nil];
@@ -182,11 +214,11 @@
     dispatch_async(globalQ, ^{
         
         HttpServer *http = [[HttpServer alloc] init:UploadUrl];
-        ReturnData *rd =  [http uploadfile:jpgdata mediaid:filename mediatype:@"01"];
+        ReturnData *rd =  [http uploadfile:jpgdata mediaid:uuid mediatype:@"01" filetype:@".jpg"];
         if (rd && rd.returnCode==0)
         {
-           http = [[HttpServer alloc] init:UpdateUserNickImg];
-           rd=   [http UpdateUserImg:filename];
+            http = [[HttpServer alloc] init:UpdateUserNickImg];
+            rd=   [http UpdateUserImg:uuid];
         }
         
         
@@ -196,7 +228,7 @@
             {
                 [UserInfo getInstance].nickimg =image;
                 nickimg.image =     [UserInfo getInstance].nickimg;
-
+                [UserInfo getInstance].picture = uuid;
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"更新成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
             }
@@ -253,8 +285,8 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-        UIView *v = [[UIView alloc] init];
-        return v;
+    UIView *v = [[UIView alloc] init];
+    return v;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
@@ -273,14 +305,14 @@
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.imageView.contentMode=UIViewContentModeScaleAspectFit;
+    cell.imageView.contentMode=UIViewContentModeScaleAspectFit;
     cell.textLabel.font=[UIFont systemFontOfSize:14];
     if (indexPath.section==0)
     {
         switch (indexPath.row) {
             case 0:
                 cell.imageView.image = [UIImage imageNamed:@"setting1"];
-            
+                
                 cell.textLabel.text=@"个人信息";
                 break;
             case 1:
@@ -295,7 +327,7 @@
                 cell.imageView.image = [UIImage imageNamed:@"setting4"];
                 cell.textLabel.text=@"关于";
                 break;
- 
+                
         }
     }
     if (indexPath.section==1)
@@ -305,7 +337,7 @@
         
     }
     
-
+    
     return cell;
     
 }
@@ -325,7 +357,7 @@
             case 2:
                 [self ClearCacheFile];
                 break;
-
+                
         }
     }
     if (indexPath.section==1)
@@ -386,13 +418,13 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-        if ([segue.identifier isEqualToString:@"showuserinfo"])
-        {
-            UserInfoViewController *userinfvc = (UserInfoViewController*)[segue destinationViewController];
-            userinfvc.IsSelf=YES;
-            userinfvc.userid = [UserInfo getInstance].userId;
-            return;
-        }
+    if ([segue.identifier isEqualToString:@"showuserinfo"])
+    {
+        UserInfoViewController *userinfvc = (UserInfoViewController*)[segue destinationViewController];
+        userinfvc.IsSelf=YES;
+        userinfvc.userid = [UserInfo getInstance].userId;
+        return;
+    }
 }
 
 @end

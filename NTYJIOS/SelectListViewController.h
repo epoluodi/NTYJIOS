@@ -17,6 +17,7 @@ typedef enum :int
 @interface SelectListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
     UIBarButtonItem *btnreturn;
+    UIBarButtonItem *btnright;
     NSArray * dataarry;
     
 }

@@ -21,16 +21,18 @@
     [super viewDidLoad];
     
     btnreturn = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(ClickReturn)];
+    
+    btnright = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(ClickRight)];
+    
     [btnreturn setTintColor :[UIColor whiteColor] ];
     [navbar.items[0] setLeftBarButtonItem:btnreturn];
     navbar.items[0].title=_titleCommon;
     
     
-
-    
-    
-    if (listtype ==DEPARTMENT)
+    if (listtype ==DEPARTMENT){
         dataarry = [[DBmanger getIntance] getDeparment];
+        [navbar.items[0] setRightBarButtonItem:btnright];
+    }
     
     
     table.backgroundColor=[UIColor clearColor];
@@ -67,14 +69,39 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SelectListCell *cell = [table dequeueReusableCellWithIdentifier:@"cell"];
+    Department *dep =dataarry[indexPath.row];
+    cell.celltitle.text= dep.name;
     return cell;
 }
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *v = [[UIView alloc] init];
+    return v;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 1;
+}
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIView *selectview = [[UIView alloc] init];
+    selectview.frame = cell.contentView.frame;
+    selectview.backgroundColor=[[UIColor blackColor] colorWithAlphaComponent:0.03];
+    cell.selectedBackgroundView =selectview;
+}
+
+
+
 -(void)ClickReturn
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
+-(void)ClickRight
+{
+  
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

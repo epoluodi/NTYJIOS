@@ -19,8 +19,9 @@
 
 //登录
 -(NSDictionary *)Login:(NSString *)username userpwd:(NSString *)pwd;
--(BOOL)FileDownload:(NSString *)mediaid suffix:(NSString *)suffix mediatype:(NSString *)mediatype;
--(ReturnData *)uploadfile:(NSData *)filedata mediaid:(NSString *)mediaid mediatype:(NSString *)mediatype;
+-(NSData *)FileDownload:(NSString *)mediaid suffix:(NSString *)suffix mediatype:(NSString *)mediatype;
+-(ReturnData *)uploadfile:(NSData *)filedata mediaid:(NSString *)mediaid mediatype:(NSString *)mediatype
+                 filetype:(NSString *)filetype;
 -(ReturnData *)UpdateUserImg:(NSString *)mediaid;
 
 -(ReturnData *)ModiPwd:(NSString *)oldpwd newpwd:(NSString *)newpwd;

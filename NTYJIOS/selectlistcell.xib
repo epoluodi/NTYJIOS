@@ -20,6 +20,7 @@
                             <constraint firstAttribute="height" constant="30" id="j5g-zo-ZAk"/>
                             <constraint firstAttribute="width" constant="30" id="nQr-FQ-rIE"/>
                         </constraints>
+                        <color key="tintColor" red="0.26622865948037994" green="0.76260653409090906" blue="0.39444379629078669" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" backgroundImage="checkbox.png"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="q1z-7k-GGu">
@@ -38,6 +39,10 @@
                     <constraint firstAttribute="bottom" secondItem="q1z-7k-GGu" secondAttribute="bottom" constant="9" id="sC1-zA-Adu"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="celltitle" destination="q1z-7k-GGu" id="lNk-6V-0UW"/>
+                <outlet property="chk" destination="N8o-e7-N2n" id="WW8-mo-eXo"/>
+            </connections>
             <point key="canvasLocation" x="417" y="484"/>
         </tableViewCell>
     </objects>
