@@ -13,9 +13,14 @@
 #import "PublishRecordCell.h"
 #import "PublishCell.h"
 #import "SelectListViewController.h"
+#import "HttpServer.h"
+#import "MBProgressHUD.h"
+#import <Common/FileCommon.h>
 
 @interface PublishViewController ()
-
+{
+    MBProgressHUD  *hub;
+}
 @end
 
 @implementation PublishViewController
@@ -405,7 +410,72 @@
 
 -(void)submitFile
 {
+    __block BOOL Isfinish =NO;
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
     
+    
+    hub = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hub];
+    [hub show:YES];
+    
+    if (![recordfileid isEqualToString:@""])
+    {
+        //文件上传
+        dispatch_group_async(group,globalQ, ^{
+            HttpServer *http = [[HttpServer alloc] init:UploadUrl];
+            
+            NSString * urlStr=[[FileCommon getCacheDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.aac",recordfileid]];
+            NSData *filedata = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:urlStr]];
+            
+            ReturnData *rd =  [http uploadfile:filedata mediaid:recordfileid mediatype:@"02" filetype:@".aac"];
+            if (rd && rd.returnCode==0)
+                Isfinish=YES;
+            else
+                Isfinish=NO;
+
+        });
+    }
+    
+    if ([mediaids count] >0)
+    {
+        for (NSString *imgid in mediaids) {
+            //文件上传
+            dispatch_group_async(group,globalQ, ^{
+                HttpServer *http = [[HttpServer alloc] init:UploadUrl];
+                NSString * urlStr=[[FileCommon getCacheDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",imgid]];
+                NSData *filedata = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:urlStr]];
+                
+                ReturnData *rd =  [http uploadfile:filedata mediaid:imgid mediatype:@"02" filetype:@".jpg"];
+                if (rd && rd.returnCode==0)
+                    Isfinish=YES;
+                else
+                    Isfinish=NO;
+            });
+        }
+    }
+    dispatch_group_notify(group, globalQ, ^{
+       
+        if (!Isfinish)
+        {
+            //失败
+            dispatch_async(mainQ, ^{
+                [hub hide:YES];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"发布失败，请重新尝试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                return ;
+                
+            });
+        }
+        
+        
+        
+        
+        // 发布调度
+    });
+
+  
 }
 
 
