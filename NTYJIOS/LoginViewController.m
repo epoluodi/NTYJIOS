@@ -212,7 +212,7 @@
             [UserInfo getInstance].nickimg = [UIImage imageWithData:jpgdata];
         }
         else
-            [UserInfo getInstance].nickimg=[UIImage imageNamed:@"default_avatar"];
+            [UserInfo getInstance].nickimg=[UIImage imageNamed:@"nick1"];
         
         [UserInfo getInstance].sex =[user objectForKey:@"sex"];
         [UserInfo getInstance].tel =[user objectForKey:@"tel"];

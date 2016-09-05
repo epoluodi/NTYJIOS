@@ -274,6 +274,23 @@ static DBmanger *_db;
 }
 
 
+-(Contacts *)getContactswithuserId:(NSString *)userid
+{
+    NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"Contacts"];
+    
+    
+    //加入查询条件 age>20
+    fetch.predicate=[NSPredicate predicateWithFormat:@"userid = %@",userid];
+    
+    //        fetch.predicate=[NSPredicate predicateWithFormat:@"name like %@",@"*cb1*"];
+    NSArray *arr=[mangedcontext executeFetchRequest:fetch error:nil];
+    if ([arr count]==0)
+        return nil;
+    return (Contacts *)arr[0];
+}
+
+
+
 //得到所有联系人拼音
 -(NSArray *)getfirstlatter
 {

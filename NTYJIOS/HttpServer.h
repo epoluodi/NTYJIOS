@@ -31,7 +31,8 @@
 //得到部门用户信息
 -(BOOL)getdepartmentUserinfo;
 
-
+//获取审批人
+-(ReturnData *)queryApproveUserList;
 //查询调度信息列表
 -(BOOL)getGroupsList;
 @end

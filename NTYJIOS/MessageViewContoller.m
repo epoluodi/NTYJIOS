@@ -96,11 +96,7 @@
     {
         dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_queue_t mainQ = dispatch_get_main_queue();
-        
-        
-        
-        
-        
+
         dispatch_async(globalQ, ^{
             dispatch_async(mainQ, ^{
                 

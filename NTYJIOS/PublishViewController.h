@@ -19,9 +19,10 @@
     UIButton *btnaddimage;
     UIImagePickerController *pickerview;
     BOOL IsAPPROVE;
+    NSString *selectdepartmentlist,*selectdepartmentidlist;
     
-    
-    
+    NSString *approveruser,*approveruserid;
+    NSString *recordfileid;
     
     
 }
@@ -34,6 +35,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *tablemenu;
 
 
+-(void)SelectedSendInfo:(NSString *)itemid name:(NSString *)name;
+-(void)SelectedAPPOVERInfo:(NSString *)itemid name:(NSString *)name;
+-(void)setRecordFile:(NSString *)recordid;
 
 
 

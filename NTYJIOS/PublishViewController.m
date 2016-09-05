@@ -71,7 +71,8 @@
 -(void)textViewDidChange:(UITextView *)textView
 {
     words = (int)textView.text.length;
-    wordcount.text= [NSString stringWithFormat:@"%d/800 字",words];
+    wordcount.text= [NSString stringWithFormat:@"%03d 字",words];
+   
 }
 
 //添加图片
@@ -294,12 +295,12 @@
             {
                 cell2.cellimg.image=[UIImage imageNamed:@"sendmubiao"];
                 cell2.celltitle.text=@"发送目标";
-                cell2.cellcontent.text=@"";
+                cell2.cellcontent.text=selectdepartmentlist;
             }else if (indexPath.row==1)
             {
                 cell2.cellimg.image=[UIImage imageNamed:@"shenpiren"];
                 cell2.celltitle.text=@"审批领导";
-                cell2.cellcontent.text=@"";
+                cell2.cellcontent.text=approveruser;
             }
             
             return cell2;
@@ -321,10 +322,16 @@
                 selectvc = (SelectListViewController *)[storyboard instantiateViewControllerWithIdentifier:@"selectList"];
                 selectvc.titleCommon=@"选择发送目标";
                 selectvc.listtype = DEPARTMENT;
+                selectvc.delegateVC=self;
                 [self presentViewController:selectvc animated:YES completion:nil];
                 
                 break;
             case 1:
+                selectvc = (SelectListViewController *)[storyboard instantiateViewControllerWithIdentifier:@"selectList"];
+                selectvc.titleCommon=@"选择审批人";
+                selectvc.listtype =APPOVER ;
+                selectvc.delegateVC=self;
+                [self presentViewController:selectvc animated:YES completion:nil];
                 
                 break;
                 
@@ -340,7 +347,93 @@
 //发送
 -(void)Clicksend
 {
+    if ([edittitle.text isEqualToString:@""])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入调度标题" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
     
+    if ([content.text isEqualToString:@""])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入调度内容" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    if ([selectdepartmentidlist isEqualToString:@""])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择发送目标" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    
+    if ([[UserInfo getInstance].auth containsObject:@"DISPATCH_APPROVE"])
+    {
+        if ([approveruserid isEqualToString:@""])
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择审批人" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+            return;
+        }
+    }
+    
+    
+    if (recordfileid)
+    {
+        UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"提示" message:@"是否包含录音信息" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *action2 =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            
+            
+             [self submitFile];
+        }];
+        [alert addAction:action1];
+        [alert addAction:action2];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    else
+    {
+        [self submitFile];
+    }
+    
+    
+}
+
+
+-(void)submitFile
+{
+    
+}
+
+
+-(void)submitInfo
+{
+    
+    
+    
+}
+
+
+
+-(void)setRecordFile:(NSString *)recordid
+{
+    recordfileid = recordid;
+}
+-(void)SelectedSendInfo:(NSString *)itemid name:(NSString *)name
+{
+    selectdepartmentlist = name;
+    selectdepartmentidlist = itemid;
+    [tablemenu reloadData];
+}
+
+-(void)SelectedAPPOVERInfo:(NSString *)itemid name:(NSString *)name
+{
+    approveruser=name;
+    approveruserid=itemid;
+    [tablemenu reloadData];
 }
 -(void)ClickReturn
 {

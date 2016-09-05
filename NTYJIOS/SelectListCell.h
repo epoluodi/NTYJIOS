@@ -14,8 +14,9 @@
     
 }
 
+@property (weak,nonatomic) NSString *itemid;
 @property (weak, nonatomic) IBOutlet UILabel *celltitle;
 @property (weak, nonatomic) IBOutlet UIButton *chk;
-
+@property (weak,nonatomic) UIViewController *delegateVC;
 
 @end

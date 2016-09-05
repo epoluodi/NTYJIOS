@@ -71,6 +71,9 @@
 		B44D0A0D1D2F4B9C00F76DFF /* setting4.png in Resources */ = {isa = PBXBuildFile; fileRef = B44D0A0C1D2F4B9C00F76DFF /* setting4.png */; };
 		B44D0A0F1D2F4BBE00F76DFF /* setting5.png in Resources */ = {isa = PBXBuildFile; fileRef = B44D0A0E1D2F4BBE00F76DFF /* setting5.png */; };
 		B44D0A131D2F4FD400F76DFF /* ModiPwdController.m in Sources */ = {isa = PBXBuildFile; fileRef = B44D0A121D2F4FD400F76DFF /* ModiPwdController.m */; };
+		B457EC431D7D51E60048E992 /* nick1.png in Resources */ = {isa = PBXBuildFile; fileRef = B457EC421D7D51E60048E992 /* nick1.png */; };
+		B457EC451D7D545E0048E992 /* selectlistcell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = B457EC441D7D545E0048E992 /* selectlistcell2.xib */; };
+		B457EC481D7D55CB0048E992 /* SelectListCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = B457EC471D7D55CB0048E992 /* SelectListCell2.m */; };
 		B465FBCC1D780E0200AFE593 /* MediaRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B465FBCB1D780E0200AFE593 /* MediaRecord.m */; };
 		B48B0F131D2E498100646A20 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B48B0F121D2E498100646A20 /* main.m */; };
 		B48B0F161D2E498100646A20 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B48B0F151D2E498100646A20 /* AppDelegate.m */; };
@@ -188,6 +191,10 @@
 		B44D0A0E1D2F4BBE00F76DFF /* setting5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting5.png; sourceTree = "<group>"; };
 		B44D0A111D2F4FD400F76DFF /* ModiPwdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModiPwdController.h; sourceTree = "<group>"; };
 		B44D0A121D2F4FD400F76DFF /* ModiPwdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModiPwdController.m; sourceTree = "<group>"; };
+		B457EC421D7D51E60048E992 /* nick1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nick1.png; sourceTree = "<group>"; };
+		B457EC441D7D545E0048E992 /* selectlistcell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = selectlistcell2.xib; sourceTree = "<group>"; };
+		B457EC461D7D55CB0048E992 /* SelectListCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectListCell2.h; sourceTree = "<group>"; };
+		B457EC471D7D55CB0048E992 /* SelectListCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectListCell2.m; sourceTree = "<group>"; };
 		B465FBCA1D780E0200AFE593 /* MediaRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaRecord.h; sourceTree = "<group>"; };
 		B465FBCB1D780E0200AFE593 /* MediaRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaRecord.m; sourceTree = "<group>"; };
 		B48B0F0E1D2E498000646A20 /* NTYJIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTYJIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -311,6 +318,9 @@
 				B42E582E1D795934005ADE1F /* selectlistcell.xib */,
 				B42E58341D795BFC005ADE1F /* SelectListCell.h */,
 				B42E58351D795BFC005ADE1F /* SelectListCell.m */,
+				B457EC441D7D545E0048E992 /* selectlistcell2.xib */,
+				B457EC461D7D55CB0048E992 /* SelectListCell2.h */,
+				B457EC471D7D55CB0048E992 /* SelectListCell2.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -430,6 +440,7 @@
 		B48B0F2F1D2E4E8900646A20 /* png */ = {
 			isa = PBXGroup;
 			children = (
+				B457EC421D7D51E60048E992 /* nick1.png */,
 				B42E58301D795AE1005ADE1F /* checkbox_select.png */,
 				B42E58311D795AE1005ADE1F /* checkbox.png */,
 				7BF75B8B1D7723FD00CB03A2 /* shenpiren.png */,
@@ -536,6 +547,7 @@
 			files = (
 				B40C1AE31D3379C600AFE71A /* userinfo_2.png in Resources */,
 				7BF75B741D75C73D00CB03A2 /* aay.png in Resources */,
+				B457EC431D7D51E60048E992 /* nick1.png in Resources */,
 				7BF75B811D771BAC00CB03A2 /* stop.png in Resources */,
 				B44D0A071D2F4AA900F76DFF /* setting1.png in Resources */,
 				7BF75B8A1D77238800CB03A2 /* sendmubiao.png in Resources */,
@@ -567,6 +579,7 @@
 				B42E58331D795AE1005ADE1F /* checkbox.png in Resources */,
 				7BF75B7A1D771A4000CB03A2 /* record_start.png in Resources */,
 				B44D0A0B1D2F4B7200F76DFF /* setting3.png in Resources */,
+				B457EC451D7D545E0048E992 /* selectlistcell2.xib in Resources */,
 				7B318E1E1D63573A002A9B59 /* phonebookcell.xib in Resources */,
 				B40C1AD71D33469400AFE71A /* UserInfoCell.xib in Resources */,
 				B40C1AD91D33471B00AFE71A /* userinfo_1.png in Resources */,
@@ -610,6 +623,7 @@
 				7B318E211D6357D0002A9B59 /* PhoneBookCell.m in Sources */,
 				B42E58361D795BFC005ADE1F /* SelectListCell.m in Sources */,
 				7BB56E0D1D5F45F4002C80A3 /* Contacts.m in Sources */,
+				B457EC481D7D55CB0048E992 /* SelectListCell2.m in Sources */,
 				7B89D9441D68951C000D712D /* FTPopOverMenu.m in Sources */,
 				B40C1B021D3392BA00AFE71A /* HttpServer.m in Sources */,
 				B40C1AE11D33715500AFE71A /* UserInfoCell2.m in Sources */,

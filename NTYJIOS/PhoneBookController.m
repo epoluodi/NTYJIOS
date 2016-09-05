@@ -277,7 +277,7 @@
     __block NSData *jpgdata;
     if ([filemanger fileExistsAtPath:_filename])
     {
-        NSData *jpgdata = [NSData dataWithContentsOfFile:_filename];
+        jpgdata = [NSData dataWithContentsOfFile:_filename];
         cell.nickimg.image = [UIImage imageWithData:jpgdata];
     }
     else
@@ -293,7 +293,7 @@
                 if (jpgdata)
                     cell.nickimg.image = [UIImage imageWithData:jpgdata];
                 else
-                    cell.nickimg.image = [UIImage imageNamed:@"default_avatar"];
+                    cell.nickimg.image = [UIImage imageNamed:@"nick1"];
             });
         });
     }

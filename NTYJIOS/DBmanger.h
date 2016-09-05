@@ -41,4 +41,5 @@
 -(void)deletejdinfo;
 -(void)addJDinfo:(NSDictionary *)jdinfo;
 -(NSArray *)getDDinfo;
+-(Contacts *)getContactswithuserId:(NSString *)userid;
 @end

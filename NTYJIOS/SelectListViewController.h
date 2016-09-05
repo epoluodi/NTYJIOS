@@ -19,11 +19,17 @@ typedef enum :int
     UIBarButtonItem *btnreturn;
     UIBarButtonItem *btnright;
     NSArray * dataarry;
+    NSMutableArray<NSString *>* selectnamelist;
+    NSMutableArray<NSString *>* selectidlist;
     
 }
 @property (weak, nonatomic) IBOutlet UINavigationBar *navbar;
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (strong,nonatomic)NSString *titleCommon;
 @property (assign)EnumListType listtype;
+@property (weak,nonatomic)UIViewController *delegateVC;
 
+
+
+-(void)SelectGroupInfo:(NSString *)selectid name:(NSString *)name isDel:(BOOL)IsDel;
 @end
