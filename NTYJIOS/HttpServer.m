@@ -240,4 +240,42 @@
         return nil;
     return rd;
 }
+
+
+
+
+-(ReturnData *)publishJDInfo:(NSString *)title content:(NSString *)content recordfile:(NSString *)recordId pics:(NSString *)picsid group_ids:(NSString *)group_ids approve_account_id:(NSString *)approve_account_id
+{
+    HttpClass *http = [[HttpClass alloc] init:url];
+    [http setIsHead:YES];
+    [http addHeadString:@"deviceID" value:[UserInfo getInstance].deviceid];
+    [http addHeadString:@"deviceType" value:@"01"];
+    [http addHeadString:@"token" value:[UserInfo getInstance].Token];
+    
+    [http addParamsString:@"dispatch_title" values:title];
+    [http addParamsString:@"dispatch_content" values:content];
+    [http addParamsString:@"pic_ids" values:picsid];
+    [http addParamsString:@"audio_id" values:recordId];
+    [http addParamsString:@"group_ids" values:group_ids];
+    if (approve_account_id)
+    {
+        [http addParamsString:@"status_code" values:@"02"];
+        [http addParamsString:@"approve_account_id" values:@"approve_account_id"];
+    }else
+    {
+        [http addParamsString:@"status_code" values:@"01"];
+        [http addParamsString:@"approve_account_id" values:@""];
+    }
+    [http addParamsString:@"is_top" values:@"01"];
+    
+    
+    NSData *d = [http httprequest:[http getDataForArrary]];
+    if (!d)
+        return nil;
+    ReturnData *rd = [ReturnData getReturnDatawithData:d dataMode:NO];
+    if (rd.returnCode!=0)
+        return nil;
+    return rd;
+    
+}
 @end

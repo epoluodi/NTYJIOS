@@ -86,4 +86,8 @@
 {
     [ btnplay setBackgroundImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
 }
+-(NSString *)getRecordFileName
+{
+    return recordfilename;
+}
 @end

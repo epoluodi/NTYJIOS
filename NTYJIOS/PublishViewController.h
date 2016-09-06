@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PublishRecordCell.h"
 
 @interface PublishViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate,UIImagePickerControllerDelegate>
 {
@@ -20,6 +21,8 @@
     UIImagePickerController *pickerview;
     BOOL IsAPPROVE;
     NSString *selectdepartmentlist,*selectdepartmentidlist;
+    PublishRecordCell *cell1;
+    
     
     NSString *approveruser,*approveruserid;
     NSString *recordfileid;
@@ -37,7 +40,7 @@
 
 -(void)SelectedSendInfo:(NSString *)itemid name:(NSString *)name;
 -(void)SelectedAPPOVERInfo:(NSString *)itemid name:(NSString *)name;
--(void)setRecordFile:(NSString *)recordid;
+
 
 
 

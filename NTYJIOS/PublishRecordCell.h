@@ -25,6 +25,6 @@
 - (IBAction)ClickRecord:(id)sender;
 - (IBAction)ClickPlayAndStop:(id)sender;
 
-
+-(NSString *)getRecordFileName;
 
 @end

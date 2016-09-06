@@ -127,7 +127,16 @@
     NSLog(@"SMILE!");
     [picker dismissViewControllerAnimated:YES completion:nil];
     
-    NSData *jpgdata = UIImageJPEGRepresentation(image, 80);
+    
+    
+    NSData *jpgdata = UIImageJPEGRepresentation(image, 1);
+    if (jpgdata.length >500 *1024 )
+    {
+        UIImage *tmpimg = [UIImage imageWithData:jpgdata scale:0.4];
+        jpgdata=UIImageJPEGRepresentation(tmpimg, 0.8);
+
+    }
+
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *filePath = [FileCommon getCacheDirectory];
     NSString *uuid = [[NSUUID UUID] UUIDString];
@@ -286,7 +295,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    PublishRecordCell *cell1;
+
     PublishCell *cell2;
     switch (indexPath.section) {
         case 0:
@@ -365,16 +374,16 @@
         [alert show];
         return;
     }
-    if ([selectdepartmentidlist isEqualToString:@""])
+    if (!selectdepartmentidlist)
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择发送目标" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
         return;
     }
     
-    if ([[UserInfo getInstance].auth containsObject:@"DISPATCH_APPROVE"])
+    if (![[UserInfo getInstance].auth containsObject:@"DISPATCH_APPROVE"])
     {
-        if ([approveruserid isEqualToString:@""])
+        if (!approveruserid)
         {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择审批人" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
@@ -382,7 +391,7 @@
         }
     }
     
-    
+    recordfileid = [cell1 getRecordFileName];
     if (recordfileid)
     {
         UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"提示" message:@"是否包含录音信息" preferredStyle:UIAlertControllerStyleAlert];
@@ -419,8 +428,8 @@
     hub = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:hub];
     [hub show:YES];
-    
-    if (![recordfileid isEqualToString:@""])
+
+    if (recordfileid)
     {
         //文件上传
         dispatch_group_async(group,globalQ, ^{
@@ -437,6 +446,7 @@
 
         });
     }
+
     
     if ([mediaids count] >0)
     {
@@ -457,7 +467,7 @@
     }
     dispatch_group_notify(group, globalQ, ^{
        
-        if (!Isfinish)
+        if (recordfileid && [mediaids count] >0 && !Isfinish)
         {
             //失败
             dispatch_async(mainQ, ^{
@@ -467,10 +477,34 @@
                 return ;
                 
             });
+            return ;
         }
         
         
+        HttpServer *http = [[HttpServer alloc] init:saveDispatchMsg];
+   
+            
+       ReturnData *sendResult =  [http publishJDInfo:edittitle.text content:content.text recordfile:(!recordfileid)?@"":recordfileid pics:([mediaids count]>0)?[mediaids componentsJoinedByString:@","]:@"" group_ids:selectdepartmentidlist approve_account_id:approveruserid];
         
+        dispatch_async(mainQ, ^{
+            [hub hide:YES];
+            
+            if (!sendResult){
+            
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"发布失败，请重新尝试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+            return ;
+            }
+            else
+            {
+                
+                NSLog(@"发布成功");
+            
+            
+            }
+            
+        });
+
         
         // 发布调度
     });
@@ -488,10 +522,7 @@
 
 
 
--(void)setRecordFile:(NSString *)recordid
-{
-    recordfileid = recordid;
-}
+
 -(void)SelectedSendInfo:(NSString *)itemid name:(NSString *)name
 {
     selectdepartmentlist = name;

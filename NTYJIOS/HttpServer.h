@@ -35,4 +35,8 @@
 -(ReturnData *)queryApproveUserList;
 //查询调度信息列表
 -(BOOL)getGroupsList;
+
+
+-(ReturnData *)publishJDInfo:(NSString *)title content:(NSString*)content recordfile:(NSString *)recordId pics:(NSString *)picsid group_ids:(NSString *)group_ids approve_account_id:(NSString *)approve_account_id;
+
 @end
