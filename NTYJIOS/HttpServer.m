@@ -260,7 +260,7 @@
     if (approve_account_id)
     {
         [http addParamsString:@"status_code" values:@"02"];
-        [http addParamsString:@"approve_account_id" values:@"approve_account_id"];
+        [http addParamsString:@"approve_account_id" values:approve_account_id];
     }else
     {
         [http addParamsString:@"status_code" values:@"01"];

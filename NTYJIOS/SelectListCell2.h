@@ -10,7 +10,7 @@
 
 @interface SelectListCell2 : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *chk;
+
 @property (weak, nonatomic) IBOutlet UIImageView *nickimg;
 @property (weak, nonatomic) IBOutlet UILabel *celltitle;
 @property (weak, nonatomic) IBOutlet UILabel *cellsubtitle;

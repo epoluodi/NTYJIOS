@@ -97,7 +97,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.86768071339999997" green="0.86768071339999997" blue="0.86768071339999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
                             <constraint firstItem="2gi-oM-Rrx" firstAttribute="leading" secondItem="IAK-LK-6ir" secondAttribute="leading" id="LDe-tp-sEV"/>
                             <constraint firstAttribute="trailing" secondItem="2gi-oM-Rrx" secondAttribute="trailing" id="ffY-8q-yPC"/>
@@ -142,9 +142,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x3U-6D-RVh">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.94801530940000001" green="0.94801530940000001" blue="0.94801530940000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="x3U-6D-RVh" secondAttribute="trailing" id="RJv-LK-bpn"/>
                             <constraint firstAttribute="trailing" secondItem="xo5-ge-hoP" secondAttribute="trailing" id="Tb5-By-D0Y"/>

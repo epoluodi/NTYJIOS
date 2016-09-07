@@ -77,7 +77,7 @@
 {
     words = (int)textView.text.length;
     wordcount.text= [NSString stringWithFormat:@"%03d 字",words];
-   
+    
 }
 
 //添加图片
@@ -132,11 +132,13 @@
     NSData *jpgdata = UIImageJPEGRepresentation(image, 1);
     if (jpgdata.length >500 *1024 )
     {
-        UIImage *tmpimg = [UIImage imageWithData:jpgdata scale:0.4];
+        
+       
+        UIImage *tmpimg =    [PublicCommon scaleToSize:image size:CGSizeMake(image.size.width*0.5, image.size.height*0.5)];  //[UIImage imageWithData:jpgdata scale:0.4];
         jpgdata=UIImageJPEGRepresentation(tmpimg, 0.8);
-
+        
     }
-
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *filePath = [FileCommon getCacheDirectory];
     NSString *uuid = [[NSUUID UUID] UUIDString];
@@ -211,7 +213,7 @@
         
         [UIView commitAnimations];
         
-   
+        
         
         
         
@@ -295,7 +297,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-
+    
     PublishCell *cell2;
     switch (indexPath.section) {
         case 0:
@@ -400,10 +402,12 @@
             
             
             
-             [self submitFile];
+            [self submitFile];
         }];
         [alert addAction:action1];
         [alert addAction:action2];
+        
+        
         
         [self presentViewController:alert animated:YES completion:nil];
         return;
@@ -428,7 +432,7 @@
     hub = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:hub];
     [hub show:YES];
-
+    
     if (recordfileid)
     {
         //文件上传
@@ -443,10 +447,10 @@
                 Isfinish=YES;
             else
                 Isfinish=NO;
-
+            
         });
     }
-
+    
     
     if ([mediaids count] >0)
     {
@@ -466,7 +470,7 @@
         }
     }
     dispatch_group_notify(group, globalQ, ^{
-       
+        
         if (recordfileid && [mediaids count] >0 && !Isfinish)
         {
             //失败
@@ -482,34 +486,37 @@
         
         
         HttpServer *http = [[HttpServer alloc] init:saveDispatchMsg];
-   
-            
-       ReturnData *sendResult =  [http publishJDInfo:edittitle.text content:content.text recordfile:(!recordfileid)?@"":recordfileid pics:([mediaids count]>0)?[mediaids componentsJoinedByString:@","]:@"" group_ids:selectdepartmentidlist approve_account_id:approveruserid];
+        
+        
+        ReturnData *sendResult =  [http publishJDInfo:edittitle.text content:content.text recordfile:(!recordfileid)?@"":recordfileid pics:([mediaids count]>0)?[mediaids componentsJoinedByString:@","]:@"" group_ids:selectdepartmentidlist approve_account_id:approveruserid];
         
         dispatch_async(mainQ, ^{
             [hub hide:YES];
             
             if (!sendResult){
-            
+                
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"发布失败，请重新尝试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
-            return ;
+                return ;
             }
             else
             {
-                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"发布成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
                 NSLog(@"发布成功");
-            
-            
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+                return;
+                
             }
             
         });
-
+        
         
         // 发布调度
     });
-
-  
+    
+    
 }
 
 

@@ -14,7 +14,7 @@
 #import "LoginViewController.h"
 #import "DBmanger.h"
 #import "MessageCell.h"
-
+#import <Common/PublicCommon.h>
 @interface MessageViewContoller ()
 {
     AppDelegate *app;
@@ -28,7 +28,7 @@
     
     
     app = [[UIApplication sharedApplication] delegate];
-    
+    [self.view setBackgroundColor:UIColorFromRGB(0xEAEAEA)];
     
     btnright = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(Onright:)];
     btnright.tintColor = [UIColor whiteColor];
@@ -49,7 +49,7 @@
     self.automaticallyAdjustsScrollViewInsets=NO;
     table.dataSource=self;
     table.delegate=self;
-
+    table.backgroundColor=[UIColor clearColor];
     
     UINib *nib=[UINib nibWithNibName:@"MessageCell" bundle:nil];
     [table registerNib:nib forCellReuseIdentifier:@"cell"];
