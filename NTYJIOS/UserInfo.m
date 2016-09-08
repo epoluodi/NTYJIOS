@@ -33,7 +33,14 @@ static UserInfo *_userinfo;
 }
 
 
-
+-(NSString *)getLineMessage
+{
+    NSDictionary *d = [[NSDictionary alloc] initWithObjectsAndKeys:userId ,@"userId", nil];
+    
+    NSData *json = [NSJSONSerialization dataWithJSONObject:d options:NSJSONWritingPrettyPrinted error:nil];
+    
+    return [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
+}
 
 
 

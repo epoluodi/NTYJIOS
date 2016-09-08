@@ -278,4 +278,20 @@
     return rd;
     
 }
+
+
+//更新token
+-(void)UpdateIOSToken:(NSString *)token
+{
+    HttpClass *http = [[HttpClass alloc] init:url];
+    [http setIsHead:YES];
+    [http addHeadString:@"deviceID" value:[UserInfo getInstance].deviceid];
+    [http addHeadString:@"deviceType" value:@"01"];
+    [http addHeadString:@"token" value:[UserInfo getInstance].Token];
+    
+    [http addParamsString:@"iosToken" values:token];
+    [http httprequest:[http getDataForArrary]];
+    
+
+}
 @end

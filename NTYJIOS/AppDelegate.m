@@ -10,6 +10,7 @@
 #import <Common/PublicCommon.h>
 #import "Common.h"
 #import "DBmanger.h"
+#import "HttpServer.h"
 
 
 @interface AppDelegate ()
@@ -32,7 +33,8 @@
     [ServerInfo getInstance];
     [self initLoginInfo];
     
-    
+
+     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];//进入
     
     // Override point for customization after application launch.
     return YES;
@@ -57,6 +59,23 @@
     }
 }
 
+
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    iostoken = [[[[deviceToken description]
+                   stringByReplacingOccurrencesOfString:@"<" withString:@""]
+                  stringByReplacingOccurrencesOfString:@">" withString:@""]
+                 stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"推送toekn %@",iostoken);
+    
+    
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(globalQ, ^{
+        HttpServer *http =[[HttpServer alloc] init:setIosToken];
+        [http UpdateIOSToken:iostoken];
+    });
+    
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

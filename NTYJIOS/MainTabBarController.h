@@ -21,4 +21,5 @@
 
 
 -(void)ConnectMqtt;
+-(void)DisConnectMqtt;
 @end

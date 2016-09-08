@@ -39,4 +39,5 @@
 
 -(ReturnData *)publishJDInfo:(NSString *)title content:(NSString*)content recordfile:(NSString *)recordId pics:(NSString *)picsid group_ids:(NSString *)group_ids approve_account_id:(NSString *)approve_account_id;
 
+-(void)UpdateIOSToken:(NSString*)token;
 @end

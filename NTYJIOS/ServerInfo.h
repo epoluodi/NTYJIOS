@@ -38,6 +38,8 @@
 
 #define saveDispatchMsg [NSString stringWithFormat:@"%@%@",IMURL,@"msg/saveDispatchMsg"]
 
+#define setIosToken [NSString stringWithFormat:@"%@%@",APPURL,@"token/setIosToken"]
+
 
 
 @interface ServerInfo : NSObject

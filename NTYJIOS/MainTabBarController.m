@@ -28,10 +28,6 @@
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t mainQ = dispatch_get_main_queue();
     
-    
-    
-    
-    
     dispatch_async(globalQ, ^{
         dispatch_async(mainQ, ^{
             
@@ -65,15 +61,18 @@
 {
     NSLog(@"连接成功");
     MessageViewContoller *mvc = (MessageViewContoller *)((UINavigationController *)self.viewControllers[0]).topViewController;
-  
+    
     dispatch_queue_t mainQ = dispatch_get_main_queue();
     dispatch_async(mainQ, ^{
-          [mvc loadDDinfo];  
+        [mvc loadDDinfo];
     });
-
+    
     
 }
-
+-(void)DisConnectMqtt
+{
+    [mqtt DisConncectMqtt];
+}
 -(void)OnConnectError
 {
     NSLog(@"连接错误");
@@ -89,7 +88,7 @@
     NSLog(@"接收到MQTT信息:%@",msg);
     
     
-
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

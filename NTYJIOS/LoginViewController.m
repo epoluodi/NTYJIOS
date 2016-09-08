@@ -238,6 +238,10 @@
  
         [self Loginresult:YES msg:nil];
         
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings
+                                                                             settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge)
+                                                                             categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
     });
     
     

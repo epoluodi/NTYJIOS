@@ -29,9 +29,10 @@ typedef unsigned short INT_PORT;
 @interface MQTTServer : NSObject
 {
     MQTTClient *mqttclient;
+    __block __weak MQTTServer *blockself;
 }
 
-@property (nonatomic,weak) NSObject<MQTTDelegate> *delegate;
+@property  (nonatomic,weak) __block NSObject<MQTTDelegate> *delegate;
 @property (assign)BOOL IsMQTTConnect;
 
 -(instancetype)init:(NSString *)host port:(INT_PORT)port;

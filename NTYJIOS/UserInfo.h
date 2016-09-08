@@ -28,5 +28,5 @@
 @property (copy,nonatomic)NSString *deparmentname;
 //获得静态方法
 +(instancetype)getInstance;
-
+-(NSString *)getLineMessage;
 @end

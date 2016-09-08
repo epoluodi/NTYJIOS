@@ -13,7 +13,7 @@
 #import "MBProgressHUD.h"
 #import "HttpServer.h"
 #import <Common/PublicCommon.h>
-
+#import "MainTabBarController.h"
 
 
 
@@ -362,6 +362,7 @@
     }
     if (indexPath.section==1)
     {
+        [((MainTabBarController *)self.tabBarController) DisConnectMqtt];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         LoginViewController *loginVC = (LoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         loginVC.IsAutoLogin=NO;

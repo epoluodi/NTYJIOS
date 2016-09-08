@@ -105,9 +105,6 @@
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取调度信息失败，请重新登录!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
                 
-                
-                
-                
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                 LoginViewController *loginVC = (LoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
                 loginVC.mainview=(MainTabBarController *)self.tabBarController;
