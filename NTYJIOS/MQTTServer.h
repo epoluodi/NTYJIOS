@@ -47,4 +47,5 @@ typedef unsigned short INT_PORT;
 
 //订阅
 -(void)PublishGroupTopic:(NSString *)topic;
+-(void)sendMessage:(NSString *)topic content:(NSString *)content;
 @end

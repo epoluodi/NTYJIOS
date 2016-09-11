@@ -39,6 +39,25 @@
     return self;
 }
 
+-(instancetype)initAudio:(NSData *)audiodata
+{
+    self = [super init];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    NSError *error=nil;
+    audioPlayer = [[AVAudioPlayer alloc] initWithData:audiodata fileTypeHint:AVFileTypeWAVE error:&error];
+    
+    
+//    audioPlayer=[[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:urlStr] error:&error];
+    NSLog(@"%@",error);
+    
+    audioPlayer.volume=1;
+    audioPlayer.delegate = self;
+    [audioPlayer prepareToPlay];
+    
+    
+    return self;
+}
 
 -(void)audioPowerChange
 {

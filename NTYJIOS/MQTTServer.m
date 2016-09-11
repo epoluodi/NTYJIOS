@@ -51,6 +51,7 @@
         {
             _IsMQTTConnect = YES;
             [ blockself->_delegate OnConnectMqtt];
+          
             [mqttclient publishString:[[UserInfo getInstance] getLineMessage]  toTopic:onlineTopic withQos:ExactlyOnce retain:NO completionHandler:nil];
         }
         else
@@ -95,5 +96,9 @@
         _IsMQTTConnect=NO;
         [ blockself->_delegate OnDisConnect];
     }];
+}
+-(void)sendMessage:(NSString *)topic content:(NSString *)content
+{
+    [mqttclient publishString:content toTopic:topic withQos:ExactlyOnce retain:NO completionHandler:nil];
 }
 @end

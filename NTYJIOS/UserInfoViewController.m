@@ -196,13 +196,19 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0)
+    if (indexPath.section==1)
     {
         switch (indexPath.row) {
             case 0:
                 
                 break;
-            case 1:
+            case 4:
+                if (!IsSelf)
+                {
+                    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",contacts.tel];
+                    //            NSLog(@"str======%@",str);
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+                }
                 
                 break;
                 

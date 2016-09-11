@@ -15,6 +15,9 @@
     UIBarButtonItem *btnright;
     NSArray* ddinfolist;
     
+    
+    __block NSArray *appoverlists;
+    
 }
 
 

@@ -209,17 +209,17 @@
     NSDictionary *data =rd.returnData;
     NSLog(@"用户信息 %@",data);
     NSArray *group = [data objectForKey:@"groups"];
-    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-//    app.mqtt
+//    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+
     
-    for (NSDictionary* dict in group) {
-        [app.mqtt PublishGroupTopic:[dict objectForKey:@"GROUP_ID"]];
-    }
+//    for (NSDictionary* dict in group) {
+//        [app.mqtt PublishGroupTopic:[dict objectForKey:@"GROUP_ID"]];
+//    }
        NSArray *dispatchs = [data objectForKey:@"dispatchs"];
     
     [[DBmanger getIntance] deletejdinfo];
     for (NSDictionary *dict in dispatchs) {
-        [app.mqtt PublishGroupTopic:[dict objectForKey:@"DISPATCH_ID"]];
+//        [app.mqtt PublishGroupTopic:[dict objectForKey:@"DISPATCH_ID"]];
         [[DBmanger getIntance] addJDinfo:dict];
     }
     return YES;
@@ -293,5 +293,22 @@
     [http httprequest:[http getDataForArrary]];
     
 
+}
+
+-(NSArray *)getAppoverMsg
+{
+    HttpClass *http = [[HttpClass alloc] init:url];
+    [http setIsHead:YES];
+    [http addHeadString:@"deviceID" value:[UserInfo getInstance].deviceid];
+    [http addHeadString:@"deviceType" value:@"01"];
+    [http addHeadString:@"token" value:[UserInfo getInstance].Token];
+    NSData *d =[http httprequest:nil];
+    
+    if (!d)
+        return nil;
+    ReturnData *rd = [ReturnData getReturnDatawithData:d dataMode:NO];
+    if (rd.returnCode!=0)
+        return nil;
+    return rd.returnDatas;
 }
 @end

@@ -44,10 +44,7 @@
     // 判断当前是否有头像，没有需要下载
 }
 
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     if (!isShow)
@@ -101,8 +98,6 @@
     
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t mainQ = dispatch_get_main_queue();
-    __block NSData* jpgdata;
-    
     dispatch_async(globalQ, ^{
         
         

@@ -518,18 +518,6 @@
     
     
 }
-
-
--(void)submitInfo
-{
-    
-    
-    
-}
-
-
-
-
 -(void)SelectedSendInfo:(NSString *)itemid name:(NSString *)name
 {
     selectdepartmentlist = name;

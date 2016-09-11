@@ -10,11 +10,13 @@
 #import "MBProgressHUD.h"
 #import "LoginViewController.h"
 #import "MessageViewContoller.h"
-
+#import "AppDelegate.h"
 
 
 @interface MainTabBarController ()
+{   AppDelegate *app;
 
+}
 @end
 
 @implementation MainTabBarController
@@ -24,7 +26,7 @@
     [super viewDidLoad];
     self.tabBar.tintColor=APPCOLOR;
     IsLogin = NO;
-    
+ 
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t mainQ = dispatch_get_main_queue();
     
@@ -51,7 +53,7 @@
     mqtt = [[MQTTServer alloc] init:[ServerInfo getInstance].MQTTADDRESS port:[ServerInfo getInstance].MQTTPORT];
     mqtt.delegate = self;
     [mqtt  ConnectMqtt:[ServerInfo getInstance].username password:[ServerInfo getInstance].password];
-    AppDelegate *app=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+    app=(AppDelegate *)[[UIApplication sharedApplication] delegate];
     app.mqtt=mqtt;
 }
 
@@ -60,6 +62,8 @@
 -(void)OnConnectMqtt
 {
     NSLog(@"连接成功");
+    [app.mqtt PublishGroupTopic:[UserInfo getInstance].userId];
+
     MessageViewContoller *mvc = (MessageViewContoller *)((UINavigationController *)self.viewControllers[0]).topViewController;
     
     dispatch_queue_t mainQ = dispatch_get_main_queue();
@@ -90,6 +94,7 @@
     
     
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

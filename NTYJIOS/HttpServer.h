@@ -36,8 +36,14 @@
 //查询调度信息列表
 -(BOOL)getGroupsList;
 
-
+//发布调度信息
 -(ReturnData *)publishJDInfo:(NSString *)title content:(NSString*)content recordfile:(NSString *)recordId pics:(NSString *)picsid group_ids:(NSString *)group_ids approve_account_id:(NSString *)approve_account_id;
 
+//更新ios Token
 -(void)UpdateIOSToken:(NSString*)token;
+
+
+//查询审核信息
+-(NSArray *)getAppoverMsg;
+
 @end

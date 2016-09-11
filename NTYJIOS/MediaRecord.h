@@ -39,6 +39,7 @@
 -(BOOL)getRecordState;
 -(BOOL)getPlayState;
 -(instancetype)init;
+-(instancetype)initAudio:(NSData *)audiodata;
 -(BOOL)StartRecord;
 -(void)StopRecord;
 -(void)audioPlayer;

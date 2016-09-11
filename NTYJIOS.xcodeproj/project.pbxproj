@@ -28,6 +28,8 @@
 		7BB56E0D1D5F45F4002C80A3 /* Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56E0B1D5F45F4002C80A3 /* Contacts.m */; };
 		7BB56E101D5F5986002C80A3 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56E0F1D5F5986002C80A3 /* ContactsController.m */; };
 		7BB56E131D5F5A1C002C80A3 /* PhoneBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56E121D5F5A1C002C80A3 /* PhoneBookController.m */; };
+		7BDE1C501D842B39004F2CCB /* AppoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDE1C4F1D842B39004F2CCB /* AppoverViewController.m */; };
+		7BDE1C531D843592004F2CCB /* JDDeltalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDE1C521D843592004F2CCB /* JDDeltalViewController.m */; };
 		7BF398141D5CC1DE004CDFE8 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BF398131D5CC1DE004CDFE8 /* splash.jpg */; };
 		7BF75B741D75C73D00CB03A2 /* aay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF75B731D75C73D00CB03A2 /* aay.png */; };
 		7BF75B761D77188800CB03A2 /* publishrecordcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BF75B751D77188800CB03A2 /* publishrecordcell.xib */; };
@@ -136,6 +138,10 @@
 		7BB56E0F1D5F5986002C80A3 /* ContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsController.m; sourceTree = "<group>"; };
 		7BB56E111D5F5A1C002C80A3 /* PhoneBookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneBookController.h; sourceTree = "<group>"; };
 		7BB56E121D5F5A1C002C80A3 /* PhoneBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneBookController.m; sourceTree = "<group>"; };
+		7BDE1C4E1D842B39004F2CCB /* AppoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppoverViewController.h; sourceTree = "<group>"; };
+		7BDE1C4F1D842B39004F2CCB /* AppoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppoverViewController.m; sourceTree = "<group>"; };
+		7BDE1C511D843592004F2CCB /* JDDeltalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDDeltalViewController.h; sourceTree = "<group>"; };
+		7BDE1C521D843592004F2CCB /* JDDeltalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDDeltalViewController.m; sourceTree = "<group>"; };
 		7BF398131D5CC1DE004CDFE8 /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash.jpg; sourceTree = "<group>"; };
 		7BF75B731D75C73D00CB03A2 /* aay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aay.png; sourceTree = "<group>"; };
 		7BF75B751D77188800CB03A2 /* publishrecordcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = publishrecordcell.xib; sourceTree = "<group>"; };
@@ -417,6 +423,10 @@
 				7B89D94A1D69E3EB000D712D /* PublishViewController.m */,
 				B42E582A1D7952B0005ADE1F /* SelectListViewController.h */,
 				B42E582B1D7952B0005ADE1F /* SelectListViewController.m */,
+				7BDE1C4E1D842B39004F2CCB /* AppoverViewController.h */,
+				7BDE1C4F1D842B39004F2CCB /* AppoverViewController.m */,
+				7BDE1C511D843592004F2CCB /* JDDeltalViewController.h */,
+				7BDE1C521D843592004F2CCB /* JDDeltalViewController.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -603,6 +613,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BDE1C501D842B39004F2CCB /* AppoverViewController.m in Sources */,
 				B465FBCC1D780E0200AFE593 /* MediaRecord.m in Sources */,
 				7BB56E131D5F5A1C002C80A3 /* PhoneBookController.m in Sources */,
 				B48B0F161D2E498100646A20 /* AppDelegate.m in Sources */,
@@ -612,6 +623,7 @@
 				7BB56DF21D5F3A5B002C80A3 /* db.xcdatamodeld in Sources */,
 				7BB56E071D5F3D6A002C80A3 /* Department.m in Sources */,
 				B48B0F2C1D2E4ADF00646A20 /* MainTabBarController.m in Sources */,
+				7BDE1C531D843592004F2CCB /* JDDeltalViewController.m in Sources */,
 				7BF75B7D1D771AA700CB03A2 /* PublishRecordCell.m in Sources */,
 				7B89D94B1D69E3EB000D712D /* PublishViewController.m in Sources */,
 				B48B0F381D2E53D000646A20 /* UserInfo.m in Sources */,
