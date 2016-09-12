@@ -42,6 +42,9 @@
 
 #define queryDispatchMsgs [NSString stringWithFormat:@"%@%@",IMURL,@"msg/queryDispatchMsgs"]
 
+#define approveDispatchMsg [NSString stringWithFormat:@"%@%@",IMURL,@"msg/approveDispatchMsg"]
+
+
 @interface ServerInfo : NSObject
 
 

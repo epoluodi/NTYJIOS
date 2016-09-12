@@ -101,7 +101,8 @@
     NSDictionary *d = _appoverlist[indexPath.row];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     JDDeltalViewController *jddetailview= [storyboard instantiateViewControllerWithIdentifier:@"jddetail"];
-    
+    jddetailview.IsAppoverMode=YES;
+    jddetailview.previousVC=self;
     jddetailview.info = d;
     [self presentViewController:jddetailview animated:YES completion:nil];
 }

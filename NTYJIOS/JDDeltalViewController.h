@@ -11,8 +11,10 @@
 @interface JDDeltalViewController : UIViewController<Recorddelegate>
 {
     UIBarButtonItem *btnreturn;
+    UIBarButtonItem *btnright;
     NSString *audioid;
     NSArray *pics;
+    
 }
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navbar;
@@ -22,7 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *sender;
 @property (weak, nonatomic) IBOutlet UILabel *sendtime;
 @property (weak, nonatomic) IBOutlet UIScrollView *infoscroll;
+@property (assign) BOOL IsAppoverMode;
 
+@property (weak,nonatomic)UIViewController *previousVC;
 
 @property (weak,nonatomic)NSDictionary *info;
 

@@ -311,4 +311,43 @@
         return nil;
     return rd.returnDatas;
 }
+
+
+//审核调度信息
+-(BOOL)ApproveDispatchMsg:(NSString *)dispatch_id approve_result:(NSString *)approve_result approve_desc:(NSString *)approve_desc send_account_id:(NSString *)send_account_id send_user_name:(NSString *)send_user_name
+{
+    HttpClass *http = [[HttpClass alloc] init:url];
+    [http setIsHead:YES];
+    [http addHeadString:@"deviceID" value:[UserInfo getInstance].deviceid];
+    [http addHeadString:@"deviceType" value:@"01"];
+    [http addHeadString:@"token" value:[UserInfo getInstance].Token];
+    
+    [http addParamsString:@"dispatch_id" values:dispatch_id];
+    [http addParamsString:@"approve_result" values:approve_result];
+    [http addParamsString:@"approve_desc" values:approve_desc];
+    [http addParamsString:@"send_account_id" values:send_account_id];
+    [http addParamsString:@"send_user_name" values:send_user_name];
+    NSData *d = [http httprequest:[http getDataForArrary]];
+    if (!d)
+        return NO;
+    ReturnData *rd = [ReturnData getReturnDatawithData:d dataMode:YES];
+    if (rd.returnCode!=0)
+        return NO;
+    return YES;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end
