@@ -47,4 +47,9 @@
 -(NSArray *)getAppoverMsg;
 
 -(BOOL)ApproveDispatchMsg:(NSString *)dispatch_id approve_result:(NSString *)approve_result approve_desc:(NSString *)approve_desc send_account_id:(NSString *)send_account_id send_user_name:(NSString *)send_user_name;
+
+
+//查询调度信息
+-(ReturnData *)queryDDInfo:(NSString *)ddid;
+
 @end

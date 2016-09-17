@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MQTTServer.h"
 //#define ServerUrl @"http://192.168.0.122:8080/ntyj"
-#define ServerUrl @"http://15b2060o22.iask.in:18080/ntyj" //test
+#define ServerUrl @"http://15b2060o22.iask.in:18081/ntyj" //test
 #define APP @"/app/"
 #define IM @"/im/"
 #define AUTH @"/auth/"
@@ -43,6 +43,9 @@
 #define queryDispatchMsgs [NSString stringWithFormat:@"%@%@",IMURL,@"msg/queryDispatchMsgs"]
 
 #define approveDispatchMsg [NSString stringWithFormat:@"%@%@",IMURL,@"msg/approveDispatchMsg"]
+
+
+#define queryDispatchMsg [NSString stringWithFormat:@"%@%@",IMURL,@"msg/queryDispatchMsg"]
 
 
 @interface ServerInfo : NSObject

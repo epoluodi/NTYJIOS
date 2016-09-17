@@ -26,7 +26,7 @@
     
     [[UINavigationBar appearance] setBackgroundImage:backbar forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [UserInfo getInstance];
 
     [UserInfo getInstance].deviceid=[[UIDevice currentDevice].identifierForVendor UUIDString];
@@ -34,6 +34,10 @@
     [self initLoginInfo];
     
 
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    [application registerUserNotificationSettings:settings];
+    
+    
      [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];//进入
     
     // Override point for customization after application launch.

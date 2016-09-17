@@ -11,11 +11,12 @@
 #import "LoginViewController.h"
 #import "MessageViewContoller.h"
 #import "AppDelegate.h"
+#import "ReturnData.h"
 
 
 @interface MainTabBarController ()
 {   AppDelegate *app;
-
+    MessageViewContoller *vc1;
 }
 @end
 
@@ -43,6 +44,7 @@
         });
     });
     
+    vc1 = (MessageViewContoller *)((UINavigationController *)self.viewControllers[0]).topViewController;
     // Do any additional setup after loading the view.
 }
 
@@ -64,11 +66,11 @@
     NSLog(@"连接成功");
     [app.mqtt PublishGroupTopic:[UserInfo getInstance].userId];
 
-    MessageViewContoller *mvc = (MessageViewContoller *)((UINavigationController *)self.viewControllers[0]).topViewController;
+  
     
     dispatch_queue_t mainQ = dispatch_get_main_queue();
     dispatch_async(mainQ, ^{
-        [mvc loadDDinfo];
+        [vc1 loadDDinfo];
     });
     
     
@@ -89,11 +91,86 @@
 
 -(void)OnMessage:(NSString *)msg
 {
-    NSLog(@"接收到MQTT信息:%@",msg);
+  
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
     
+    ReturnData *returndata = [ReturnData getReturnData:msg dataMode:YES];
+    
+    NSLog(@"接收到MQTT信息:%@",returndata.returnData);
+    
+    NSString *scope =[returndata.returnData objectForKey:@"scope"];
+
+    
+    if ([scope isEqualToString:@"system"])
+    {
+        NSDictionary *msgbody =[returndata.returnData objectForKey:@"msgBody"];
+        int optcode =[[msgbody objectForKey:@"optCode"] intValue];
+        NSDictionary *optdata;
+        
+        if (optcode==1)
+        {
+                optdata = [msgbody objectForKey:@"optData"];
+                dispatch_async(mainQ, ^{
+                    self.selectedIndex=0;
+                    UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"新的调度信息" message:[optdata objectForKey:@"dispatch_title"] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    [alert show];
+                    
+                    [vc1 loadDDinfo];
+                });
+            return;
+        }
+        //提醒
+        if (optcode==6)
+        {
+            optdata = [msgbody objectForKey:@"optData"];
+            dispatch_async(mainQ, ^{
+                self.selectedIndex=0;
+                UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"提醒：调度信息" message:[optdata objectForKey:@"dispatch_title"] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+           
+            });
+            return;
+        }
+        //拒绝
+        if (optcode==5)
+        {
+            optdata = [msgbody objectForKey:@"optData"];
+            dispatch_async(mainQ, ^{
+                self.selectedIndex=0;
+                NSString *desc = [NSString stringWithFormat:@"审批人：%@ 审批原因:%@",
+                                 [optdata objectForKey:@"approve_user_name"],
+                                  [optdata objectForKey:@"approve_desc"] ];
+                UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"调度信息审批拒绝" message:desc delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                
+            });
+            return;
+        }
+        
+        //关闭调度
+        if (optcode==3)
+        {
+            optdata = [msgbody objectForKey:@"optData"];
+            dispatch_async(mainQ, ^{
+                self.selectedIndex=0;
+                NSString *desc = [NSString stringWithFormat:@"审批人：%@ 调度标题:%@",
+                                  [optdata objectForKey:@"send_user_name"],
+                                  [optdata objectForKey:@"dispatch_title"] ];
+                UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"调度信息关闭" message:desc delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                [vc1 loadDDinfo];
+            });
+            return;
+        }
+        
+        
+    }
     
     
 }
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

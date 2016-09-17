@@ -21,6 +21,10 @@
 		7B89D9461D68960D000D712D /* publishjd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B89D9451D68960D000D712D /* publishjd.png */; };
 		7B89D9481D68961D000D712D /* historyjd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B89D9471D68961D000D712D /* historyjd.png */; };
 		7B89D94B1D69E3EB000D712D /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B89D94A1D69E3EB000D712D /* PublishViewController.m */; };
+		7BA75ACE1D8AC3EF00A2B1C8 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA75ACD1D8AC3EF00A2B1C8 /* NotificationController.m */; };
+		7BA75AD01D8C390400A2B1C8 /* t7.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA75ACF1D8C390400A2B1C8 /* t7.png */; };
+		7BA75AD21D8C3EC500A2B1C8 /* t5.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA75AD11D8C3EC500A2B1C8 /* t5.png */; };
+		7BA75AD51D8C3EDB00A2B1C8 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA75AD41D8C3EDB00A2B1C8 /* ChatViewController.m */; };
 		7BB56DEE1D5F2E3B002C80A3 /* default_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BB56DED1D5F2E3A002C80A3 /* default_avatar.png */; };
 		7BB56DF21D5F3A5B002C80A3 /* db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56DF01D5F3A5B002C80A3 /* db.xcdatamodeld */; };
 		7BB56DF51D5F3A90002C80A3 /* DBmanger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56DF41D5F3A90002C80A3 /* DBmanger.m */; };
@@ -128,6 +132,12 @@
 		7B89D9471D68961D000D712D /* historyjd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = historyjd.png; sourceTree = "<group>"; };
 		7B89D9491D69E3EB000D712D /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishViewController.h; sourceTree = "<group>"; };
 		7B89D94A1D69E3EB000D712D /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
+		7BA75ACC1D8AC3EF00A2B1C8 /* NotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
+		7BA75ACD1D8AC3EF00A2B1C8 /* NotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
+		7BA75ACF1D8C390400A2B1C8 /* t7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = t7.png; sourceTree = "<group>"; };
+		7BA75AD11D8C3EC500A2B1C8 /* t5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = t5.png; sourceTree = "<group>"; };
+		7BA75AD31D8C3EDB00A2B1C8 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		7BA75AD41D8C3EDB00A2B1C8 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		7BB56DED1D5F2E3A002C80A3 /* default_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_avatar.png; sourceTree = "<group>"; };
 		7BB56DF11D5F3A5B002C80A3 /* db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = db.xcdatamodel; sourceTree = "<group>"; };
 		7BB56DF31D5F3A90002C80A3 /* DBmanger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBmanger.h; sourceTree = "<group>"; };
@@ -431,6 +441,8 @@
 				7BDE1C4F1D842B39004F2CCB /* AppoverViewController.m */,
 				7BDE1C511D843592004F2CCB /* JDDeltalViewController.h */,
 				7BDE1C521D843592004F2CCB /* JDDeltalViewController.m */,
+				7BA75AD31D8C3EDB00A2B1C8 /* ChatViewController.h */,
+				7BA75AD41D8C3EDB00A2B1C8 /* ChatViewController.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -447,6 +459,8 @@
 				B48B0F3A1D2E542E00646A20 /* ServerInfo.m */,
 				B465FBCA1D780E0200AFE593 /* MediaRecord.h */,
 				B465FBCB1D780E0200AFE593 /* MediaRecord.m */,
+				7BA75ACC1D8AC3EF00A2B1C8 /* NotificationController.h */,
+				7BA75ACD1D8AC3EF00A2B1C8 /* NotificationController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -454,6 +468,8 @@
 		B48B0F2F1D2E4E8900646A20 /* png */ = {
 			isa = PBXGroup;
 			children = (
+				7BA75AD11D8C3EC500A2B1C8 /* t5.png */,
+				7BA75ACF1D8C390400A2B1C8 /* t7.png */,
 				7BF73D6E1D86EA0F0089B050 /* sp_no.png */,
 				7BF73D6F1D86EA0F0089B050 /* sp_ok.png */,
 				B457EC421D7D51E60048E992 /* nick1.png */,
@@ -538,7 +554,7 @@
 						DevelopmentTeam = RK2BTW6E76;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -572,10 +588,12 @@
 				7BF75B741D75C73D00CB03A2 /* aay.png in Resources */,
 				B457EC431D7D51E60048E992 /* nick1.png in Resources */,
 				7BF75B811D771BAC00CB03A2 /* stop.png in Resources */,
+				7BA75AD01D8C390400A2B1C8 /* t7.png in Resources */,
 				B44D0A071D2F4AA900F76DFF /* setting1.png in Resources */,
 				7BF75B8A1D77238800CB03A2 /* sendmubiao.png in Resources */,
 				7B1969251D6DECA500108B4A /* notice.png in Resources */,
 				B40C1AED1D337DF900AFE71A /* logo.png in Resources */,
+				7BA75AD21D8C3EC500A2B1C8 /* t5.png in Resources */,
 				7B1969201D6DEC0000108B4A /* MessageCell.xib in Resources */,
 				B44D0A0D1D2F4B9C00F76DFF /* setting4.png in Resources */,
 				B48B0F211D2E498100646A20 /* LaunchScreen.storyboard in Resources */,
@@ -647,10 +665,12 @@
 				7B89D93B1D676FB5000D712D /* MQTTServer.m in Sources */,
 				B42E582C1D7952B0005ADE1F /* SelectListViewController.m in Sources */,
 				7B318E211D6357D0002A9B59 /* PhoneBookCell.m in Sources */,
+				7BA75AD51D8C3EDB00A2B1C8 /* ChatViewController.m in Sources */,
 				B42E58361D795BFC005ADE1F /* SelectListCell.m in Sources */,
 				7BB56E0D1D5F45F4002C80A3 /* Contacts.m in Sources */,
 				B457EC481D7D55CB0048E992 /* SelectListCell2.m in Sources */,
 				7B89D9441D68951C000D712D /* FTPopOverMenu.m in Sources */,
+				7BA75ACE1D8AC3EF00A2B1C8 /* NotificationController.m in Sources */,
 				B40C1B021D3392BA00AFE71A /* HttpServer.m in Sources */,
 				B40C1AE11D33715500AFE71A /* UserInfoCell2.m in Sources */,
 				7BB56DF51D5F3A90002C80A3 /* DBmanger.m in Sources */,
@@ -767,6 +787,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/NTYJIOS",
@@ -789,6 +810,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/NTYJIOS",

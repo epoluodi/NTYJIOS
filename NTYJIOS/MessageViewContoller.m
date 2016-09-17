@@ -16,6 +16,8 @@
 #import "MessageCell.h"
 #import <Common/PublicCommon.h>
 #import "AppoverViewController.h"
+#import "NotificationController.h"
+#import "ChatViewController.h"
 @interface MessageViewContoller ()
 {
     AppDelegate *app;
@@ -42,8 +44,8 @@
     title.hidesBackButton=YES;
     
     
-    [title setLeftBarButtonItem:btnleft];
-    //    [title setRightBarButtonItem:btnright];
+//    [title setLeftBarButtonItem:btnleft];
+    [title setRightBarButtonItem:btnright];
     
     [self.navigationController.navigationBar pushNavigationItem:title animated:YES];
     
@@ -76,7 +78,7 @@
                                          
                                          break;
                                      case 1:
-                                         
+                              
                                          break;
                                  }
                                  
@@ -146,9 +148,9 @@
             
             dispatch_async(mainQ, ^{
                 if (!appoverlists || [appoverlists count]==0)
-                    [title setRightBarButtonItem:nil];
+                    [title setLeftBarButtonItem:nil];
                 else
-                    [title setRightBarButtonItem:btnright];
+                    [title setLeftBarButtonItem:btnleft];
                 
             });
             
@@ -207,7 +209,11 @@
     cell.selectedBackgroundView =selectview;
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        DDInfo *_ddinfo = ddinfolist[indexPath.row];
+    [self performSegueWithIdentifier:@"showchat" sender:_ddinfo];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -222,6 +228,12 @@
      {
          AppoverViewController * appovervc = [segue destinationViewController];
          appovervc.appoverlist=appoverlists;
+         return;
+     }
+     if ([segue.identifier isEqualToString:@"showchat"])
+     {
+         ChatViewController *chatvc =[segue destinationViewController];
+         chatvc.ddinfo = sender;
          return;
      }
  // Get the new view controller using [segue destinationViewController].
