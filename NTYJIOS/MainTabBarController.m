@@ -33,8 +33,6 @@
     
     dispatch_async(globalQ, ^{
         dispatch_async(mainQ, ^{
-            
-            
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             LoginViewController *loginVC = (LoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
             loginVC.mainview=self;

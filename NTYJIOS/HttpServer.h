@@ -52,4 +52,7 @@
 //查询调度信息
 -(ReturnData *)queryDDInfo:(NSString *)ddid;
 
+//获取调度信息用户组状态
+-(ReturnData *)queryDDInfowhituserState:(NSString *)ddid;
+
 @end

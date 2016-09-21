@@ -12,6 +12,7 @@
 #import <Common/PublicCommon.h>
 #import <Common/FileCommon.h>
 #import "JDDeltalViewController.h"
+#import "GroupInfoViewController.h"
 @interface ChatViewController ()
 {
     MBProgressHUD *hud;
@@ -28,16 +29,20 @@
     navtitle.title = @"调度讨论";
     [self.navigationController.navigationItem.leftBarButtonItems[0] setTintColor:[UIColor  whiteColor]];
     
+    [self.view setBackgroundColor:UIColorFromRGB(0xEAEAEA)];
+    
+    
+    
     
     infoimg.contentMode = UIViewContentModeScaleAspectFill;
     infoimg.layer.masksToBounds=YES;
     
     
     UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickddinfo)];
-   
+    
     tap.numberOfTapsRequired=1;
     tap.numberOfTouchesRequired=1;
- 
+    
     [_contentview addGestureRecognizer:tap];
     
     // Do any additional setup after loading the view.
@@ -56,56 +61,68 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    hud = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:hud];
-    [hud show:YES];
-    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t mainQ = dispatch_get_main_queue();
-    
-    dispatch_async(globalQ, ^{
+    if (!ddinfodict){
+        hud = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:hud];
+        [hud show:YES];
+        dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_queue_t mainQ = dispatch_get_main_queue();
         
-        HttpServer *http = [[HttpServer alloc] init:queryDispatchMsg];
-        ReturnData *ret =[http queryDDInfo:_ddinfo.ddid];
-        dispatch_async(mainQ, ^{
-            [hud hide:YES];
-            if (!ret)
-            {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取调度信息失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                [alert show];
-                [self.navigationController popViewControllerAnimated:YES];
-                return ;
-            }
-            else{
-                NSString *picid1;
-                ddinfodict = [ret returnData];
-                NSLog(@"%@",ddinfodict);
-                infotitle.text = [ddinfodict objectForKey:@"dispatch_title"];
-             
-                infodt.text =    [PublicCommon getDateStringWithDT:[ddinfodict objectForKey:@"create_time"]];
-                if (![[ddinfodict objectForKey:@"pic_ids"] isEqualToString:@""])
+        dispatch_async(globalQ, ^{
+            
+            HttpServer *http = [[HttpServer alloc] init:queryDispatchMsg];
+            ReturnData *ret =[http queryDDInfo:_ddinfo.ddid];
+            dispatch_async(mainQ, ^{
+                [hud hide:YES];
+                if (!ret)
                 {
-                    NSArray *picaary =[[ddinfodict objectForKey:@"pic_ids"] componentsSeparatedByString:@","];
-                    picid1 = picaary[0];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取调度信息失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    [alert show];
+                    [self.navigationController popViewControllerAnimated:YES];
+                    return ;
+                }
+                else{
+                    btnright = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"groups_white"] style:UIBarButtonItemStylePlain target:self action:@selector(ClickGroup)];
+                    [btnright setTintColor :[UIColor whiteColor] ];
                     
-                    [self DownloadImg:picid1 imgview:infoimg];
+                    [navtitle setRightBarButtonItem:btnright];
+                    
+                    
+                    
+                    NSString *picid1;
+                    ddinfodict = [ret returnData];
+                    NSLog(@"%@",ddinfodict);
+                    infotitle.text = [ddinfodict objectForKey:@"dispatch_title"];
+                    
+                    infodt.text =    [PublicCommon getDateStringWithDT:[ddinfodict objectForKey:@"create_time"]];
+                    if (![[ddinfodict objectForKey:@"pic_ids"] isEqualToString:@""])
+                    {
+                        NSArray *picaary =[[ddinfodict objectForKey:@"pic_ids"] componentsSeparatedByString:@","];
+                        picid1 = picaary[0];
+                        
+                        [self DownloadImg:picid1 imgview:infoimg];
+                    }
+                    else
+                    {
+                        imgH.constant=0;
+                    }
+                    NSString *content = [ddinfodict objectForKey:@"dispatch_content"];
+                    
+                    CGRect tmpRect = [content boundingRectWithSize:CGSizeMake(infocontent.frame.size.width, 60) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil];
+                    cotentH.constant = tmpRect.size.height;
+                    infocontent.text = content;
                 }
-                else
-                {
-                    imgH.constant=0;
-                }
-                NSString *content = [ddinfodict objectForKey:@"dispatch_content"];
-             
-                CGRect tmpRect = [content boundingRectWithSize:CGSizeMake(infocontent.frame.size.width, 60) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil];
-                cotentH.constant = tmpRect.size.height;
-                infocontent.text = content;
-            }
+            });
         });
-    });
+    }
 }
 
 
-
-
+//点击讨论组
+-(void)ClickGroup
+{
+    [self performSegueWithIdentifier:@"showgroupinfo" sender:self];
+}
 -(void)DownloadImg:(NSString *)mediaid imgview:(UIImageView *)imgview
 {
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -148,14 +165,30 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+\
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+     
+     if ([segue.identifier isEqualToString:@"showgroupinfo"])
+     {
+         GroupInfoViewController *groupinfovc = [segue destinationViewController];
+         groupinfovc.ddid = _ddinfo.ddid;
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+         groupinfovc.senddt =[_ddinfo.sendtime timeIntervalSince1970];
+         return;
+     }
+ }
+
+
+
+
+
+
+
+
 
 @end

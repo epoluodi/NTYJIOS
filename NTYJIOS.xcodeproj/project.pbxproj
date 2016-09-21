@@ -71,6 +71,8 @@
 		B42E58321D795AE1005ADE1F /* checkbox_select.png in Resources */ = {isa = PBXBuildFile; fileRef = B42E58301D795AE1005ADE1F /* checkbox_select.png */; };
 		B42E58331D795AE1005ADE1F /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = B42E58311D795AE1005ADE1F /* checkbox.png */; };
 		B42E58361D795BFC005ADE1F /* SelectListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B42E58351D795BFC005ADE1F /* SelectListCell.m */; };
+		B43A5A491D9223EC00519400 /* groups_white.png in Resources */ = {isa = PBXBuildFile; fileRef = B43A5A481D9223EC00519400 /* groups_white.png */; };
+		B43A5A4C1D92257E00519400 /* GroupInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43A5A4B1D92257E00519400 /* GroupInfoViewController.m */; };
 		B44D0A011D2F420800F76DFF /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B44D0A001D2F420800F76DFF /* Common.framework */; };
 		B44D0A031D2F421700F76DFF /* Common.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B44D0A001D2F420800F76DFF /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B44D0A071D2F4AA900F76DFF /* setting1.png in Resources */ = {isa = PBXBuildFile; fileRef = B44D0A061D2F4AA900F76DFF /* setting1.png */; };
@@ -82,6 +84,10 @@
 		B457EC431D7D51E60048E992 /* nick1.png in Resources */ = {isa = PBXBuildFile; fileRef = B457EC421D7D51E60048E992 /* nick1.png */; };
 		B457EC451D7D545E0048E992 /* selectlistcell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = B457EC441D7D545E0048E992 /* selectlistcell2.xib */; };
 		B457EC481D7D55CB0048E992 /* SelectListCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = B457EC471D7D55CB0048E992 /* SelectListCell2.m */; };
+		B45CDEFE1D92674000DFBBAC /* userstatecell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B45CDEFD1D92674000DFBBAC /* userstatecell.xib */; };
+		B45CDF011D92677E00DFBBAC /* no_s.png in Resources */ = {isa = PBXBuildFile; fileRef = B45CDEFF1D92677E00DFBBAC /* no_s.png */; };
+		B45CDF021D92677E00DFBBAC /* ok_s.png in Resources */ = {isa = PBXBuildFile; fileRef = B45CDF001D92677E00DFBBAC /* ok_s.png */; };
+		B45CDF051D92743300DFBBAC /* GroupInfoUserStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B45CDF041D92743300DFBBAC /* GroupInfoUserStateCell.m */; };
 		B465FBCC1D780E0200AFE593 /* MediaRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B465FBCB1D780E0200AFE593 /* MediaRecord.m */; };
 		B48B0F131D2E498100646A20 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B48B0F121D2E498100646A20 /* main.m */; };
 		B48B0F161D2E498100646A20 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B48B0F151D2E498100646A20 /* AppDelegate.m */; };
@@ -203,6 +209,9 @@
 		B42E58311D795AE1005ADE1F /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox.png; sourceTree = "<group>"; };
 		B42E58341D795BFC005ADE1F /* SelectListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectListCell.h; sourceTree = "<group>"; };
 		B42E58351D795BFC005ADE1F /* SelectListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectListCell.m; sourceTree = "<group>"; };
+		B43A5A481D9223EC00519400 /* groups_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = groups_white.png; sourceTree = "<group>"; };
+		B43A5A4A1D92257E00519400 /* GroupInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoViewController.h; sourceTree = "<group>"; };
+		B43A5A4B1D92257E00519400 /* GroupInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoViewController.m; sourceTree = "<group>"; };
 		B44D0A001D2F420800F76DFF /* Common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Common.framework; sourceTree = "<group>"; };
 		B44D0A061D2F4AA900F76DFF /* setting1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting1.png; sourceTree = "<group>"; };
 		B44D0A081D2F4B4F00F76DFF /* setting2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting2.png; sourceTree = "<group>"; };
@@ -215,6 +224,11 @@
 		B457EC441D7D545E0048E992 /* selectlistcell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = selectlistcell2.xib; sourceTree = "<group>"; };
 		B457EC461D7D55CB0048E992 /* SelectListCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectListCell2.h; sourceTree = "<group>"; };
 		B457EC471D7D55CB0048E992 /* SelectListCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectListCell2.m; sourceTree = "<group>"; };
+		B45CDEFD1D92674000DFBBAC /* userstatecell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = userstatecell.xib; sourceTree = "<group>"; };
+		B45CDEFF1D92677E00DFBBAC /* no_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_s.png; sourceTree = "<group>"; };
+		B45CDF001D92677E00DFBBAC /* ok_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok_s.png; sourceTree = "<group>"; };
+		B45CDF031D92743300DFBBAC /* GroupInfoUserStateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoUserStateCell.h; sourceTree = "<group>"; };
+		B45CDF041D92743300DFBBAC /* GroupInfoUserStateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoUserStateCell.m; sourceTree = "<group>"; };
 		B465FBCA1D780E0200AFE593 /* MediaRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaRecord.h; sourceTree = "<group>"; };
 		B465FBCB1D780E0200AFE593 /* MediaRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaRecord.m; sourceTree = "<group>"; };
 		B48B0F0E1D2E498000646A20 /* NTYJIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NTYJIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -341,6 +355,9 @@
 				B457EC441D7D545E0048E992 /* selectlistcell2.xib */,
 				B457EC461D7D55CB0048E992 /* SelectListCell2.h */,
 				B457EC471D7D55CB0048E992 /* SelectListCell2.m */,
+				B45CDEFD1D92674000DFBBAC /* userstatecell.xib */,
+				B45CDF031D92743300DFBBAC /* GroupInfoUserStateCell.h */,
+				B45CDF041D92743300DFBBAC /* GroupInfoUserStateCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -443,6 +460,8 @@
 				7BDE1C521D843592004F2CCB /* JDDeltalViewController.m */,
 				7BA75AD31D8C3EDB00A2B1C8 /* ChatViewController.h */,
 				7BA75AD41D8C3EDB00A2B1C8 /* ChatViewController.m */,
+				B43A5A4A1D92257E00519400 /* GroupInfoViewController.h */,
+				B43A5A4B1D92257E00519400 /* GroupInfoViewController.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -468,6 +487,9 @@
 		B48B0F2F1D2E4E8900646A20 /* png */ = {
 			isa = PBXGroup;
 			children = (
+				B45CDEFF1D92677E00DFBBAC /* no_s.png */,
+				B45CDF001D92677E00DFBBAC /* ok_s.png */,
+				B43A5A481D9223EC00519400 /* groups_white.png */,
 				7BA75AD11D8C3EC500A2B1C8 /* t5.png */,
 				7BA75ACF1D8C390400A2B1C8 /* t7.png */,
 				7BF73D6E1D86EA0F0089B050 /* sp_no.png */,
@@ -584,6 +606,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BF73D711D86EA0F0089B050 /* sp_ok.png in Resources */,
+				B45CDF021D92677E00DFBBAC /* ok_s.png in Resources */,
 				B40C1AE31D3379C600AFE71A /* userinfo_2.png in Resources */,
 				7BF75B741D75C73D00CB03A2 /* aay.png in Resources */,
 				B457EC431D7D51E60048E992 /* nick1.png in Resources */,
@@ -617,13 +640,16 @@
 				B40C1AE51D3379ED00AFE71A /* userinfo_3.png in Resources */,
 				B44D0A0F1D2F4BBE00F76DFF /* setting5.png in Resources */,
 				B42E582F1D795934005ADE1F /* selectlistcell.xib in Resources */,
+				B45CDEFE1D92674000DFBBAC /* userstatecell.xib in Resources */,
 				7BF398141D5CC1DE004CDFE8 /* splash.jpg in Resources */,
 				B42E58331D795AE1005ADE1F /* checkbox.png in Resources */,
 				7BF75B7A1D771A4000CB03A2 /* record_start.png in Resources */,
 				B44D0A0B1D2F4B7200F76DFF /* setting3.png in Resources */,
 				B457EC451D7D545E0048E992 /* selectlistcell2.xib in Resources */,
 				7B318E1E1D63573A002A9B59 /* phonebookcell.xib in Resources */,
+				B45CDF011D92677E00DFBBAC /* no_s.png in Resources */,
 				B40C1AD71D33469400AFE71A /* UserInfoCell.xib in Resources */,
+				B43A5A491D9223EC00519400 /* groups_white.png in Resources */,
 				B40C1AD91D33471B00AFE71A /* userinfo_1.png in Resources */,
 				B48B0F1C1D2E498100646A20 /* Main.storyboard in Resources */,
 				7BB56DEE1D5F2E3B002C80A3 /* default_avatar.png in Resources */,
@@ -643,6 +669,7 @@
 				B465FBCC1D780E0200AFE593 /* MediaRecord.m in Sources */,
 				7BB56E131D5F5A1C002C80A3 /* PhoneBookController.m in Sources */,
 				B48B0F161D2E498100646A20 /* AppDelegate.m in Sources */,
+				B45CDF051D92743300DFBBAC /* GroupInfoUserStateCell.m in Sources */,
 				B40C1ADC1D33478200AFE71A /* UserInfoCell1.m in Sources */,
 				7BB56E101D5F5986002C80A3 /* ContactsController.m in Sources */,
 				B48B0F131D2E498100646A20 /* main.m in Sources */,
@@ -661,6 +688,7 @@
 				7B1969231D6DEC1700108B4A /* MessageCell.m in Sources */,
 				B40C1AF41D33837600AFE71A /* LoginViewController.m in Sources */,
 				7B19691D1D6B406400108B4A /* DDInfo.m in Sources */,
+				B43A5A4C1D92257E00519400 /* GroupInfoViewController.m in Sources */,
 				7BF75B881D771D4B00CB03A2 /* PublishCell.m in Sources */,
 				7B89D93B1D676FB5000D712D /* MQTTServer.m in Sources */,
 				B42E582C1D7952B0005ADE1F /* SelectListViewController.m in Sources */,

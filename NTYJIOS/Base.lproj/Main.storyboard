@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9d8-pL-ajd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qFt-nS-hOJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="npy-vP-w69">
@@ -87,7 +87,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9E9-Iv-ETN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IAK-LK-6ir">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2gi-oM-Rrx">
@@ -123,7 +123,7 @@
                         <viewControllerLayoutGuide type="bottom" id="JZO-R4-xlj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d2F-6C-q9T">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JFY-kB-d3O">
@@ -168,7 +168,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hsz-hq-C3M"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ALf-wL-Abc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xo5-ge-hoP">
@@ -213,7 +213,7 @@
                         <viewControllerLayoutGuide type="bottom" id="aua-oc-tMj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="h6c-EN-KJh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uI-ct-juJ">
@@ -308,7 +308,7 @@
                         <viewControllerLayoutGuide type="bottom" id="GUE-if-UTy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bzU-Hs-frL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LTO-dP-ay3">
@@ -406,12 +406,12 @@
                         <viewControllerLayoutGuide type="bottom" id="has-zv-H1x"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pim-H6-dBG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duc-jQ-bte">
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题标题标题标题标题标题标题标题" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Uez-wu-zq7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Uez-wu-zq7">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="JF8-Bz-N1q"/>
                                         </constraints>
@@ -419,7 +419,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jY-eE-ewD">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jY-eE-ewD">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="2Wt-aO-R4q"/>
                                         </constraints>
@@ -522,11 +522,45 @@
                         <outlet property="infoimg" destination="9r4-NM-aga" id="dsk-g8-qsu"/>
                         <outlet property="infotitle" destination="Uez-wu-zq7" id="uqf-hn-3ve"/>
                         <outlet property="navtitle" destination="kTZ-wc-bZg" id="NfU-nR-yiZ"/>
+                        <segue destination="JvA-wS-RCh" kind="push" identifier="showgroupinfo" id="JTQ-5Y-46F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Be-0A-qc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2542.5" y="-1261.2676056338028"/>
+        </scene>
+        <!--成员信息-->
+        <scene sceneID="TA9-Kb-I9x">
+            <objects>
+                <viewController id="JvA-wS-RCh" customClass="GroupInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e5o-HQ-GG8"/>
+                        <viewControllerLayoutGuide type="bottom" id="ohs-Lu-41g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ph0-ql-hiQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DPr-Gc-Sv9">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DPr-Gc-Sv9" firstAttribute="leading" secondItem="ph0-ql-hiQ" secondAttribute="leading" id="FHz-hu-xdb"/>
+                            <constraint firstItem="ohs-Lu-41g" firstAttribute="top" secondItem="DPr-Gc-Sv9" secondAttribute="bottom" id="Ig2-vQ-vyF"/>
+                            <constraint firstAttribute="trailing" secondItem="DPr-Gc-Sv9" secondAttribute="trailing" id="g34-oR-PtX"/>
+                            <constraint firstItem="DPr-Gc-Sv9" firstAttribute="top" secondItem="ph0-ql-hiQ" secondAttribute="top" id="zNr-ed-2w2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="成员信息" id="5jy-TD-FFa"/>
+                    <connections>
+                        <outlet property="table" destination="DPr-Gc-Sv9" id="yfu-kk-DQV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nn6-pT-hvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3476" y="-1262.5187406296852"/>
         </scene>
         <!--通讯录-->
         <scene sceneID="QxM-S1-ELi">
@@ -555,7 +589,7 @@
                         <viewControllerLayoutGuide type="bottom" id="UvE-b4-D6K"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TpF-hZ-UNp">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="tuN-an-D6Y">
@@ -599,7 +633,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jmM-os-xdd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="c3u-2q-7Jv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="ITu-nM-mMj">
@@ -670,7 +704,7 @@
                         <viewControllerLayoutGuide type="bottom" id="eSk-zr-TVL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uUu-iU-e93">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aju-TU-GFd">
@@ -714,7 +748,7 @@
                         <viewControllerLayoutGuide type="bottom" id="lV3-K1-ZZm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="om5-yZ-yvS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前登录密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncw-1t-haY">

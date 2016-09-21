@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "EA43EC758FD089A8A39949C64ABB577C6711EE02",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "1046e180-d2c0-4263-a5b6-2323772678c8++5326" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1046e180-d2c0-4263-a5b6-2323772678c8++5326" : 9223372036854775807,
+    "EA43EC758FD089A8A39949C64ABB577C6711EE02" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "525E4B69-7589-459B-84E0-5D731789FF55",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1046e180-d2c0-4263-a5b6-2323772678c8++5326" : "",
+    "EA43EC758FD089A8A39949C64ABB577C6711EE02" : "NTYJIOS\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "NTYJIOS",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "NTYJIOS.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/115.29.41.197:3391",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1046e180-d2c0-4263-a5b6-2323772678c8++5326"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/epoluodi\/NTYJIOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EA43EC758FD089A8A39949C64ABB577C6711EE02"
+    }
+  ]
+}
