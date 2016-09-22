@@ -45,6 +45,12 @@
     
     [_contentview addGestureRecognizer:tap];
     
+     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_async(globalQ, ^{
+        HttpServer *http = [[HttpServer alloc] init:readDispatchMsg];
+        [http readDispatchStateSendServer:_ddinfo.ddid  lng:@"" lat:@""];
+    });
     // Do any additional setup after loading the view.
 }
 

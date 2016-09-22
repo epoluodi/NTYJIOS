@@ -378,7 +378,24 @@
 }
 
 
+-(void)readDispatchStateSendServer:(NSString *)ddid lng:(NSString *)lng lat:(NSString *)lat
+{
+    HttpClass *http = [[HttpClass alloc] init:url];
+    [http setIsHead:YES];
+    [http addHeadString:@"deviceID" value:[UserInfo getInstance].deviceid];
+    [http addHeadString:@"deviceType" value:@"01"];
+    [http addHeadString:@"token" value:[UserInfo getInstance].Token];
+    
+    [http addParamsString:@"dispatch_id" values:ddid];
+    [http addParamsString:@"read_longitude" values:lng];
+    [http addParamsString:@"read_latitude" values:lat];
 
+    [http httprequest:[http getDataForArrary]];
+    return;
+
+    
+    
+}
 
 
 

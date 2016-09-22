@@ -48,6 +48,9 @@
 #define queryDispatchMsg [NSString stringWithFormat:@"%@%@",IMURL,@"msg/queryDispatchMsg"]
 #define queryUsersByDispatchId [NSString stringWithFormat:@"%@%@",IMURL,@"msg/queryUsersByDispatchId"]
 
+#define readDispatchMsg [NSString stringWithFormat:@"%@%@",IMURL,@"msg/readDispatchMsg"]
+
+
 @interface ServerInfo : NSObject
 
 
