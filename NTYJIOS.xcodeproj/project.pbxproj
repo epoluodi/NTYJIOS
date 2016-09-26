@@ -15,6 +15,23 @@
 		7B318E211D6357D0002A9B59 /* PhoneBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B318E201D6357D0002A9B59 /* PhoneBookCell.m */; };
 		7B35E6961D66064000E81267 /* libMQTTKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B35E6941D66064000E81267 /* libMQTTKit.a */; };
 		7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4058171D3E70AA002A5068 /* MBProgressHUD.m */; };
+		7B7026411D957EA800C04011 /* BaiduMapAPI_Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70263A1D957EA800C04011 /* BaiduMapAPI_Base.framework */; };
+		7B7026421D957EA800C04011 /* BaiduMapAPI_Cloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70263B1D957EA800C04011 /* BaiduMapAPI_Cloud.framework */; };
+		7B7026431D957EA800C04011 /* BaiduMapAPI_Location.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70263C1D957EA800C04011 /* BaiduMapAPI_Location.framework */; };
+		7B7026441D957EA800C04011 /* BaiduMapAPI_Map.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70263D1D957EA800C04011 /* BaiduMapAPI_Map.framework */; };
+		7B7026451D957EA800C04011 /* BaiduMapAPI_Radar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70263E1D957EA800C04011 /* BaiduMapAPI_Radar.framework */; };
+		7B7026461D957EA800C04011 /* BaiduMapAPI_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70263F1D957EA800C04011 /* BaiduMapAPI_Search.framework */; };
+		7B7026471D957EA800C04011 /* BaiduMapAPI_Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7026401D957EA800C04011 /* BaiduMapAPI_Utils.framework */; };
+		7B7026491D957F2600C04011 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7B7026481D957F2600C04011 /* mapapi.bundle */; };
+		7B70264C1D957FFA00C04011 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70264B1D957FFA00C04011 /* CoreLocation.framework */; };
+		7B70264E1D95800900C04011 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70264D1D95800900C04011 /* QuartzCore.framework */; };
+		7B7026501D95801300C04011 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70264F1D95801300C04011 /* OpenGLES.framework */; };
+		7B7026521D95802100C04011 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7026511D95802100C04011 /* SystemConfiguration.framework */; };
+		7B7026541D95802C00C04011 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7026531D95802C00C04011 /* CoreGraphics.framework */; };
+		7B7026561D95803B00C04011 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7026551D95803B00C04011 /* Security.framework */; };
+		7B7026581D95804700C04011 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7026571D95804700C04011 /* libsqlite3.0.tbd */; };
+		7B70265A1D95805300C04011 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7026591D95805300C04011 /* CoreTelephony.framework */; };
+		7B70265C1D95806500C04011 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70265B1D95806500C04011 /* libstdc++.6.0.9.tbd */; };
 		7B89D93B1D676FB5000D712D /* MQTTServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B89D93A1D676FB5000D712D /* MQTTServer.m */; };
 		7B89D93E1D688B20000D712D /* MessageViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B89D93D1D688B20000D712D /* MessageViewContoller.m */; };
 		7B89D9441D68951C000D712D /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B89D9431D68951C000D712D /* FTPopOverMenu.m */; };
@@ -128,6 +145,23 @@
 		7B35E6951D66064000E81267 /* MQTTKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTTKit.h; sourceTree = "<group>"; };
 		7B4058171D3E70AA002A5068 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7B4058181D3E70AA002A5068 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		7B70263A1D957EA800C04011 /* BaiduMapAPI_Base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Base.framework; sourceTree = "<group>"; };
+		7B70263B1D957EA800C04011 /* BaiduMapAPI_Cloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Cloud.framework; sourceTree = "<group>"; };
+		7B70263C1D957EA800C04011 /* BaiduMapAPI_Location.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Location.framework; sourceTree = "<group>"; };
+		7B70263D1D957EA800C04011 /* BaiduMapAPI_Map.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Map.framework; sourceTree = "<group>"; };
+		7B70263E1D957EA800C04011 /* BaiduMapAPI_Radar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Radar.framework; sourceTree = "<group>"; };
+		7B70263F1D957EA800C04011 /* BaiduMapAPI_Search.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Search.framework; sourceTree = "<group>"; };
+		7B7026401D957EA800C04011 /* BaiduMapAPI_Utils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Utils.framework; sourceTree = "<group>"; };
+		7B7026481D957F2600C04011 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
+		7B70264B1D957FFA00C04011 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7B70264D1D95800900C04011 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7B70264F1D95801300C04011 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		7B7026511D95802100C04011 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7B7026531D95802C00C04011 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7B7026551D95803B00C04011 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7B7026571D95804700C04011 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		7B7026591D95805300C04011 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		7B70265B1D95806500C04011 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		7B89D9391D676FB5000D712D /* MQTTServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTTServer.h; sourceTree = "<group>"; };
 		7B89D93A1D676FB5000D712D /* MQTTServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTTServer.m; sourceTree = "<group>"; };
 		7B89D93C1D688B20000D712D /* MessageViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewContoller.h; sourceTree = "<group>"; };
@@ -256,9 +290,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B70265C1D95806500C04011 /* libstdc++.6.0.9.tbd in Frameworks */,
+				7B70265A1D95805300C04011 /* CoreTelephony.framework in Frameworks */,
+				7B7026581D95804700C04011 /* libsqlite3.0.tbd in Frameworks */,
+				7B7026561D95803B00C04011 /* Security.framework in Frameworks */,
+				7B7026541D95802C00C04011 /* CoreGraphics.framework in Frameworks */,
+				7B7026521D95802100C04011 /* SystemConfiguration.framework in Frameworks */,
+				7B7026501D95801300C04011 /* OpenGLES.framework in Frameworks */,
+				7B70264E1D95800900C04011 /* QuartzCore.framework in Frameworks */,
+				7B70264C1D957FFA00C04011 /* CoreLocation.framework in Frameworks */,
 				7B35E6961D66064000E81267 /* libMQTTKit.a in Frameworks */,
+				7B7026441D957EA800C04011 /* BaiduMapAPI_Map.framework in Frameworks */,
+				7B7026431D957EA800C04011 /* BaiduMapAPI_Location.framework in Frameworks */,
+				7B7026411D957EA800C04011 /* BaiduMapAPI_Base.framework in Frameworks */,
+				7B7026421D957EA800C04011 /* BaiduMapAPI_Cloud.framework in Frameworks */,
+				7B7026451D957EA800C04011 /* BaiduMapAPI_Radar.framework in Frameworks */,
 				B44D0A011D2F420800F76DFF /* Common.framework in Frameworks */,
 				B40C1AF61D338F2A00AFE71A /* libHttpLib.a in Frameworks */,
+				7B7026471D957EA800C04011 /* BaiduMapAPI_Utils.framework in Frameworks */,
+				7B7026461D957EA800C04011 /* BaiduMapAPI_Search.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +350,37 @@
 				7B89D93A1D676FB5000D712D /* MQTTServer.m */,
 			);
 			name = MQTT;
+			sourceTree = "<group>";
+		};
+		7B7026391D957E8E00C04011 /* baidu */ = {
+			isa = PBXGroup;
+			children = (
+				7B7026481D957F2600C04011 /* mapapi.bundle */,
+				7B70263A1D957EA800C04011 /* BaiduMapAPI_Base.framework */,
+				7B70263B1D957EA800C04011 /* BaiduMapAPI_Cloud.framework */,
+				7B70263C1D957EA800C04011 /* BaiduMapAPI_Location.framework */,
+				7B70263D1D957EA800C04011 /* BaiduMapAPI_Map.framework */,
+				7B70263E1D957EA800C04011 /* BaiduMapAPI_Radar.framework */,
+				7B70263F1D957EA800C04011 /* BaiduMapAPI_Search.framework */,
+				7B7026401D957EA800C04011 /* BaiduMapAPI_Utils.framework */,
+			);
+			name = baidu;
+			sourceTree = "<group>";
+		};
+		7B70264A1D957FFA00C04011 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B70265B1D95806500C04011 /* libstdc++.6.0.9.tbd */,
+				7B7026591D95805300C04011 /* CoreTelephony.framework */,
+				7B7026571D95804700C04011 /* libsqlite3.0.tbd */,
+				7B7026551D95803B00C04011 /* Security.framework */,
+				7B7026531D95802C00C04011 /* CoreGraphics.framework */,
+				7B7026511D95802100C04011 /* SystemConfiguration.framework */,
+				7B70264F1D95801300C04011 /* OpenGLES.framework */,
+				7B70264D1D95800900C04011 /* QuartzCore.framework */,
+				7B70264B1D957FFA00C04011 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		7B89D9411D689514000D712D /* PopMenu */ = {
@@ -384,6 +465,7 @@
 			children = (
 				B48B0F101D2E498100646A20 /* NTYJIOS */,
 				B48B0F0F1D2E498000646A20 /* Products */,
+				7B70264A1D957FFA00C04011 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -532,6 +614,7 @@
 		B48B0F351D2E526D00646A20 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				7B7026391D957E8E00C04011 /* baidu */,
 				7B89D9411D689514000D712D /* PopMenu */,
 				7B35E6931D66063600E81267 /* MQTT */,
 				B40C1AF71D338F3500AFE71A /* libHttpHead */,
@@ -605,6 +688,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B7026491D957F2600C04011 /* mapapi.bundle in Resources */,
 				7BF73D711D86EA0F0089B050 /* sp_ok.png in Resources */,
 				B45CDF021D92677E00DFBBAC /* ok_s.png in Resources */,
 				B40C1AE31D3379C600AFE71A /* userinfo_2.png in Resources */,

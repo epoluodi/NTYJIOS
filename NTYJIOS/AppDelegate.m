@@ -13,14 +13,27 @@
 #import "HttpServer.h"
 
 
-@interface AppDelegate ()
 
+#define BAIDUKEY @"nAGnTYALCgaVkN8VBQbiuYdR0KcQtrrh"
+@interface AppDelegate ()
+{
+    BMKMapManager* _mapManager;
+}
 @end
 
 @implementation AppDelegate
 @synthesize mqtt;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // 要使用百度地图，请先启动BaiduMapManager
+    _mapManager = [[BMKMapManager alloc]init];
+    BOOL ret = [_mapManager start:BAIDUKEY generalDelegate:self];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
+    
+    
     [DBmanger getIntance];
     UIImage *backbar = [PublicCommon createImageWithColor:APPCOLOR Rect:CGRectMake(0, 0, 100, 100)];
     
@@ -108,5 +121,29 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+- (void)onGetNetworkState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"联网成功");
+    }
+    else{
+        NSLog(@"onGetNetworkState %d",iError);
+    }
+    
+}
+
+- (void)onGetPermissionState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"授权成功");
+    }
+    else {
+        NSLog(@"onGetPermissionState %d",iError);
+    }
+}
+
+
 
 @end

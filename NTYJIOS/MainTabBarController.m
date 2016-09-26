@@ -28,6 +28,10 @@
     self.tabBar.tintColor=APPCOLOR;
     IsLogin = NO;
  
+    _locService = [[BMKLocationService alloc]init];
+    _locService.delegate = self;
+    [_locService startUserLocationService];
+    
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t mainQ = dispatch_get_main_queue();
     
@@ -44,6 +48,18 @@
     
     vc1 = (MessageViewContoller *)((UINavigationController *)self.viewControllers[0]).topViewController;
     // Do any additional setup after loading the view.
+}
+
+
+/**
+ *用户位置更新后，会调用此函数
+ *@param userLocation 新的用户位置
+ */
+- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
+{
+        NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+    app.loc = userLocation;
+    [_locService stopUserLocationService];
 }
 
 

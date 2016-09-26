@@ -113,8 +113,23 @@ static DBmanger *_db;
         [contacts setValue:@"" forKey:@"img"];
     else
         [contacts setValue:[userinfo objectForKey:@"picture"] forKey:@"img"];
-    [contacts setValue:[userinfo objectForKey:@"positionId"] forKey:@"positionid"];
-    [contacts setValue:[userinfo objectForKey:@"positionName"] forKey:@"positionname"];
+    
+    
+    
+    if ([userinfo objectForKey:@"positionId"]  == [NSNull null])
+        [contacts setValue:@"" forKey:@"positionid"];
+    else
+        [contacts setValue:[userinfo objectForKey:@"positionId"] forKey:@"positionid"];
+    
+    if ([userinfo objectForKey:@"positionName"]  == [NSNull null])
+        [contacts setValue:@"" forKey:@"positionname"];
+    else
+        [contacts setValue:[userinfo objectForKey:@"positionName"] forKey:@"positionname"];
+
+    
+    
+    
+    
     NSArray *groups = [userinfo objectForKey:@"groups"];
     NSMutableString *_groupids,*_groupnames;
     _groupids = [[NSMutableString alloc] init];

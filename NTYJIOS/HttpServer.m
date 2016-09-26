@@ -378,7 +378,7 @@
 }
 
 
--(void)readDispatchStateSendServer:(NSString *)ddid lng:(NSString *)lng lat:(NSString *)lat
+-(BOOL)readDispatchStateSendServer:(NSString *)ddid lng:(NSString *)lng lat:(NSString *)lat
 {
     HttpClass *http = [[HttpClass alloc] init:url];
     [http setIsHead:YES];
@@ -391,7 +391,17 @@
     [http addParamsString:@"read_latitude" values:lat];
 
     [http httprequest:[http getDataForArrary]];
-    return;
+    NSData *d =[http httprequest:nil];
+    
+    if (!d)
+        return NO;
+    ReturnData *rd = [ReturnData getReturnDatawithData:d dataMode:YES];
+    if (rd.returnCode!=0)
+        return NO;
+    
+    NSLog(@"返回结果：%@",rd.returnData);
+    
+    return YES;
 
     
     

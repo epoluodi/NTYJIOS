@@ -56,5 +56,5 @@
 -(ReturnData *)queryDDInfowhituserState:(NSString *)ddid;
 
 //阅读调度信息发送
--(void)readDispatchStateSendServer:(NSString *)ddid lng:(NSString *)lng lat:(NSString *)lat;
+-(BOOL)readDispatchStateSendServer:(NSString *)ddid lng:(NSString *)lng lat:(NSString *)lat;
 @end

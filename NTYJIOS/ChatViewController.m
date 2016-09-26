@@ -13,9 +13,11 @@
 #import <Common/FileCommon.h>
 #import "JDDeltalViewController.h"
 #import "GroupInfoViewController.h"
+#import "AppDelegate.h"
 @interface ChatViewController ()
 {
     MBProgressHUD *hud;
+    AppDelegate *app;
 }
 
 @end
@@ -28,7 +30,7 @@
     [super viewDidLoad];
     navtitle.title = @"调度讨论";
     [self.navigationController.navigationItem.leftBarButtonItems[0] setTintColor:[UIColor  whiteColor]];
-    
+    app = [[UIApplication sharedApplication] delegate];
     [self.view setBackgroundColor:UIColorFromRGB(0xEAEAEA)];
     
     
@@ -45,11 +47,21 @@
     
     [_contentview addGestureRecognizer:tap];
     
-     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
     dispatch_async(globalQ, ^{
         HttpServer *http = [[HttpServer alloc] init:readDispatchMsg];
-        [http readDispatchStateSendServer:_ddinfo.ddid  lng:@"" lat:@""];
+        
+      
+        BOOL r =    [http readDispatchStateSendServer:_ddinfo.ddid  lng:  [NSString stringWithFormat:@"%f",app.loc.location.coordinate.longitude] lat:  [NSString stringWithFormat:@"%f",app.loc.location.coordinate.latitude]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (!r)
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"无法连接服务器，信息无法反馈，请稍后再试" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+            }
+            return ;
+        });
     });
     // Do any additional setup after loading the view.
 }
@@ -172,22 +184,22 @@
 }
 
 \
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
-     
-     if ([segue.identifier isEqualToString:@"showgroupinfo"])
-     {
-         GroupInfoViewController *groupinfovc = [segue destinationViewController];
-         groupinfovc.ddid = _ddinfo.ddid;
+#pragma mark - Navigation
 
-         groupinfovc.senddt =[_ddinfo.sendtime timeIntervalSince1970];
-         return;
-     }
- }
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"showgroupinfo"])
+    {
+        GroupInfoViewController *groupinfovc = [segue destinationViewController];
+        groupinfovc.ddid = _ddinfo.ddid;
+        
+        groupinfovc.senddt =[_ddinfo.sendtime timeIntervalSince1970];
+        return;
+    }
+}
 
 
 
