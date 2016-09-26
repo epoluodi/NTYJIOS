@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="102" id="T9d-zc-2oZ" customClass="ChatTextLeftCell">
+            <rect key="frame" x="0.0" y="0.0" width="376" height="102"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T9d-zc-2oZ" id="dcO-to-v9g">
+                <frame key="frameInset" width="376" height="101"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QN9-my-kgj">
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Ege-cb-xfd"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nick1.png" translatesAutoresizingMaskIntoConstraints="NO" id="PMl-34-0Ky">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="0HB-rQ-X9p"/>
+                            <constraint firstAttribute="height" constant="40" id="YWH-Hg-2OA"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_left.png" translatesAutoresizingMaskIntoConstraints="NO" id="anh-jX-Fv9">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Pgu-TI-V6E"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="anh-jX-Fv9" secondAttribute="trailing" constant="50" id="2PA-xC-kFS"/>
+                    <constraint firstItem="QN9-my-kgj" firstAttribute="leading" secondItem="dcO-to-v9g" secondAttribute="leading" id="8RU-KO-Qd8"/>
+                    <constraint firstItem="anh-jX-Fv9" firstAttribute="top" secondItem="QN9-my-kgj" secondAttribute="bottom" id="BL2-5N-xiL"/>
+                    <constraint firstAttribute="trailing" secondItem="QN9-my-kgj" secondAttribute="trailing" id="DoD-xi-tvb"/>
+                    <constraint firstItem="QN9-my-kgj" firstAttribute="top" secondItem="dcO-to-v9g" secondAttribute="top" id="SIF-e4-yOT"/>
+                    <constraint firstItem="anh-jX-Fv9" firstAttribute="leading" secondItem="PMl-34-0Ky" secondAttribute="trailing" constant="8" id="Yzd-DO-76y"/>
+                    <constraint firstItem="PMl-34-0Ky" firstAttribute="leading" secondItem="dcO-to-v9g" secondAttribute="leading" constant="8" id="mfG-1M-X0m"/>
+                    <constraint firstItem="PMl-34-0Ky" firstAttribute="top" secondItem="QN9-my-kgj" secondAttribute="bottom" constant="12" id="wyF-Ee-Qd8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="content" destination="anh-jX-Fv9" id="TJL-TI-yYo"/>
+                <outlet property="contentH" destination="Pgu-TI-V6E" id="nRe-fM-dkI"/>
+                <outlet property="contentmaginright" destination="2PA-xC-kFS" id="SvH-dX-mqe"/>
+                <outlet property="labdt" destination="QN9-my-kgj" id="a6Z-O4-sOn"/>
+                <outlet property="nickimg" destination="PMl-34-0Ky" id="ygQ-7T-euB"/>
+            </connections>
+            <point key="canvasLocation" x="52" y="68"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chat_left.png" width="64" height="64"/>
+        <image name="nick1.png" width="64" height="64"/>
+    </resources>
+</document>

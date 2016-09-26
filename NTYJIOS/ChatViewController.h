@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "DDInfo.h"
 
-@interface ChatViewController : UIViewController<UIGestureRecognizerDelegate>
+@interface ChatViewController : UIViewController<UIGestureRecognizerDelegate,UITextFieldDelegate,
+UITableViewDelegate,UITableViewDataSource>
 {
     UIBarButtonItem *btnright;
     UINavigationItem *itemtitle;
     NSDictionary *ddinfodict;
+    
+    NSMutableArray *chatlists;
+    
 }
 @property (weak, nonatomic) IBOutlet UINavigationItem *navtitle;
 @property (weak, nonatomic) IBOutlet UILabel *infotitle;
@@ -25,7 +29,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imgH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cotentH;
 @property (weak, nonatomic) IBOutlet UIView *contentview;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputautoH;
+@property (weak, nonatomic) IBOutlet UITextField *chatcontent;
+@property (weak, nonatomic) IBOutlet UITableView *table;
 
+- (IBAction)clicksend:(id)sender;
 
 @property (weak,nonatomic) DDInfo *ddinfo;
 

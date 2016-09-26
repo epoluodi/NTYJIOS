@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9d8-pL-ajd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qFt-nS-hOJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="npy-vP-w69">
@@ -87,7 +87,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9E9-Iv-ETN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IAK-LK-6ir">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2gi-oM-Rrx">
@@ -123,7 +123,7 @@
                         <viewControllerLayoutGuide type="bottom" id="JZO-R4-xlj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d2F-6C-q9T">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JFY-kB-d3O">
@@ -168,7 +168,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hsz-hq-C3M"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ALf-wL-Abc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xo5-ge-hoP">
@@ -213,7 +213,7 @@
                         <viewControllerLayoutGuide type="bottom" id="aua-oc-tMj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="h6c-EN-KJh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uI-ct-juJ">
@@ -308,7 +308,7 @@
                         <viewControllerLayoutGuide type="bottom" id="GUE-if-UTy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bzU-Hs-frL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LTO-dP-ay3">
@@ -406,7 +406,7 @@
                         <viewControllerLayoutGuide type="bottom" id="has-zv-H1x"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pim-H6-dBG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duc-jQ-bte">
@@ -472,6 +472,9 @@
                                             <constraint firstAttribute="height" constant="30" id="8Iq-e5-Mh8"/>
                                         </constraints>
                                         <state key="normal" title="发送"/>
+                                        <connections>
+                                            <action selector="clicksend:" destination="z6h-qJ-PC5" eventType="touchUpInside" id="nyA-W3-PLf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOZ-di-c2X">
                                         <constraints>
@@ -503,7 +506,7 @@
                             <constraint firstAttribute="trailing" secondItem="duc-jQ-bte" secondAttribute="trailing" id="Fcb-D7-Q6N"/>
                             <constraint firstItem="Uhd-dM-ujl" firstAttribute="top" secondItem="CK5-OR-Jy1" secondAttribute="bottom" id="HLN-Ym-tuB"/>
                             <constraint firstItem="Uhd-dM-ujl" firstAttribute="leading" secondItem="pim-H6-dBG" secondAttribute="leading" id="QkH-Th-ZX9"/>
-                            <constraint firstItem="has-zv-H1x" firstAttribute="top" secondItem="Uhd-dM-ujl" secondAttribute="bottom" constant="-3" id="UAT-aU-DPL"/>
+                            <constraint firstItem="has-zv-H1x" firstAttribute="top" secondItem="Uhd-dM-ujl" secondAttribute="bottom" id="UAT-aU-DPL"/>
                             <constraint firstAttribute="trailing" secondItem="CK5-OR-Jy1" secondAttribute="trailing" id="bvv-1I-b7L"/>
                             <constraint firstItem="duc-jQ-bte" firstAttribute="top" secondItem="R9i-xM-klu" secondAttribute="bottom" id="fdP-1u-Upl"/>
                             <constraint firstItem="duc-jQ-bte" firstAttribute="leading" secondItem="pim-H6-dBG" secondAttribute="leading" id="kOF-HH-01j"/>
@@ -514,6 +517,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="kTZ-wc-bZg"/>
                     <connections>
+                        <outlet property="chatcontent" destination="7Kl-3k-wbX" id="zg0-aH-FLI"/>
                         <outlet property="contentview" destination="duc-jQ-bte" id="36L-ee-pbU"/>
                         <outlet property="cotentH" destination="Wev-Bn-tJo" id="zwt-5n-PSV"/>
                         <outlet property="imgH" destination="dSr-sh-edM" id="bS4-Qi-aHQ"/>
@@ -521,7 +525,9 @@
                         <outlet property="infodt" destination="8jY-eE-ewD" id="JHd-1F-BDH"/>
                         <outlet property="infoimg" destination="9r4-NM-aga" id="dsk-g8-qsu"/>
                         <outlet property="infotitle" destination="Uez-wu-zq7" id="uqf-hn-3ve"/>
+                        <outlet property="inputautoH" destination="UAT-aU-DPL" id="ZI1-4o-hNe"/>
                         <outlet property="navtitle" destination="kTZ-wc-bZg" id="NfU-nR-yiZ"/>
+                        <outlet property="table" destination="CK5-OR-Jy1" id="TYp-UI-7ez"/>
                         <segue destination="JvA-wS-RCh" kind="push" identifier="showgroupinfo" id="JTQ-5Y-46F"/>
                     </connections>
                 </viewController>
@@ -538,7 +544,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ohs-Lu-41g"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ph0-ql-hiQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DPr-Gc-Sv9">
@@ -589,7 +595,7 @@
                         <viewControllerLayoutGuide type="bottom" id="UvE-b4-D6K"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TpF-hZ-UNp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="tuN-an-D6Y">
@@ -633,7 +639,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jmM-os-xdd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="c3u-2q-7Jv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="ITu-nM-mMj">
@@ -704,7 +710,7 @@
                         <viewControllerLayoutGuide type="bottom" id="eSk-zr-TVL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uUu-iU-e93">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aju-TU-GFd">
@@ -748,7 +754,7 @@
                         <viewControllerLayoutGuide type="bottom" id="lV3-K1-ZZm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="om5-yZ-yvS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前登录密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncw-1t-haY">

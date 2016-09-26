@@ -14,6 +14,7 @@
 #import "JDDeltalViewController.h"
 #import "GroupInfoViewController.h"
 #import "AppDelegate.h"
+#import "ChatTextLeftCell.h"
 @interface ChatViewController ()
 {
     MBProgressHUD *hud;
@@ -26,14 +27,30 @@
 @synthesize navtitle;
 @synthesize infodt,infoimg,infotitle,infocontent;
 @synthesize cotentH,imgH;
+@synthesize chatcontent;
+@synthesize table;
 - (void)viewDidLoad {
     [super viewDidLoad];
     navtitle.title = @"调度讨论";
     [self.navigationController.navigationItem.leftBarButtonItems[0] setTintColor:[UIColor  whiteColor]];
     app = [[UIApplication sharedApplication] delegate];
-    [self.view setBackgroundColor:UIColorFromRGB(0xEAEAEA)];
+
+    [table setBackgroundColor:UIColorFromRGB(0xEAEAEA)];
+    table.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    UITapGestureRecognizer *tapchat = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeinput)];
+    [table addGestureRecognizer:tapchat];
+    
+    chatlists = [[NSMutableArray alloc] init];
+    UINib *nib = [UINib nibWithNibName:@"chatleft_text_cell" bundle:nil];
+    [table registerNib:nib forCellReuseIdentifier:@"textleftcell"];
     
     
+    table.delegate=self;
+    table.dataSource=self;
+    
+    
+    chatcontent.delegate=self;
     
     
     infoimg.contentMode = UIViewContentModeScaleAspectFill;
@@ -67,6 +84,17 @@
 }
 
 
+//关闭键盘
+-(void)closeinput
+{
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:0.4f];
+    
+    _inputautoH.constant=0;
+    [UIView commitAnimations];
+    
+    [chatcontent resignFirstResponder];
+}
 //点击调度信息
 -(void)clickddinfo
 {
@@ -202,11 +230,50 @@
 }
 
 
+//开始编辑输入框的时候，软键盘出现，执行此事件
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+ 
+  
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:0.4f];
+    
+    _inputautoH.constant=216;
+    [UIView commitAnimations];
+}
 
 
 
 
 
 
+#pragma mark 聊天
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [chatlists count];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ChatTextLeftCell *cell = [table dequeueReusableCellWithIdentifier:@"textleftcell"];
+    return cell;
+}
+
+
+- (IBAction)clicksend:(id)sender {
+    
+    [chatlists addObject:@"123"];
+    [table reloadData];
+}
 @end
