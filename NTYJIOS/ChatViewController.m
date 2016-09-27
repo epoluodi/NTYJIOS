@@ -42,6 +42,7 @@
     [table addGestureRecognizer:tapchat];
     
     chatlists = [[NSMutableArray alloc] init];
+    cellHlist = [[NSMutableDictionary alloc] init];
     UINib *nib = [UINib nibWithNibName:@"chatleft_text_cell" bundle:nil];
     [table registerNib:nib forCellReuseIdentifier:@"textleftcell"];
     
@@ -261,12 +262,18 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+   
+    NSString *h =[cellHlist objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+    
+    return [h intValue];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChatTextLeftCell *cell = [table dequeueReusableCellWithIdentifier:@"textleftcell"];
+ 
+    [cell setInfo:@" [cellHli" dt:@""];
+    [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)cell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
     return cell;
 }
 
@@ -276,4 +283,8 @@
     [chatlists addObject:@"123"];
     [table reloadData];
 }
+
+
+
+
 @end

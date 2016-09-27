@@ -37,7 +37,7 @@
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="anh-jX-Fv9" secondAttribute="trailing" constant="50" id="2PA-xC-kFS"/>
                     <constraint firstItem="QN9-my-kgj" firstAttribute="leading" secondItem="dcO-to-v9g" secondAttribute="leading" id="8RU-KO-Qd8"/>
-                    <constraint firstItem="anh-jX-Fv9" firstAttribute="top" secondItem="QN9-my-kgj" secondAttribute="bottom" id="BL2-5N-xiL"/>
+                    <constraint firstItem="anh-jX-Fv9" firstAttribute="top" secondItem="QN9-my-kgj" secondAttribute="bottom" constant="12" id="BL2-5N-xiL"/>
                     <constraint firstAttribute="trailing" secondItem="QN9-my-kgj" secondAttribute="trailing" id="DoD-xi-tvb"/>
                     <constraint firstItem="QN9-my-kgj" firstAttribute="top" secondItem="dcO-to-v9g" secondAttribute="top" id="SIF-e4-yOT"/>
                     <constraint firstItem="anh-jX-Fv9" firstAttribute="leading" secondItem="PMl-34-0Ky" secondAttribute="trailing" constant="8" id="Yzd-DO-76y"/>
@@ -57,7 +57,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="chat_left.png" width="64" height="64"/>
+        <image name="chat_left.png" width="56" height="56"/>
         <image name="nick1.png" width="64" height="64"/>
     </resources>
 </document>

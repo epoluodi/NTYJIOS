@@ -18,6 +18,8 @@ UITableViewDelegate,UITableViewDataSource>
     
     NSMutableArray *chatlists;
     
+    NSMutableDictionary *cellHlist;
+    
 }
 @property (weak, nonatomic) IBOutlet UINavigationItem *navtitle;
 @property (weak, nonatomic) IBOutlet UILabel *infotitle;

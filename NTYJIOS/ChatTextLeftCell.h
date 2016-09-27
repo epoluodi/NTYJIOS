@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ChatTextLeftCell : UITableViewCell
+{
+    UILabel *labcontent;
+}
 
 @property (weak, nonatomic) IBOutlet UIView *labdt;
 @property (weak, nonatomic) IBOutlet UIImageView *nickimg;
@@ -16,6 +19,9 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentmaginright;
+@property (assign)NSUInteger CellHight;
+
+-(void)setInfo:(NSString *)info dt:(NSString *)dt;
 
 
 @end
