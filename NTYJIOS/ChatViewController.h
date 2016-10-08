@@ -19,6 +19,7 @@ UITableViewDelegate,UITableViewDataSource>
     NSMutableArray *chatlists;
     
     NSMutableDictionary *cellHlist;
+    int tablescrollcontentHeight;
     
 }
 @property (weak, nonatomic) IBOutlet UINavigationItem *navtitle;

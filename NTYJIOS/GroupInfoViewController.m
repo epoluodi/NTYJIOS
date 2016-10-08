@@ -121,7 +121,10 @@
         NSDate *d=[date dateFromString:timeStr];
         NSTimeInterval late=[d timeIntervalSince1970];
         NSTimeInterval cha=late - _senddt;
-        cell.statedt.text = [NSString stringWithFormat: @"%d 分钟",(int)(cha  /60)];
+        if ((int)(cha  /60)  <0)
+            cell.statedt.text = [NSString stringWithFormat: @"%d 分钟",1];
+        else
+            cell.statedt.text = [NSString stringWithFormat: @"%d 分钟",(int)(cha  /60)];
         
     }
     else

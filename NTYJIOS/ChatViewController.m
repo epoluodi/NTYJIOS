@@ -99,12 +99,14 @@
 //点击调度信息
 -(void)clickddinfo
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    JDDeltalViewController *jddetailview= [storyboard instantiateViewControllerWithIdentifier:@"jddetail"];
-    jddetailview.IsAppoverMode=NO;
-    jddetailview.previousVC=self;
-    jddetailview.info = ddinfodict;
-    [self presentViewController:jddetailview animated:YES completion:nil];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    JDDeltalViewController *jddetailview= [storyboard instantiateViewControllerWithIdentifier:@"jddetail"];
+//    jddetailview.IsAppoverMode=NO;
+//    jddetailview.previousVC=self;
+//    jddetailview.info = ddinfodict;
+//    [self presentViewController:jddetailview animated:YES completion:nil];
+    
+    [table scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -244,7 +246,11 @@
 }
 
 
-
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self closeinput];
+    return YES;
+}
 
 
 
@@ -264,7 +270,7 @@
 {
    
     NSString *h =[cellHlist objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
-    
+ 
     return [h intValue];
 }
 
@@ -272,8 +278,9 @@
 {
     ChatTextLeftCell *cell = [table dequeueReusableCellWithIdentifier:@"textleftcell"];
  
-    [cell setInfo:@" [cellHli" dt:@""];
+    [cell setInfo:[NSString stringWithFormat:@"%d",indexPath.row] dt:@""];
     [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)cell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+       tablescrollcontentHeight += cell.CellHight;
     return cell;
 }
 
@@ -281,7 +288,26 @@
 - (IBAction)clicksend:(id)sender {
     
     [chatlists addObject:@"123"];
-    [table reloadData];
+//    [table reloadData];
+  
+    
+    [table beginUpdates];
+    [table insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0] ] withRowAnimation:UITableViewRowAnimationLeft];
+    
+    [table endUpdates];
+
+
+
+    
+
+
+
+//    if (tablescrollcontentHeight > table.frame.size.height)
+//    {
+//        CGPoint offset = CGPointMake(0, tablescrollcontentHeight - table.frame.size.height);
+//        [table setContentOffset:offset animated:YES];
+//    }
+//
 }
 
 
