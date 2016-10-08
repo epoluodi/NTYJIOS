@@ -288,18 +288,21 @@
 - (IBAction)clicksend:(id)sender {
     
     [chatlists addObject:@"123"];
-//    [table reloadData];
-  
+
     
+
+
+    [self tableView:table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0]];
     [table beginUpdates];
     [table insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0] ] withRowAnimation:UITableViewRowAnimationLeft];
     
     [table endUpdates];
 
-
-
+//
+    [table scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     
 
+   // table.contentInset = UIEdgeInsetsMake(0, 0, 88, 0);
 
 
 //    if (tablescrollcontentHeight > table.frame.size.height)
