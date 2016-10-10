@@ -12,21 +12,26 @@
 #import "MessageViewContoller.h"
 #import "AppDelegate.h"
 #import "ReturnData.h"
+#import "DBmanger.h"
+#import "ChatViewController.h"
 
 
 @interface MainTabBarController ()
 {   AppDelegate *app;
     MessageViewContoller *vc1;
+
 }
 @end
 
 @implementation MainTabBarController
 @synthesize IsLogin;
+@synthesize nowVC;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tabBar.tintColor=APPCOLOR;
     IsLogin = NO;
+   
  
     _locService = [[BMKLocationService alloc]init];
     _locService.delegate = self;
@@ -178,11 +183,29 @@
         }
         
         
+        
+        
+    }else  if ([scope isEqualToString:@"custom"])
+    {
+        
+        
+        
+        ChatLog * chatlog =  [[DBmanger getIntance] addChatLog:returndata.returnData];
+        if (nowVC && [[nowVC class] isSubclassOfClass:[ChatViewController class]])
+        {
+            [( (ChatViewController *)nowVC) OnMessage:chatlog];
+        }
+        else
+        {
+            
+        }
+        return;
     }
     
     
+ 
+    
 }
-
 
 
 

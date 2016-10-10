@@ -11,6 +11,7 @@
 #import "UserInfo.h"
 
 
+
 @implementation DBmanger
 
 
@@ -178,8 +179,33 @@ static DBmanger *_db;
     [mangedcontext save:nil];
 }
 
-
-
+//保存聊天信息
+-(ChatLog *)addChatLog:(NSDictionary *)chatdata
+{
+    ChatLog *chatlog = [NSEntityDescription insertNewObjectForEntityForName:@"ChatLog" inManagedObjectContext:mangedcontext];
+    
+    
+    [chatlog setValue:[chatdata objectForKey:@"receiverDispatchId"] forKey:@"groupid"];
+    [chatlog setValue:[chatdata objectForKey:@"receiverDispatchId"] forKey:@"msgid"];
+    NSDictionary *msgbody =[chatdata objectForKey:@"msgBody"];
+    NSNumber *msgtype;
+    if ([[msgbody objectForKey:@"msgType"] isEqualToString:@"01"])
+        msgtype = @1;
+    else    if ([[msgbody objectForKey:@"msgType"] isEqualToString:@"02"])
+        msgtype = @2;
+    else    if ([[msgbody objectForKey:@"msgType"] isEqualToString:@"03"])
+        msgtype = @3;
+    [chatlog setValue:msgtype forKey:@"msgType"];
+    [chatlog setValue:[msgbody objectForKey:@"content"] forKey:@"content"];
+    [chatlog setValue:@1 forKey:@"isself"];
+    [chatlog setValue:[chatdata objectForKey:@"sendUserName"] forKey:@"sender"];
+    [chatlog setValue:[chatdata objectForKey:@"sendAccountId"] forKey:@"senderid"];
+    [chatlog setValue:@1 forKey:@"msgsendstate"];
+    [chatlog setValue:[chatdata objectForKey:@"sendTime"] forKey:@"msgdate"];
+    
+    [mangedcontext save:nil];
+    return chatlog;
+}
 
 -(void)deletUserInfo
 {

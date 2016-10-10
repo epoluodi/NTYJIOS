@@ -11,6 +11,7 @@
 #import "Department.h"
 #import "Contacts.h"
 #import "DDInfo.h"
+#import "ChatLog+CoreDataClass.h"
 
 
 @interface DBmanger : NSObject
@@ -42,4 +43,5 @@
 -(void)addJDinfo:(NSDictionary *)jdinfo;
 -(NSArray *)getDDinfo;
 -(Contacts *)getContactswithuserId:(NSString *)userid;
+-(ChatLog *)addChatLog:(NSDictionary *)chatdata;
 @end

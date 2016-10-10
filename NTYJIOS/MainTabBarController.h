@@ -13,14 +13,16 @@
 #import <BaiduMapAPI_Location/BMKLocationComponent.h>
 
 
+
 @interface MainTabBarController : UITabBarController<MQTTDelegate,BMKLocationServiceDelegate>
 {
     MQTTServer *mqtt;
     BMKLocationService* _locService;
 }
 @property (assign)BOOL IsLogin;
-
+@property (weak,nonatomic)UIViewController *nowVC;
 
 -(void)ConnectMqtt;
 -(void)DisConnectMqtt;
+
 @end

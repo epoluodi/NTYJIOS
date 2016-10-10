@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DDInfo.h"
+#import "DBmanger.h"
 
 @interface ChatViewController : UIViewController<UIGestureRecognizerDelegate,UITextFieldDelegate,
 UITableViewDelegate,UITableViewDataSource>
@@ -37,6 +37,7 @@ UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
 - (IBAction)clicksend:(id)sender;
+-(void)OnMessage:(id)msg;
 
 @property (weak,nonatomic) DDInfo *ddinfo;
 

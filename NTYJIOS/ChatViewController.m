@@ -15,6 +15,9 @@
 #import "GroupInfoViewController.h"
 #import "AppDelegate.h"
 #import "ChatTextLeftCell.h"
+#import "ChatTextRightCell.h"
+#import "MainTabBarController.h"
+
 @interface ChatViewController ()
 {
     MBProgressHUD *hud;
@@ -41,11 +44,14 @@
     UITapGestureRecognizer *tapchat = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeinput)];
     [table addGestureRecognizer:tapchat];
     
+    ((MainTabBarController *)self.tabBarController).nowVC=self;
+    
     chatlists = [[NSMutableArray alloc] init];
     cellHlist = [[NSMutableDictionary alloc] init];
     UINib *nib = [UINib nibWithNibName:@"chatleft_text_cell" bundle:nil];
     [table registerNib:nib forCellReuseIdentifier:@"textleftcell"];
-    
+    nib = [UINib nibWithNibName:@"chat_right_text_cell" bundle:nil];
+    [table registerNib:nib forCellReuseIdentifier:@"textrightcell"];
     
     table.delegate=self;
     table.dataSource=self;
@@ -67,10 +73,10 @@
     
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
-    dispatch_async(globalQ, ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), globalQ, ^{
         HttpServer *http = [[HttpServer alloc] init:readDispatchMsg];
         
-      
+        
         BOOL r =    [http readDispatchStateSendServer:_ddinfo.ddid  lng:  [NSString stringWithFormat:@"%f",app.loc.location.coordinate.longitude] lat:  [NSString stringWithFormat:@"%f",app.loc.location.coordinate.latitude]];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!r)
@@ -81,10 +87,14 @@
             return ;
         });
     });
+   
     // Do any additional setup after loading the view.
 }
 
-
+-(void)dealloc
+{
+        ((MainTabBarController *)self.tabBarController).nowVC=nil;
+}
 //关闭键盘
 -(void)closeinput
 {
@@ -99,14 +109,13 @@
 //点击调度信息
 -(void)clickddinfo
 {
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    JDDeltalViewController *jddetailview= [storyboard instantiateViewControllerWithIdentifier:@"jddetail"];
-//    jddetailview.IsAppoverMode=NO;
-//    jddetailview.previousVC=self;
-//    jddetailview.info = ddinfodict;
-//    [self presentViewController:jddetailview animated:YES completion:nil];
-    
-    [table scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    JDDeltalViewController *jddetailview= [storyboard instantiateViewControllerWithIdentifier:@"jddetail"];
+    jddetailview.IsAppoverMode=NO;
+    jddetailview.previousVC=self;
+    jddetailview.info = ddinfodict;
+    [self presentViewController:jddetailview animated:YES completion:nil];
+
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -116,8 +125,7 @@
         [hud show:YES];
         dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_queue_t mainQ = dispatch_get_main_queue();
-        
-        dispatch_async(globalQ, ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), globalQ, ^{
             
             HttpServer *http = [[HttpServer alloc] init:queryDispatchMsg];
             ReturnData *ret =[http queryDDInfo:_ddinfo.ddid];
@@ -163,6 +171,7 @@
                 }
             });
         });
+       
     }
 }
 
@@ -271,25 +280,38 @@
    
     NSString *h =[cellHlist objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
  
-    return [h intValue];
+    return [h intValue]+3;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ChatTextLeftCell *cell = [table dequeueReusableCellWithIdentifier:@"textleftcell"];
- 
-    [cell setInfo:[NSString stringWithFormat:@"%d",indexPath.row] dt:@""];
+    
+//    ChatTextLeftCell *cell = [table dequeueReusableCellWithIdentifier:@"textleftcell"];
+// 
+//    [cell setInfo:[NSString stringWithFormat:@"%d",indexPath.row] dt:@""];
+//    [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)cell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+//       tablescrollcontentHeight += cell.CellHight;
+    
+    ChatTextRightCell *cell = [table dequeueReusableCellWithIdentifier:@"textrightcell"];
+    
+    [cell setInfo:[NSString stringWithFormat:@"12312312321312321321312312 123  %d",indexPath.row] dt:@""];
     [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)cell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
-       tablescrollcontentHeight += cell.CellHight;
+    tablescrollcontentHeight += cell.CellHight;
+
+    
     return cell;
 }
 
+-(void)OnMessage:(id)msg
+{
+    ChatLog *chatmsg = (ChatLog *)msg;
+    NSLog(@"chatmsg %@",chatmsg);
+}
 
 - (IBAction)clicksend:(id)sender {
     
     [chatlists addObject:@"123"];
 
-    
 
 
     [self tableView:table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0]];

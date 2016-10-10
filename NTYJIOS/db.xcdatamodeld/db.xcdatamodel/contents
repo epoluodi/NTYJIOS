@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Xcode 7.0">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="15G1004" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="ChatLog" representedClassName="ChatLog" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="groupid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isself" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="msgdate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="msgid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="msgsendstate" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="msgType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="senderid" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Contacts" representedClassName="Contacts" syncable="YES">
         <attribute name="firstLetter" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="groupid" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,9 +27,9 @@
     </entity>
     <entity name="DDInfo" representedClassName="DDInfo" syncable="YES">
         <attribute name="ddid" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="istop" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="istop" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="json" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sendtime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="sendtime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Department" representedClassName="Department" syncable="YES">
@@ -27,7 +38,8 @@
     </entity>
     <elements>
         <element name="Contacts" positionX="-2925" positionY="-1017" width="128" height="225"/>
-        <element name="Department" positionX="-2934" positionY="-1044" width="128" height="73"/>
         <element name="DDInfo" positionX="-2925" positionY="-936" width="128" height="120"/>
+        <element name="Department" positionX="-2934" positionY="-1044" width="128" height="73"/>
+        <element name="ChatLog" positionX="-2925" positionY="-936" width="128" height="180"/>
     </elements>
 </model>

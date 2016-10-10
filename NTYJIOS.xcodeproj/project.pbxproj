@@ -14,6 +14,9 @@
 		7B318E1E1D63573A002A9B59 /* phonebookcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B318E1D1D63573A002A9B59 /* phonebookcell.xib */; };
 		7B318E211D6357D0002A9B59 /* PhoneBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B318E201D6357D0002A9B59 /* PhoneBookCell.m */; };
 		7B35E6961D66064000E81267 /* libMQTTKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B35E6941D66064000E81267 /* libMQTTKit.a */; };
+		7B40251E1DABC75A00403B0A /* chat_right_text_cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B40251D1DABC75A00403B0A /* chat_right_text_cell.xib */; };
+		7B4025211DABC77A00403B0A /* ChatTextRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4025201DABC77A00403B0A /* ChatTextRightCell.m */; };
+		7B4025261DABD2F800403B0A /* ChatLog+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4025231DABD2F800403B0A /* ChatLog+CoreDataClass.m */; };
 		7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4058171D3E70AA002A5068 /* MBProgressHUD.m */; };
 		7B7026411D957EA800C04011 /* BaiduMapAPI_Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70263A1D957EA800C04011 /* BaiduMapAPI_Base.framework */; };
 		7B7026421D957EA800C04011 /* BaiduMapAPI_Cloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70263B1D957EA800C04011 /* BaiduMapAPI_Cloud.framework */; };
@@ -147,6 +150,11 @@
 		7B318E201D6357D0002A9B59 /* PhoneBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneBookCell.m; sourceTree = "<group>"; };
 		7B35E6941D66064000E81267 /* libMQTTKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMQTTKit.a; sourceTree = "<group>"; };
 		7B35E6951D66064000E81267 /* MQTTKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTTKit.h; sourceTree = "<group>"; };
+		7B40251D1DABC75A00403B0A /* chat_right_text_cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = chat_right_text_cell.xib; sourceTree = "<group>"; };
+		7B40251F1DABC77A00403B0A /* ChatTextRightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTextRightCell.h; sourceTree = "<group>"; };
+		7B4025201DABC77A00403B0A /* ChatTextRightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTextRightCell.m; sourceTree = "<group>"; };
+		7B4025221DABD2F800403B0A /* ChatLog+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ChatLog+CoreDataClass.h"; path = "../ChatLog+CoreDataClass.h"; sourceTree = "<group>"; };
+		7B4025231DABD2F800403B0A /* ChatLog+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ChatLog+CoreDataClass.m"; path = "../ChatLog+CoreDataClass.m"; sourceTree = "<group>"; };
 		7B4058171D3E70AA002A5068 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7B4058181D3E70AA002A5068 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7B70263A1D957EA800C04011 /* BaiduMapAPI_Base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Base.framework; sourceTree = "<group>"; };
@@ -407,6 +415,9 @@
 				7BAE28A61D996328008AF612 /* chatleft_text_cell.xib */,
 				7BAE28A81D9965B5008AF612 /* ChatTextLeftCell.h */,
 				7BAE28A91D9965B5008AF612 /* ChatTextLeftCell.m */,
+				7B40251D1DABC75A00403B0A /* chat_right_text_cell.xib */,
+				7B40251F1DABC77A00403B0A /* ChatTextRightCell.h */,
+				7B4025201DABC77A00403B0A /* ChatTextRightCell.m */,
 			);
 			name = chatlist;
 			sourceTree = "<group>";
@@ -414,6 +425,8 @@
 		7BB56DEF1D5F3A47002C80A3 /* db */ = {
 			isa = PBXGroup;
 			children = (
+				7B4025221DABD2F800403B0A /* ChatLog+CoreDataClass.h */,
+				7B4025231DABD2F800403B0A /* ChatLog+CoreDataClass.m */,
 				7BB56DF31D5F3A90002C80A3 /* DBmanger.h */,
 				7BB56DF41D5F3A90002C80A3 /* DBmanger.m */,
 				7BB56DF01D5F3A5B002C80A3 /* db.xcdatamodeld */,
@@ -755,6 +768,7 @@
 				B44D0A0B1D2F4B7200F76DFF /* setting3.png in Resources */,
 				B457EC451D7D545E0048E992 /* selectlistcell2.xib in Resources */,
 				7B318E1E1D63573A002A9B59 /* phonebookcell.xib in Resources */,
+				7B40251E1DABC75A00403B0A /* chat_right_text_cell.xib in Resources */,
 				B45CDF011D92677E00DFBBAC /* no_s.png in Resources */,
 				B40C1AD71D33469400AFE71A /* UserInfoCell.xib in Resources */,
 				B43A5A491D9223EC00519400 /* groups_white.png in Resources */,
@@ -787,10 +801,12 @@
 				B48B0F2C1D2E4ADF00646A20 /* MainTabBarController.m in Sources */,
 				7BDE1C531D843592004F2CCB /* JDDeltalViewController.m in Sources */,
 				7BF75B7D1D771AA700CB03A2 /* PublishRecordCell.m in Sources */,
+				7B4025261DABD2F800403B0A /* ChatLog+CoreDataClass.m in Sources */,
 				7B89D94B1D69E3EB000D712D /* PublishViewController.m in Sources */,
 				B48B0F381D2E53D000646A20 /* UserInfo.m in Sources */,
 				B48B0F3B1D2E542E00646A20 /* ServerInfo.m in Sources */,
 				B40C1AD51D33443700AFE71A /* UserInfoViewController.m in Sources */,
+				7B4025211DABC77A00403B0A /* ChatTextRightCell.m in Sources */,
 				B44D0A131D2F4FD400F76DFF /* ModiPwdController.m in Sources */,
 				B48B0F341D2E51B300646A20 /* MeController.m in Sources */,
 				7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */,
