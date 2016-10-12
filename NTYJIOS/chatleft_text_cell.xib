@@ -33,6 +33,15 @@
                             <constraint firstAttribute="height" constant="40" id="Pgu-TI-V6E"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUW-kr-XHp">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="RqT-NV-fIl"/>
+                            <constraint firstAttribute="width" constant="40" id="UFt-qB-4g7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="anh-jX-Fv9" secondAttribute="trailing" constant="50" id="2PA-xC-kFS"/>
@@ -41,7 +50,9 @@
                     <constraint firstAttribute="trailing" secondItem="QN9-my-kgj" secondAttribute="trailing" id="DoD-xi-tvb"/>
                     <constraint firstItem="QN9-my-kgj" firstAttribute="top" secondItem="dcO-to-v9g" secondAttribute="top" id="SIF-e4-yOT"/>
                     <constraint firstItem="anh-jX-Fv9" firstAttribute="leading" secondItem="PMl-34-0Ky" secondAttribute="trailing" constant="8" id="Yzd-DO-76y"/>
+                    <constraint firstItem="PUW-kr-XHp" firstAttribute="leading" secondItem="dcO-to-v9g" secondAttribute="leading" constant="8" id="dh9-v9-tlH"/>
                     <constraint firstItem="PMl-34-0Ky" firstAttribute="leading" secondItem="dcO-to-v9g" secondAttribute="leading" constant="8" id="mfG-1M-X0m"/>
+                    <constraint firstItem="PUW-kr-XHp" firstAttribute="top" secondItem="PMl-34-0Ky" secondAttribute="bottom" constant="1" id="w5a-NJ-D48"/>
                     <constraint firstItem="PMl-34-0Ky" firstAttribute="top" secondItem="QN9-my-kgj" secondAttribute="bottom" constant="12" id="wyF-Ee-Qd8"/>
                 </constraints>
             </tableViewCellContentView>
@@ -52,6 +63,7 @@
                 <outlet property="contentmaginright" destination="2PA-xC-kFS" id="SvH-dX-mqe"/>
                 <outlet property="labdt" destination="QN9-my-kgj" id="a6Z-O4-sOn"/>
                 <outlet property="nickimg" destination="PMl-34-0Ky" id="ygQ-7T-euB"/>
+                <outlet property="sendname" destination="PUW-kr-XHp" id="cKN-ku-m5y"/>
             </connections>
             <point key="canvasLocation" x="77" y="33"/>
         </tableViewCell>

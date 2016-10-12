@@ -294,9 +294,30 @@
     
     ChatTextRightCell *cell = [table dequeueReusableCellWithIdentifier:@"textrightcell"];
     
-    [cell setInfo:[NSString stringWithFormat:@"12312312321312321321312312 123  %d",indexPath.row] dt:@""];
-    [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)cell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
-    tablescrollcontentHeight += cell.CellHight;
+    
+    ChatLog *chatmsg = chatlists[indexPath.row];
+    NSString *olddt;
+    if (indexPath.row-1 >=0)
+    {
+        ChatLog *oldchatlog =chatlists[indexPath.row-1];
+        olddt =oldchatlog.msgdate;
+    }
+    else
+        olddt=nil;
+    
+    
+    if ([chatmsg.isself isEqual:@1])
+    {
+        ChatTextLeftCell *leftcell =[table dequeueReusableCellWithIdentifier:@"textleftcell"];
+        leftcell.sendname.text=chatmsg.sender;
+        [leftcell setInfo:chatmsg.content  dt:chatmsg.msgdate olddt:olddt];
+        [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)leftcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+        return leftcell;
+    }
+    
+
+
+   
 
     
     return cell;
@@ -305,6 +326,27 @@
 -(void)OnMessage:(id)msg
 {
     ChatLog *chatmsg = (ChatLog *)msg;
+    
+    [chatlists addObject:chatmsg];
+    if (![chatmsg.groupid isEqualToString:_ddinfo.ddid])
+        return;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self tableView:table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0]];
+        //    [table beginUpdates];
+        //    [table insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0] ] withRowAnimation:UITableViewRowAnimationLeft];
+        //
+        //    [table endUpdates];
+        
+        [table reloadData];
+        //
+        [table scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+
+    });
+    
+    
+    
+    
     NSLog(@"chatmsg %@",chatmsg);
 }
 
@@ -324,15 +366,7 @@
     [table scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     
 
-   // table.contentInset = UIEdgeInsetsMake(0, 0, 88, 0);
 
-
-//    if (tablescrollcontentHeight > table.frame.size.height)
-//    {
-//        CGPoint offset = CGPointMake(0, tablescrollcontentHeight - table.frame.size.height);
-//        [table setContentOffset:offset animated:YES];
-//    }
-//
 }
 
 

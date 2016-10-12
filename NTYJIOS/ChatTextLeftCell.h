@@ -16,12 +16,15 @@
 @property (weak, nonatomic) IBOutlet UIView *labdt;
 @property (weak, nonatomic) IBOutlet UIImageView *nickimg;
 @property (weak, nonatomic) IBOutlet UIImageView *content;
+@property (weak, nonatomic) IBOutlet UILabel *sendname;
+
+
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentmaginright;
 @property (assign)NSUInteger CellHight;
 
--(void)setInfo:(NSString *)info dt:(NSString *)dt;
+-(void)setInfo:(NSString *)info dt:(NSString *)dt olddt:(NSString *)olddt;
 
 
 @end
