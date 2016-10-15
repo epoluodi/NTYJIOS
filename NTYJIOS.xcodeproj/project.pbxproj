@@ -56,6 +56,7 @@
 		7BB56E0D1D5F45F4002C80A3 /* Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56E0B1D5F45F4002C80A3 /* Contacts.m */; };
 		7BB56E101D5F5986002C80A3 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56E0F1D5F5986002C80A3 /* ContactsController.m */; };
 		7BB56E131D5F5A1C002C80A3 /* PhoneBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB56E121D5F5A1C002C80A3 /* PhoneBookController.m */; };
+		7BC9E1491DB257D400BE0C49 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BC9E1481DB257D400BE0C49 /* camera.png */; };
 		7BDE1C501D842B39004F2CCB /* AppoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDE1C4F1D842B39004F2CCB /* AppoverViewController.m */; };
 		7BDE1C531D843592004F2CCB /* JDDeltalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDE1C521D843592004F2CCB /* JDDeltalViewController.m */; };
 		7BF398141D5CC1DE004CDFE8 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BF398131D5CC1DE004CDFE8 /* splash.jpg */; };
@@ -207,6 +208,7 @@
 		7BB56E0F1D5F5986002C80A3 /* ContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsController.m; sourceTree = "<group>"; };
 		7BB56E111D5F5A1C002C80A3 /* PhoneBookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneBookController.h; sourceTree = "<group>"; };
 		7BB56E121D5F5A1C002C80A3 /* PhoneBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneBookController.m; sourceTree = "<group>"; };
+		7BC9E1481DB257D400BE0C49 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		7BDE1C4E1D842B39004F2CCB /* AppoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppoverViewController.h; sourceTree = "<group>"; };
 		7BDE1C4F1D842B39004F2CCB /* AppoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppoverViewController.m; sourceTree = "<group>"; };
 		7BDE1C511D843592004F2CCB /* JDDeltalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDDeltalViewController.h; sourceTree = "<group>"; };
@@ -637,6 +639,7 @@
 				B40C1AE21D3379C600AFE71A /* userinfo_2.png */,
 				B40C1AD81D33471B00AFE71A /* userinfo_1.png */,
 				B44D0A0E1D2F4BBE00F76DFF /* setting5.png */,
+				7BC9E1481DB257D400BE0C49 /* camera.png */,
 				B44D0A0C1D2F4B9C00F76DFF /* setting4.png */,
 				B44D0A0A1D2F4B7200F76DFF /* setting3.png */,
 				B44D0A081D2F4B4F00F76DFF /* setting2.png */,
@@ -744,6 +747,7 @@
 				7BF75B851D771C3700CB03A2 /* publishcell.xib in Resources */,
 				B40C1AF01D33807000AFE71A /* pwd_icon.png in Resources */,
 				7BF75B8C1D7723FD00CB03A2 /* shenpiren.png in Resources */,
+				7BC9E1491DB257D400BE0C49 /* camera.png in Resources */,
 				7B89D9481D68961D000D712D /* historyjd.png in Resources */,
 				7BF75B781D7718C900CB03A2 /* record.png in Resources */,
 				B40C1AE91D337A3700AFE71A /* userinfo_5.png in Resources */,

@@ -28,14 +28,55 @@
     labcontent.lineBreakMode = NSLineBreakByWordWrapping;
     CellHight=0;
     
-    
+    _labdttxt = [[UILabel alloc] init];
+    _labdttxt.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.5];
+    _labdttxt.font = [UIFont systemFontOfSize:12];
+    _labdttxt.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.5];
+    _labdttxt.layer.cornerRadius=4;
+    _labdttxt.layer.masksToBounds=YES;
+    _labdttxt.textColor=[UIColor whiteColor];
+    _labdttxt.textAlignment = NSTextAlignmentCenter;
     // Initialization code
 }
 
 
 
--(void)setInfo:(NSString *)info dt:(NSString *)dt
+-(void)setInfo:(NSString *)info dt:(NSString *)dt olddt:(NSString *)olddt
 {
+    NSDateFormatter *dtformat = [[NSDateFormatter alloc] init];
+    [dtformat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *_olddt = [dtformat dateFromString:olddt];
+    NSDate *_nowdt = [dtformat dateFromString:dt];
+    
+    if (olddt)
+    {
+        
+        
+        
+        NSTimeInterval time = [_nowdt timeIntervalSinceDate:_olddt];
+        if (time > 60)
+        {
+            [_labdttxt removeFromSuperview];
+            NSString *trandt =[PublicCommon dateTran:_nowdt];
+            CGSize size = [trandt sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:12]}];
+            _labdttxt.text = [PublicCommon dateTran:_nowdt];
+            [labdt addSubview:_labdttxt];
+            _labdttxt.frame = CGRectMake([PublicCommon GetALLScreen].size.width /2 -(size.width+8)/2 , 2, size.width+8, size.height+3);
+        }
+        
+        
+        
+    }else
+    {
+       
+        [_labdttxt removeFromSuperview];
+        NSString *trandt =[PublicCommon dateTran:_nowdt];
+        CGSize size = [trandt sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:12]}];
+        _labdttxt.text = [PublicCommon dateTran:_nowdt];
+        [labdt addSubview:_labdttxt];
+        _labdttxt.frame = CGRectMake([PublicCommon GetALLScreen].size.width /2 -(size.width+8)/2 , 1, size.width+8, size.height+3);
+    }
+    
     int w = [PublicCommon GetScreen].size.width - 40 -60-60;
     CGRect tmpRect = [info boundingRectWithSize:CGSizeMake(w, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil];
     labcontent.font=[UIFont systemFontOfSize:16];
@@ -59,7 +100,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

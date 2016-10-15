@@ -44,4 +44,5 @@
 -(NSArray *)getDDinfo;
 -(Contacts *)getContactswithuserId:(NSString *)userid;
 -(ChatLog *)addChatLog:(NSDictionary *)chatdata;
+-(NSArray *)getChatLog:(NSString *)groupid;
 @end

@@ -17,6 +17,7 @@
 #import "ChatTextLeftCell.h"
 #import "ChatTextRightCell.h"
 #import "MainTabBarController.h"
+#import "UserInfo.h"
 
 @interface ChatViewController ()
 {
@@ -48,6 +49,7 @@
     
     chatlists = [[NSMutableArray alloc] init];
     cellHlist = [[NSMutableDictionary alloc] init];
+    [chatlists addObjectsFromArray:  [[DBmanger getIntance] getChatLog:_ddinfo.ddid]];
     UINib *nib = [UINib nibWithNibName:@"chatleft_text_cell" bundle:nil];
     [table registerNib:nib forCellReuseIdentifier:@"textleftcell"];
     nib = [UINib nibWithNibName:@"chat_right_text_cell" bundle:nil];
@@ -314,7 +316,13 @@
         [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)leftcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
         return leftcell;
     }
-    
+    if ([chatmsg.isself isEqual:@2])
+    {
+        ChatTextRightCell *rightcell =[table dequeueReusableCellWithIdentifier:@"textrightcell"];
+        [rightcell setInfo:chatmsg.content  dt:chatmsg.msgdate olddt:olddt];
+        [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)rightcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+        return rightcell;
+    }
 
 
    
@@ -327,10 +335,12 @@
 {
     ChatLog *chatmsg = (ChatLog *)msg;
     
+    
+    
     [chatlists addObject:chatmsg];
     if (![chatmsg.groupid isEqualToString:_ddinfo.ddid])
         return;
-    
+  
     dispatch_async(dispatch_get_main_queue(), ^{
         [self tableView:table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0]];
         //    [table beginUpdates];
@@ -352,18 +362,55 @@
 
 - (IBAction)clicksend:(id)sender {
     
-    [chatlists addObject:@"123"];
 
-
-
-    [self tableView:table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0]];
-    [table beginUpdates];
-    [table insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0] ] withRowAnimation:UITableViewRowAnimationLeft];
+    if ([chatcontent.text isEqualToString:@""])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"不能发送空内容!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
     
-    [table endUpdates];
+    
+    
+    NSMutableDictionary *mDict=[[NSMutableDictionary alloc] init];
+    [mDict setObject:@"01" forKey:@"msg_type"];
+    [mDict setObject:chatcontent.text forKey:@"msg_content"];
+    [mDict setObject:_ddinfo.ddid forKey:@"dispatch_id"];
 
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    
+    
+    
+    dispatch_async(globalQ, ^{
+       
+        HttpServer *http  = [[HttpServer alloc] init:saveSessionMsg];
+        BOOL r =  [http sendMsg:mDict];
+        
+        dispatch_async(mainQ, ^{
+           if (!r)
+           {
+               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"信息发送失败，可能网络问题请重新尝试!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+               [alert show];
+               return ;
+           }
+            
+            chatcontent.text=@"";
+            
+            
+            
+        });
+    });
+    
+
+//    [self tableView:table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0]];
+//    [table beginUpdates];
+//    [table insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0] ] withRowAnimation:UITableViewRowAnimationLeft];
+//    
+//    [table endUpdates];
 //
-    [table scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+////
+//    [table scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     
 
 

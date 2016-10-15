@@ -11,6 +11,7 @@
 @interface ChatTextLeftCell : UITableViewCell
 {
     UILabel *labcontent;
+    UILabel *_labdttxt;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *labdt;

@@ -50,6 +50,7 @@
 
 #define readDispatchMsg [NSString stringWithFormat:@"%@%@",IMURL,@"msg/readDispatchMsg"]
 
+#define saveSessionMsg [NSString stringWithFormat:@"%@%@",IMURL,@"msg/saveSessionMsg"]
 
 @interface ServerInfo : NSObject
 

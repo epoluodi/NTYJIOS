@@ -197,7 +197,10 @@ static DBmanger *_db;
         msgtype = @3;
     [chatlog setValue:msgtype forKey:@"msgType"];
     [chatlog setValue:[msgbody objectForKey:@"content"] forKey:@"content"];
-    [chatlog setValue:@1 forKey:@"isself"];
+    if ([[chatdata objectForKey:@"sendAccountId"] isEqualToString:[UserInfo getInstance].userId])
+        [chatlog setValue:@2 forKey:@"isself"];
+    else
+        [chatlog setValue:@1 forKey:@"isself"];
     [chatlog setValue:[chatdata objectForKey:@"sendUserName"] forKey:@"sender"];
     [chatlog setValue:[chatdata objectForKey:@"sendAccountId"] forKey:@"senderid"];
     [chatlog setValue:@1 forKey:@"msgsendstate"];
@@ -206,6 +209,27 @@ static DBmanger *_db;
     [mangedcontext save:nil];
     return chatlog;
 }
+
+
+//获得部门信息
+-(NSArray *)getChatLog:(NSString *)groupid
+{
+    NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"ChatLog"];
+    
+    //排序
+    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"msgdate" ascending:YES];
+    fetch.sortDescriptors=@[sort];
+    //加入查询条件 age>20
+    fetch.predicate=[NSPredicate predicateWithFormat:@"groupid=%@",groupid];
+    
+    //    fetch.predicate=[NSPredicate predicateWithFormat:@"name like %@",@"*cb1*"];
+    NSArray *arr=[mangedcontext executeFetchRequest:fetch error:nil];
+    
+    return arr;
+}
+
+
+
 
 -(void)deletUserInfo
 {
@@ -250,6 +274,10 @@ static DBmanger *_db;
     [mangedcontext save:nil];
     return ;
 }
+
+
+
+
 
 
 

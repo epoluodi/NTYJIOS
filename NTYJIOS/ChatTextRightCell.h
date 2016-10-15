@@ -11,6 +11,7 @@
 @interface ChatTextRightCell : UITableViewCell
 {
        UILabel *labcontent;
+      UILabel *_labdttxt;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *labdt;
@@ -21,7 +22,7 @@
 
 @property (assign)NSUInteger CellHight;
 
--(void)setInfo:(NSString *)info dt:(NSString *)dt;
+-(void)setInfo:(NSString *)info dt:(NSString *)dt olddt:(NSString *)olddt;
 
 
 

@@ -390,8 +390,8 @@
     [http addParamsString:@"read_longitude" values:lng];
     [http addParamsString:@"read_latitude" values:lat];
 
-    [http httprequest:[http getDataForArrary]];
-    NSData *d =[http httprequest:nil];
+     NSData *d = [http httprequest:[http getDataForArrary]];
+
     
     if (!d)
         return NO;
@@ -408,7 +408,34 @@
 }
 
 
+-(BOOL)sendMsg:(NSDictionary *)data
+{
+    HttpClass *http = [[HttpClass alloc] init:url];
+    [http setIsHead:YES];
+    [http addHeadString:@"deviceID" value:[UserInfo getInstance].deviceid];
+    [http addHeadString:@"deviceType" value:@"01"];
+    [http addHeadString:@"token" value:[UserInfo getInstance].Token];
+    
+    [http addParamsString:@"msg_type" values:
+     [data objectForKey:@"msg_type"]];
+    [http addParamsString:@"msg_content" values:[data objectForKey:@"msg_content"]];
+    [http addParamsString:@"dispatch_id" values:[data objectForKey:@"dispatch_id"]];
+    
+    NSData *d = [http httprequest:[http getDataForArrary]];
 
+    
+    if (!d)
+        return NO;
+    ReturnData *rd = [ReturnData getReturnDatawithData:d dataMode:YES];
+    if (rd.returnCode!=0)
+        return NO;
+    
+    [data setValue:[rd.returnData objectForKey:@"msgId"] forKey:@"msgId"];
+    
+    NSLog(@"返回结果：%@",rd.returnData);
+
+    return YES;
+}
 
 
 @end

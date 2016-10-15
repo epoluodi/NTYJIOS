@@ -10,6 +10,7 @@
 #import "HttpClass.h"
 #import "ReturnData.h"
 #import "ServerInfo.h"
+#import "DBmanger.h"
 
 @interface HttpServer : NSObject
 {
@@ -57,4 +58,7 @@
 
 //阅读调度信息发送
 -(BOOL)readDispatchStateSendServer:(NSString *)ddid lng:(NSString *)lng lat:(NSString *)lat;
+
+
+-(BOOL)sendMsg:(NSDictionary *)data;
 @end
