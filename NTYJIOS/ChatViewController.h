@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DBmanger.h"
 
-@interface ChatViewController : UIViewController<UIGestureRecognizerDelegate,UITextFieldDelegate,
+@interface ChatViewController : UIViewController<UIGestureRecognizerDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,
 UITableViewDelegate,UITableViewDataSource>
 {
     UIBarButtonItem *btnright;
@@ -20,7 +20,7 @@ UITableViewDelegate,UITableViewDataSource>
     
     NSMutableDictionary *cellHlist;
 
-    
+       UIImagePickerController *pickerview;
 }
 @property (weak, nonatomic) IBOutlet UINavigationItem *navtitle;
 @property (weak, nonatomic) IBOutlet UILabel *infotitle;
@@ -35,6 +35,13 @@ UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputautoH;
 @property (weak, nonatomic) IBOutlet UITextField *chatcontent;
 @property (weak, nonatomic) IBOutlet UITableView *table;
+
+
+
+- (IBAction)clickaudio:(id)sender;
+- (IBAction)clickpicture:(id)sender;
+
+
 
 - (IBAction)clicksend:(id)sender;
 -(void)OnMessage:(id)msg;

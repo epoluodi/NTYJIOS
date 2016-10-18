@@ -99,26 +99,15 @@
     BOOL result = [http getGroupsList];
     if (!result)
     {
-        dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_queue_t mainQ = dispatch_get_main_queue();
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取调度信息失败，请重新登录!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
         
-        dispatch_async(globalQ, ^{
-            dispatch_async(mainQ, ^{
-                
-                
-                
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取调度信息失败，请重新登录!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                [alert show];
-                
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                LoginViewController *loginVC = (LoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-                loginVC.mainview=(MainTabBarController *)self.tabBarController;
-                [self presentViewController:loginVC animated:YES completion:nil];
-                
-                
-            });
-        });
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LoginViewController *loginVC = (LoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        loginVC.mainview=(MainTabBarController *)self.tabBarController;
+        [self presentViewController:loginVC animated:YES completion:nil];
         
+    
         return;
     }
     

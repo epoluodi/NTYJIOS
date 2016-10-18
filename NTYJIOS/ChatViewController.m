@@ -308,12 +308,30 @@
         olddt=nil;
     
     
+    Contacts * contacts = [[DBmanger getIntance] getContactswithuserId:chatmsg.senderid];
     if ([chatmsg.isself isEqual:@1])
     {
         ChatTextLeftCell *leftcell =[table dequeueReusableCellWithIdentifier:@"textleftcell"];
         leftcell.sendname.text=chatmsg.sender;
         [leftcell setInfo:chatmsg.content  dt:chatmsg.msgdate olddt:olddt];
         [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)leftcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+        
+         //头像
+        if (contacts){
+            leftcell.nickimg.contentMode=UIViewContentModeScaleAspectFit;
+            NSFileManager *filemanger = [NSFileManager defaultManager];
+            NSString *path = [FileCommon getCacheDirectory];
+            NSString* _filename = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",contacts.img]];
+            
+            
+            NSData *jpgdata;
+            if ([filemanger fileExistsAtPath:_filename])
+            {
+                jpgdata = [NSData dataWithContentsOfFile:_filename];
+                leftcell.nickimg.image = [UIImage imageWithData:jpgdata];
+            }
+        }
+        
         return leftcell;
     }
     if ([chatmsg.isself isEqual:@2])
@@ -321,6 +339,23 @@
         ChatTextRightCell *rightcell =[table dequeueReusableCellWithIdentifier:@"textrightcell"];
         [rightcell setInfo:chatmsg.content  dt:chatmsg.msgdate olddt:olddt];
         [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)rightcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+        
+        //头像
+        if (contacts){
+            rightcell.nickimg.contentMode=UIViewContentModeScaleAspectFit;
+            NSFileManager *filemanger = [NSFileManager defaultManager];
+            NSString *path = [FileCommon getCacheDirectory];
+            NSString* _filename = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",contacts.img]];
+            
+            
+            NSData *jpgdata;
+            if ([filemanger fileExistsAtPath:_filename])
+            {
+                jpgdata = [NSData dataWithContentsOfFile:_filename];
+                rightcell.nickimg.image = [UIImage imageWithData:jpgdata];
+            }
+        }
+        
         return rightcell;
     }
 
@@ -359,6 +394,116 @@
     
     NSLog(@"chatmsg %@",chatmsg);
 }
+
+- (IBAction)clickaudio:(id)sender {
+    
+    
+}
+
+- (IBAction)clickpicture:(id)sender {
+    
+    UIAlertController * alert =[UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    
+    
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                             {
+                                 pickerview = [[UIImagePickerController alloc] init];//初始化
+                                 pickerview.delegate = self;
+                                 pickerview.allowsEditing = YES;//设置可编辑
+                                 UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+                                 pickerview.sourceType = sourceType;
+                                 [self presentModalViewController:pickerview animated:YES];//进入照相界面
+                             }];
+    
+    
+    UIAlertAction *photo = [UIAlertAction actionWithTitle:@"从相册中选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                            {
+                                pickerview = [[UIImagePickerController alloc] init];//初始化
+                                pickerview.delegate = self;
+                                pickerview.allowsEditing = YES;//设置可编辑
+                                UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                                pickerview.sourceType = sourceType;
+                                [self presentModalViewController:pickerview animated:YES];//进入照相界面
+                            }];
+    
+    
+    
+    
+    [alert addAction:camera];
+    [alert addAction:photo];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+
+    
+}
+
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    NSLog(@"SMILE!");
+    //    [self.capturedImages addObject:image];
+    
+    //    if ([self.cameraTimer isValid])
+    //    {
+    //        return;
+    //    }
+    
+//    image = [PublicCommon scaleToSize:image size:CGSizeMake(512, 512)];
+    
+    
+    NSData *jpgdata = UIImageJPEGRepresentation(image, 1);
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *filePath = [FileCommon getCacheDirectory];
+    NSString *uuid = [[NSUUID UUID] UUIDString];
+    
+    //    [fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
+    //
+    NSString *filename = [NSString stringWithFormat:@"%@.jpg",uuid];
+    [fileManager createFileAtPath:[filePath stringByAppendingString:filename] contents:jpgdata attributes:nil];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    NSMutableDictionary *mDict=[[NSMutableDictionary alloc] init];
+    [mDict setObject:@"02" forKey:@"msg_type"];
+    [mDict setObject:uuid forKey:@"msg_content"];
+    [mDict setObject:_ddinfo.ddid forKey:@"dispatch_id"];
+    
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    
+    
+    
+    dispatch_async(globalQ, ^{
+        
+        HttpServer *http  = [[HttpServer alloc] init:saveSessionMsg];
+        BOOL r =  [http sendMsg:mDict];
+        
+        dispatch_async(mainQ, ^{
+            if (!r)
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"信息发送失败，可能网络问题请重新尝试!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                return ;
+            }
+            
+            chatcontent.text=@"";
+            
+            
+            
+        });
+    });
+    
+    
+    
+}
+
+
+
 
 - (IBAction)clicksend:(id)sender {
     

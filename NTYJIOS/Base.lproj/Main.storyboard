@@ -60,11 +60,11 @@
             </objects>
             <point key="canvasLocation" x="21" y="1319"/>
         </scene>
-        <!--Item-->
+        <!--调度信息-->
         <scene sceneID="hUD-Hb-cS5">
             <objects>
                 <navigationController id="3iZ-Io-cFr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="msg" id="eem-cc-zJ1"/>
+                    <tabBarItem key="tabBarItem" title="调度信息" image="msg" id="eem-cc-zJ1"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QJE-Ra-Ehz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -482,6 +482,9 @@
                                             <constraint firstAttribute="height" constant="30" id="hve-HV-RT6"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="t7.png"/>
+                                        <connections>
+                                            <action selector="clickaudio:" destination="z6h-qJ-PC5" eventType="touchUpInside" id="fXG-hs-V2I"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gq-f2-gpB">
                                         <constraints>
@@ -489,6 +492,9 @@
                                             <constraint firstAttribute="width" constant="30" id="wq1-5E-U5z"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="camera.png"/>
+                                        <connections>
+                                            <action selector="clickpicture:" destination="z6h-qJ-PC5" eventType="touchUpInside" id="zpy-Yr-Vh6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
