@@ -24,8 +24,8 @@
 
 -(void)setInfo:(NSString *)info dt:(NSString *)dt olddt:(NSString *)olddt;
 
-
-
+-(void)setImgMsg:(NSString *)mediaid;
+-(void)setInfodt:(NSString *)dt olddt:(NSString *)olddt;
 
 
 

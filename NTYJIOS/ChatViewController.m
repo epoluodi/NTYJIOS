@@ -49,7 +49,7 @@
     
     chatlists = [[NSMutableArray alloc] init];
     cellHlist = [[NSMutableDictionary alloc] init];
-    [chatlists addObjectsFromArray:  [[DBmanger getIntance] getChatLog:_ddinfo.ddid]];
+    [chatlists addObjectsFromArray:  [[DBmanger getIntance] getChatLog:_ddinfo]];
     UINib *nib = [UINib nibWithNibName:@"chatleft_text_cell" bundle:nil];
     [table registerNib:nib forCellReuseIdentifier:@"textleftcell"];
     nib = [UINib nibWithNibName:@"chat_right_text_cell" bundle:nil];
@@ -58,6 +58,7 @@
     table.delegate=self;
     table.dataSource=self;
     
+
     
     chatcontent.delegate=self;
     
@@ -79,7 +80,7 @@
         HttpServer *http = [[HttpServer alloc] init:readDispatchMsg];
         
         
-        BOOL r =    [http readDispatchStateSendServer:_ddinfo.ddid  lng:  [NSString stringWithFormat:@"%f",app.loc.location.coordinate.longitude] lat:  [NSString stringWithFormat:@"%f",app.loc.location.coordinate.latitude]];
+        BOOL r =    [http readDispatchStateSendServer:_ddinfo  lng:  [NSString stringWithFormat:@"%f",app.loc.location.coordinate.longitude] lat:  [NSString stringWithFormat:@"%f",app.loc.location.coordinate.latitude]];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!r)
             {
@@ -130,7 +131,7 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), globalQ, ^{
             
             HttpServer *http = [[HttpServer alloc] init:queryDispatchMsg];
-            ReturnData *ret =[http queryDDInfo:_ddinfo.ddid];
+            ReturnData *ret =[http queryDDInfo:_ddinfo];
             dispatch_async(mainQ, ^{
                 [hud hide:YES];
                 if (!ret)
@@ -175,6 +176,15 @@
         });
        
     }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (chatlists.count > 0)
+        {
+            [self tableView:table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count]-1 inSection:0]];
+            [table scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[chatlists count] -1  inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        }
+    });
+  
 }
 
 
@@ -236,9 +246,9 @@
     if ([segue.identifier isEqualToString:@"showgroupinfo"])
     {
         GroupInfoViewController *groupinfovc = [segue destinationViewController];
-        groupinfovc.ddid = _ddinfo.ddid;
+        groupinfovc.ddid = _ddinfo;
         
-        groupinfovc.senddt =[_ddinfo.sendtime timeIntervalSince1970];
+        groupinfovc.senddt =[_ddinfocreatedt timeIntervalSince1970];
         return;
     }
 }
@@ -312,9 +322,22 @@
     if ([chatmsg.isself isEqual:@1])
     {
         ChatTextLeftCell *leftcell =[table dequeueReusableCellWithIdentifier:@"textleftcell"];
-        leftcell.sendname.text=chatmsg.sender;
-        [leftcell setInfo:chatmsg.content  dt:chatmsg.msgdate olddt:olddt];
-        [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)leftcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+        
+        if ([chatmsg.msgType isEqual:@1])
+        {
+            [leftcell setInfo:chatmsg.content  dt:chatmsg.msgdate olddt:olddt];
+            [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)leftcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+        }else if ([chatmsg.msgType isEqual:@2])
+        {
+            
+            [leftcell setInfodt:chatmsg.msgdate olddt:olddt];
+            [leftcell setImgMsg:chatmsg.content];
+            [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)leftcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+        }
+        
+//        leftcell.sendname.text=chatmsg.sender;
+//        [leftcell setInfo:chatmsg.content  dt:chatmsg.msgdate olddt:olddt];
+//        [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)leftcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
         
          //头像
         if (contacts){
@@ -330,6 +353,8 @@
                 jpgdata = [NSData dataWithContentsOfFile:_filename];
                 leftcell.nickimg.image = [UIImage imageWithData:jpgdata];
             }
+            else
+                leftcell.nickimg.image = [UIImage imageNamed:@"nick1"];
         }
         
         return leftcell;
@@ -337,8 +362,20 @@
     if ([chatmsg.isself isEqual:@2])
     {
         ChatTextRightCell *rightcell =[table dequeueReusableCellWithIdentifier:@"textrightcell"];
-        [rightcell setInfo:chatmsg.content  dt:chatmsg.msgdate olddt:olddt];
-        [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)rightcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+        
+        
+       if ([chatmsg.msgType isEqual:@1])
+       {
+           [rightcell setInfo:chatmsg.content  dt:chatmsg.msgdate olddt:olddt];
+           [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)rightcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+       }else if ([chatmsg.msgType isEqual:@2])
+       {
+           
+           [rightcell setInfodt:chatmsg.msgdate olddt:olddt];
+           [rightcell setImgMsg:chatmsg.content];
+            [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)rightcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+       }
+       
         
         //头像
         if (contacts){
@@ -354,6 +391,9 @@
                 jpgdata = [NSData dataWithContentsOfFile:_filename];
                 rightcell.nickimg.image = [UIImage imageWithData:jpgdata];
             }
+            else
+                rightcell.nickimg.image = [UIImage imageNamed:@"nick1"];
+
         }
         
         return rightcell;
@@ -373,7 +413,7 @@
     
     
     [chatlists addObject:chatmsg];
-    if (![chatmsg.groupid isEqualToString:_ddinfo.ddid])
+    if (![chatmsg.groupid isEqualToString:_ddinfo])
         return;
   
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -456,7 +496,7 @@
 //    image = [PublicCommon scaleToSize:image size:CGSizeMake(512, 512)];
     
     
-    NSData *jpgdata = UIImageJPEGRepresentation(image, 1);
+    __block NSData *jpgdata = UIImageJPEGRepresentation(image, 0.5);
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *filePath = [FileCommon getCacheDirectory];
     NSString *uuid = [[NSUUID UUID] UUIDString];
@@ -468,37 +508,55 @@
     
     [picker dismissViewControllerAnimated:YES completion:nil];
     
-    NSMutableDictionary *mDict=[[NSMutableDictionary alloc] init];
-    [mDict setObject:@"02" forKey:@"msg_type"];
-    [mDict setObject:uuid forKey:@"msg_content"];
-    [mDict setObject:_ddinfo.ddid forKey:@"dispatch_id"];
     
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t mainQ = dispatch_get_main_queue();
     
-    
-    
     dispatch_async(globalQ, ^{
+       
+        HttpServer *http = [[HttpServer alloc] init:UploadUrl];
+     
         
-        HttpServer *http  = [[HttpServer alloc] init:saveSessionMsg];
-        BOOL r =  [http sendMsg:mDict];
+        ReturnData *rd =  [http uploadfile:jpgdata mediaid:uuid mediatype:@"02" filetype:@".jpg"];
+        if (rd && rd.returnCode==0)
+        {
+            NSMutableDictionary *mDict=[[NSMutableDictionary alloc] init];
+            [mDict setObject:@"02" forKey:@"msg_type"];
+            [mDict setObject:uuid forKey:@"msg_content"];
+            [mDict setObject:_ddinfo forKey:@"dispatch_id"];
+            
+           HttpServer* http2  = [[HttpServer alloc] init:saveSessionMsg];
+            BOOL r =  [http2 sendMsg:mDict];
+            
+            dispatch_async(mainQ, ^{
+                if (!r)
+                {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"信息发送失败，可能网络问题请重新尝试!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    [alert show];
+                    return ;
+                }
+                
+                chatcontent.text=@"";
+            });
+            
+            
+        }
+        else
+        {
+            dispatch_async(mainQ, ^{
+               
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"信息发送失败，可能网络问题请重新尝试!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    [alert show];
+                    return ;
+                
+                
+                chatcontent.text=@"";
+            });
+        }
         
-        dispatch_async(mainQ, ^{
-            if (!r)
-            {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"信息发送失败，可能网络问题请重新尝试!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                [alert show];
-                return ;
-            }
-            
-            chatcontent.text=@"";
-            
-            
-            
-        });
     });
-    
-    
+   
+
     
 }
 
@@ -520,7 +578,7 @@
     NSMutableDictionary *mDict=[[NSMutableDictionary alloc] init];
     [mDict setObject:@"01" forKey:@"msg_type"];
     [mDict setObject:chatcontent.text forKey:@"msg_content"];
-    [mDict setObject:_ddinfo.ddid forKey:@"dispatch_id"];
+    [mDict setObject:_ddinfo forKey:@"dispatch_id"];
 
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t mainQ = dispatch_get_main_queue();

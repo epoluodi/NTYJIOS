@@ -46,6 +46,6 @@ UITableViewDelegate,UITableViewDataSource>
 - (IBAction)clicksend:(id)sender;
 -(void)OnMessage:(id)msg;
 
-@property (weak,nonatomic) DDInfo *ddinfo;
-
+@property (copy,nonatomic) NSString *ddinfo;
+@property (copy,nonatomic) NSDate *ddinfocreatedt;
 @end

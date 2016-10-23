@@ -8,6 +8,8 @@
 
 #import "ChatTextLeftCell.h"
 #import <Common/PublicCommon.h>
+#import <Common/FileCommon.h>
+#import "HttpServer.h"
 
 @implementation ChatTextLeftCell
 @synthesize nickimg,content;
@@ -41,6 +43,109 @@
     
     // Initialization code
 }
+
+
+-(void)setInfodt:(NSString *)dt olddt:(NSString *)olddt
+{
+    NSDateFormatter *dtformat = [[NSDateFormatter alloc] init];
+    [dtformat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *_olddt = [dtformat dateFromString:olddt];
+    NSDate *_nowdt = [dtformat dateFromString:dt];
+    
+    if (olddt)
+    {
+        
+        
+        
+        NSTimeInterval time = [_nowdt timeIntervalSinceDate:_olddt];
+        if (time > 60)
+        {
+            [_labdttxt removeFromSuperview];
+            NSString *trandt =[PublicCommon dateTran:_nowdt];
+            CGSize size = [trandt sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:12]}];
+            _labdttxt.text = [PublicCommon dateTran:_nowdt];
+            [labdt addSubview:_labdttxt];
+            _labdttxt.frame = CGRectMake([PublicCommon GetALLScreen].size.width /2 -(size.width+8)/2 , 2, size.width+8, size.height+3);
+        }
+        
+        
+        
+    }else
+    {
+        
+        [_labdttxt removeFromSuperview];
+        NSString *trandt =[PublicCommon dateTran:_nowdt];
+        CGSize size = [trandt sizeWithAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:12]}];
+        _labdttxt.text = [PublicCommon dateTran:_nowdt];
+        [labdt addSubview:_labdttxt];
+        _labdttxt.frame = CGRectMake([PublicCommon GetALLScreen].size.width /2 -(size.width+8)/2 , 1, size.width+8, size.height+3);
+    }
+    
+    
+}
+
+
+
+-(void)setImgMsg:(NSString *)mediaid
+{
+    
+    
+    contentmaginright.constant =[PublicCommon GetScreen].size.width /2 -35;
+    contentH.constant=160;
+    CellHight =150 + 60;
+    CALayer *mask = [CALayer layer];
+    UIImage *maskimg =[UIImage imageNamed:@"img_other"];
+    mask.contents = (id)[maskimg CGImage];
+    mask.frame = CGRectMake(0, 0, 120 , 160);
+    content.layer.mask = mask;
+    content.layer.masksToBounds = YES;
+    
+    
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    dispatch_async(globalQ, ^{
+        
+        
+        NSFileManager *filemanger = [NSFileManager defaultManager];
+        NSString *path = [FileCommon getCacheDirectory];
+        NSString* _filename = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",mediaid]];
+        
+        
+        __block NSData *jpgdata;
+        if (![filemanger fileExistsAtPath:_filename])
+        {
+            HttpServer *http = [[HttpServer alloc] init:DownloadUrl];
+            jpgdata = [http FileDownload:mediaid suffix:@"aumb" mediatype:@".jpg"];
+            dispatch_async(mainQ, ^{
+                
+                if (jpgdata){
+                    content.image = [UIImage imageWithData:jpgdata];
+                }
+            });
+        }
+        else
+        {
+            dispatch_async(mainQ, ^{
+                jpgdata = [NSData dataWithContentsOfFile:_filename];
+                content.image = [UIImage imageWithData:jpgdata];
+            });
+            
+            
+            
+            
+        }
+    });
+    
+    
+    
+    
+    
+    content.contentMode = UIViewContentModeScaleAspectFill;
+    
+}
+
+
+
 
 -(void)setInfo:(NSString *)info dt:(NSString *)dt olddt:(NSString *)olddt
 {

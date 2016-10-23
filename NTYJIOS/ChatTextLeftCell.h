@@ -26,6 +26,7 @@
 @property (assign)NSUInteger CellHight;
 
 -(void)setInfo:(NSString *)info dt:(NSString *)dt olddt:(NSString *)olddt;
-
+-(void)setInfodt:(NSString *)dt olddt:(NSString *)olddt;
+-(void)setImgMsg:(NSString *)mediaid;
 
 @end

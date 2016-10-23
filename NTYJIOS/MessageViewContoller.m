@@ -222,7 +222,8 @@
      if ([segue.identifier isEqualToString:@"showchat"])
      {
          ChatViewController *chatvc =[segue destinationViewController];
-         chatvc.ddinfo = sender;
+         chatvc.ddinfo = ((DDInfo *)sender).ddid;
+          chatvc.ddinfocreatedt = ((DDInfo *)sender).sendtime;
          return;
      }
  // Get the new view controller using [segue destinationViewController].
