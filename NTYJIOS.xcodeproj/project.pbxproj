@@ -18,6 +18,12 @@
 		7B4025211DABC77A00403B0A /* ChatTextRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4025201DABC77A00403B0A /* ChatTextRightCell.m */; };
 		7B4025261DABD2F800403B0A /* ChatLog+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4025231DABD2F800403B0A /* ChatLog+CoreDataClass.m */; };
 		7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4058171D3E70AA002A5068 /* MBProgressHUD.m */; };
+		7B4D83611DBF9C9C00BA2E5F /* RecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D83601DBF9C9C00BA2E5F /* RecordView.m */; };
+		7B4D83641DBF9CAE00BA2E5F /* RecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D83631DBF9CAE00BA2E5F /* RecordButton.m */; };
+		7B4D83661DBFA5C300BA2E5F /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4D83651DBFA5C300BA2E5F /* close.png */; };
+		7B4D836A1DBFACDD00BA2E5F /* r3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4D83671DBFACDD00BA2E5F /* r3.png */; };
+		7B4D836B1DBFACDD00BA2E5F /* r2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4D83681DBFACDD00BA2E5F /* r2.png */; };
+		7B4D836C1DBFACDD00BA2E5F /* r1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4D83691DBFACDD00BA2E5F /* r1.png */; };
 		7B7026411D957EA800C04011 /* BaiduMapAPI_Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70263A1D957EA800C04011 /* BaiduMapAPI_Base.framework */; };
 		7B7026421D957EA800C04011 /* BaiduMapAPI_Cloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70263B1D957EA800C04011 /* BaiduMapAPI_Cloud.framework */; };
 		7B7026431D957EA800C04011 /* BaiduMapAPI_Location.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70263C1D957EA800C04011 /* BaiduMapAPI_Location.framework */; };
@@ -160,6 +166,14 @@
 		7B4025231DABD2F800403B0A /* ChatLog+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ChatLog+CoreDataClass.m"; path = "../ChatLog+CoreDataClass.m"; sourceTree = "<group>"; };
 		7B4058171D3E70AA002A5068 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7B4058181D3E70AA002A5068 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		7B4D835F1DBF9C9C00BA2E5F /* RecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordView.h; sourceTree = "<group>"; };
+		7B4D83601DBF9C9C00BA2E5F /* RecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordView.m; sourceTree = "<group>"; };
+		7B4D83621DBF9CAE00BA2E5F /* RecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordButton.h; sourceTree = "<group>"; };
+		7B4D83631DBF9CAE00BA2E5F /* RecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordButton.m; sourceTree = "<group>"; };
+		7B4D83651DBFA5C300BA2E5F /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		7B4D83671DBFACDD00BA2E5F /* r3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = r3.png; sourceTree = "<group>"; };
+		7B4D83681DBFACDD00BA2E5F /* r2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = r2.png; sourceTree = "<group>"; };
+		7B4D83691DBFACDD00BA2E5F /* r1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = r1.png; sourceTree = "<group>"; };
 		7B70263A1D957EA800C04011 /* BaiduMapAPI_Base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Base.framework; sourceTree = "<group>"; };
 		7B70263B1D957EA800C04011 /* BaiduMapAPI_Cloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Cloud.framework; sourceTree = "<group>"; };
 		7B70263C1D957EA800C04011 /* BaiduMapAPI_Location.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Location.framework; sourceTree = "<group>"; };
@@ -375,6 +389,17 @@
 			name = MQTT;
 			sourceTree = "<group>";
 		};
+		7B4D835C1DBF9A8F00BA2E5F /* recordview */ = {
+			isa = PBXGroup;
+			children = (
+				7B4D835F1DBF9C9C00BA2E5F /* RecordView.h */,
+				7B4D83601DBF9C9C00BA2E5F /* RecordView.m */,
+				7B4D83621DBF9CAE00BA2E5F /* RecordButton.h */,
+				7B4D83631DBF9CAE00BA2E5F /* RecordButton.m */,
+			);
+			name = recordview;
+			sourceTree = "<group>";
+		};
 		7B7026391D957E8E00C04011 /* baidu */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,6 +579,7 @@
 		B48B0F291D2E4ABB00646A20 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				7B4D835C1DBF9A8F00BA2E5F /* recordview */,
 				7BAE28A51D996303008AF612 /* chatlist */,
 				B42E582D1D7958EA005ADE1F /* Cell */,
 				7B19691E1D6DEBED00108B4A /* Message */,
@@ -608,6 +634,7 @@
 		B48B0F2F1D2E4E8900646A20 /* png */ = {
 			isa = PBXGroup;
 			children = (
+				7B4D83651DBFA5C300BA2E5F /* close.png */,
 				7BAE28AB1D9AA7B8008AF612 /* chat_right.png */,
 				7BAE28AC1D9AA7B8008AF612 /* chat_left.png */,
 				B45CDEFF1D92677E00DFBBAC /* no_s.png */,
@@ -651,6 +678,9 @@
 				B44D0A081D2F4B4F00F76DFF /* setting2.png */,
 				B44D0A061D2F4AA900F76DFF /* setting1.png */,
 				B48B0F301D2E4E8F00646A20 /* profile_bg.png */,
+				7B4D83671DBFACDD00BA2E5F /* r3.png */,
+				7B4D83681DBFACDD00BA2E5F /* r2.png */,
+				7B4D83691DBFACDD00BA2E5F /* r1.png */,
 			);
 			name = png;
 			sourceTree = "<group>";
@@ -735,6 +765,7 @@
 				7B7026491D957F2600C04011 /* mapapi.bundle in Resources */,
 				7BF73D711D86EA0F0089B050 /* sp_ok.png in Resources */,
 				7BAE28AE1D9AA7B8008AF612 /* chat_left.png in Resources */,
+				7B4D836B1DBFACDD00BA2E5F /* r2.png in Resources */,
 				B45CDF021D92677E00DFBBAC /* ok_s.png in Resources */,
 				B40C1AE31D3379C600AFE71A /* userinfo_2.png in Resources */,
 				7BF75B741D75C73D00CB03A2 /* aay.png in Resources */,
@@ -742,6 +773,7 @@
 				7BF75B811D771BAC00CB03A2 /* stop.png in Resources */,
 				7BA75AD01D8C390400A2B1C8 /* t7.png in Resources */,
 				B44D0A071D2F4AA900F76DFF /* setting1.png in Resources */,
+				7B4D836A1DBFACDD00BA2E5F /* r3.png in Resources */,
 				7BF75B8A1D77238800CB03A2 /* sendmubiao.png in Resources */,
 				7B1969251D6DECA500108B4A /* notice.png in Resources */,
 				B40C1AED1D337DF900AFE71A /* logo.png in Resources */,
@@ -764,6 +796,7 @@
 				B40C1AEB1D337A4A00AFE71A /* userinfo_6.png in Resources */,
 				B48B0F1E1D2E498100646A20 /* Assets.xcassets in Resources */,
 				7BAE28A71D996328008AF612 /* chatleft_text_cell.xib in Resources */,
+				7B4D836C1DBFACDD00BA2E5F /* r1.png in Resources */,
 				B44D0A091D2F4B4F00F76DFF /* setting2.png in Resources */,
 				7BF75B7F1D771B8700CB03A2 /* play.png in Resources */,
 				B48B0F311D2E4E8F00646A20 /* profile_bg.png in Resources */,
@@ -780,6 +813,7 @@
 				B457EC451D7D545E0048E992 /* selectlistcell2.xib in Resources */,
 				7B318E1E1D63573A002A9B59 /* phonebookcell.xib in Resources */,
 				7B40251E1DABC75A00403B0A /* chat_right_text_cell.xib in Resources */,
+				7B4D83661DBFA5C300BA2E5F /* close.png in Resources */,
 				B45CDF011D92677E00DFBBAC /* no_s.png in Resources */,
 				B40C1AD71D33469400AFE71A /* UserInfoCell.xib in Resources */,
 				7BD4CB0E1DBBAF8B00F793F2 /* img_other.png in Resources */,
@@ -818,6 +852,7 @@
 				B48B0F381D2E53D000646A20 /* UserInfo.m in Sources */,
 				B48B0F3B1D2E542E00646A20 /* ServerInfo.m in Sources */,
 				B40C1AD51D33443700AFE71A /* UserInfoViewController.m in Sources */,
+				7B4D83641DBF9CAE00BA2E5F /* RecordButton.m in Sources */,
 				7B4025211DABC77A00403B0A /* ChatTextRightCell.m in Sources */,
 				B44D0A131D2F4FD400F76DFF /* ModiPwdController.m in Sources */,
 				B48B0F341D2E51B300646A20 /* MeController.m in Sources */,
@@ -829,6 +864,7 @@
 				B43A5A4C1D92257E00519400 /* GroupInfoViewController.m in Sources */,
 				7BF75B881D771D4B00CB03A2 /* PublishCell.m in Sources */,
 				7B89D93B1D676FB5000D712D /* MQTTServer.m in Sources */,
+				7B4D83611DBF9C9C00BA2E5F /* RecordView.m in Sources */,
 				B42E582C1D7952B0005ADE1F /* SelectListViewController.m in Sources */,
 				7B318E211D6357D0002A9B59 /* PhoneBookCell.m in Sources */,
 				7BA75AD51D8C3EDB00A2B1C8 /* ChatViewController.m in Sources */,

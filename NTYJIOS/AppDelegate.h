@@ -10,7 +10,7 @@
 #import "Common.h"
 #import "MQTTServer.h"
 #import <BaiduMapAPI_Base/BMKBaseComponent.h>
-
+#import <AVFoundation/AVFoundation.h>
 @interface AppDelegate : UIResponder <BMKGeneralDelegate,UIApplicationDelegate>
 {
     NSString *iostoken;

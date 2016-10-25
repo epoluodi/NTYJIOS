@@ -302,10 +302,7 @@
     
 }
 
--(void)dealloc
-{
-    [[AVAudioSession sharedInstance] setActive:NO error:nil];
-}
+
 -(void)OnPlayEnd
 {
     [ btnaudio setBackgroundImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];

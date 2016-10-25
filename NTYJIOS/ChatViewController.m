@@ -18,6 +18,7 @@
 #import "ChatTextRightCell.h"
 #import "MainTabBarController.h"
 #import "UserInfo.h"
+#import "RecordView.h"
 
 @interface ChatViewController ()
 {
@@ -435,13 +436,23 @@
     NSLog(@"chatmsg %@",chatmsg);
 }
 
+
+//录音
 - (IBAction)clickaudio:(id)sender {
+    
+    
+  
+    
+    
+    RecordView *recordview = [[RecordView alloc] init:self.tabBarController.view.frame];
+    [self.tabBarController.view addSubview:recordview];
+    
     
     
 }
 
 - (IBAction)clickpicture:(id)sender {
-    
+    [self closeinput];
     UIAlertController * alert =[UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
@@ -484,6 +495,8 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+
+
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     NSLog(@"SMILE!");
     //    [self.capturedImages addObject:image];

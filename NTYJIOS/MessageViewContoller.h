@@ -17,6 +17,7 @@
     
     
     __block NSArray *appoverlists;
+    UIRefreshControl *refreshcontrol;
     
 }
 

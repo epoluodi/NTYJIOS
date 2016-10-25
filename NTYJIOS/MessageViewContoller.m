@@ -57,9 +57,23 @@
     UINib *nib=[UINib nibWithNibName:@"MessageCell" bundle:nil];
     [table registerNib:nib forCellReuseIdentifier:@"cell"];
     
-    
+    refreshcontrol = [[UIRefreshControl alloc] init];
+    [refreshcontrol addTarget:self action:@selector(Onrefresh) forControlEvents:UIControlEventValueChanged];
+    [table addSubview:refreshcontrol];
     // Do any additional setup after loading the view.
 }
+
+
+//刷新
+-(void)Onrefresh
+{
+    if (refreshcontrol.isRefreshing)
+    {
+        [self loadDDinfo];
+    }
+}
+
+
 
 -(void)Onright:(id)sender
 {
@@ -95,23 +109,43 @@
 
 -(void)loadDDinfo
 {
-    HttpServer *http =[[HttpServer alloc] init:queryGroupsAndDispatchs];
-    BOOL result = [http getGroupsList];
-    if (!result)
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取调度信息失败，请重新登录!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-        [alert show];
-        
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        LoginViewController *loginVC = (LoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        loginVC.mainview=(MainTabBarController *)self.tabBarController;
-        [self presentViewController:loginVC animated:YES completion:nil];
-        
     
-        return;
-    }
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
     
-    [self loadDDinfoFromDB];
+    dispatch_async(globalQ, ^{
+       
+        HttpServer *http =[[HttpServer alloc] init:queryGroupsAndDispatchs];
+        BOOL result = [http getGroupsList];
+        if (!result)
+        {
+            
+            
+            dispatch_async(mainQ, ^{
+                if (refreshcontrol.refreshing)
+                    [ refreshcontrol endRefreshing];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取调度信息失败，请重新登录!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                LoginViewController *loginVC = (LoginViewController *)[storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+                loginVC.mainview=(MainTabBarController *)self.tabBarController;
+                [self presentViewController:loginVC animated:YES completion:nil];
+                
+            });
+         
+            
+            return;
+        }
+        dispatch_async(mainQ, ^{
+            if (refreshcontrol.refreshing)
+                [ refreshcontrol endRefreshing];
+            [self loadDDinfoFromDB];
+        });
+     
+        
+    });
+  
     
 }
 
