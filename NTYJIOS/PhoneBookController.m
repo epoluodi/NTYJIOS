@@ -19,16 +19,19 @@
 
 @implementation PhoneBookController
 @synthesize search,table;
+@synthesize navtitle;
 - (void)viewDidLoad {
     [super viewDidLoad];
     search.placeholder=@"关键字:联系人/电话";
     btnright = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"more"] style:UIBarButtonItemStylePlain target:self action:@selector(Onright)];
     btnright.tintColor = [UIColor whiteColor];
-    title = [[UINavigationItem alloc] initWithTitle:@"通讯录"];
-    title.hidesBackButton=YES;
+    navtitle.title =@"通讯录";
+    navtitle.hidesBackButton=YES;
     
-    [title setRightBarButtonItem:btnright];
-    [self.navigationController.navigationBar pushNavigationItem:title animated:YES];
+    isdisplay = NO;
+    [navtitle setRightBarButtonItem:btnright];
+    //    [self.navigationController.navigationBar pushNavigationItem:title animated:NO];
+    
     search.inputAccessoryView =[PublicCommon getInputToolbar:self sel:@selector(CloseInput)];
     [self.view setBackgroundColor:UIColorFromRGB(0xEAEAEA)];
     [table setBackgroundColor:[UIColor clearColor]];
@@ -52,6 +55,7 @@
     
     // Do any additional setup after loading the view.
 }
+
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
@@ -275,29 +279,32 @@
     
     
     __block NSData *jpgdata;
-    if ([filemanger fileExistsAtPath:_filename])
+    cell.nickimg.image = [UIImage imageNamed:@"nick1"];
+    if ([filemanger fileExistsAtPath:_filename] && ![contacts.img isEqualToString:@""])
     {
         jpgdata = [NSData dataWithContentsOfFile:_filename];
         cell.nickimg.image = [UIImage imageWithData:jpgdata];
     }
     else
     {
-        
-        dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_queue_t mainQ = dispatch_get_main_queue();
-        dispatch_async(globalQ, ^{
-            HttpServer *http = [[HttpServer alloc] init:DownloadUrl];
-            jpgdata = [http FileDownload:contacts.img suffix:@"40" mediatype:@".jpg"];
-            
-            dispatch_async(mainQ, ^{
-                if (jpgdata)
-                    cell.nickimg.image = [UIImage imageWithData:jpgdata];
-                else
-                    cell.nickimg.image = [UIImage imageNamed:@"nick1"];
+        if (![contacts.img  isEqualToString:@""])
+        {
+            dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_queue_t mainQ = dispatch_get_main_queue();
+            dispatch_async(globalQ, ^{
+                HttpServer *http = [[HttpServer alloc] init:DownloadUrl];
+                jpgdata = [http FileDownload:contacts.img suffix:@"40" mediatype:@".jpg"];
+                
+                dispatch_async(mainQ, ^{
+                    if (jpgdata)
+                        cell.nickimg.image = [UIImage imageWithData:jpgdata];
+                    else
+                        cell.nickimg.image = [UIImage imageNamed:@"nick1"];
+                });
             });
-        });
+        }
     }
-
+    
     cell.nickname.text = contacts.name;
     return cell;
 }

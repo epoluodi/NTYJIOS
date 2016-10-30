@@ -18,7 +18,7 @@
 #import "ChatTextRightCell.h"
 #import "MainTabBarController.h"
 #import "UserInfo.h"
-#import "RecordView.h"
+
 
 @interface ChatViewController ()
 {
@@ -437,6 +437,77 @@
 }
 
 
+
+-(void)FinishRecord:(NSString *)filename duration:(int)duration
+{
+    NSLog(@"文件 %@",filename);
+      NSLog(@"文件时长 %d",duration);
+    
+    NSString *filePath = [FileCommon getCacheDirectory];
+   
+    
+    //    [fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
+    //
+    NSString *path =[filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.aac",filename]];
+
+    
+    
+    
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    
+    dispatch_async(globalQ, ^{
+        
+        HttpServer *http = [[HttpServer alloc] init:UploadUrl];
+        
+        
+        NSData *recorddata= [NSData dataWithContentsOfFile:path];
+        
+        ReturnData *rd =  [http uploadfile:recorddata mediaid:filename mediatype:@"02" filetype:@".aac"];
+        if (rd && rd.returnCode==0)
+        {
+            NSMutableDictionary *mDict=[[NSMutableDictionary alloc] init];
+            [mDict setObject:@"03" forKey:@"msg_type"];
+            [mDict setObject:filename forKey:@"msg_content"];
+            [mDict setObject:_ddinfo forKey:@"dispatch_id"];
+            
+            HttpServer* http2  = [[HttpServer alloc] init:saveSessionMsg];
+            BOOL r =  [http2 sendMsg:mDict];
+            
+            dispatch_async(mainQ, ^{
+                if (!r)
+                {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"信息发送失败，可能网络问题请重新尝试!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    [alert show];
+                    return ;
+                }
+                
+                chatcontent.text=@"";
+            });
+            
+            
+        }
+        else
+        {
+            dispatch_async(mainQ, ^{
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"信息发送失败，可能网络问题请重新尝试!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                return ;
+                
+                
+                chatcontent.text=@"";
+            });
+        }
+        
+    });
+    
+
+    
+    
+    
+    
+}
 //录音
 - (IBAction)clickaudio:(id)sender {
     
@@ -445,6 +516,7 @@
     
     
     RecordView *recordview = [[RecordView alloc] init:self.tabBarController.view.frame];
+    recordview.delegate=self;
     [self.tabBarController.view addSubview:recordview];
     
     
@@ -517,7 +589,7 @@
     //    [fileManager createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
     //
     NSString *filename = [NSString stringWithFormat:@"%@.jpg",uuid];
-    [fileManager createFileAtPath:[filePath stringByAppendingString:filename] contents:jpgdata attributes:nil];
+    [fileManager createFileAtPath:[filePath stringByAppendingPathComponent:filename] contents:jpgdata attributes:nil];
     
     [picker dismissViewControllerAnimated:YES completion:nil];
     

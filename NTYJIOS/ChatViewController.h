@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "DBmanger.h"
+#import "RecordView.h"
 
-@interface ChatViewController : UIViewController<UIGestureRecognizerDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,
+@interface ChatViewController : UIViewController<UIGestureRecognizerDelegate,UITextFieldDelegate,UIImagePickerControllerDelegate,RecordViewdelegate,
 UITableViewDelegate,UITableViewDataSource>
 {
     UIBarButtonItem *btnright;
@@ -20,7 +21,9 @@ UITableViewDelegate,UITableViewDataSource>
     
     NSMutableDictionary *cellHlist;
 
-       UIImagePickerController *pickerview;
+    UIImagePickerController *pickerview;
+ 
+    
 }
 @property (weak, nonatomic) IBOutlet UINavigationItem *navtitle;
 @property (weak, nonatomic) IBOutlet UILabel *infotitle;

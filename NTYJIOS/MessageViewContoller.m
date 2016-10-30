@@ -26,6 +26,7 @@
 
 @implementation MessageViewContoller
 @synthesize table;
+@synthesize navtitle;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -39,15 +40,16 @@
     btnleft = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"appover"] style:UIBarButtonItemStylePlain target:self action:@selector(Onleft)];
     btnleft.tintColor = [UIColor redColor];
     
-    
-    title = [[UINavigationItem alloc] initWithTitle:@"调度信息"];
-    title.hidesBackButton=YES;
+    navtitle.title =@"调度信息";
+//    navtitle = [[UINavigationItem alloc] initWithTitle:@"调度信息"];
+    navtitle.hidesBackButton=YES;
     
     
 //    [title setLeftBarButtonItem:btnleft];
-    [title setRightBarButtonItem:btnright];
+    [navtitle setRightBarButtonItem:btnright];
+//    [self.navigationController.navigationBar pushNavigationItem:title animated:NO];
     
-    [self.navigationController.navigationBar pushNavigationItem:title animated:YES];
+    
     
     self.automaticallyAdjustsScrollViewInsets=NO;
     table.dataSource=self;
@@ -161,6 +163,9 @@
 {
     
     if ([UserInfo getInstance].Token){
+
+        
+        
         dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_queue_t mainQ = dispatch_get_main_queue();
         
@@ -171,9 +176,9 @@
             
             dispatch_async(mainQ, ^{
                 if (!appoverlists || [appoverlists count]==0)
-                    [title setLeftBarButtonItem:nil];
+                    [navtitle setLeftBarButtonItem:nil];
                 else
-                    [title setLeftBarButtonItem:btnleft];
+                    [navtitle setLeftBarButtonItem:btnleft];
                 
             });
             

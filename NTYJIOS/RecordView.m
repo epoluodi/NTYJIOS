@@ -32,8 +32,9 @@
     effectview.frame = frame;
 
     self.frame = frame;
-
-    
+    media = [[MediaRecord alloc] init];
+    media.delegate = self;
+    isCacel = NO;
     [self addSubview:effectview];
     effectview.alpha=0.9f;
     self.userInteractionEnabled=YES;
@@ -67,7 +68,7 @@
     
     recordstate = [[UIImageView alloc] init];
     
-    recordstate.image = [UIImage imageNamed:@"r3"];
+    recordstate.image = nil;// [UIImage imageNamed:@"r3"];
     recordstate.frame =CGRectMake(frame.size.width/2 - 128/2, frame.size.height/2 - 128/2,  128 , 128);
     [effectview addSubview:recordstate];
     
@@ -83,19 +84,70 @@
 }
 
 
+-(void)OnStartRecord
+{
+    NSLog(@"录音开始");
+}
+
+-(void)OnCancelRecord
+{
+  
+    NSLog(@"录音结束");
+    [self removeFromSuperview];
+}
+-(void)OnPowerChange:(float)power
+{
+    CGFloat progress=(1.0/160.0)*(power+160.0);
+  
+    if (progress==0 && progress<0.2)
+        recordstate.image = nil;
+    else if (progress > 0.2 && progress<0.4)
+         recordstate.image =[UIImage imageNamed:@"r1"];
+    else if (progress > 0.4 && progress<0.7)
+        recordstate.image =[UIImage imageNamed:@"r2"];
+    else
+        recordstate.image =[UIImage imageNamed:@"r3"];
+    
+    
+    NSLog(@"音量 %f",progress);
+}
+-(void)OnStopRecord:(NSString *)filename
+{
+    [self removeFromSuperview];
+    if (isCacel){
+        return;
+    }
+    _filename = filename;
+  
+ 
+    [_delegate FinishRecord:_filename duration:(int)media.recordduration];
+    NSLog(@"录音文件 %@",filename);
+}
+
+
+
+
+
 -(void)StartRecord
 {
+    isCacel = NO;
     NSLog(@"开始录音");
+    [media StartRecord];
 }
 
 -(void)EndRecord
 {
+    
      NSLog(@"结束录音");
+    [media StopRecord];
+    
 }
 
 -(void)CancelRecord
 {
-        NSLog(@"取消录音");
+    isCacel = YES;
+    NSLog(@"取消录音");
+    [media StopRecord];
 }
 
 -(void)clickrecord

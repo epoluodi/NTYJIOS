@@ -152,7 +152,7 @@
             audioPlayer.delegate = self;
             [audioPlayer prepareToPlay];
             NSLog(@"时间长 %f",audioPlayer.duration);
-            
+            _recordduration  =audioPlayer.duration;
             if (error) {
                 NSLog(@"创建播放器过程中发生错误，错误信息：%@",error.localizedDescription);
                 return;
@@ -204,6 +204,7 @@
     {
         [audioPlayer stop];
         audioPlayer.currentTime=0;
+      
     }
 }
 

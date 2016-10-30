@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "RecordButton.h"
+#import "MediaRecord.h"
 
-@interface RecordView : UIView<ControllDelegate>
+
+@protocol RecordViewdelegate
+
+-(void)FinishRecord:(NSString *)filename duration:(int)duration;
+
+
+@end
+@interface RecordView : UIView<ControllDelegate,Recorddelegate>
 {
     UIBlurEffect *blur;
     UIVisualEffectView *effectview;
@@ -18,9 +26,15 @@
     RecordButton *btnrecord;
     UIImageView *recordstate;
     UILabel *lab;
-    
+    MediaRecord *media;
+    NSString *_filename;
+    BOOL isCacel;
+   
 }
 
+
+@property (weak,nonatomic) NSObject<RecordViewdelegate> *delegate;
 -(instancetype)init:(CGRect)frame;
+
 
 @end

@@ -15,11 +15,12 @@ typedef   enum  {
 
 @interface PhoneBookController : UIViewController<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 {
-    UINavigationItem *title;
+//    UINavigationItem *title;
     UIRefreshControl *refresh;
     UIBarButtonItem *btnright;
     __block PhoneSortEnum mode;
     
+    BOOL isdisplay;
     //数据
     NSArray * group;
     NSArray * searchlist;
@@ -31,6 +32,7 @@ typedef   enum  {
     BOOL isSearch;
 }
 
+@property (weak, nonatomic) IBOutlet UINavigationItem *navtitle;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *search;
 @property (weak, nonatomic) IBOutlet UITableView *table;

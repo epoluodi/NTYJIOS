@@ -107,26 +107,31 @@
         
         
         __block NSData *jpgdata;
-        if (![filemanger fileExistsAtPath:_filename])
+        
+        if ([NSNull null] != [UserInfo getInstance].picture)
         {
-            HttpServer *http = [[HttpServer alloc] init:DownloadUrl];
-            jpgdata = [http FileDownload:[UserInfo getInstance].picture suffix:@"40" mediatype:@".jpg"];
-            dispatch_async(mainQ, ^{
-                
-                if (jpgdata){
+            if (![filemanger fileExistsAtPath:_filename])
+            {
+                HttpServer *http = [[HttpServer alloc] init:DownloadUrl];
+                jpgdata = [http FileDownload:[UserInfo getInstance].picture suffix:@"40" mediatype:@".jpg"];
+                dispatch_async(mainQ, ^{
+                    
+                    if (jpgdata){
+                        nickimg.image = [UIImage imageWithData:jpgdata];
+                    }
+                });
+            }
+            else
+            {
+                dispatch_async(mainQ, ^{
+                    
+                    jpgdata = [NSData dataWithContentsOfFile:_filename];
                     nickimg.image = [UIImage imageWithData:jpgdata];
-                }
-            });
+                });
+                
+            }
         }
-        else
-        {
-            dispatch_async(mainQ, ^{
-            
-                jpgdata = [NSData dataWithContentsOfFile:_filename];
-                nickimg.image = [UIImage imageWithData:jpgdata];
-            });
-     
-        }
+       
     });
 }
 

@@ -32,9 +32,11 @@
     NSMutableDictionary *dicM;
     NSTimer *timer;
     NSString *filename;
+    NSTimeInterval _duration;
 }
 
 @property (weak,nonatomic)NSObject<Recorddelegate> *delegate;
+@property (assign)  NSTimeInterval recordduration;
 
 -(BOOL)getRecordState;
 -(BOOL)getPlayState;

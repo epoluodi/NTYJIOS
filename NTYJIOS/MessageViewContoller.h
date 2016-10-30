@@ -10,7 +10,7 @@
 
 @interface MessageViewContoller : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
-    UINavigationItem *title;
+//    UINavigationItem *title;
     UIBarButtonItem *btnleft;
     UIBarButtonItem *btnright;
     NSArray* ddinfolist;
@@ -21,6 +21,8 @@
     
 }
 
+
+@property (weak, nonatomic) IBOutlet UINavigationItem *navtitle;
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
