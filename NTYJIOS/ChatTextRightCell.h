@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MediaRecord.h"
 
-@interface ChatTextRightCell : UITableViewCell
+@interface ChatTextRightCell : UITableViewCell<Recorddelegate>
 {
-       UILabel *labcontent;
-      UILabel *_labdttxt;
+    UILabel *labcontent;
+    UILabel *_labdttxt;
+    NSString *audiomediaid;
+    MediaRecord *mediacontroll;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *labdt;
@@ -26,7 +29,7 @@
 
 -(void)setImgMsg:(NSString *)mediaid;
 -(void)setInfodt:(NSString *)dt olddt:(NSString *)olddt;
-
+-(void)setAduioInfo:(NSString *)mediaid;
 
 
 @end

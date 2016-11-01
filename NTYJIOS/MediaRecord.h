@@ -46,4 +46,5 @@
 -(void)StopRecord;
 -(void)audioPlayer;
 -(void)audioStop;
+
 @end

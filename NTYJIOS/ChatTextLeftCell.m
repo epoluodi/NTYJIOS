@@ -147,6 +147,78 @@
 
 
 
+-(void)setAduioInfo:(NSString *)mediaid
+{
+    
+    audiomediaid = mediaid;
+    __block NSString *info;
+    info =@"语音 时长:       ";
+    
+    
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    dispatch_async(globalQ, ^{
+        
+        
+        NSFileManager *filemanger = [NSFileManager defaultManager];
+        NSString *path = [FileCommon getCacheDirectory];
+        NSString* _filename = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.aac",mediaid]];
+        
+        
+        __block NSData *jpgdata;
+        if (![filemanger fileExistsAtPath:_filename])
+        {
+            HttpServer *http = [[HttpServer alloc] init:DownloadUrl];
+            jpgdata = [http FileDownload:mediaid suffix:@"" mediatype:@".aac"];
+            dispatch_async(mainQ, ^{
+                
+                if (jpgdata){
+                    mediacontroll = [[MediaRecord alloc] initAudio:jpgdata];
+                    info =[NSString stringWithFormat:@"语音 时长:%d\"   ",(int)mediacontroll.recordduration];
+                    labcontent.text=info;
+                }
+            });
+        }
+        else
+        {
+            dispatch_async(mainQ, ^{
+                jpgdata = [NSData dataWithContentsOfFile:_filename];
+                mediacontroll = [[MediaRecord alloc] initAudio:jpgdata];
+                info =[NSString stringWithFormat:@"语音 时长:%d\"   ",(int)mediacontroll.recordduration];
+                labcontent.text=info;
+            });
+            
+        }
+        
+    });
+    
+    
+    int w = [PublicCommon GetScreen].size.width - 40 -60-60;
+    CGRect tmpRect = [info boundingRectWithSize:CGSizeMake(w, 4000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil];
+    labcontent.font=[UIFont systemFontOfSize:16];
+    contentmaginright.constant = [PublicCommon GetScreen].size.width -  tmpRect.size.width-10 -40-50 ;
+    labcontent.frame = CGRectMake(20, 7, tmpRect.size.width, tmpRect.size.height+5);
+    labcontent.textColor = [UIColor whiteColor];
+    
+    [content addSubview:labcontent];
+    labcontent.text=info;
+    if (tmpRect.size.height+20 < 45)
+        contentH.constant=45;
+    else
+        contentH.constant=tmpRect.size.height+20;
+    
+    
+    
+    CellHight = tmpRect.size.height + 60;
+    
+    
+    
+}
+
+
+
+
+
 -(void)setInfo:(NSString *)info dt:(NSString *)dt olddt:(NSString *)olddt
 {
     NSDateFormatter *dtformat = [[NSDateFormatter alloc] init];

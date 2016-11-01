@@ -327,12 +327,20 @@
         if ([chatmsg.msgType isEqual:@1])
         {
             [leftcell setInfo:chatmsg.content  dt:chatmsg.msgdate olddt:olddt];
+            leftcell.sendname.text=contacts.name;
             [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)leftcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
         }else if ([chatmsg.msgType isEqual:@2])
         {
             
             [leftcell setInfodt:chatmsg.msgdate olddt:olddt];
             [leftcell setImgMsg:chatmsg.content];
+            leftcell.sendname.text=contacts.name;
+            [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)leftcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+        }else if ([chatmsg.msgType isEqual:@3])
+        {
+            
+            [leftcell setInfodt:chatmsg.msgdate olddt:olddt];
+            [leftcell setAduioInfo:chatmsg.content];
             leftcell.sendname.text=contacts.name;
             [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)leftcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
         }
@@ -376,6 +384,12 @@
            [rightcell setInfodt:chatmsg.msgdate olddt:olddt];
            [rightcell setImgMsg:chatmsg.content];
             [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)rightcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+       }else if ([chatmsg.msgType isEqual:@3])
+       {
+           
+           [rightcell setInfodt:chatmsg.msgdate olddt:olddt];
+           [rightcell setAduioInfo:chatmsg.content];
+           [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)rightcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
        }
        
         

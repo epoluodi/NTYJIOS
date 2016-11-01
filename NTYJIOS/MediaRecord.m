@@ -47,7 +47,7 @@
     NSError *error=nil;
     audioPlayer = [[AVAudioPlayer alloc] initWithData:audiodata fileTypeHint:AVFileTypeWAVE error:&error];
     
-    
+      _recordduration  =audioPlayer.duration;
 //    audioPlayer=[[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:urlStr] error:&error];
     NSLog(@"%@",error);
     
