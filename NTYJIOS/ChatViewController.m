@@ -333,6 +333,7 @@
             
             [leftcell setInfodt:chatmsg.msgdate olddt:olddt];
             [leftcell setImgMsg:chatmsg.content];
+            leftcell.sendname.text=contacts.name;
             [cellHlist setObject:[NSString stringWithFormat:@"%lu",(unsigned long)leftcell.CellHight] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
         }
         
