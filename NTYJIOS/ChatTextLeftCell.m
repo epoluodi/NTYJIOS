@@ -146,6 +146,15 @@
 
 
 
+-(void)playaudio
+{
+    if (mediacontroll)
+    {
+        [mediacontroll audioPlayer];
+    }
+}
+
+
 
 -(void)setAduioInfo:(NSString *)mediaid
 {
@@ -208,7 +217,11 @@
         contentH.constant=tmpRect.size.height+20;
     
     
+    content.userInteractionEnabled=YES;
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playaudio)];
+    
+    [content addGestureRecognizer:tap];
     CellHight = tmpRect.size.height + 60;
     
     

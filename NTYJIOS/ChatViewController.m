@@ -36,6 +36,7 @@
 @synthesize table;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tabBarController.tabBar.hidden=YES;
     navtitle.title = @"调度讨论";
     [self.navigationController.navigationItem.leftBarButtonItems[0] setTintColor:[UIColor  whiteColor]];
     app = [[UIApplication sharedApplication] delegate];
@@ -719,6 +720,11 @@
 
 }
 
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 
 

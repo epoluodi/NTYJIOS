@@ -94,7 +94,7 @@
                                          
                                          break;
                                      case 1:
-                              
+                                [self performSegueWithIdentifier:@"showhistory" sender:self];
                                          break;
                                  }
                                  
@@ -161,7 +161,7 @@
 //加载数据
 -(void)viewWillAppear:(BOOL)animated
 {
-    
+    self.tabBarController.tabBar.hidden=NO;
     if ([UserInfo getInstance].Token){
 
         
@@ -298,5 +298,11 @@
         return [df stringFromDate:date];
     }
     
+}
+
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 @end

@@ -81,6 +81,13 @@
 }
 
 
+-(void)playaudio
+{
+    if (mediacontroll)
+    {
+        [mediacontroll audioPlayer];
+    }
+}
 
 -(void)setAduioInfo:(NSString *)mediaid
 {
@@ -121,6 +128,8 @@
                 mediacontroll = [[MediaRecord alloc] initAudio:jpgdata];
                   info =[NSString stringWithFormat:@"语音 时长:%d\"   ",(int)mediacontroll.recordduration];
                 labcontent.text=info;
+             
+                
             });
             
         }
@@ -143,7 +152,11 @@
         contentH.constant=tmpRect.size.height+20;
     
     
+    content.userInteractionEnabled=YES;
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playaudio)];
+    
+    [content addGestureRecognizer:tap];
     CellHight = tmpRect.size.height + 60;
     
     
