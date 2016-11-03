@@ -41,6 +41,7 @@
 		7B7026581D95804700C04011 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7026571D95804700C04011 /* libsqlite3.0.tbd */; };
 		7B70265A1D95805300C04011 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7026591D95805300C04011 /* CoreTelephony.framework */; };
 		7B70265C1D95806500C04011 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B70265B1D95806500C04011 /* libstdc++.6.0.9.tbd */; };
+		7B7200B31DCB89D10089CAA1 /* hiscell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B7200B21DCB89D10089CAA1 /* hiscell.xib */; };
 		7B89D93B1D676FB5000D712D /* MQTTServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B89D93A1D676FB5000D712D /* MQTTServer.m */; };
 		7B89D93E1D688B20000D712D /* MessageViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B89D93D1D688B20000D712D /* MessageViewContoller.m */; };
 		7B89D9441D68951C000D712D /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B89D9431D68951C000D712D /* FTPopOverMenu.m */; };
@@ -197,6 +198,7 @@
 		7B7026571D95804700C04011 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		7B7026591D95805300C04011 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		7B70265B1D95806500C04011 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		7B7200B21DCB89D10089CAA1 /* hiscell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = hiscell.xib; sourceTree = "<group>"; };
 		7B89D9391D676FB5000D712D /* MQTTServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTTServer.h; sourceTree = "<group>"; };
 		7B89D93A1D676FB5000D712D /* MQTTServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTTServer.m; sourceTree = "<group>"; };
 		7B89D93C1D688B20000D712D /* MessageViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewContoller.h; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 				B45CDEFD1D92674000DFBBAC /* userstatecell.xib */,
 				B45CDF031D92743300DFBBAC /* GroupInfoUserStateCell.h */,
 				B45CDF041D92743300DFBBAC /* GroupInfoUserStateCell.m */,
+				7B7200B21DCB89D10089CAA1 /* hiscell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -813,6 +816,7 @@
 				B40C1ADE1D3348BF00AFE71A /* UserInfoCell2.xib in Resources */,
 				7BF73D701D86EA0F0089B050 /* sp_no.png in Resources */,
 				7BF75B831D771BE700CB03A2 /* pause.png in Resources */,
+				7B7200B31DCB89D10089CAA1 /* hiscell.xib in Resources */,
 				B40C1AE71D337A1B00AFE71A /* userinfo_4.png in Resources */,
 				B40C1AEB1D337A4A00AFE71A /* userinfo_6.png in Resources */,
 				B48B0F1E1D2E498100646A20 /* Assets.xcassets in Resources */,

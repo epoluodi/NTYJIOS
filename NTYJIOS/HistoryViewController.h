@@ -14,6 +14,8 @@
 @interface HistoryViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
      UIBarButtonItem *btnright;
+    
+    NSArray *jsondata;
 }
 
 

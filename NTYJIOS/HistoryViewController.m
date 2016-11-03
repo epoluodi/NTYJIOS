@@ -9,6 +9,7 @@
 #import "HistoryViewController.h"
 #import <Common/PublicCommon.h>
 #import "MBProgressHUD.h"
+#import "HttpServer.h"
 
 
 @interface HistoryViewController ()
@@ -35,11 +36,42 @@
     self.tabBarController.tabBar.hidden=YES;
     
     hud = [[MBProgressHUD alloc] initWithView:self.view];
-    
+    [self getHisoryData:@"01"];
     // Do any additional setup after loading the view.
 }
 
 
+-(void)getHisoryData:(NSString *)timetype
+{
+    [self.view addSubview:hud];
+    [hud show:YES];
+    dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQ = dispatch_get_main_queue();
+    
+    dispatch_async(globalQ, ^{
+       
+        HttpServer *http = [[HttpServer alloc] init:queryHisDispatchMsgs];
+       ReturnData *rd =  [http queryHistoryJD:timetype];
+        dispatch_async(mainQ, ^{
+            [hud hide:YES];
+            if (!rd)
+            {
+            
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取历史调度信息失败!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                [alert show];
+                [self dismissViewControllerAnimated:YES completion:nil];
+                return ;
+            }
+            
+            jsondata = rd.returnDatas;
+            NSLog(@"历史数据 %@",jsondata);
+            
+            
+        });
+        
+    });
+    
+}
 
 
 
@@ -57,11 +89,14 @@
                                  
                                  switch (selectedIndex) {
                                      case 0://发布
+                                         [self getHisoryData:@"01"];
                                          
-                                       
                                          break;
                                      case 1:
-                                      
+                                         [self getHisoryData:@"02"];
+                                         break;
+                                     case 2:
+                                         [self getHisoryData:@"03"];
                                          break;
                                  }
                                  

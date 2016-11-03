@@ -59,6 +59,7 @@
 //阅读调度信息发送
 -(BOOL)readDispatchStateSendServer:(NSString *)ddid lng:(NSString *)lng lat:(NSString *)lat;
 
+-(ReturnData *)queryHistoryJD:(NSString *)type;
 
 -(BOOL)sendMsg:(NSDictionary *)data;
 @end

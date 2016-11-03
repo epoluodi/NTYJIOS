@@ -52,6 +52,11 @@
 
 #define saveSessionMsg [NSString stringWithFormat:@"%@%@",IMURL,@"msg/saveSessionMsg"]
 
+
+#define queryHisDispatchMsgs [NSString stringWithFormat:@"%@%@",IMURL,@"msg/queryHisDispatchMsgs"]
+
+
+
 @interface ServerInfo : NSObject
 
 

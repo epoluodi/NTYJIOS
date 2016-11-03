@@ -438,4 +438,27 @@
 }
 
 
+-(ReturnData *)queryHistoryJD:(NSString *)type
+{
+    HttpClass *http = [[HttpClass alloc] init:url];
+    [http setIsHead:YES];
+    [http addHeadString:@"deviceID" value:[UserInfo getInstance].deviceid];
+    [http addHeadString:@"deviceType" value:@"01"];
+    [http addHeadString:@"token" value:[UserInfo getInstance].Token];
+    
+    [http addParamsString:@"timeType" values:type];
+    
+    
+    NSData *d =[http httprequest:[http getDataForArrary]];
+    
+    if (!d)
+        return nil;
+    ReturnData *rd = [ReturnData getReturnDatawithData:d dataMode:NO];
+    if (rd.returnCode!=0)
+        return nil;
+    return rd;
+}
+
+
+
 @end
