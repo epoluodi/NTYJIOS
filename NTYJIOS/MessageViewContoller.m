@@ -38,7 +38,7 @@
     btnright.tintColor = [UIColor whiteColor];
     
     btnleft = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"appover"] style:UIBarButtonItemStylePlain target:self action:@selector(Onleft)];
-    btnleft.tintColor = [UIColor redColor];
+    btnleft.tintColor = [UIColor whiteColor];
     
     navtitle.title =@"调度信息";
 //    navtitle = [[UINavigationItem alloc] initWithTitle:@"调度信息"];

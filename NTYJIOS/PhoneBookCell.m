@@ -9,9 +9,11 @@
 #import "PhoneBookCell.h"
 
 @implementation PhoneBookCell
-
+@synthesize nickimg;
 - (void)awakeFromNib {
     [super awakeFromNib];
+    nickimg.layer.cornerRadius=6;
+    nickimg.layer.masksToBounds=YES;
     // Initialization code
 }
 

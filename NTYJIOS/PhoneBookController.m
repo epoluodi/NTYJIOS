@@ -33,7 +33,7 @@
     //    [self.navigationController.navigationBar pushNavigationItem:title animated:NO];
     
     search.inputAccessoryView =[PublicCommon getInputToolbar:self sel:@selector(CloseInput)];
-    [self.view setBackgroundColor:UIColorFromRGB(0xEAEAEA)];
+    [self.view setBackgroundColor:UIColorFromRGB(0xF2EFFA)];
     [table setBackgroundColor:[UIColor clearColor]];
     
     refresh = [[UIRefreshControl alloc] init];
@@ -52,7 +52,9 @@
     [self loadData];
     isSearch = NO;
     search.delegate = self;
-    
+    search.barTintColor =UIColorFromRGB(0xF2EFFA);
+
+    table.separatorColor =UIColorFromRGB(0xEDEDED);
     // Do any additional setup after loading the view.
 }
 
@@ -279,7 +281,7 @@
     
     
     __block NSData *jpgdata;
-    cell.nickimg.image = [UIImage imageNamed:@"nick1"];
+    cell.nickimg.image = [UIImage imageNamed:@"default_user"];
     if ([filemanger fileExistsAtPath:_filename] && ![contacts.img isEqualToString:@""])
     {
         jpgdata = [NSData dataWithContentsOfFile:_filename];
@@ -299,7 +301,7 @@
                     if (jpgdata)
                         cell.nickimg.image = [UIImage imageWithData:jpgdata];
                     else
-                        cell.nickimg.image = [UIImage imageNamed:@"nick1"];
+                        cell.nickimg.image = [UIImage imageNamed:@"default_user"];
                 });
             });
         }

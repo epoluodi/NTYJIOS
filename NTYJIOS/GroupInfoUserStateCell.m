@@ -9,9 +9,11 @@
 #import "GroupInfoUserStateCell.h"
 
 @implementation GroupInfoUserStateCell
-
+@synthesize userimg;
 - (void)awakeFromNib {
     [super awakeFromNib];
+    userimg.layer.cornerRadius = 6;
+    userimg.layer.masksToBounds=YES;
     // Initialization code
 }
 

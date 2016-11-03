@@ -169,7 +169,7 @@
     {
         UserInfoCell1 *cell = [table dequeueReusableCellWithIdentifier:@"cell1"];
         cell.celltitle.text = @"头像";
-        cell.cellimg.image = [UIImage imageNamed:@"nick1"];
+        cell.cellimg.image = [UIImage imageNamed:@"default_user"];
         if (IsSelf)
             cell.nickimg.image = [UserInfo getInstance].nickimg;
         else{
@@ -181,7 +181,8 @@
             //
             NSString *filename = [NSString stringWithFormat:@"/%@.jpg",contacts.img];
             NSData *data = [NSData dataWithContentsOfFile:[filePath stringByAppendingString:filename]];
-            cell.nickimg.image =[UIImage imageWithData:data];
+            if (data)
+                cell.nickimg.image =[UIImage imageWithData:data];
         }
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         

@@ -365,7 +365,7 @@
                 leftcell.nickimg.image = [UIImage imageWithData:jpgdata];
             }
             else
-                leftcell.nickimg.image = [UIImage imageNamed:@"nick1"];
+                leftcell.nickimg.image = [UIImage imageNamed:@"default_user"];
         }
         
         return leftcell;
@@ -409,7 +409,7 @@
                 rightcell.nickimg.image = [UIImage imageWithData:jpgdata];
             }
             else
-                rightcell.nickimg.image = [UIImage imageNamed:@"nick1"];
+                rightcell.nickimg.image = [UIImage imageNamed:@"default_user"];
 
         }
         
