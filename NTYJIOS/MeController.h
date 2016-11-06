@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Common/FileCommon.h>
-#define Section1 4
+#define Section1 3
 #define Section2 1
 
 @interface MeController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate>

@@ -18,6 +18,7 @@
 		7B4025211DABC77A00403B0A /* ChatTextRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4025201DABC77A00403B0A /* ChatTextRightCell.m */; };
 		7B4025261DABD2F800403B0A /* ChatLog+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4025231DABD2F800403B0A /* ChatLog+CoreDataClass.m */; };
 		7B4058191D3E70AA002A5068 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4058171D3E70AA002A5068 /* MBProgressHUD.m */; };
+		7B47D9FE1DCCE3B1001F56B2 /* HisCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B47D9FD1DCCE3B1001F56B2 /* HisCell.m */; };
 		7B4D83611DBF9C9C00BA2E5F /* RecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D83601DBF9C9C00BA2E5F /* RecordView.m */; };
 		7B4D83641DBF9CAE00BA2E5F /* RecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D83631DBF9CAE00BA2E5F /* RecordButton.m */; };
 		7B4D83661DBFA5C300BA2E5F /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4D83651DBFA5C300BA2E5F /* close.png */; };
@@ -172,6 +173,8 @@
 		7B4025231DABD2F800403B0A /* ChatLog+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ChatLog+CoreDataClass.m"; path = "../ChatLog+CoreDataClass.m"; sourceTree = "<group>"; };
 		7B4058171D3E70AA002A5068 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7B4058181D3E70AA002A5068 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		7B47D9FC1DCCE3B1001F56B2 /* HisCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HisCell.h; sourceTree = "<group>"; };
+		7B47D9FD1DCCE3B1001F56B2 /* HisCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HisCell.m; sourceTree = "<group>"; };
 		7B4D835F1DBF9C9C00BA2E5F /* RecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordView.h; sourceTree = "<group>"; };
 		7B4D83601DBF9C9C00BA2E5F /* RecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordView.m; sourceTree = "<group>"; };
 		7B4D83621DBF9CAE00BA2E5F /* RecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordButton.h; sourceTree = "<group>"; };
@@ -517,6 +520,8 @@
 				B45CDF031D92743300DFBBAC /* GroupInfoUserStateCell.h */,
 				B45CDF041D92743300DFBBAC /* GroupInfoUserStateCell.m */,
 				7B7200B21DCB89D10089CAA1 /* hiscell.xib */,
+				7B47D9FC1DCCE3B1001F56B2 /* HisCell.h */,
+				7B47D9FD1DCCE3B1001F56B2 /* HisCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -870,6 +875,7 @@
 				B40C1ADC1D33478200AFE71A /* UserInfoCell1.m in Sources */,
 				7BB56E101D5F5986002C80A3 /* ContactsController.m in Sources */,
 				B48B0F131D2E498100646A20 /* main.m in Sources */,
+				7B47D9FE1DCCE3B1001F56B2 /* HisCell.m in Sources */,
 				7BB56DF21D5F3A5B002C80A3 /* db.xcdatamodeld in Sources */,
 				7BB56E071D5F3D6A002C80A3 /* Department.m in Sources */,
 				B48B0F2C1D2E4ADF00646A20 /* MainTabBarController.m in Sources */,

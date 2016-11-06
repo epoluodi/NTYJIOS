@@ -195,6 +195,8 @@
 {
     [self performSegueWithIdentifier:@"showgroupinfo" sender:self];
 }
+
+
 -(void)DownloadImg:(NSString *)mediaid imgview:(UIImageView *)imgview
 {
     dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
