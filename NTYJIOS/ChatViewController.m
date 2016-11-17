@@ -82,7 +82,7 @@
         HttpServer *http = [[HttpServer alloc] init:readDispatchMsg];
         
         
-        BOOL r =    [http readDispatchStateSendServer:_ddinfo  lng:  [NSString stringWithFormat:@"%f",app.loc.location.coordinate.longitude] lat:  [NSString stringWithFormat:@"%f",app.loc.location.coordinate.latitude]];
+        BOOL r =    [http readDispatchStateSendServer:_ddinfo  lng:  [NSString stringWithFormat:@"%f",app.loc.coordinate.longitude] lat:  [NSString stringWithFormat:@"%f",app.loc.coordinate.latitude]];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!r)
             {

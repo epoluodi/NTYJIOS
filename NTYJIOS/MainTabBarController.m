@@ -32,7 +32,7 @@
     self.tabBar.tintColor=APPCOLOR;
     IsLogin = NO;
    
- 
+    app = [[UIApplication sharedApplication] delegate];
     _locService = [[BMKLocationService alloc]init];
     _locService.delegate = self;
     [_locService startUserLocationService];
@@ -63,7 +63,7 @@
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
         NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
-    app.loc = userLocation;
+    app.loc = userLocation.location;
     [_locService stopUserLocationService];
 }
 
