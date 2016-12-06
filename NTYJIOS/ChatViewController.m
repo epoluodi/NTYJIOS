@@ -266,7 +266,7 @@
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
     [UIView setAnimationDuration:0.4f];
     
-    _inputautoH.constant=216;
+    _inputautoH.constant=266;
     [UIView commitAnimations];
 }
 
