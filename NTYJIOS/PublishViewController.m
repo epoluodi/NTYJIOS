@@ -370,12 +370,12 @@
         return;
     }
     
-    if ([content.text isEqualToString:@""])
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入调度内容" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-        [alert show];
-        return;
-    }
+//    if ([content.text isEqualToString:@""])
+//    {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入调度内容" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//        [alert show];
+//        return;
+//    }
     if (!selectdepartmentidlist)
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择发送目标" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
