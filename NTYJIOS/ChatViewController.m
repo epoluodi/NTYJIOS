@@ -130,7 +130,7 @@
         [hud show:YES];
         dispatch_queue_t globalQ = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_queue_t mainQ = dispatch_get_main_queue();
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), globalQ, ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), globalQ, ^{
             
             HttpServer *http = [[HttpServer alloc] init:queryDispatchMsg];
             ReturnData *ret =[http queryDDInfo:_ddinfo];
