@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hKJ-IU-gqf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hKJ-IU-gqf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -170,7 +170,7 @@
             </objects>
             <point key="canvasLocation" x="2546" y="-540"/>
         </scene>
-        <!--调度历史-->
+        <!--历史信息-->
         <scene sceneID="Bji-hH-FnW">
             <objects>
                 <viewController id="GeL-m1-GBS" customClass="HistoryViewController" sceneMemberID="viewController">
@@ -195,7 +195,7 @@
                             <constraint firstItem="DNa-Z8-mUY" firstAttribute="top" secondItem="anh-tc-zC6" secondAttribute="top" id="xmF-Rq-MEO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="调度历史" id="VOw-oa-7Xn"/>
+                    <navigationItem key="navigationItem" title="历史信息" id="VOw-oa-7Xn"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="table" destination="DNa-Z8-mUY" id="JKQ-Hr-V7F"/>
@@ -380,7 +380,7 @@
                                     <constraint firstAttribute="height" constant="64" id="Vmo-Ss-aKa"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="调度信息发布" id="Dbs-NE-lGL"/>
+                                    <navigationItem title="信息发布" id="Dbs-NE-lGL"/>
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6vt-Fv-lAL">
