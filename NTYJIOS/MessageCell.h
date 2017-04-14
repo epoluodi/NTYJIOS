@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *txttitle;
 @property (weak, nonatomic) IBOutlet UILabel *txtdt;
+@property (weak, nonatomic) IBOutlet UILabel *sender;
 
 
 @end

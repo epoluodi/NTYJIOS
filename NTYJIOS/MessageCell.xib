@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vg8-rI-x41" id="5dr-85-ezx">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notice.png" translatesAutoresizingMaskIntoConstraints="NO" id="NM5-a0-EnA">
@@ -28,7 +32,7 @@
                             <constraint firstAttribute="width" constant="151" id="GDv-1u-6EA"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.43976878159999999" green="0.43976878159999999" blue="0.43976878159999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.43976878159999999" green="0.43976878159999999" blue="0.43976878159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabelLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N44-XN-jAw">
@@ -37,14 +41,27 @@
                             <constraint firstAttribute="height" constant="26" id="ZM9-bU-5jA"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xd0-Rp-UqZ">
+                        <rect key="frame" x="201" y="30" width="111" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="S0J-Mf-Rvz"/>
+                            <constraint firstAttribute="width" constant="111" id="U8v-kL-frV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="xd0-Rp-UqZ" secondAttribute="bottom" constant="6.5" id="0T3-VM-zt7"/>
                     <constraint firstItem="O97-FC-isS" firstAttribute="top" secondItem="5dr-85-ezx" secondAttribute="top" constant="8" id="0bM-AI-lJ2"/>
                     <constraint firstAttribute="trailing" secondItem="O97-FC-isS" secondAttribute="trailing" constant="8" id="37z-mZ-L0y"/>
+                    <constraint firstItem="xd0-Rp-UqZ" firstAttribute="top" secondItem="O97-FC-isS" secondAttribute="bottom" constant="1" id="BDB-Of-I5m"/>
                     <constraint firstAttribute="bottom" secondItem="N44-XN-jAw" secondAttribute="bottom" constant="15" id="Doe-ls-70z"/>
+                    <constraint firstAttribute="trailing" secondItem="xd0-Rp-UqZ" secondAttribute="trailing" constant="8" id="Eo5-TB-Ajh"/>
                     <constraint firstItem="N44-XN-jAw" firstAttribute="leading" secondItem="NM5-a0-EnA" secondAttribute="trailing" constant="8" id="FhL-h0-x8B"/>
                     <constraint firstItem="NM5-a0-EnA" firstAttribute="leading" secondItem="5dr-85-ezx" secondAttribute="leading" constant="8" id="Oxj-cV-Qlm"/>
                     <constraint firstItem="N44-XN-jAw" firstAttribute="top" secondItem="5dr-85-ezx" secondAttribute="top" constant="16" id="q1b-MK-HAx"/>
@@ -53,6 +70,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="sender" destination="xd0-Rp-UqZ" id="NrS-TW-YhW"/>
                 <outlet property="txtdt" destination="O97-FC-isS" id="Rp3-TW-4fP"/>
                 <outlet property="txttitle" destination="N44-XN-jAw" id="yD7-x3-ofs"/>
             </connections>

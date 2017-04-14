@@ -212,6 +212,12 @@
     DDInfo *_ddinfo = ddinfolist[indexPath.row];
     cell.txttitle.text=_ddinfo.title;
     
+//    NSString *json = _ddinfo.json;
+//    NSDictionary *dictjson = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+    
+    Contacts* c =  [[DBmanger getIntance] getContactswithuserId:_ddinfo.json];
+    
+    cell.sender.text= c.name;
     //    NSDateFormatter *dtformat = [[NSDateFormatter alloc] init];
     //    [dtformat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSLog(@"%@",_ddinfo.sendtime);

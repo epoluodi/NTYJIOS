@@ -10,6 +10,7 @@
 
 @implementation MessageCell
 @synthesize txtdt,txttitle;
+@synthesize sender;
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

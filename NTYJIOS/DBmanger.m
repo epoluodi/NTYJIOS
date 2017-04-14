@@ -166,7 +166,7 @@ static DBmanger *_db;
 {
     DDInfo *ddinfo = [NSEntityDescription insertNewObjectForEntityForName:@"DDInfo" inManagedObjectContext:mangedcontext];
     [ddinfo setValue:[jdinfo objectForKey:@"DISPATCH_ID"] forKey:@"ddid"];
-    [ddinfo setValue:jdinfo.description forKey:@"json"];
+    [ddinfo setValue:[jdinfo objectForKey:@"SEND_ACCOUNT_ID"] forKey:@"json"];
     [ddinfo setValue:[jdinfo objectForKey:@"DISPATCH_TITLE"] forKey:@"title"];
 
     NSNumber *_istop = [[NSNumber alloc] initWithInt:((NSString *)[jdinfo objectForKey:@""]).intValue];
