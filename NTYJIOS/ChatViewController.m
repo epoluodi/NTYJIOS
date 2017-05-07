@@ -37,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tabBarController.tabBar.hidden=YES;
-    navtitle.title = @"调度讨论";
+    navtitle.title = @"消息讨论";
     [self.navigationController.navigationItem.leftBarButtonItems[0] setTintColor:[UIColor  whiteColor]];
     app = [[UIApplication sharedApplication] delegate];
 
@@ -138,7 +138,7 @@
                 [hud hide:YES];
                 if (!ret)
                 {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取调度信息失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取信息失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                     [alert show];
                     [self.navigationController popViewControllerAnimated:YES];
                     return ;

@@ -33,13 +33,13 @@
     
     btnaudio.hidden=YES;
     if (IsAppoverMode){
-        navbar.items[0].title=@"调度信息审批";
+        navbar.items[0].title=@"信息审批";
         btnright = [[UIBarButtonItem alloc] initWithTitle:@"审批" style:UIBarButtonItemStylePlain target:self action:@selector(ClickRight)];
         [btnright setTintColor :[UIColor whiteColor] ];
         [navbar.items[0] setRightBarButtonItem:btnright];
     }
     else
-        navbar.items[0].title=@"调度信息";
+        navbar.items[0].title=@"信息";
     [self.view setBackgroundColor:UIColorFromRGB(0xEAEAEA)];
     btnreturn = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(ClickReturn)];
     [btnreturn setTintColor :[UIColor whiteColor] ];

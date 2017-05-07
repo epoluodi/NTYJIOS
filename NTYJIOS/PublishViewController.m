@@ -365,7 +365,7 @@
 {
     if ([edittitle.text isEqualToString:@""])
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入调度标题" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入消息标题" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
         return;
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C891A1D1EBF214E00818675 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C891A1C1EBF214E00818675 /* splash.png */; };
 		7B19691D1D6B406400108B4A /* DDInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B19691B1D6B406400108B4A /* DDInfo.m */; };
 		7B1969201D6DEC0000108B4A /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B19691F1D6DEC0000108B4A /* MessageCell.xib */; };
 		7B1969231D6DEC1700108B4A /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1969221D6DEC1700108B4A /* MessageCell.m */; };
@@ -73,7 +74,6 @@
 		7BF20DFF1DCA26AB00B992B5 /* year.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF20DFE1DCA26AB00B992B5 /* year.png */; };
 		7BF20E021DCA26BB00B992B5 /* month.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF20E001DCA26BB00B992B5 /* month.png */; };
 		7BF20E031DCA26BB00B992B5 /* month3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF20E011DCA26BB00B992B5 /* month3.png */; };
-		7BF398141D5CC1DE004CDFE8 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BF398131D5CC1DE004CDFE8 /* splash.jpg */; };
 		7BF73D701D86EA0F0089B050 /* sp_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF73D6E1D86EA0F0089B050 /* sp_no.png */; };
 		7BF73D711D86EA0F0089B050 /* sp_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF73D6F1D86EA0F0089B050 /* sp_ok.png */; };
 		7BF75B741D75C73D00CB03A2 /* aay.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF75B731D75C73D00CB03A2 /* aay.png */; };
@@ -155,6 +155,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5C891A1C1EBF214E00818675 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		7B19691A1D6B406400108B4A /* DDInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDInfo.h; sourceTree = "<group>"; };
 		7B19691B1D6B406400108B4A /* DDInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInfo.m; sourceTree = "<group>"; };
 		7B19691F1D6DEC0000108B4A /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
@@ -247,7 +248,6 @@
 		7BF20DFE1DCA26AB00B992B5 /* year.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = year.png; sourceTree = "<group>"; };
 		7BF20E001DCA26BB00B992B5 /* month.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = month.png; sourceTree = "<group>"; };
 		7BF20E011DCA26BB00B992B5 /* month3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = month3.png; sourceTree = "<group>"; };
-		7BF398131D5CC1DE004CDFE8 /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash.jpg; sourceTree = "<group>"; };
 		7BF73D6E1D86EA0F0089B050 /* sp_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sp_no.png; sourceTree = "<group>"; };
 		7BF73D6F1D86EA0F0089B050 /* sp_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sp_ok.png; sourceTree = "<group>"; };
 		7BF75B731D75C73D00CB03A2 /* aay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aay.png; sourceTree = "<group>"; };
@@ -657,6 +657,7 @@
 		B48B0F2F1D2E4E8900646A20 /* png */ = {
 			isa = PBXGroup;
 			children = (
+				5C891A1C1EBF214E00818675 /* splash.png */,
 				B46364ED1DCAD73C001DCAFD /* default_user.png */,
 				7BF75B731D75C73D00CB03A2 /* aay.png */,
 				7BC9E1481DB257D400BE0C49 /* camera.png */,
@@ -696,7 +697,6 @@
 				7BF75B8B1D7723FD00CB03A2 /* shenpiren.png */,
 				7BF73D6E1D86EA0F0089B050 /* sp_no.png */,
 				7BF73D6F1D86EA0F0089B050 /* sp_ok.png */,
-				7BF398131D5CC1DE004CDFE8 /* splash.jpg */,
 				7BF75B801D771BAC00CB03A2 /* stop.png */,
 				7BA75AD11D8C3EC500A2B1C8 /* t5.png */,
 				7BA75ACF1D8C390400A2B1C8 /* t7.png */,
@@ -790,6 +790,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C891A1D1EBF214E00818675 /* splash.png in Resources */,
 				7B7026491D957F2600C04011 /* mapapi.bundle in Resources */,
 				7BF73D711D86EA0F0089B050 /* sp_ok.png in Resources */,
 				7BAE28AE1D9AA7B8008AF612 /* chat_left.png in Resources */,
@@ -838,7 +839,6 @@
 				B44D0A0F1D2F4BBE00F76DFF /* setting5.png in Resources */,
 				B42E582F1D795934005ADE1F /* selectlistcell.xib in Resources */,
 				B45CDEFE1D92674000DFBBAC /* userstatecell.xib in Resources */,
-				7BF398141D5CC1DE004CDFE8 /* splash.jpg in Resources */,
 				7BD4CB0F1DBBAF8B00F793F2 /* img_self.png in Resources */,
 				B42E58331D795AE1005ADE1F /* checkbox.png in Resources */,
 				7BF75B7A1D771A4000CB03A2 /* record_start.png in Resources */,

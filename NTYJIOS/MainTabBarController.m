@@ -131,7 +131,7 @@
                 optdata = [msgbody objectForKey:@"optData"];
                 dispatch_async(mainQ, ^{
                     self.selectedIndex=0;
-                    UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"新的调度信息" message:[optdata objectForKey:@"dispatch_title"] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"新的信息" message:[optdata objectForKey:@"dispatch_title"] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                     [alert show];
                     
                     [vc1 loadDDinfo];
@@ -144,7 +144,7 @@
             optdata = [msgbody objectForKey:@"optData"];
             dispatch_async(mainQ, ^{
                 self.selectedIndex=0;
-                UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"提醒：调度信息" message:[optdata objectForKey:@"dispatch_title"] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"提醒：信息" message:[optdata objectForKey:@"dispatch_title"] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
            
             });
@@ -159,7 +159,7 @@
                 NSString *desc = [NSString stringWithFormat:@"审批人：%@ 审批原因:%@",
                                  [optdata objectForKey:@"approve_user_name"],
                                   [optdata objectForKey:@"approve_desc"] ];
-                UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"调度信息审批拒绝" message:desc delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"信息审批拒绝" message:desc delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
                 
             });
@@ -172,10 +172,10 @@
             optdata = [msgbody objectForKey:@"optData"];
             dispatch_async(mainQ, ^{
                 self.selectedIndex=0;
-                NSString *desc = [NSString stringWithFormat:@"审批人：%@ 调度标题:%@",
+                NSString *desc = [NSString stringWithFormat:@"审批人：%@ 标题:%@",
                                   [optdata objectForKey:@"send_user_name"],
                                   [optdata objectForKey:@"dispatch_title"] ];
-                UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"调度信息关闭" message:desc delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                UIAlertView *alert =[[UIAlertView alloc] initWithTitle:@"信息关闭" message:desc delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
                 [vc1 loadDDinfo];
             });

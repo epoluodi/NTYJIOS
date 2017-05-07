@@ -24,7 +24,7 @@
     btnreturn = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(ClickReturn)];
     [btnreturn setTintColor :[UIColor whiteColor] ];
     [navbar.items[0] setLeftBarButtonItem:btnreturn];
-    navbar.items[0].title=@"调度审批";
+    navbar.items[0].title=@"消息审批";
     
     
     table.delegate=self;

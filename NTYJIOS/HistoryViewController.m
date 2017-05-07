@@ -66,7 +66,7 @@
             if (!rd)
             {
             
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取历史调度信息失败!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取历史信息失败!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
                 [self dismissViewControllerAnimated:YES completion:nil];
                 return ;

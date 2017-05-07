@@ -112,7 +112,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (listtype == DEPARTMENT)
-        return 50;
+        return 100;
     if (listtype == APPOVER)
         return 60;
     return 50;
@@ -126,7 +126,19 @@
 
         cell1.delegateVC=self;
         Department *dep =dataarry[indexPath.row];
-        cell1.celltitle.text= dep.name;
+        NSArray *contacts = [[DBmanger getIntance] getContactswithDepartment:dep.departmentid];
+        NSMutableString *strlist = [[NSMutableString alloc] init];
+        
+        for (Contacts *contact in contacts) {
+            
+            [strlist appendString:contact.name];
+            [strlist appendString:@","];
+ 
+        }
+        
+        cell1.celltitle.adjustsFontSizeToFitWidth=NO;
+        cell1.celltitle.numberOfLines=0;
+        cell1.celltitle.text=[NSString stringWithFormat:@"%@:\n\n%@",dep.name,[strlist substringToIndex:strlist.length-1]];
         cell1.itemid = dep.departmentid;
         return cell1;
 

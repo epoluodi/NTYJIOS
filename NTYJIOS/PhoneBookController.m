@@ -160,7 +160,7 @@
         NSLog(@"部门信息: %@",group);
         [groupdata removeAllObjects];
         for (Department *depart in group) {
-            NSLog(@"调度组名称: %@",depart.name);
+            NSLog(@"组名称: %@",depart.name);
             NSArray *contacts = [[DBmanger getIntance] getContactswithDepartment:depart.departmentid];
             
             [groupdata addObject:contacts];

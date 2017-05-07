@@ -131,7 +131,7 @@
                 break;
             case 2:
                 cell =[table dequeueReusableCellWithIdentifier:@"cell2"];
-                cell.celltitile.text=@"调度组";
+                cell.celltitile.text=@"消息组";
                 cell.cellimg.image = [UIImage imageNamed:@"userinfo_4"];
                 cell.selectionStyle=UITableViewCellSelectionStyleNone;
                 if (IsSelf)

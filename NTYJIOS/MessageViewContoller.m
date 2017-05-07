@@ -40,7 +40,7 @@
     btnleft = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"appover"] style:UIBarButtonItemStylePlain target:self action:@selector(Onleft)];
     btnleft.tintColor = [UIColor whiteColor];
     
-    navtitle.title =@"调度信息";
+    navtitle.title =@"信息";
 //    navtitle = [[UINavigationItem alloc] initWithTitle:@"调度信息"];
     navtitle.hidesBackButton=YES;
     
@@ -83,7 +83,7 @@
     
     
     [FTPopOverMenu showFromSenderFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width-30,0, 0, 64)
-                              withMenu:@[@"发布调度",@"历史调度",]
+                              withMenu:@[@"发布消息",@"历史消息",]
                         imageNameArray:@[@"publishjd",@"historyjd"]
                              doneBlock:^(NSInteger selectedIndex) {
                                  
@@ -126,7 +126,7 @@
             dispatch_async(mainQ, ^{
                 if (refreshcontrol.refreshing)
                     [ refreshcontrol endRefreshing];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取调度信息失败，请重新登录!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"获取信息失败，请重新登录!!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [alert show];
                 
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
