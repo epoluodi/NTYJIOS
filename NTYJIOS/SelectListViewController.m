@@ -27,11 +27,19 @@
 @synthesize table,navbar;
 @synthesize listtype;
 @synthesize delegateVC;
+@synthesize selectedlist;
+@synthesize selectednamelist;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     selectnamelist = [[NSMutableArray alloc] init];
     selectidlist = [[NSMutableArray alloc] init];
+    
+    if (selectedlist)
+    {
+        [selectidlist addObjectsFromArray:[selectedlist componentsSeparatedByString:@","]];
+        [selectnamelist addObjectsFromArray:[selectednamelist componentsSeparatedByString:@","]];
+    }
     btnreturn = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(ClickReturn)];
     
     btnright = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(ClickRight)];
@@ -140,6 +148,12 @@
         cell1.celltitle.numberOfLines=0;
         cell1.celltitle.text=[NSString stringWithFormat:@"%@:\n\n%@",dep.name,[strlist substringToIndex:strlist.length-1]];
         cell1.itemid = dep.departmentid;
+        if ([selectidlist containsObject:dep.departmentid])
+        {
+            [cell1 setcheckbox:YES];
+        }
+        else
+            [cell1 setcheckbox:NO];
         return cell1;
 
     }

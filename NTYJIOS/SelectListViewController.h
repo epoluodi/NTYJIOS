@@ -28,8 +28,8 @@ typedef enum :int
 @property (strong,nonatomic)NSString *titleCommon;
 @property (assign)EnumListType listtype;
 @property (weak,nonatomic)UIViewController *delegateVC;
-
-
+@property (weak,nonatomic)NSString *selectedlist;
+@property (weak,nonatomic)NSString *selectednamelist;
 
 -(void)SelectGroupInfo:(NSString *)selectid name:(NSString *)name isDel:(BOOL)IsDel;
 @end

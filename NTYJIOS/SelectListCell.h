@@ -19,4 +19,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *chk;
 @property (weak,nonatomic) UIViewController *delegateVC;
 
+-(void)setcheckbox:(BOOL)chkstate;
 @end

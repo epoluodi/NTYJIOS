@@ -20,7 +20,19 @@
     // Initialization code
 }
 
-
+-(void)setcheckbox:(BOOL)chkstate
+{
+    if (chkstate)
+    {
+        IsChk=YES;
+        [chk setImage:[UIImage imageNamed:@"checkbox_select"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        IsChk=NO;
+        [chk setImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
+    }
+}
 -(void)clickchk
 {
     [self setSelected:YES animated:YES];
@@ -34,14 +46,14 @@
     {
         IsChk=NO;
         [chk setImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
-        [((SelectListViewController*)delegateVC) SelectGroupInfo:itemid name:celltitle.text isDel:NO];
+        [((SelectListViewController*)delegateVC) SelectGroupInfo:itemid name:[celltitle.text componentsSeparatedByString:@":"][0] isDel:NO];
         
     }
     else
     {
         IsChk=YES;
         [chk setImage:[UIImage imageNamed:@"checkbox_select"] forState:UIControlStateNormal];
-               [((SelectListViewController*)delegateVC) SelectGroupInfo:itemid name:celltitle.text isDel:YES];
+               [((SelectListViewController*)delegateVC) SelectGroupInfo:itemid name:[celltitle.text componentsSeparatedByString:@":"][0] isDel:YES];
     }
     // Configure the view for the selected state
 }

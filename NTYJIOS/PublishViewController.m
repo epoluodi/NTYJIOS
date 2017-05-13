@@ -339,6 +339,8 @@
                 selectvc.titleCommon=@"选择发送目标";
                 selectvc.listtype = DEPARTMENT;
                 selectvc.delegateVC=self;
+                selectvc.selectedlist=selectdepartmentidlist;
+                selectvc.selectednamelist = selectdepartmentlist;
                 [self presentViewController:selectvc animated:YES completion:nil];
                 
                 break;
