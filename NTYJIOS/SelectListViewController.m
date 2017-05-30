@@ -150,6 +150,7 @@
         cell1.itemid = dep.departmentid;
         if ([selectidlist containsObject:dep.departmentid])
         {
+   
             [cell1 setcheckbox:YES];
         }
         else
@@ -225,6 +226,19 @@
     }
 }
 
+-(void)setchkBox:(NSString *)depid cell:(UITableViewCell *)cell
+{
+    SelectListCell *cell1 = (SelectListCell *)cell;
+    if ([selectidlist containsObject:depid])
+    {
+        [selectidlist removeObject:depid];
+        [cell1 setcheckbox:NO];
+    }
+    else{
+        [selectidlist addObject:depid];
+        [cell1 setcheckbox:YES];
+    }
+}
 //选择
 -(void)SelectGroupInfo:(NSString *)selectid name:(NSString *)name isDel:(BOOL)IsDel
 {

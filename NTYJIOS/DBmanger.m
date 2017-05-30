@@ -287,8 +287,8 @@ static DBmanger *_db;
     NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"Department"];
 
     //排序
-        NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-        fetch.sortDescriptors=@[sort];
+//        NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:NO];
+//        fetch.sortDescriptors=@[sort];
     //加入查询条件 age>20
 //    fetch.predicate=[NSPredicate predicateWithFormat:@"stockcode=%@",stockcode];
 

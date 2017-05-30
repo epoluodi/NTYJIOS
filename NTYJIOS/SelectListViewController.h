@@ -32,4 +32,7 @@ typedef enum :int
 @property (weak,nonatomic)NSString *selectednamelist;
 
 -(void)SelectGroupInfo:(NSString *)selectid name:(NSString *)name isDel:(BOOL)IsDel;
+
+-(void)setchkBox:(NSString *)depid cell:(UITableViewCell *)cell;
+
 @end

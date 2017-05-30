@@ -17,6 +17,10 @@
     [super awakeFromNib];
     IsChk=NO;
     [chk addTarget:self action:@selector(clickchk) forControlEvents:UIControlEventTouchUpInside];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc ] initWithTarget:self action:@selector(clickchk)];
+    [self.contentView addGestureRecognizer:tap];
+
     // Initialization code
 }
 
@@ -25,6 +29,7 @@
     if (chkstate)
     {
         IsChk=YES;
+        
         [chk setImage:[UIImage imageNamed:@"checkbox_select"] forState:UIControlStateNormal];
     }
     else
@@ -32,18 +37,13 @@
         IsChk=NO;
         [chk setImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
     }
+    
 }
 -(void)clickchk
 {
-    [self setSelected:YES animated:YES];
-}
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    if (!selected)
-        return;
     if (IsChk)
     {
+        
         IsChk=NO;
         [chk setImage:[UIImage imageNamed:@"checkbox"] forState:UIControlStateNormal];
         [((SelectListViewController*)delegateVC) SelectGroupInfo:itemid name:[celltitle.text componentsSeparatedByString:@":"][0] isDel:NO];
@@ -53,8 +53,21 @@
     {
         IsChk=YES;
         [chk setImage:[UIImage imageNamed:@"checkbox_select"] forState:UIControlStateNormal];
-               [((SelectListViewController*)delegateVC) SelectGroupInfo:itemid name:[celltitle.text componentsSeparatedByString:@":"][0] isDel:YES];
+        [((SelectListViewController*)delegateVC) SelectGroupInfo:itemid name:[celltitle.text componentsSeparatedByString:@":"][0] isDel:YES];
     }
+    
+}
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+ 
+    [super setSelected:selected animated:animated];
+    
+
+//        if (!selected)
+//            return;
+//
+//    NSLog(@"%@,%D",itemid,selected);
+//     [((SelectListViewController*)delegateVC) setchkBox:itemid cell:self];
+
     // Configure the view for the selected state
 }
 
