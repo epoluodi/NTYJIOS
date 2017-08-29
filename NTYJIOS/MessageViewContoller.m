@@ -63,6 +63,10 @@
     [refreshcontrol addTarget:self action:@selector(Onrefresh) forControlEvents:UIControlEventValueChanged];
     [table addSubview:refreshcontrol];
     // Do any additional setup after loading the view.
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [refreshcontrol beginRefreshing];
+    });
 }
 
 
@@ -83,7 +87,7 @@
     
     
     [FTPopOverMenu showFromSenderFrame:CGRectMake([[UIScreen mainScreen] bounds].size.width-30,0, 0, 64)
-                              withMenu:@[@"发布消息",@"历史消息",]
+                              withMenu:@[@"发布消息",@"历史信息",]
                         imageNameArray:@[@"publishjd",@"historyjd"]
                              doneBlock:^(NSInteger selectedIndex) {
                                  
@@ -162,6 +166,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     self.tabBarController.tabBar.hidden=NO;
+    __weak typeof(self) weakself= self;
     if ([UserInfo getInstance].Token){
 
         
@@ -171,6 +176,9 @@
         
         
         dispatch_async(globalQ, ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakself loadDDinfo];
+            });
             HttpServer *http = [[HttpServer alloc] init:queryDispatchMsgs];
             appoverlists = [[http getAppoverMsg] copy];
             

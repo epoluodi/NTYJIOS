@@ -28,6 +28,7 @@
 @synthesize btnaudio;
 @synthesize infoview,info_title,infoscroll;
 @synthesize sender,sendtime;
+@synthesize groupinfo;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -47,6 +48,15 @@
     infoview.layer.borderColor = [[[UIColor blackColor] colorWithAlphaComponent:0.1]CGColor];
     infoview.layer.borderWidth=1;
 
+  
+    NSArray *deptarry = [[DBmanger getIntance] getDepartmentInfo:[_info objectForKey:@"group_ids"]];
+    if (!deptarry)
+    {
+        groupinfo.text = @"";
+        
+    }
+    if (deptarry.count > 0)
+        groupinfo.text = [NSString stringWithFormat: @"目标小组 %@",((Department*)deptarry[0]).name];
     
     
     info_title.text = [_info objectForKey:@"dispatch_title"];

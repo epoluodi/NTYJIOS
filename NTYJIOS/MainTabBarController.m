@@ -105,6 +105,9 @@
 
 -(void)OnDisConnect
 {
+    if (mqtt){
+        [mqtt DisConncectMqtt];
+    }
     NSLog(@"连接断开");
 }
 

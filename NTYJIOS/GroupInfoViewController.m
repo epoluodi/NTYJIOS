@@ -134,20 +134,26 @@
     }
     
     
-    cell.userimg.contentMode=UIViewContentModeScaleAspectFit;
-    NSFileManager *filemanger = [NSFileManager defaultManager];
-    NSString *path = [FileCommon getCacheDirectory];
-    NSString* _filename = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",[d objectForKey:@"PICTURE"]]];
     
-    
-    __block NSData *jpgdata;
-    if ([filemanger fileExistsAtPath:_filename])
+    if ([d objectForKey:@"PICTURE"] != nil)
     {
-        jpgdata = [NSData dataWithContentsOfFile:_filename];
-        cell.userimg.image = [UIImage imageWithData:jpgdata];
+        cell.userimg.contentMode=UIViewContentModeScaleAspectFit;
+        NSFileManager *filemanger = [NSFileManager defaultManager];
+        NSString *path = [FileCommon getCacheDirectory];
+        NSString* _filename = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg",[d objectForKey:@"PICTURE"]]];
+        
+        
+        __block NSData *jpgdata;
+        if ([filemanger fileExistsAtPath:_filename])
+        {
+            jpgdata = [NSData dataWithContentsOfFile:_filename];
+            cell.userimg.image = [UIImage imageWithData:jpgdata];
+        }
+        else
+            cell.userimg.image = [UIImage imageNamed:@"default_user"];
     }
-   
-    
+    else
+        cell.userimg.image = [UIImage imageNamed:@"default_user"];
     return cell;
 }
 

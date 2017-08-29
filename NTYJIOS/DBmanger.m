@@ -69,7 +69,23 @@ static DBmanger *_db;
 
 }
 
-
+//删除部门
+-(NSArray *)getDepartmentInfo:(NSString *)deptid
+{
+    
+    NSFetchRequest *fetch=[NSFetchRequest fetchRequestWithEntityName:@"Department"];
+    
+    //排序
+    //    NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"stockcode" ascending:NO];
+    //    fetch.sortDescriptors=@[sort];
+    //加入查询条件 age>20
+    fetch.predicate=[NSPredicate predicateWithFormat:@"departmentid=%@",deptid];
+    
+    //    fetch.predicate=[NSPredicate predicateWithFormat:@"name like %@",@"*cb1*"];
+    NSArray *arr=[mangedcontext executeFetchRequest:fetch error:nil];
+    
+    return arr;
+}
 //删除部门
 -(void)deletDepartment
 {
@@ -154,8 +170,13 @@ static DBmanger *_db;
         [contacts setValue: [_groupnames substringToIndex:_groupnames.length-1] forKey:@"groupname"];
     if ([[UserInfo getInstance].userId isEqualToString:contacts.userid])
         [UserInfo getInstance].deparmentname = contacts.groupname;
+    
+    @try {
+        [mangedcontext save:nil];
+    } @catch (NSException *exception) {
         
-    [mangedcontext save:nil];
+    }
+    
 }
 
 

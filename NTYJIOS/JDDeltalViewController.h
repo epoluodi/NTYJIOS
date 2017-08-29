@@ -30,6 +30,7 @@
 
 @property (weak,nonatomic)NSDictionary *info;
 
+@property (weak, nonatomic) IBOutlet UILabel *groupinfo;
 
 
 
